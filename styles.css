@@ -1,0 +1,127 @@
+/* The Lede — marketing + legal site
+   Minimal editorial styling. Design polish is a later pass; this is a
+   credible, fast, dependency-free v1 (no web fonts, no JS). */
+
+:root {
+  --paper: #faf7f0;
+  --paper-2: #f1ece1;
+  --ink-900: #1c1a17;
+  --ink-700: #3a362f;
+  --ink-500: #6b655a;
+  --ember: #c4451f;
+  --rule: #e2dccf;
+  --measure: 38rem;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-900);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 4rem 1.4rem 5rem;
+}
+
+.wrap--wide { max-width: 52rem; }
+
+/* Display type — system serif stack */
+h1, h2, h3, .serif {
+  font-family: "Iowan Old Style", "Charter", Georgia, "Times New Roman", serif;
+  color: var(--ink-900);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.4rem; margin: 0 0 0.4rem; font-weight: 600; }
+h2 { font-size: 1.45rem; margin: 2.6rem 0 0.6rem; font-weight: 600; }
+h3 { font-size: 1.12rem; margin: 1.8rem 0 0.3rem; font-weight: 600; }
+
+p, li { color: var(--ink-700); }
+a { color: var(--ember); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--ink-500);
+  margin: 0 0 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ember);
+  margin: 0 0 1.2rem;
+}
+
+.muted { color: var(--ink-500); font-size: 0.9rem; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+
+.callout {
+  background: var(--paper-2);
+  border-left: 3px solid var(--ember);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+}
+.callout p:first-child { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+ul { padding-left: 1.2rem; }
+li { margin: 0.35rem 0; }
+
+/* Header / footer */
+.site-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+.site-head .mark {
+  font-family: "Iowan Old Style", "Charter", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink-900);
+}
+.site-head nav { margin-left: auto; font-size: 0.92rem; }
+.site-head nav a { color: var(--ink-500); margin-left: 1.1rem; }
+
+footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding-top: 1.4rem;
+  font-size: 0.88rem;
+  color: var(--ink-500);
+}
+footer a { color: var(--ink-500); }
+footer .row { display: flex; flex-wrap: wrap; gap: 1.1rem; }
+
+/* Landing hero */
+.hero { text-align: center; padding: 2rem 0 1rem; }
+.hero h1 { font-size: 3rem; }
+.hero .lede { max-width: 30rem; margin-left: auto; margin-right: auto; }
+
+.features { margin-top: 3rem; }
+.feature { margin: 2rem 0; }
+.feature h3 { color: var(--ember); }
+
+.todo {
+  background: #fff4d6;
+  border: 1px dashed #d4a017;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  color: #6b5300;
+  margin: 1rem 0;
+}

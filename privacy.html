@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — The Lede</title>
+  <meta name="description" content="How The Lede handles your data. Short version: no account, your library stays in your iCloud, and we don't sell anything.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-head">
+      <span class="mark">The Lede</span>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/support.html">Support</a>
+      </nav>
+    </header>
+
+    <p class="eyebrow">Privacy</p>
+    <h1>Privacy Policy</h1>
+    <p class="lede">The Lede is built to need as little of your data as possible. This page explains exactly what that means.</p>
+    <p class="muted">Last updated: June 13, 2026</p>
+
+    <div class="callout">
+      <p><strong>The short version.</strong></p>
+      <ul>
+        <li>There is <strong>no account</strong> — no name, email, or password to create.</li>
+        <li>Your saved articles live in <strong>your own iCloud</strong>, not on our servers. We never receive your library or your reading history.</li>
+        <li>To write a brief, the article's text is sent to our AI provider (Anthropic). It is <strong>not used to train AI models</strong>, and we don't keep the text.</li>
+        <li>We collect a small amount of <strong>anonymous</strong> usage data to run the service and set fair pricing.</li>
+        <li>No ads. No third-party trackers. <strong>We never sell your data.</strong></li>
+      </ul>
+    </div>
+
+    <h2>What we don't collect</h2>
+    <p>The Lede has no sign-up. We do not collect your name, email address, phone number, password, precise location, contacts, photos, or any advertising identifier. The app contains no third-party advertising or analytics SDKs and no cross-app trackers.</p>
+
+    <h2>Your article library stays in your iCloud</h2>
+    <p>The articles you save, their briefs, your highlights, and your reading history are stored in <strong>your private iCloud account</strong> (Apple CloudKit) and synced across your devices by Apple. We do not store, copy, or have access to your library, and we keep no record of which articles you read. If you delete the app and remove its iCloud data, that content is gone.</p>
+
+    <h2>What happens when you save an article</h2>
+    <p>When you save an article, the app sends its <strong>web address, headline, and extracted text</strong> to our server so we can produce the brief. From there:</p>
+    <ul>
+      <li>The article text is sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. Under Anthropic's commercial terms, this content is <strong>not used to train their models</strong>.</li>
+      <li>For some stories we run a web search (via <strong>Tavily</strong> or <strong>Exa</strong>) using the headline to gather additional context.</li>
+      <li>We <strong>do not store the article's text or its web address</strong> on our servers. We keep only short, non-reversible fingerprints (hashes) of them so that an identical article isn't re-processed — a temporary cache that automatically deletes itself (within 14 days for a brief, 7 days for a "Dig Deeper," 48 hours for redirected sources).</li>
+    </ul>
+    <div class="callout">
+      <p>One exception, for honesty: when an article can't be extracted (for example, a paywall) or comes from a source we redirect, the article's web address — but never its text — may appear briefly in our hosting provider's operational logs, which we use to keep the service working.</p>
+    </div>
+
+    <h2>Notifications and your device</h2>
+    <p>To deliver "Dig Deeper" results, your device registers with our server using a <strong>random identifier we generate</strong> (never your Apple device's hardware ID) and an Apple push token. A device secret is stored only as a one-way hash. Push notifications are scoped so a result is only ever delivered to the device that requested it.</p>
+
+    <h2>Anonymous usage data</h2>
+    <p>We record anonymous events — such as "a brief was generated," the AI token and cost counts, the publication's domain, and a non-reversible hash of the article address. These are tied to a system-generated, anonymous iCloud record identifier (a random string — not your name or email). We use this only to operate the service, watch for abuse and runaway costs, and decide fair pricing. It contains no personal information, and we never sell it.</p>
+
+    <h2>Subscriptions</h2>
+    <p>Subscriptions are processed entirely by <strong>Apple</strong> through the App Store. We never see your name, card, or payment details — only an anonymous indication of whether a subscription is active.</p>
+
+    <h2>Who processes your data</h2>
+    <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone.</p>
+
+    <h2>Data retention</h2>
+    <p>The temporary AI cache deletes itself on the schedule above. Anonymous usage records are kept for as long as we need them to operate and improve the service. Your device registration is kept while the app is installed and registered.</p>
+
+    <h2>Your choices</h2>
+    <p>Deleting the app removes its local data; removing its iCloud data deletes your library. Because our server data is anonymous we usually cannot link it to you, but if you'd like us to delete anonymous records associated with your device, email us and we'll do what we reasonably can.</p>
+
+    <h2>Children</h2>
+    <p>The Lede is not directed to children under 13, and we do not knowingly collect information from them.</p>
+
+    <h2>Changes</h2>
+    <p>If we change this policy we'll update the date above and, for material changes, note it in the app.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about privacy? Email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
+    <div class="todo">TODO (Charles): confirm contact address (support@theledeapp.com) and whether to name a legal entity/developer. Confirm Anthropic's "no training" claim still matches your API plan before publishing.</div>
+
+    <footer>
+      <div class="row">
+        <a href="/">The Lede</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/support.html">Support</a>
+        <a href="/sourcing.html">Sourcing standards</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
