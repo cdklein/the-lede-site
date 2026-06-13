@@ -8,7 +8,7 @@ region: nyc
 static_sites:
   - name: site
     github:
-      repo: OWNER/the-lede-site   # <-- replace with your GitHub owner/repo
+      repo: cdklein/the-lede-site
       branch: main
       deploy_on_push: true
     source_dir: /
