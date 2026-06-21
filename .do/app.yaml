@@ -3,9 +3,9 @@
 # Update:  doctl apps update <APP_ID> --spec .do/app.yaml
 #
 # GitHub-connected source with deploy_on_push: a push to `main` auto-redeploys.
-# Requires the DigitalOcean GitHub app to be installed on cdklein/the-lede-site
-# (one-time OAuth link in the DO console). If that link is ever removed, App
-# Platform falls back to needing a manual `doctl apps create-deployment <APP_ID>`.
+# The DigitalOcean GitHub app is installed on cdklein/the-lede-site (linked
+# 2026-06-20). If that link is ever removed, App Platform falls back to needing
+# a manual `doctl apps create-deployment <APP_ID>`.
 name: the-lede-site
 region: nyc
 static_sites:
