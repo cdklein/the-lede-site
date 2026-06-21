@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy — The Lede</title>
   <meta name="description" content="How The Lede handles your data. Short version: no account, your library stays in your iCloud, and we don't sell anything.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="wrap">
     <header class="site-head">
-      <span class="mark">The Lede</span>
+      <span class="mark"><img src="icon.png" alt="" width="26" height="26">The Lede</span>
       <nav>
-        <a href="/">Home</a>
-        <a href="/support.html">Support</a>
+        <a href="index.html">Home</a>
+        <a href="support.html">Support</a>
       </nav>
     </header>
 
@@ -25,7 +28,7 @@
     <div class="callout">
       <p><strong>The short version.</strong></p>
       <ul>
-        <li>There is <strong>no account</strong> — no name, email, or password to create.</li>
+        <li>There is <strong>no account</strong> — no name or password to create, and the app never asks for your email. <em>Joining our launch mailing list on this website is the one optional exception</em> (see below).</li>
         <li>Your saved articles and highlights live in <strong>your own iCloud</strong>, not on our servers. We never receive your library.</li>
         <li>To write a brief, the article's text is sent to our AI provider (Anthropic). It is <strong>not used to train AI models</strong>, and we don't keep the text.</li>
         <li>We collect a small amount of usage data — keyed to a <strong>random per-device identifier, never your name</strong> — to run the service and set fair pricing.</li>
@@ -34,7 +37,7 @@
     </div>
 
     <h2>What we don't collect</h2>
-    <p>The Lede has no sign-up. We do not collect your name, email address, phone number, password, precise location, contacts, photos, or any advertising identifier. The app contains no third-party advertising or analytics SDKs and no cross-app trackers.</p>
+    <p>The app has no sign-up. We do not collect your name, phone number, password, precise location, contacts, photos, or any advertising identifier. The app contains no third-party advertising or analytics SDKs and no cross-app trackers. The <strong>one</strong> piece of contact information we ever collect is an email address — and only if you choose to give it to us on this website to be notified when The Lede opens to everyone (see <a href="#launch-list">The launch mailing list</a> below). The app itself never asks for it.</p>
 
     <h2>Your article library stays in your iCloud</h2>
     <p>The articles you save, their briefs, your highlights, and your reading history are stored in <strong>your private iCloud account</strong> (Apple CloudKit) and synced across your devices by Apple. We do not store, copy, or have access to your library. We keep <strong>no readable, identity-linked record</strong> of which specific articles you read — only the limited usage signals described under "Usage data" below. If you delete the app and remove its iCloud data, that content is gone.</p>
@@ -60,10 +63,21 @@
       <li><strong>Service events</strong> — such as "a brief was generated," the AI token and cost counts, the publication's domain, and a non-reversible hash of the article address.</li>
       <li><strong>In-app usage &amp; funnel events</strong> — such as which features you use, how far you get in onboarding, that a brief was opened, when an upgrade screen is shown, and subscription events (for example, a trial starting). These tell us where the app is working and where people get stuck. We log <strong>that</strong> a brief was opened and the general topic mix in aggregate — <strong>not which specific article you read</strong>, and never linked to your identity.</li>
     </ul>
-    <p>These events are tied to a <strong>random identifier we generate for your device</strong> (a random string — not your name, email, or Apple hardware ID). The data stays on <strong>our own servers</strong>; it is not shared with any third party, used for advertising, or combined with data from other apps or websites. It carries nothing that identifies you by name — no name, email address, or contact details — and <strong>we never sell it</strong>. The app contains no third-party advertising or analytics SDKs.</p>
+    <p>These events are tied to a <strong>random identifier we generate for your device</strong> (a random string — not your name, email, or Apple hardware ID). The data stays on <strong>our own servers</strong>; it is not shared with any third party, used for advertising, or combined with data from other apps or websites. It carries nothing that identifies you by name — no name, email address, or contact details — and <strong>we never sell it</strong>. The app contains no third-party advertising or analytics SDKs. If you joined our launch mailing list, that email address is stored separately and is <strong>never linked</strong> to this usage data.</p>
 
     <h2>Subscriptions</h2>
     <p>Subscriptions are processed entirely by <strong>Apple</strong> through the App Store. We never see your name, card, or payment details. To understand how well the app converts and to set fair pricing, Apple sends our server automatic notifications about subscription <strong>lifecycle events</strong> — a free trial converting to paid, a renewal, a cancellation, a refund, or a subscription lapsing. We record these as <strong>events tied only to the random identifier we generate for your device</strong> (never your name or payment information); a random app-account token, set to that same device identifier, lets Apple's notification be matched to your device without identifying you.</p>
+
+    <h2 id="launch-list">The launch mailing list</h2>
+    <p>On this website you can ask to be told when The Lede opens to everyone by giving us your email address. This is entirely optional and separate from the app — the app never asks for an email, and you do not need to join the list to use The Lede.</p>
+    <ul>
+      <li><strong>What we collect:</strong> only the email address you type in, plus the date you signed up. Nothing else — no name, and we don&rsquo;t track whether you open or click our messages.</li>
+      <li><strong>Why:</strong> to send you a small number of messages about The Lede&rsquo;s launch — typically a single notification when it&rsquo;s available. We will not use your address for anything else, or share it, without asking you first.</li>
+      <li><strong>Where it&rsquo;s stored:</strong> on <strong>our own servers</strong> (our database, Neon, and our host, Railway). We do <strong>not</strong> use a third-party email-marketing or tracking service, and we never sell or rent your address.</li>
+      <li><strong>How long:</strong> we keep your address until you unsubscribe or ask us to delete it, or until the launch list has served its purpose — whichever comes first.</li>
+      <li><strong>Unsubscribe &amp; deletion:</strong> every message we send includes a one-click way to unsubscribe, and you can ask us to delete your address at any time by emailing <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>. We honor opt-out requests promptly — always within 10 business days, and in practice much sooner.</li>
+    </ul>
+    <p>By submitting your email you consent to receiving these launch messages. You can withdraw that consent at any time using the unsubscribe link or by emailing us.</p>
 
     <h2>Who processes your data</h2>
     <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone.</p>
@@ -89,12 +103,17 @@
     <p>The Lede is built and operated by Charles Klein. For any privacy question or request, email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
 
     <footer>
-      <div class="row">
-        <a href="/">The Lede</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/support.html">Support</a>
-        <a href="/sourcing.html">Sourcing standards</a>
+      <div class="colophon">
+        <img src="icon.png" alt="The Lede app icon" width="30" height="30">
+        <span>The Lede — your queue, <b>re-framed</b>.</span>
       </div>
+      <div class="row">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="sourcing.html">Sourcing standards</a>
+      </div>
+      <p class="muted">© 2026 The Lede · Built by Charles Klein</p>
     </footer>
   </div>
 </body>

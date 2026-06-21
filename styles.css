@@ -1,117 +1,498 @@
 /* The Lede — marketing + legal site
-   Minimal editorial styling. Design polish is a later pass; this is a
-   credible, fast, dependency-free v1 (no web fonts, no JS). */
+   Editorial house style: warm paper, Newsreader serif ledes, one ember accent
+   reserved for the "re-framed" mark. Self-hosted fonts, no JS, no third-party
+   anything. Light + dark. */
 
+/* ---- Brand serif, self-hosted (variable, latin) ------------------------- */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-latin-italic.woff2") format("woff2");
+}
+
+/* ---- Tokens ------------------------------------------------------------- */
 :root {
-  --paper: #faf7f0;
-  --paper-2: #f1ece1;
-  --ink-900: #1c1a17;
-  --ink-700: #3a362f;
-  --ink-500: #6b655a;
-  --ember: #c4451f;
-  --rule: #e2dccf;
+  color-scheme: light dark;
+
+  --serif: "Newsreader", "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Light — warm paper */
+  --paper:        #faf7f0;
+  --paper-2:      #f3eee2;   /* recessed / card */
+  --ink:          #1c1a17;
+  --ink-2:        #3a362f;
+  --ink-3:        #6f6859;
+  --rule:         #e6e0d1;
+  --rule-strong:  #d8d0bd;
+  --ember:        oklch(0.602 0.118 47);
+  --ember-ink:    oklch(0.512 0.118 47);   /* ember text on paper, AA */
+  --ember-tint:   color-mix(in oklab, var(--ember) 12%, var(--paper));
+
+  /* Beat hues — desaturated newspaper sections (label / pill bg) */
+  --beat-business:    #8a5a2b;  --beat-business-bg:   #f0e6d3;
+  --beat-culture:     #7c4f86;  --beat-culture-bg:    #efe3f0;
+  --beat-technology:  #3d5f7a;  --beat-technology-bg: #dfe8f0;
+  --beat-science:     #3f7355;  --beat-science-bg:    #dcebe0;
+
+  --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
   --measure: 38rem;
+  --wide: 60rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:        #1a1613;
+    --paper-2:      #231d17;
+    --ink:          #efe9dd;
+    --ink-2:        #cdc6b6;
+    --ink-3:        #928b7b;
+    --rule:         #2f2920;
+    --rule-strong:  #3e3729;
+    --ember:        oklch(0.715 0.128 52);
+    --ember-ink:    oklch(0.74 0.128 56);
+    --ember-tint:   color-mix(in oklab, var(--ember) 16%, var(--paper));
+
+    --beat-business:    #ca9355;  --beat-business-bg:   #2c2418;
+    --beat-culture:     #c193c9;  --beat-culture-bg:    #2a2030;
+    --beat-technology:  #8fb4d2;  --beat-technology-bg: #1c2530;
+    --beat-science:     #84c79d;  --beat-science-bg:    #182619;
+
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -16px rgba(0,0,0,0.6);
+  }
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
   background: var(--paper);
-  color: var(--ink-900);
-  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  font: 17px/1.65 var(--sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* ---- Layout ------------------------------------------------------------- */
 .wrap {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 4rem 1.4rem 5rem;
+  padding: 2.4rem 1.4rem 5rem;
 }
+.wrap--wide { max-width: var(--wide); }
 
-.wrap--wide { max-width: 52rem; }
-
-/* Display type — system serif stack */
+/* ---- Type --------------------------------------------------------------- */
 h1, h2, h3, .serif {
-  font-family: "Iowan Old Style", "Charter", Georgia, "Times New Roman", serif;
-  color: var(--ink-900);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.16;
+  letter-spacing: -0.012em;
+  font-weight: 600;
 }
+h1 { font-size: 2.4rem; margin: 0 0 0.5rem; }
+h2 { font-size: 1.5rem; margin: 2.8rem 0 0.6rem; }
+h3 { font-size: 1.12rem; margin: 1.8rem 0 0.3rem; }
 
-h1 { font-size: 2.4rem; margin: 0 0 0.4rem; font-weight: 600; }
-h2 { font-size: 1.45rem; margin: 2.6rem 0 0.6rem; font-weight: 600; }
-h3 { font-size: 1.12rem; margin: 1.8rem 0 0.3rem; font-weight: 600; }
-
-p, li { color: var(--ink-700); }
-a { color: var(--ember); text-decoration: none; }
-a:hover { text-decoration: underline; }
+p, li { color: var(--ink-2); }
+a { color: var(--ember-ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 .lede {
-  font-size: 1.2rem;
-  color: var(--ink-500);
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  line-height: 1.45;
+  color: var(--ink-2);
   margin: 0 0 2rem;
 }
 
 .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--ember);
-  margin: 0 0 1.2rem;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--sans);
+  color: var(--ink-3);
+  margin: 0 0 1.1rem;
 }
 
-.muted { color: var(--ink-500); font-size: 0.9rem; }
+.muted { color: var(--ink-3); font-size: 0.9rem; }
 
-hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.8rem 0; }
+
+ul { padding-left: 1.2rem; }
+li { margin: 0.4rem 0; }
 
 .callout {
   background: var(--paper-2);
-  border-left: 3px solid var(--ember);
-  border-radius: 6px;
-  padding: 1rem 1.2rem;
-  margin: 1.6rem 0;
+  border-left: 3px solid var(--rule-strong);
+  border-radius: 8px;
+  padding: 1.05rem 1.25rem;
+  margin: 1.7rem 0;
 }
 .callout p:first-child { margin-top: 0; }
-.callout p:last-child { margin-bottom: 0; }
+.callout p:last-child  { margin-bottom: 0; }
+.callout strong { color: var(--ink); }
 
-ul { padding-left: 1.2rem; }
-li { margin: 0.35rem 0; }
-
-/* Header / footer */
+/* ---- Masthead / footer -------------------------------------------------- */
 .site-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.6rem;
-  margin-bottom: 3rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 2.6rem;
+  border-bottom: 1px solid var(--rule);
 }
 .site-head .mark {
-  font-family: "Iowan Old Style", "Charter", Georgia, serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--serif);
   font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--ink-900);
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.site-head nav { margin-left: auto; font-size: 0.92rem; }
-.site-head nav a { color: var(--ink-500); margin-left: 1.1rem; }
+.site-head .mark img { width: 26px; height: 26px; border-radius: 6px; display: block; }
+.site-head nav { margin-left: auto; font-size: 0.92rem; font-family: var(--sans); }
+.site-head nav a { color: var(--ink-3); margin-left: 1.2rem; }
+.site-head nav a:hover { color: var(--ink); text-decoration: none; }
 
 footer {
   border-top: 1px solid var(--rule);
-  margin-top: 4rem;
-  padding-top: 1.4rem;
+  margin-top: 4.5rem;
+  padding-top: 1.6rem;
   font-size: 0.88rem;
-  color: var(--ink-500);
+  color: var(--ink-3);
+  font-family: var(--sans);
 }
-footer a { color: var(--ink-500); }
-footer .row { display: flex; flex-wrap: wrap; gap: 1.1rem; }
+footer .colophon {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+footer .colophon img { width: 30px; height: 30px; border-radius: 7px; }
+footer .colophon span { font-size: 0.98rem; color: var(--ink-2); }
+footer .colophon b { font-family: var(--serif); color: var(--ink); font-weight: 600; }
+footer a { color: var(--ink-3); }
+footer a:hover { color: var(--ink); }
+footer .row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 0.7rem; font-size: 0.9rem; }
+footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 
-/* Landing hero */
-.hero { text-align: center; padding: 2rem 0 1rem; }
-.hero h1 { font-size: 3rem; }
-.hero .lede { max-width: 30rem; margin-left: auto; margin-right: auto; }
+/* ---- The ember "re-framed" mark — the ONLY ember on the page ------------ */
+.mark-ember { color: var(--ember); }
+.diamond { color: var(--ember); font-style: normal; }
 
-.features { margin-top: 3rem; }
-.feature { margin: 2rem 0; }
-.feature h3 { color: var(--ember); }
+/* ---- Hero --------------------------------------------------------------- */
+.hero { padding: 1.4rem 0 0.5rem; }
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  line-height: 1.04;
+  margin: 0 0 1.3rem;
+  max-width: none;
+}
+.hero .hero__sub {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 32rem;
+  margin: 1.3rem 0 0;
+}
+
+/* Desktop: claim + sub on the left, the re-framed exhibit on the right.
+   Mobile keeps natural source order (eyebrow, h1, sub, specimen). */
+@media (min-width: 52rem) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    column-gap: 3rem;
+    align-content: start;
+    grid-template-areas:
+      "eyebrow  specimen"
+      "title    specimen"
+      "sub      specimen";
+    padding-top: 2.4rem;
+  }
+  .hero > .eyebrow   { grid-area: eyebrow; }
+  .hero > h1         { grid-area: title; font-size: clamp(2.4rem, 4.3vw, 3.3rem); max-width: 16ch; }
+  .hero > .hero__sub { grid-area: sub; }
+  .hero > .specimen  { grid-area: specimen; align-self: center; justify-self: end; margin: 0; }
+}
+
+/* ---- The specimen — a story, re-framed (the signature move) ------------- */
+.specimen {
+  margin: 0;
+  padding: 1.6rem 1.6rem 1.5rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  max-width: 33rem;
+}
+/* Grammar mirrors the app's onboarding/paywall specimen exactly:
+   As it ran (label) → buried original (dim) → ◆ Unburies to (turn) → the lede (loud). */
+.specimen__label {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  margin: 0 0 0.5rem;
+}
+.specimen__orig {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.32;
+  color: var(--ink-3);
+  margin: 0;
+}
+.specimen__turn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.95rem 0 0.7rem;
+}
+.specimen__turn .diamond { font-size: 0.7rem; line-height: 1; }
+.specimen__turn .turn-label {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--ember-ink);
+  white-space: nowrap;
+}
+.specimen__turn::after { content: ""; flex: 1; height: 1px; background: var(--rule-strong); }
+.specimen__lede {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.72rem;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Beat pill */
+.beat {
+  display: inline-block;
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.64rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+.beat--business   { color: var(--beat-business);   background: var(--beat-business-bg); }
+.beat--culture    { color: var(--beat-culture);    background: var(--beat-culture-bg); }
+.beat--technology { color: var(--beat-technology); background: var(--beat-technology-bg); }
+.beat--science    { color: var(--beat-science);    background: var(--beat-science-bg); }
+
+/* ---- Email capture ------------------------------------------------------ */
+/* The signup is its own panel — a warm wash + border so it reads as a distinct
+   "act here" section. Appears twice: after the hero and as the closing CTA. */
+.signup {
+  margin: 4.5rem 0 1rem;
+  text-align: center;
+  background: color-mix(in oklab, var(--ember) 6%, var(--paper-2));
+  border: 1px solid color-mix(in oklab, var(--ember) 14%, var(--rule-strong));
+  border-radius: 18px;
+  padding: 2.8rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+.signup .eyebrow { margin-bottom: 0.5rem; }
+.signup h2 { margin: 0 0 0.5rem; font-size: 1.75rem; }
+.signup__sub {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 34rem;
+  margin: 0 auto;
+}
+.signup form {
+  display: flex;
+  gap: 0.6rem;
+  margin: 1rem auto 0.7rem;
+  max-width: 32rem;
+  text-align: left;
+}
+@media (max-width: 30rem) { .signup form { flex-direction: column; } }
+.signup input[type="email"] {
+  flex: 1;
+  font: 17px/1.2 var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: 11px;
+  padding: 0.95rem 1rem;
+  min-width: 0;
+}
+.signup input[type="email"]::placeholder { color: var(--ink-3); }
+.signup input[type="email"]:focus {
+  outline: none;
+  border-color: var(--ink-3);
+  box-shadow: 0 0 0 3px var(--ember-tint);
+}
+.signup button {
+  font: 600 17px var(--sans);
+  color: var(--paper);
+  background: var(--ink);
+  border: 0;
+  border-radius: 11px;
+  padding: 0.95rem 1.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.signup button:hover { opacity: 0.9; }
+.signup button:active { transform: translateY(1px); }
+.signup .fineprint { font-size: 0.82rem; color: var(--ink-3); margin: 0 auto; max-width: 30rem; }
+
+/* Founder note — one quiet, honest line of credibility */
+.founder-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 34rem;
+  margin: 4.5rem auto 0;
+  text-align: center;
+}
+.founder-note span {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.signup .fineprint a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- Showcase: "the queue is a magazine" ------------------------------- */
+.showcase { margin-top: 4.5rem; }
+.showcase__head { max-width: 30rem; margin-bottom: 2rem; }
+.showcase__head h2 { margin-top: 0; font-size: 1.85rem; }
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  align-items: start;
+}
+@media (min-width: 50rem) {
+  .split { grid-template-columns: 1.05fr 0.95fr; gap: 3rem; }
+  .split--rev > :first-child { order: 2; }
+}
+
+/* Front-page entry list (web editorial = the queue) */
+.frontpage { border-top: 1px solid var(--rule-strong); }
+.entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.entry__beat { grid-column: 1; }
+.entry__no {
+  grid-row: 1 / span 3;
+  grid-column: 2;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink-3);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.65;
+}
+.entry__lede {
+  grid-column: 1;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.28rem;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0.35rem 0 0.25rem;
+}
+.entry__ran { grid-column: 1; font-family: var(--serif); font-style: italic; font-size: 0.96rem; color: var(--ink-3); margin: 0; }
+.entry__ran s { text-decoration-color: var(--rule-strong); }
+.entry__meta { grid-column: 1; font-family: var(--sans); font-size: 0.76rem; color: var(--ink-3); margin: 0.4rem 0 0; }
+
+/* ---- iPhone frame ------------------------------------------------------- */
+.device {
+  width: 270px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #2a2722, #15120e);
+  border-radius: 46px;
+  padding: 9px;
+  box-shadow: var(--shadow);
+}
+.device__screen {
+  position: relative;
+  background: var(--paper);
+  border-radius: 38px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.3;
+  padding: 2.2rem 0.95rem 1rem;
+}
+.device__island {
+  position: absolute;
+  top: 0.7rem; left: 50%; transform: translateX(-50%);
+  width: 32%; height: 1.4rem;
+  background: #111; border-radius: 1rem;
+}
+.device .app-mast {
+  font-family: var(--serif); font-weight: 600; font-size: 1.15rem;
+  color: var(--ink); margin: 0.2rem 0 0.1rem;
+}
+.device .app-sub { font-family: var(--sans); font-size: 0.62rem; color: var(--ink-3); margin: 0 0 0.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; }
+.device .mini-entry { padding: 0.55rem 0; border-bottom: 1px solid var(--rule); }
+.device .mini-entry .beat { font-size: 0.5rem; padding: 0.12rem 0.34rem; }
+.device .mini-lede { font-family: var(--serif); font-weight: 600; font-size: 0.86rem; line-height: 1.18; color: var(--ink); margin: 0.3rem 0 0.16rem; }
+.device .mini-ran { font-family: var(--serif); font-style: italic; font-size: 0.66rem; color: var(--ink-3); margin: 0; }
+
+/* ---- Brief specimen (the steel-man) ------------------------------------ */
+.brief {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+.brief__lede { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.18; letter-spacing: -0.015em; margin: 0 0 0.7rem; color: var(--ink); }
+.brief__steel-label { font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.64rem; font-weight: 700; color: var(--ink-3); margin: 1.1rem 0 0.5rem; border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+.brief__body { font-family: var(--serif); font-size: 1.02rem; line-height: 1.55; color: var(--ink-2); margin: 0 0 1rem; }
+.brief__deeper {
+  display: flex; align-items: center; gap: 0.55rem;
+  border-top: 1px solid var(--rule); padding-top: 0.9rem;
+  font-family: var(--sans); font-size: 0.9rem; color: var(--ink-2);
+}
+.brief__deeper b { font-family: var(--serif); color: var(--ink); font-weight: 600; }
+
+/* feature copy block */
+.feature-copy h2 { margin-top: 0; }
+.feature-copy p { font-size: 1.05rem; }
+
+/* ---- Motion ------------------------------------------------------------- */
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.rise-2 { animation-delay: 0.12s; }
+.rise-3 { animation-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  .rise, .rise-2, .rise-3 { animation: none; }
+}
