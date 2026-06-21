@@ -2,16 +2,18 @@
 # Deploy:  doctl apps create --spec .do/app.yaml
 # Update:  doctl apps update <APP_ID> --spec .do/app.yaml
 #
-# Uses a public git source (no GitHub OAuth needed). To re-enable
-# auto-deploy-on-push later, connect GitHub in the DO console once and swap
-# this `git:` block for a `github: { repo, branch, deploy_on_push: true }` block.
+# GitHub-connected source with deploy_on_push: a push to `main` auto-redeploys.
+# Requires the DigitalOcean GitHub app to be installed on cdklein/the-lede-site
+# (one-time OAuth link in the DO console). If that link is ever removed, App
+# Platform falls back to needing a manual `doctl apps create-deployment <APP_ID>`.
 name: the-lede-site
 region: nyc
 static_sites:
   - name: site
-    git:
-      repo_clone_url: https://github.com/cdklein/the-lede-site.git
+    github:
+      repo: cdklein/the-lede-site
       branch: main
+      deploy_on_push: true
     source_dir: /
     index_document: index.html
     error_document: 404.html
