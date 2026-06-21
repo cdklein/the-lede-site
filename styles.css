@@ -115,13 +115,3 @@ footer .row { display: flex; flex-wrap: wrap; gap: 1.1rem; }
 .features { margin-top: 3rem; }
 .feature { margin: 2rem 0; }
 .feature h3 { color: var(--ember); }
-
-.todo {
-  background: #fff4d6;
-  border: 1px dashed #d4a017;
-  border-radius: 6px;
-  padding: 0.5rem 0.8rem;
-  font-size: 0.85rem;
-  color: #6b5300;
-  margin: 1rem 0;
-}
