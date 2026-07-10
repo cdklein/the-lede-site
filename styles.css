@@ -496,3 +496,9 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 @media (prefers-reduced-motion: reduce) {
   .rise, .rise-2, .rise-3 { animation: none; }
 }
+
+/* ---- Brand casing ------------------------------------------------------- */
+/* Trademarks keep their exact casing no matter the surrounding transform
+   (Apple marks: iPhone, iPad, iOS…). Wrap the mark in this span inside any
+   uppercased element (.eyebrow etc.). */
+.brand-case { text-transform: none; }
