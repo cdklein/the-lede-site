@@ -1,0 +1,10 @@
+{
+  "name": "the-lede-site",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.3",
+  "scripts": {
+    "build": "node build.mjs",
+    "deploy": "./deploy.sh"
+  }
+}

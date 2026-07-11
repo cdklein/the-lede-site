@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Lede · Read the article. Not the headline.</title>
+  <meta name="description" content="A read-later app with a research desk. Save an article; The Lede reads it closely, unburies the real story, renames it for what it's actually about, files it by beat, and writes the strongest honest case the piece can make.">
+  <meta property="og:title" content="The Lede">
+  <meta property="og:description" content="Read the article. Not the headline.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://theledeapp.com/icon.png">
+  <link rel="me" href="https://mastodon.social/@theledeapp">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap wrap--wide">
+    <header class="site-head">
+      <span class="mark"><img src="icon.png" alt="" width="26" height="26">The Lede</span>
+      <nav>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <!-- HERO — thesis, then the proof (claim left, the re-framed exhibit right) -->
+    <section class="hero">
+      <p class="eyebrow rise">{{hero.eyebrow}}</p>
+      <h1 class="rise rise-2">{{hero.h1}}</h1>
+      <p class="hero__sub rise rise-2">{{hero.sub}}</p>
+
+      <!-- The signature move: the canonical wine reframe (shared with onboarding + paywall) -->
+      <figure class="specimen rise rise-3" aria-label="A story, re-framed by The Lede">
+        <p class="specimen__label">As it ran</p>
+        <p class="specimen__orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
+        <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">Unburies to</span></p>
+        <p class="specimen__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+      </figure>
+    </section>
+
+    <!-- Email capture — its own centered band, the page's one action -->
+    <section class="signup" id="notify">
+      <p class="eyebrow">{{signup.topEyebrow}}</p>
+      <form action="https://api.theledeapp.com/subscribe" method="post">
+        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
+        <button type="submit">{{signup.button}}</button>
+      </form>
+      <p class="fineprint">{{signup.disclaimer}}</p>
+    </section>
+
+    <!-- SHOWCASE 1 — the queue is a magazine -->
+    <section class="showcase">
+      <div class="showcase__head">
+        <h2>{{showcase1.heading}}</h2>
+        <p class="muted">{{showcase1.body}}</p>
+      </div>
+      <div class="split">
+        <div class="frontpage">
+          <article class="entry">
+            <span class="entry__beat"><span class="beat beat--science">Science</span></span>
+            <span class="entry__no">01</span>
+            <h3 class="entry__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</h3>
+            <p class="entry__ran">Ran as <s>&ldquo;A Glass of Red Wine Equals an Hour at the Gym&rdquo;</s></p>
+            <p class="entry__meta">5 min read</p>
+          </article>
+          <article class="entry">
+            <span class="entry__beat"><span class="beat beat--culture">Culture</span></span>
+            <span class="entry__no">02</span>
+            <h3 class="entry__lede">Adults are losing the habits that sustain close friendships.</h3>
+            <p class="entry__ran">Ran as <s>&ldquo;The Friendship Problem Nobody Talks About&rdquo;</s></p>
+            <p class="entry__meta">9 min read</p>
+          </article>
+          <article class="entry">
+            <span class="entry__beat"><span class="beat beat--technology">Technology</span></span>
+            <span class="entry__no">03</span>
+            <h3 class="entry__lede">AI safety claims are hard to verify by design, researchers warn.</h3>
+            <p class="entry__ran">Ran as <s>&ldquo;Why You Should Be Terrified of the Robots&rdquo;</s></p>
+            <p class="entry__meta">7 min read</p>
+          </article>
+        </div>
+
+        <!-- the "it's a real app" anchor: one device, not a row -->
+        <div class="device" role="img" aria-label="The Lede queue on iPhone">
+          <div class="device__screen">
+            <div class="device__island" aria-hidden="true"></div>
+            <p class="app-mast">The Lede</p>
+            <p class="app-sub">Mon 16 Jun · 3 unread · re-framed</p>
+            <div class="mini-entry">
+              <span class="beat beat--science">Science</span>
+              <p class="mini-lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+              <p class="mini-ran">Ran as &ldquo;A Glass of Red Wine = an Hour at the Gym&rdquo;</p>
+            </div>
+            <div class="mini-entry">
+              <span class="beat beat--culture">Culture</span>
+              <p class="mini-lede">Adults are losing the habits that sustain friendship.</p>
+              <p class="mini-ran">Ran as &ldquo;The Friendship Problem&rdquo;</p>
+            </div>
+            <div class="mini-entry">
+              <span class="beat beat--technology">Technology</span>
+              <p class="mini-lede">AI safety claims are hard to verify by design.</p>
+              <p class="mini-ran">Ran as &ldquo;Terrified of the Robots&rdquo;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE 2 — the strongest honest case -->
+    <section class="showcase">
+      <div class="showcase__head">
+        <h2>{{showcase2.heading}}</h2>
+        <p class="muted">{{showcase2.body}}</p>
+      </div>
+      <div class="split split--rev">
+        <div class="feature-copy">
+          <h3>{{showcase2.featureHeading}}</h3>
+          <p>{{showcase2.featureBody}}</p>
+        </div>
+        <div class="brief">
+          <p class="specimen__label">As it ran</p>
+          <p class="specimen__orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
+          <p class="brief__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+          <p class="brief__steel-label"><span class="diamond" aria-hidden="true">◆</span> Dig deeper</p>
+          <p class="brief__body">The human dose would be ~1,000 bottles a day. The study&rsquo;s author says keep exercising.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder note — one honest line (credibility for the indie/Apple crowd) -->
+    <p class="founder-note">{{founderNote.quote}}<span>{{founderNote.attribution}}</span></p>
+
+    <!-- Closing CTA — the signup panel, repeated -->
+    <section class="signup">
+      <h2>{{signup.closingHeading}}</h2>
+      <p class="signup__sub">{{signup.closingSub}}</p>
+      <form action="https://api.theledeapp.com/subscribe" method="post">
+        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
+        <button type="submit">{{signup.button}}</button>
+      </form>
+      <p class="fineprint">{{signup.disclaimer}}</p>
+    </section>
+
+    <footer>
+      <div class="colophon">
+        <img src="icon.png" alt="The Lede app icon" width="30" height="30">
+        <span>The Lede · your queue, <b>re-framed</b>.</span>
+      </div>
+      <div class="row">
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="sourcing.html">Sourcing standards</a>
+      </div>
+      <p class="muted">© 2026 The Lede · Built by Charles Klein</p>
+      <p class="muted">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
+    </footer>
+  </div>
+</body>
+</html>
