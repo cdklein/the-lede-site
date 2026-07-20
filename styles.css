@@ -502,3 +502,87 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
    (Apple marks: iPhone, iPad, iOS…). Wrap the mark in this span inside any
    uppercased element (.eyebrow etc.). */
 .brand-case { text-transform: none; }
+
+/* ---- FAQ: the index (jump-list) ----------------------------------------- */
+/* The support page's contents block borrows the app's own "Index" grammar:
+   serif tabular numeral · section title · dotted leader · question count.
+   Deliberately ink, not ember — eight accent rows would shout. */
+.faq-index {
+  margin: 2.4rem 0 0.6rem;
+  padding: 1.1rem 0 0.4rem;
+  border-top: 2px solid var(--ink);
+  list-style: none;
+}
+.faq-index .eyebrow { margin-bottom: 0.9rem; }
+.faq-index ol { list-style: none; margin: 0; padding: 0; }
+.faq-index a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.42rem 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+.faq-index a:hover .faq-index__title { text-decoration: underline; text-underline-offset: 3px; }
+.faq-index__no {
+  font-family: var(--serif);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  color: var(--ink-3);
+  min-width: 1.1rem;
+}
+.faq-index__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.06rem;
+  letter-spacing: -0.008em;
+}
+.faq-index__leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--rule-strong);
+  transform: translateY(-0.22em);
+  min-width: 1.5rem;
+}
+.faq-index__count {
+  font-family: var(--serif);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  color: var(--ink-3);
+}
+
+/* ---- FAQ: sections & entries -------------------------------------------- */
+.faq-sec {
+  border-top: 1px solid var(--rule-strong);
+  margin-top: 3.2rem;
+  padding-top: 0.4rem;
+  scroll-margin-top: 1.4rem;
+}
+.faq-sec h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin: 1.2rem 0 0.2rem;
+}
+.faq-sec h2 .faq-no {
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.faq-sec h3 { margin-top: 2rem; }
+.faq-sec h3 + p { margin-top: 0.35rem; }
+.faq-top {
+  display: block;
+  margin: 1.8rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.faq-top:hover { color: var(--ink); text-decoration: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}

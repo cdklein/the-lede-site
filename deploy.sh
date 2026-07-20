@@ -11,6 +11,6 @@ node build.mjs
 
 export CLOUDFLARE_API_TOKEN=$(op read "op://dev-secrets/nepiz423wyfotetlfjffoic4a4/TOKEN")
 export CLOUDFLARE_ACCOUNT_ID=$(op read "op://dev-secrets/nepiz423wyfotetlfjffoic4a4/ACCOUNT-ID")
-STAGE=$(mktemp -d) && cp *.html styles.css *.png "$STAGE"/ && cp -R fonts "$STAGE"/fonts
+STAGE=$(mktemp -d) && cp *.html styles.css *.png _redirects robots.txt sitemap.xml "$STAGE"/ && cp -R fonts "$STAGE"/fonts
 pnpm dlx wrangler pages deploy "$STAGE" --project-name the-lede-site --branch main --commit-dirty=true
 rm -rf "$STAGE"
