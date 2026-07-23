@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support &amp; FAQ · The Lede</title>
-  <meta name="description" content="Answers to every question about The Lede: saving articles, briefs and Dig Deeper, free and paid plans, privacy, and how to reach a person.">
+  <meta name="description" content="Answers to every question about The Lede: saving articles, briefs and Dig Deeper, free and paid plans, privacy, accessibility, and how to reach a person.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -257,6 +257,30 @@
       },
       {
         "@type": "Question",
+        "name": "Is The Lede accessible?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It's built to be — by rule, not by roadmap. The Lede is designed and tested against WCAG 2.2 AA, the recognized standard for accessible software, and here an accessibility gap is treated as a blocking bug, not a feature request. The app works with VoiceOver and Switch Control, scales through the largest accessibility text sizes, and quiets its animation when Reduce Motion is on. And it's checked the way it's actually used: with the assistive technology switched on, on a real iPhone — not just in code review."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "I read with VoiceOver or large text. What should I expect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The same magazine, not a side entrance. Cards read as one clean announcement each, with their actions — open, archive, try again — in the rotor instead of buried in unlabeled buttons. Saves and status changes are announced. Briefs and articles reflow at every text size, and nothing meaningful is carried by color alone. The same-experience rule cuts both ways: when a brief is buried past the free allowance, it's withheld from every reader the same way — a screen reader is never handed text a sighted reader can't see. One known gap today: creating a new highlight with VoiceOver isn't there yet. The fix is designed and in progress; reading the highlights you've made already works."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Something doesn't work with my setup. How do I tell you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Email support@theledeapp.com and mention what you were using — VoiceOver, Switch Control, larger text, a braille display, anything. Accessibility reports jump the queue: they're filed as blocking bugs and stay open until the fix is verified with the same assistive technology you reported it with. This site holds itself to the same standard — if a page here doesn't read right, that's a bug too."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "A save failed or a site won't read. What now?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -303,7 +327,8 @@
         <li><a href="#privacy"><span class="faq-index__no">5</span><span class="faq-index__title">Privacy &amp; your data</span><span class="faq-index__leader"></span><span class="faq-index__count">4&nbsp;questions</span></a></li>
         <li><a href="#sources"><span class="faq-index__no">6</span><span class="faq-index__title">Sources &amp; standards</span><span class="faq-index__leader"></span><span class="faq-index__count">3&nbsp;questions</span></a></li>
         <li><a href="#devices"><span class="faq-index__no">7</span><span class="faq-index__title">Devices &amp; sync</span><span class="faq-index__leader"></span><span class="faq-index__count">3&nbsp;questions</span></a></li>
-        <li><a href="#trouble"><span class="faq-index__no">8</span><span class="faq-index__title">When something goes wrong</span><span class="faq-index__leader"></span><span class="faq-index__count">2&nbsp;questions</span></a></li>
+        <li><a href="#accessibility"><span class="faq-index__no">8</span><span class="faq-index__title">Accessibility</span><span class="faq-index__leader"></span><span class="faq-index__count">3&nbsp;questions</span></a></li>
+        <li><a href="#trouble"><span class="faq-index__no">9</span><span class="faq-index__title">When something goes wrong</span><span class="faq-index__leader"></span><span class="faq-index__count">2&nbsp;questions</span></a></li>
       </ol>
     </nav>
 
@@ -439,8 +464,23 @@
       <a class="faq-top" href="#contents">↑ Contents</a>
     </section>
 
+    <section class="faq-sec" id="accessibility">
+      <h2><span class="faq-no">8</span>Accessibility</h2>
+
+      <h3>Is The Lede accessible?</h3>
+      <p>It's built to be — by rule, not by roadmap. The Lede is designed and tested against <strong>WCAG&nbsp;2.2&nbsp;AA</strong>, the recognized standard for accessible software, and here an accessibility gap is treated as a blocking bug, not a feature request. The app works with VoiceOver and Switch Control, scales through the largest accessibility text sizes, and quiets its animation when Reduce Motion is on. And it's checked the way it's actually used: with the assistive technology switched on, on a real iPhone — not just in code review.</p>
+
+      <h3>I read with VoiceOver or large text. What should I expect?</h3>
+      <p>The same magazine, not a side entrance. Cards read as one clean announcement each, with their actions — open, archive, try again — in the rotor instead of buried in unlabeled buttons. Saves and status changes are announced. Briefs and articles reflow at every text size, and nothing meaningful is carried by color alone. The same-experience rule cuts both ways: when a brief is buried past the free allowance, it's withheld from every reader the same way — a screen reader is never handed text a sighted reader can't see. One known gap today: creating a new highlight with VoiceOver isn't there yet. The fix is designed and in progress; reading the highlights you've made already works.</p>
+
+      <h3>Something doesn't work with my setup. How do I tell you?</h3>
+      <p>Email <strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a></strong> and mention what you were using — VoiceOver, Switch Control, larger text, a braille display, anything. Accessibility reports jump the queue: they're filed as blocking bugs and stay open until the fix is verified with the same assistive technology you reported it with. This site holds itself to the same standard — if a page here doesn't read right, that's a bug too.</p>
+
+      <a class="faq-top" href="#contents">↑ Contents</a>
+    </section>
+
     <section class="faq-sec" id="trouble">
-      <h2><span class="faq-no">8</span>When something goes wrong</h2>
+      <h2><span class="faq-no">9</span>When something goes wrong</h2>
 
       <h3>A save failed or a site won't read. What now?</h3>
       <p>The save is kept either way — a failed read shows as a card, and most fix with the open-in-Safari, share-it-back move (see the "Locked door" answer above). If a particular site never works, tell us: <strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a></strong>. Fixing sources is ongoing desk work.</p>
