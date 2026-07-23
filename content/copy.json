@@ -9,7 +9,7 @@
     "closingHeading": "Be first when it opens.",
     "closingSub": "No account, ever. Your library lives in your own iCloud, and your first ten briefs each month are free.",
     "button": "Get an early invite",
-    "disclaimer": "Just your invite when a wave opens. No list-sharing, no noise. The <a href=\"privacy.html#launch-list\">privacy policy</a> covers it."
+    "disclaimer": "Just your invite when a wave opens. No list-sharing, no noise. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it."
   },
   "showcase1": {
     "heading": "Your saves file themselves into a magazine.",
@@ -17,9 +17,9 @@
   },
   "showcase2": {
     "heading": "The strongest honest case, before you commit to the read.",
-    "body": "Every save comes back as a short brief: the fairest version of the argument, enough to know what you&rsquo;re dealing with. When a story matters, send The Lede out to dig deeper: more reporting, other angles, a sharper synthesis.",
+    "body": "Every save comes back as a short brief: the fairest version of the argument, enough to know what you&rsquo;re dealing with. When a story matters, send The Lede out to dig deeper: more reporting, other angles, an honest bottom line.",
     "featureHeading": "It reaches past the source when it has to.",
-    "featureBody": "The Lede holds a standard for the reporting it briefs from. When the strongest account sits with a source it doesn&rsquo;t trust, it builds the brief from a more solid one, and tells you it did. We explain exactly where that line is on the <a href=\"sourcing.html\">Sourcing standards</a> page."
+    "featureBody": "The Lede holds a standard for the reporting it briefs from. When the strongest account sits with a source it doesn&rsquo;t trust, it builds the brief from a more solid one, and tells you it did. We explain exactly where that line is on the <a href=\"/sourcing\">Sourcing standards</a> page."
   },
   "founderNote": {
     "quote": "&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;",
@@ -28,7 +28,7 @@
   "thanks": {
     "eyebrow": "You're on the list",
     "h1": "You'll be among<br>the first in.",
-    "sub": "We&rsquo;re opening The Lede in small waves, so you&rsquo;ll get your invite early. That invite is the only reason we&rsquo;ll email you. No noise, no list-sharing, and you can unsubscribe in one tap. The details are in the <a href=\"privacy.html#launch-list\">privacy policy</a>.",
+    "sub": "We&rsquo;re opening The Lede in small waves, so you&rsquo;ll get your invite early. That invite is the only reason we&rsquo;ll email you. No noise, no list-sharing, and you can unsubscribe in one tap. The details are in the <a href=\"/privacy#launch-list\">privacy policy</a>.",
     "muted": "Know someone drowning in open tabs? Send them <a href=\"https://theledeapp.com\">theledeapp.com</a>."
   }
 }
