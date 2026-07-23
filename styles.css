@@ -43,6 +43,7 @@
   --beat-culture:     #7c4f86;  --beat-culture-bg:    #efe3f0;
   --beat-technology:  #3d5f7a;  --beat-technology-bg: #dfe8f0;
   --beat-science:     #386a4c;  --beat-science-bg:    #dcebe0;
+  --beat-health:      #1a6560;  --beat-health-bg:     #d9edeb;  /* teal, ≥5.6:1, distinct from science green */
 
   --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
   --measure: 38rem;
@@ -66,6 +67,7 @@
     --beat-culture:     #c193c9;  --beat-culture-bg:    #2a2030;
     --beat-technology:  #8fb4d2;  --beat-technology-bg: #1c2530;
     --beat-science:     #84c79d;  --beat-science-bg:    #182619;
+    --beat-health:      #7fcbc4;  --beat-health-bg:     #152321;
 
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -16px rgba(0,0,0,0.6);
   }
@@ -317,6 +319,7 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 .beat--culture    { color: var(--beat-culture);    background: var(--beat-culture-bg); }
 .beat--technology { color: var(--beat-technology); background: var(--beat-technology-bg); }
 .beat--science    { color: var(--beat-science);    background: var(--beat-science-bg); }
+.beat--health     { color: var(--beat-health);     background: var(--beat-health-bg); }
 
 /* ---- Email capture ------------------------------------------------------ */
 /* The signup is its own panel — a warm wash + border so it reads as a distinct
@@ -439,7 +442,6 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
   margin: 0.35rem 0 0.25rem;
 }
 .entry__ran { grid-column: 1; font-family: var(--serif); font-style: italic; font-size: 0.96rem; color: var(--ink-3); margin: 0; }
-.entry__ran s { text-decoration-color: var(--rule-strong); }
 .entry__meta { grid-column: 1; font-family: var(--sans); font-size: 0.76rem; color: var(--ink-3); margin: 0.4rem 0 0; }
 
 /* ---- iPhone frame ------------------------------------------------------- */
