@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Internal: source for og-card.png (1200×630). Not deployed (deploy.sh copies *.html
+     by explicit stage; this file must never be added to the stage list). Regenerate:
+     headless-chrome screenshot at 1200×630. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Newsreader"; font-weight: 200 800; src: url("fonts/newsreader-latin.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader"; font-style: italic; font-weight: 200 800; src: url("fonts/newsreader-latin-italic.woff2") format("woff2"); }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #faf7f0;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 64px 72px 56px;
+    border-top: 14px solid #1c1a17;
+  }
+  .label { text-transform: uppercase; letter-spacing: 0.14em; font-size: 22px; font-weight: 700; color: #635c4d; margin-bottom: 14px; }
+  .orig { font-family: "Newsreader", Georgia, serif; font-size: 40px; line-height: 1.25; color: #635c4d; max-width: 950px; }
+  .turn { display: flex; align-items: center; gap: 16px; margin: 34px 0 26px; }
+  .diamond { color: #ab6a44; font-size: 22px; }
+  .turn-label { text-transform: uppercase; letter-spacing: 0.14em; font-size: 22px; font-weight: 700; color: #8f5433; }
+  .turn-rule { flex: 1; height: 2px; background: #d8d0bd; }
+  .lede { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 74px; line-height: 1.08; letter-spacing: -0.015em; color: #1c1a17; max-width: 1000px; }
+  .mast { display: flex; align-items: center; gap: 18px; }
+  .mast img { width: 52px; height: 52px; border-radius: 12px; }
+  .mast .name { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 34px; color: #1c1a17; }
+  .mast .tag { font-size: 24px; color: #635c4d; margin-left: 6px; }
+</style>
+</head>
+<body>
+  <div>
+    <p class="label">As it ran</p>
+    <p class="orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
+    <div class="turn"><span class="diamond">◆</span><span class="turn-label">Unburies to</span><span class="turn-rule"></span></div>
+    <p class="lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+  </div>
+  <div class="mast">
+    <img src="icon.png" alt="">
+    <span class="name">The Lede</span>
+    <span class="tag">Read the article. Not the headline.</span>
+  </div>
+</body>
+</html>

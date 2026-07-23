@@ -8,8 +8,55 @@
   <meta property="og:title" content="The Lede">
   <meta property="og:description" content="Read the article. Not the headline.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://theledeapp.com/icon.png">
+  <meta property="og:url" content="https://theledeapp.com/">
+  <meta property="og:image" content="https://theledeapp.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Lede">
+  <meta name="twitter:description" content="Read the article. Not the headline.">
+  <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
+  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
   <link rel="me" href="https://mastodon.social/@theledeapp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://theledeapp.com/#org",
+        "name": "The Lede",
+        "legalName": "Charles Klein LLC",
+        "url": "https://theledeapp.com/",
+        "logo": "https://theledeapp.com/icon.png",
+        "sameAs": ["https://mastodon.social/@theledeapp"],
+        "contactPoint": { "@type": "ContactPoint", "email": "support@theledeapp.com", "contactType": "customer support" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://theledeapp.com/#site",
+        "name": "The Lede",
+        "url": "https://theledeapp.com/",
+        "publisher": { "@id": "https://theledeapp.com/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://theledeapp.com/#app",
+        "name": "The Lede",
+        "operatingSystem": "iOS",
+        "applicationCategory": "NewsApplication",
+        "description": "A read-later app with a research desk. Save an article; The Lede reads it closely, unburies the real story, renames it for what it's actually about, files it by beat, and writes the strongest honest case the piece can make.",
+        "author": { "@id": "https://theledeapp.com/#org" },
+        "offers": [
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "10 briefs every month and your first two Dig Deepers, no account required." },
+          { "@type": "Offer", "name": "Lede+", "price": "7.99", "priceCurrency": "USD", "description": "Unlimited briefs and 25 Dig Deepers a month. 7-day free trial. Billed monthly through Apple." },
+          { "@type": "Offer", "name": "Lede Pro", "price": "14.99", "priceCurrency": "USD", "description": "Unlimited briefs and unlimited Dig Deeper. Billed monthly through Apple." }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,6 +64,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap wrap--wide">
     <header class="site-head">
       <span class="mark"><img src="icon.png" alt="" width="26" height="26">The Lede</span>
@@ -25,6 +73,7 @@
         <a href="/privacy">Privacy</a>
       </nav>
     </header>
+    <main id="main">
 
     <!-- HERO — thesis, then the proof (claim left, the re-framed exhibit right) -->
     <section class="hero">
@@ -61,21 +110,18 @@
         <div class="frontpage">
           <article class="entry">
             <span class="entry__beat"><span class="beat beat--science">Science</span></span>
-            <span class="entry__no">01</span>
             <h3 class="entry__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</h3>
             <p class="entry__ran">Ran as <s>&ldquo;A Glass of Red Wine Equals an Hour at the Gym&rdquo;</s></p>
             <p class="entry__meta">5 min read</p>
           </article>
           <article class="entry">
             <span class="entry__beat"><span class="beat beat--culture">Culture</span></span>
-            <span class="entry__no">02</span>
             <h3 class="entry__lede">Adults are losing the habits that sustain close friendships.</h3>
             <p class="entry__ran">Ran as <s>&ldquo;The Friendship Problem Nobody Talks About&rdquo;</s></p>
             <p class="entry__meta">9 min read</p>
           </article>
           <article class="entry">
             <span class="entry__beat"><span class="beat beat--technology">Technology</span></span>
-            <span class="entry__no">03</span>
             <h3 class="entry__lede">AI safety claims are hard to verify by design, researchers warn.</h3>
             <p class="entry__ran">Ran as <s>&ldquo;Why You Should Be Terrified of the Robots&rdquo;</s></p>
             <p class="entry__meta">7 min read</p>
@@ -142,6 +188,8 @@
       </form>
       <p class="fineprint">Just your invite when a wave opens. No list-sharing, no noise. The <a href="/privacy#launch-list">privacy policy</a> covers it.</p>
     </section>
+
+    </main>
 
     <footer>
       <div class="colophon">

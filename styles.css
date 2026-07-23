@@ -31,7 +31,7 @@
   --paper-2:      #f3eee2;   /* recessed / card */
   --ink:          #1c1a17;
   --ink-2:        #3a362f;
-  --ink-3:        #6f6859;
+  --ink-3:        #635c4d;   /* ≥4.5:1 on paper, paper-2, AND the ember-tinted signup band */
   --rule:         #e6e0d1;
   --rule-strong:  #d8d0bd;
   --ember:        oklch(0.602 0.118 47);
@@ -42,7 +42,7 @@
   --beat-business:    #8a5a2b;  --beat-business-bg:   #f0e6d3;
   --beat-culture:     #7c4f86;  --beat-culture-bg:    #efe3f0;
   --beat-technology:  #3d5f7a;  --beat-technology-bg: #dfe8f0;
-  --beat-science:     #3f7355;  --beat-science-bg:    #dcebe0;
+  --beat-science:     #386a4c;  --beat-science-bg:    #dcebe0;
 
   --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
   --measure: 38rem;
@@ -106,6 +106,25 @@ h3 { font-size: 1.12rem; margin: 1.8rem 0 0.3rem; }
 p, li { color: var(--ink-2); }
 a { color: var(--ember-ink); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
+/* In-prose links: ember + semibold is the resting cue (no underline by house
+   ruling); weight is the non-color indicator WCAG 1.4.1 needs, hover keeps
+   the underline, focus gets an explicit ring. */
+p a, li a { font-weight: 600; }
+a:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 2px; border-radius: 2px; }
+
+/* Skip link — visually hidden until keyboard focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.6rem;
+  z-index: 10;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 0.9rem var(--sans);
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+}
+.skip-link:focus-visible { left: 0.6rem; }
 
 .lede {
   font-family: var(--serif);
@@ -334,7 +353,7 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
   font: 17px/1.2 var(--sans);
   color: var(--ink);
   background: var(--paper);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid var(--ink-3);   /* ≥3:1 against the tinted band (was rule-strong at 1.24:1) */
   border-radius: 11px;
   padding: 0.95rem 1rem;
   min-width: 0;
@@ -403,22 +422,12 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 .frontpage { border-top: 1px solid var(--rule-strong); }
 .entry {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 0.3rem 1rem;
   padding: 1.25rem 0;
   border-bottom: 1px solid var(--rule);
 }
 .entry__beat { grid-column: 1; }
-.entry__no {
-  grid-row: 1 / span 3;
-  grid-column: 2;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  color: var(--ink-3);
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.65;
-}
 .entry__lede {
   grid-column: 1;
   font-family: var(--serif);
@@ -496,6 +505,9 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 @media (prefers-reduced-motion: reduce) {
   .rise, .rise-2, .rise-3 { animation: none; }
 }
+
+/* ---- Sourcing page: the manifesto reads in the serif it preaches -------- */
+.page-sourcing main p { font-family: var(--serif); font-size: 1.06rem; line-height: 1.6; }
 
 /* ---- Brand casing ------------------------------------------------------- */
 /* Trademarks keep their exact casing no matter the surrounding transform

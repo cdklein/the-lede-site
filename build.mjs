@@ -52,3 +52,23 @@ for (const { template, out } of TEMPLATES) {
   fs.writeFileSync(outPath, html);
   console.log(`built ${out}`);
 }
+
+// Re-stamp sitemap.xml <lastmod> per URL from each page file's mtime, so the
+// dates can never drift from reality again (they had, by 2026-07-22).
+const SITEMAP_PAGES = {
+  'https://theledeapp.com/': 'index.html',
+  'https://theledeapp.com/support': 'support.html',
+  'https://theledeapp.com/privacy': 'privacy.html',
+  'https://theledeapp.com/sourcing': 'sourcing.html',
+};
+const sitemapPath = path.join(__dirname, 'sitemap.xml');
+let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+for (const [url, file] of Object.entries(SITEMAP_PAGES)) {
+  const mtime = fs.statSync(path.join(__dirname, file)).mtime.toISOString().slice(0, 10);
+  sitemap = sitemap.replace(
+    new RegExp(`(<loc>${url.replaceAll('/', '\\/')}</loc>\\s*<lastmod>)[^<]+(</lastmod>)`),
+    `$1${mtime}$2`
+  );
+}
+fs.writeFileSync(sitemapPath, sitemap);
+console.log('stamped sitemap.xml lastmod from page mtimes');
