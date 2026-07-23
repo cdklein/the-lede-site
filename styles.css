@@ -508,6 +508,19 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
   .rise, .rise-2, .rise-3 { animation: none; }
 }
 
+/* The performed reframe — the hero specimen unburies itself once on load.
+   The card rises in showing only "As it ran" + the buried original; then the
+   turn + the loud lede resolve in, so the transformation is performed, not
+   frozen. `both` holds them invisible through the delay. Reduced motion falls
+   back to the fully-static card (everything visible, no movement). */
+@keyframes unbury { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.specimen--live .specimen__turn { animation: unbury 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s both; }
+.specimen--live .specimen__lede { animation: unbury 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.05s both; }
+@media (prefers-reduced-motion: reduce) {
+  .specimen--live .specimen__turn,
+  .specimen--live .specimen__lede { animation: none; }
+}
+
 /* ---- Sourcing page: the manifesto reads in the serif it preaches -------- */
 .page-sourcing main p { font-family: var(--serif); font-size: 1.06rem; line-height: 1.6; }
 
