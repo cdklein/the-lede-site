@@ -44,6 +44,7 @@
   --beat-technology:  #3d5f7a;  --beat-technology-bg: #dfe8f0;
   --beat-science:     #386a4c;  --beat-science-bg:    #dcebe0;
   --beat-health:      #1a6560;  --beat-health-bg:     #d9edeb;  /* teal, ≥5.6:1, distinct from science green */
+  --beat-world:       #47527a;  --beat-world-bg:      #e5e5ef;  /* slate, ≥6:1; provisional pending CDO */
 
   --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
   --measure: 38rem;
@@ -68,6 +69,7 @@
     --beat-technology:  #8fb4d2;  --beat-technology-bg: #1c2530;
     --beat-science:     #84c79d;  --beat-science-bg:    #182619;
     --beat-health:      #7fcbc4;  --beat-health-bg:     #152321;
+    --beat-world:       #9fa8cf;  --beat-world-bg:      #191c27;
 
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -16px rgba(0,0,0,0.6);
   }
@@ -320,6 +322,7 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 .beat--technology { color: var(--beat-technology); background: var(--beat-technology-bg); }
 .beat--science    { color: var(--beat-science);    background: var(--beat-science-bg); }
 .beat--health     { color: var(--beat-health);     background: var(--beat-health-bg); }
+.beat--world      { color: var(--beat-world);      background: var(--beat-world-bg); }
 
 /* ---- Email capture ------------------------------------------------------ */
 /* The signup is its own panel — a warm wash + border so it reads as a distinct
