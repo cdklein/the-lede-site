@@ -5,6 +5,7 @@
 // rendered HTML to the repo root. Root index.html / thanks.html stay
 // committed so the site remains servable with no build step at all — this
 // script only needs to run when copy actually changes.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -51,6 +52,41 @@ for (const { template, out } of TEMPLATES) {
 
   fs.writeFileSync(outPath, html);
   console.log(`built ${out}`);
+}
+
+// Stamp every root page's stylesheet link with a content hash.
+//
+// Why this exists: Cloudflare serves styles.css with `max-age=14400` while the
+// HTML is `max-age=0, must-revalidate`. A deploy therefore gave returning
+// visitors FRESH HTML against a FOUR-HOUR-STALE STYLESHEET — new markup with
+// none of its rules. On 2026-07-24 that shipped a homepage where the device
+// screenshot rendered at its intrinsic 700px and blew the mobile layout apart,
+// the theme toggle fell back to iOS's default grey button, and the hero claim
+// collided with the specimen. The HTML is always revalidated, so a hash in the
+// href guarantees the matching CSS is fetched — no cache purge needed, and the
+// two can never desync again.
+const cssPath = path.join(__dirname, 'styles.css');
+const cssHash = crypto
+  .createHash('sha256')
+  .update(fs.readFileSync(cssPath))
+  .digest('hex')
+  .slice(0, 8);
+
+const PAGES = fs
+  .readdirSync(__dirname)
+  .filter((f) => f.endsWith('.html') && f !== 'og-card-source.html');
+
+for (const page of PAGES) {
+  const pagePath = path.join(__dirname, page);
+  const before = fs.readFileSync(pagePath, 'utf8');
+  const after = before.replace(
+    /href="styles\.css(?:\?v=[a-f0-9]+)?"/g,
+    `href="styles.css?v=${cssHash}"`
+  );
+  if (after !== before) {
+    fs.writeFileSync(pagePath, after);
+    console.log(`stamped ${page} -> styles.css?v=${cssHash}`);
+  }
 }
 
 // Re-stamp sitemap.xml <lastmod> per URL from each page file's mtime, so the
