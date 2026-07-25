@@ -571,6 +571,34 @@ footer .row { font-size: 0.72rem; }
 }
 .signup .fineprint a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
 
+/* ---- Section slug — the change of gear between chapters ----------------- */
+/* A mono label set between two hairlines, the way a paper slugs a section.
+   Borrowed device (attanagra.com uses the same move), re-set in our own mono
+   voice. It exists to break the page's rhythm: four sections were marching at
+   identical intervals with no punctuation between them, which is one of the
+   ways an editorial page reads as generated rather than edited. */
+.section-slug {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 5rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.section-slug::before,
+.section-slug::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-strong);
+}
+/* The slug already supplies the gap above the section it introduces. */
+.section-slug + .showcase { margin-top: 2.2rem; }
+
 /* ---- Showcase: "the queue is a magazine" ------------------------------- */
 .showcase { margin-top: 4.5rem; }
 .showcase__head { max-width: 30rem; margin-bottom: 2rem; }
@@ -736,13 +764,31 @@ footer .row { font-size: 0.72rem; }
 }
 /* Card-on-panel: the exhibit lifts to paper so it doesn't melt into the band. */
 .showcase--band .brief { background: var(--paper); }
-/* The note is subordinate to the exhibit — anchored by a rule, quieter type. */
+/* The note is subordinate to the exhibit, and now reads as a true MARGIN NOTE:
+   a mono kicker naming what it is, then the note itself, hung off a vertical
+   rule rather than sitting under a horizontal one. Apparatus beside the
+   exhibit, not a second column competing with it. (Device borrowed from
+   attanagra.com's margin rail, re-set in our own voice.) */
 .showcase--band .feature-copy {
-  border-top: 1px solid var(--rule-strong);
-  padding-top: 1.1rem;
+  border-left: 2px solid var(--rule-strong);
+  padding-left: 1.2rem;
+}
+.showcase--band .note-kicker {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.55rem;
 }
 .showcase--band .feature-copy h3 { margin: 0 0 0.6rem; line-height: 1.25; }
 .showcase--band .feature-copy p { color: var(--ink-2); margin: 0; }
+
+/* On a stacked layout the note follows the exhibit, so it needs its own air. */
+@media (max-width: 50rem) {
+  .showcase--band .feature-copy { margin-top: 0.5rem; }
+}
 @media (min-width: 50rem) {
   .showcase--band .split { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
 }
