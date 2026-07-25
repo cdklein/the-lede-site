@@ -62,32 +62,94 @@
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://theledeapp.com/">
   <link rel="stylesheet" href="styles.css">
+  <script>
+  /* Theme: follow the device unless the reader has explicitly chosen otherwise.
+     Runs before first paint so a chosen theme never flashes the other one, and
+     marks the document JS-capable, which is what reveals the toggle — a no-JS
+     reader keeps the device preference and never sees a dead control.
+
+     Toggling BACK to whatever the device already prefers clears the override
+     instead of pinning it, so there is always a way home to following the
+     device. Without that, one click freezes the site's appearance forever —
+     which is exactly the bug this replaced. */
+  (function () {
+    var d = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    d.classList.add('js');
+
+    function systemTheme() { return mq.matches ? 'dark' : 'light'; }
+    function resolved() { return d.getAttribute('data-theme') || systemTheme(); }
+
+    /* The two media-scoped theme-color metas cover the follow-the-device case.
+       An override needs an unscoped one, inserted first so it wins. */
+    function paintBrowserChrome() {
+      var override = document.querySelector('meta[name="theme-color"][data-override]');
+      if (!d.hasAttribute('data-theme')) {
+        if (override) override.remove();
+        return;
+      }
+      if (!override) {
+        override = document.createElement('meta');
+        override.setAttribute('name', 'theme-color');
+        override.setAttribute('data-override', '');
+        document.head.insertBefore(override, document.head.firstChild);
+      }
+      override.setAttribute('content', resolved() === 'dark' ? '#1a1613' : '#faf7f0');
+    }
+
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') d.setAttribute('data-theme', saved);
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.theme-toggle');
+      if (!btn) return;
+      var next = resolved() === 'dark' ? 'light' : 'dark';
+      if (next === systemTheme()) {
+        d.removeAttribute('data-theme');
+        try { localStorage.removeItem('theme'); } catch (e) {}
+      } else {
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      }
+      paintBrowserChrome();
+    });
+
+    /* While no explicit choice is stored, track the device live. */
+    mq.addEventListener('change', paintBrowserChrome);
+  })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap wrap--wide">
     <header class="site-head">
-      <span class="mark"><img src="icon.png" alt="" width="26" height="26">The Lede</span>
+      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
       <nav>
         <a href="/support">Support</a>
         <a href="/privacy">Privacy</a>
+        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
       </nav>
     </header>
     <main id="main">
 
-    <!-- HERO — thesis, then the proof (claim left, the re-framed exhibit right) -->
+    <!-- HERO — the transform LEADS; the claim is its caption (re-cut 2026-07-24).
+         The old eyebrow → big-serif-headline opener was the most template-shaped
+         lockup on the page and has been removed outright. -->
     <section class="hero">
-      <p class="eyebrow rise">{{hero.eyebrow}}</p>
-      <h1 class="rise rise-2">{{hero.h1}}</h1>
-      <p class="hero__sub rise rise-2">{{hero.sub}}</p>
-
       <!-- The signature move: the canonical wine reframe (shared with onboarding + paywall) -->
-      <figure class="specimen rise rise-3 specimen--live" aria-label="A story, re-framed by The Lede">
+      <figure class="specimen specimen--hero rise specimen--live" aria-label="A story, re-framed by The Lede">
         <p class="specimen__label">As it ran</p>
         <p class="specimen__orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
         <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">Unburies to</span></p>
         <p class="specimen__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
       </figure>
+
+      <div class="hero__claim rise rise-2">
+        <h1>{{hero.h1}}</h1>
+        <p class="hero__sub">{{hero.sub}}</p>
+      </div>
     </section>
 
     <!-- Email capture — its own centered band, the page's one action -->
@@ -128,34 +190,22 @@
           </article>
         </div>
 
-        <!-- the "it's a real app" anchor: one device, not a row -->
-        <div class="device" role="img" aria-label="The Lede queue on iPhone">
-          <div class="device__screen">
-            <div class="device__island" aria-hidden="true"></div>
-            <p class="app-mast">The Lede</p>
-            <p class="app-sub">Mon 16 Jun · 3 unread · re-framed</p>
-            <div class="mini-entry">
-              <span class="beat beat--health">Health</span>
-              <p class="mini-lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
-              <p class="mini-ran">Ran as &ldquo;A Glass of Red Wine = an Hour at the Gym&rdquo;</p>
-            </div>
-            <div class="mini-entry">
-              <span class="beat beat--business">Business</span>
-              <p class="mini-lede">Productivity culture is making us worse at our jobs.</p>
-              <p class="mini-ran">Ran as &ldquo;The Case for Doing Nothing&rdquo;</p>
-            </div>
-            <div class="mini-entry">
-              <span class="beat beat--world">World</span>
-              <p class="mini-lede">Samoa erased a day to sync with its trading partners.</p>
-              <p class="mini-ran">Ran as &ldquo;Samoa skips a day to cross the date line&rdquo;</p>
-            </div>
-          </div>
+        <!-- the "it's a real app" anchor: real pixels, not a drawing. Two files
+             so the shot follows the page theme; the dark one is decorative since
+             the light one already carries the description. -->
+        <div class="device-shot">
+          <img class="shot-light" src="app-queue-light.webp" width="700" height="1431"
+               alt="The Lede's queue on iPhone — four saved stories, each renamed for what it is actually about and filed to a beat, with the original headline kept underneath."
+               loading="lazy" decoding="async">
+          <img class="shot-dark" src="app-queue-dark.webp" width="700" height="1431"
+               alt="" aria-hidden="true" loading="lazy" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- SHOWCASE 2 — the strongest honest case -->
-    <section class="showcase">
+    <!-- SHOWCASE 2 — the strongest honest case. Its own panel so the two
+         showcases stop sharing one rhythm; exhibit leads, note is subordinate. -->
+    <section class="showcase showcase--band">
       <div class="showcase__head">
         <h2>{{showcase2.heading}}</h2>
         <p class="muted">{{showcase2.body}}</p>

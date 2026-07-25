@@ -21,15 +21,74 @@
   <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="styles.css">
+  <script>
+  /* Theme: follow the device unless the reader has explicitly chosen otherwise.
+     Runs before first paint so a chosen theme never flashes the other one, and
+     marks the document JS-capable, which is what reveals the toggle — a no-JS
+     reader keeps the device preference and never sees a dead control.
+
+     Toggling BACK to whatever the device already prefers clears the override
+     instead of pinning it, so there is always a way home to following the
+     device. Without that, one click freezes the site's appearance forever —
+     which is exactly the bug this replaced. */
+  (function () {
+    var d = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    d.classList.add('js');
+
+    function systemTheme() { return mq.matches ? 'dark' : 'light'; }
+    function resolved() { return d.getAttribute('data-theme') || systemTheme(); }
+
+    /* The two media-scoped theme-color metas cover the follow-the-device case.
+       An override needs an unscoped one, inserted first so it wins. */
+    function paintBrowserChrome() {
+      var override = document.querySelector('meta[name="theme-color"][data-override]');
+      if (!d.hasAttribute('data-theme')) {
+        if (override) override.remove();
+        return;
+      }
+      if (!override) {
+        override = document.createElement('meta');
+        override.setAttribute('name', 'theme-color');
+        override.setAttribute('data-override', '');
+        document.head.insertBefore(override, document.head.firstChild);
+      }
+      override.setAttribute('content', resolved() === 'dark' ? '#1a1613' : '#faf7f0');
+    }
+
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') d.setAttribute('data-theme', saved);
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.theme-toggle');
+      if (!btn) return;
+      var next = resolved() === 'dark' ? 'light' : 'dark';
+      if (next === systemTheme()) {
+        d.removeAttribute('data-theme');
+        try { localStorage.removeItem('theme'); } catch (e) {}
+      } else {
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      }
+      paintBrowserChrome();
+    });
+
+    /* While no explicit choice is stored, track the device live. */
+    mq.addEventListener('change', paintBrowserChrome);
+  })();
+  </script>
 </head>
 <body class="page-sourcing">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap">
+  <div class="wrap wrap--doc">
     <header class="site-head">
-      <span class="mark"><img src="icon.png" alt="" width="26" height="26">The Lede</span>
+      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
       <nav>
         <a href="/">Home</a>
         <a href="/support">Support</a>
+        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
       </nav>
     </header>
     <main id="main">

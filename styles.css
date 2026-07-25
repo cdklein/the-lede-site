@@ -25,58 +25,79 @@
 
   --serif: "Newsreader", "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
-  /* Light — warm paper */
-  --paper:        #faf7f0;
-  --paper-2:      #f3eee2;   /* recessed / card */
-  --ink:          #1c1a17;
-  --ink-2:        #3a362f;
-  --ink-3:        #635c4d;   /* ≥4.5:1 on paper, paper-2, AND the ember-tinted signup band */
-  --rule:         #e6e0d1;
-  --rule-strong:  #d8d0bd;
-  --ember:        oklch(0.602 0.118 47);
-  --ember-ink:    oklch(0.512 0.118 47);   /* ember text on paper, AA */
-  --ember-tint:   color-mix(in oklab, var(--ember) 12%, var(--paper));
+  /* Every colour token is declared ONCE as light-dark(light, dark) and resolves
+     off `color-scheme`. The theme toggle flips `color-scheme` on :root — there is
+     no second token block to keep in sync. Contrast ratios noted below hold in
+     both resolutions (audited 2026-07-22, unchanged here). */
+  --paper:        light-dark(#faf7f0, #1a1613);
+  --paper-2:      light-dark(#f3eee2, #231d17);   /* recessed / card */
+  --ink:          light-dark(#1c1a17, #efe9dd);
+  --ink-2:        light-dark(#3a362f, #cdc6b6);
+  --ink-3:        light-dark(#635c4d, #928b7b);   /* ≥4.5:1 on paper, paper-2, AND the ember-tinted signup band */
+  --rule:         light-dark(#e6e0d1, #2f2920);
+  --rule-strong:  light-dark(#d8d0bd, #3e3729);
+  --ember:        light-dark(oklch(0.602 0.118 47), oklch(0.715 0.128 52));
+  --ember-ink:    light-dark(oklch(0.512 0.118 47), oklch(0.74 0.128 56));   /* ember text on paper, AA */
+  --ember-tint:   light-dark(
+                    color-mix(in oklab, oklch(0.602 0.118 47) 12%, #faf7f0),
+                    color-mix(in oklab, oklch(0.715 0.128 52) 16%, #1a1613));
 
   /* Beat hues — desaturated newspaper sections (label / pill bg) */
-  --beat-business:    #8a5a2b;  --beat-business-bg:   #f0e6d3;
-  --beat-culture:     #7c4f86;  --beat-culture-bg:    #efe3f0;
-  --beat-technology:  #3d5f7a;  --beat-technology-bg: #dfe8f0;
-  --beat-science:     #386a4c;  --beat-science-bg:    #dcebe0;
-  --beat-health:      #1a6560;  --beat-health-bg:     #d9edeb;  /* teal, ≥5.6:1, distinct from science green */
-  --beat-world:       #47527a;  --beat-world-bg:      #e5e5ef;  /* slate, ≥6:1; provisional pending CDO */
+  --beat-business:    light-dark(#8a5a2b, #ca9355);  --beat-business-bg:   light-dark(#f0e6d3, #2c2418);
+  --beat-culture:     light-dark(#7c4f86, #c193c9);  --beat-culture-bg:    light-dark(#efe3f0, #2a2030);
+  --beat-technology:  light-dark(#3d5f7a, #8fb4d2);  --beat-technology-bg: light-dark(#dfe8f0, #1c2530);
+  --beat-science:     light-dark(#386a4c, #84c79d);  --beat-science-bg:    light-dark(#dcebe0, #182619);
+  --beat-health:      light-dark(#1a6560, #7fcbc4);  --beat-health-bg:     light-dark(#d9edeb, #152321);  /* teal, ≥5.6:1, distinct from science green */
+  --beat-world:       light-dark(#47527a, #9fa8cf);  --beat-world-bg:      light-dark(#e5e5ef, #191c27);  /* slate, ≥6:1 */
 
-  --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
+  /* Type scale — the single source for informational type across every page. */
+  --h1-size:   2.4rem;
+  --h2-size:   1.7rem;
+  --h3-size:   1.16rem;
+  --deck-size: 1.15rem;   /* the paragraph under a section heading */
+
   --measure: 38rem;
   --wide: 60rem;
+
+  /* --shadow is not a <color>, so light-dark() can't carry it — it is the one
+     token that still needs an explicit per-scheme rule below. */
+  --shadow: 0 1px 2px rgba(28,26,23,0.04), 0 12px 32px -12px rgba(28,26,23,0.16);
 }
 
+/* ---- Theme resolution --------------------------------------------------- */
+/* Default: follow the OS. `data-theme` on <html> overrides it, set by the
+   header toggle and replayed from localStorage by the inline head script. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper:        #1a1613;
-    --paper-2:      #231d17;
-    --ink:          #efe9dd;
-    --ink-2:        #cdc6b6;
-    --ink-3:        #928b7b;
-    --rule:         #2f2920;
-    --rule-strong:  #3e3729;
-    --ember:        oklch(0.715 0.128 52);
-    --ember-ink:    oklch(0.74 0.128 56);
-    --ember-tint:   color-mix(in oklab, var(--ember) 16%, var(--paper));
-
-    --beat-business:    #ca9355;  --beat-business-bg:   #2c2418;
-    --beat-culture:     #c193c9;  --beat-culture-bg:    #2a2030;
-    --beat-technology:  #8fb4d2;  --beat-technology-bg: #1c2530;
-    --beat-science:     #84c79d;  --beat-science-bg:    #182619;
-    --beat-health:      #7fcbc4;  --beat-health-bg:     #152321;
-    --beat-world:       #9fa8cf;  --beat-world-bg:      #191c27;
-
+  :root:not([data-theme="light"]) {
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -16px rgba(0,0,0,0.6);
   }
+}
+:root[data-theme="dark"] {
+  --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -16px rgba(0,0,0,0.6);
 }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+
+/* ---- Line-breaking discipline ------------------------------------------- */
+/* No widows, no orphans. `balance` evens the line lengths of short display type
+   (headings, ledes, centred fine print); `pretty` stops running text ending on a
+   lone word. Both degrade to normal wrapping where unsupported. */
+h1, h2, h3,
+.specimen__lede, .specimen__orig, .brief__lede, .entry__lede,
+.hero__sub, .signup__sub, .founder-note, .fineprint {
+  text-wrap: balance;
+}
+/* Section decks use `pretty`, not `balance`: balancing a three-line deck pulls
+   every line short, which read as a narrower column than the list beneath it. */
+p, li, .entry__ran, .brief__body, .feature-copy p, .showcase__head p {
+  text-wrap: pretty;
+}
 
 body {
   margin: 0;
@@ -95,6 +116,13 @@ body {
 }
 .wrap--wide { max-width: var(--wide); }
 
+/* Document pages — privacy, support, sourcing standards, 404, thanks.
+   One width for the whole page: masthead, content and footer all run the wide
+   measure, so the header rule, the content's right edge and the footer rule land
+   on the same verticals. (Charles's call, 2026-07-24: the earlier reading-measure
+   column left the content visibly narrower than the frame around it.) */
+.wrap--doc { max-width: var(--wide); }
+
 /* ---- Type --------------------------------------------------------------- */
 h1, h2, h3, .serif {
   font-family: var(--serif);
@@ -103,13 +131,34 @@ h1, h2, h3, .serif {
   letter-spacing: -0.012em;
   font-weight: 600;
 }
-h1 { font-size: 2.4rem; margin: 0 0 0.5rem; }
-h2 { font-size: 1.5rem; margin: 2.8rem 0 0.6rem; }
-h3 { font-size: 1.12rem; margin: 1.8rem 0 0.3rem; }
+/* ONE type scale, obeyed by every informational section on every page. Headings
+   had drifted — section heads ran 1.85rem on the homepage, 1.75rem in the signup
+   band and 1.5rem on the document pages — and section decks were set in .muted at
+   0.9rem, well under the 17px body, which is what made the showcase read small.
+   DISPLAY components are deliberately exempt and set their own sizes: the hero
+   specimen and its claim, the brief exhibit, the founder pull-quote. */
+h1 { font-size: var(--h1-size); margin: 0 0 0.5rem; }
+h2 { font-size: var(--h2-size); margin: 2.8rem 0 0.6rem; }
+h3 { font-size: var(--h3-size); margin: 1.8rem 0 0.3rem; }
 
 p, li { color: var(--ink-2); }
+
+/* The deck — the paragraph directly under a section heading. Serif, matching the
+   `.lede` intro under an h1 on the document pages, so the three voices stay
+   consistent site-wide: serif for ledes and decks, sans for body, mono for
+   apparatus. Same size and colour whether it opens a homepage section or a
+   policy section. */
+.showcase__head p,
+.signup__sub {
+  font-family: var(--serif);
+  font-size: var(--deck-size);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
 a { color: var(--ember-ink); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
+/* The masthead lockup is a mark, not a link in a sentence — never underlined. */
+a.mark, a.mark:hover, a.mark:focus { text-decoration: none; }
 /* In-prose links: ember + semibold is the resting cue (no underline by house
    ruling); weight is the non-color indicator WCAG 1.4.1 needs, hover keeps
    the underline, focus gets an explicit ring. */
@@ -186,9 +235,50 @@ li { margin: 0.4rem 0; }
   color: var(--ink);
 }
 .site-head .mark img { width: 26px; height: 26px; border-radius: 6px; display: block; }
-.site-head nav { margin-left: auto; font-size: 0.92rem; font-family: var(--sans); }
+/* The lockup is the way home from every page (standing convention). No hover
+   underline — the mark is a mark, not a link in a sentence. */
+a.mark:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 4px; border-radius: 4px; }
+.site-head nav { margin-left: auto; display: flex; align-items: center; font-size: 0.92rem; font-family: var(--sans); }
 .site-head nav a { color: var(--ink-3); margin-left: 1.2rem; }
 .site-head nav a:hover { color: var(--ink); text-decoration: none; }
+
+/* Theme toggle — the circular sun/moon control from attanagra.com, re-skinned to
+   The Lede's tokens (shared house pattern, not a second invention). Hidden until
+   the inline script confirms JS, so a no-JS visitor never sees a dead button.
+   The icon shown is the theme you'd switch TO. */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: -6px 0 -6px 1.2rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  color: var(--ink-3);
+  cursor: pointer;
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.js .theme-toggle { display: inline-flex; }
+.theme-toggle:hover { opacity: 1; border-color: var(--ink-3); color: var(--ink); }
+.theme-toggle:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 2px; opacity: 1; }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+
+/* Light resolved → offer the moon. Dark resolved → offer the sun. */
+.theme-toggle .ico-sun { display: none; }
+.theme-toggle .ico-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .ico-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .ico-sun  { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle .ico-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .ico-sun  { display: block; }
+:root[data-theme="light"] .theme-toggle .ico-moon { display: block; }
+:root[data-theme="light"] .theme-toggle .ico-sun  { display: none; }
 
 footer {
   border-top: 1px solid var(--rule);
@@ -210,45 +300,79 @@ footer a:hover { color: var(--ink); }
 footer .row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 0.7rem; font-size: 0.9rem; }
 footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 
+/* Visually hidden, still announced (label prefixes on icon-light controls). */
+.vh {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
 /* ---- The ember "re-framed" mark — the ONLY ember on the page ------------ */
 .mark-ember { color: var(--ember); }
 .diamond { color: var(--ember); font-style: normal; }
 
 /* ---- Hero --------------------------------------------------------------- */
+/* Re-cut 2026-07-24: the transform LEADS. The specimen is the first and largest
+   thing on the page — the product performs itself before a word of pitch — and
+   the claim follows it as the caption. Replaces the eyebrow → big-serif-headline
+   opener, which was the most template-shaped lockup we owned. */
 .hero { padding: 1.4rem 0 0.5rem; }
 .hero h1 {
-  font-size: clamp(2.2rem, 7vw, 3.8rem);
-  line-height: 1.04;
-  margin: 0 0 1.3rem;
-  max-width: none;
+  font-size: clamp(1.7rem, 5vw, 2.25rem);
+  line-height: 1.1;
+  margin: 0;
+  max-width: 20ch;
 }
 .hero .hero__sub {
   font-family: var(--serif);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.5;
   color: var(--ink-2);
-  max-width: 32rem;
-  margin: 1.3rem 0 0;
+  max-width: 34rem;
+  margin: 0.9rem 0 0;
+}
+/* The claim is the exhibit's caption, so it hangs off the same left edge as the
+   lede inside the card — indented by the card's own gutter, not the page's. */
+/* +25% clearance under the card: its drop shadow reaches ~32px past the border,
+   so the measured gap read tighter than it was. */
+.hero__claim { margin-top: 2.75rem; padding-inline: 1.8rem; }
+
+@media (min-width: 52rem) {
+  .hero { padding-top: 2.6rem; }
+  /* The exhibit spans the full measure so the hero aligns with the signup band
+     and the showcases below it — a narrower hero made the page look like it
+     started in a different grid. */
+  .hero > .specimen { max-width: none; margin: 0; }
+  .specimen--hero .specimen__lede { max-width: 22ch; }
+  /* Claim sits under the exhibit as a two-column caption: statement, then gloss. */
+  .hero__claim {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    column-gap: 3rem;
+    align-items: start;
+    margin-top: 3.25rem;      /* +25%, see note on .hero__claim above */
+    padding-inline: 2.6rem;   /* matches --hero-pad at this breakpoint */
+  }
+  .hero__claim h1 { max-width: 14ch; }
+  .hero__claim .hero__sub { margin-top: 0.2rem; }
 }
 
-/* Desktop: claim + sub on the left, the re-framed exhibit on the right.
-   Mobile keeps natural source order (eyebrow, h1, sub, specimen). */
+/* The hero specimen runs at display scale — its lede is the largest type on the
+   page, ahead of the h1. Heading level is semantic; size is editorial.
+   `--hero-pad` is shared with .hero__claim below so the claim's first character
+   sits on the same vertical as the lede's. Display type needs a wider gutter and
+   more air around the turn than the small card variant did. */
+.specimen--hero {
+  --hero-pad: 1.8rem;
+  padding: 2.2rem var(--hero-pad) 2.1rem;
+}
+.specimen--hero .specimen__orig { font-size: clamp(1.02rem, 2vw, 1.2rem); }
+.specimen--hero .specimen__lede { font-size: clamp(1.95rem, 5.4vw, 3rem); }
+/* The turn is the hinge of the whole page — give it room on both sides. */
+.specimen--hero .specimen__turn { margin: 1.5rem 0 1.25rem; }
 @media (min-width: 52rem) {
-  .hero {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    column-gap: 3rem;
-    align-content: start;
-    grid-template-areas:
-      "eyebrow  specimen"
-      "title    specimen"
-      "sub      specimen";
-    padding-top: 2.4rem;
-  }
-  .hero > .eyebrow   { grid-area: eyebrow; }
-  .hero > h1         { grid-area: title; font-size: clamp(2.4rem, 4.3vw, 3.3rem); max-width: 16ch; }
-  .hero > .hero__sub { grid-area: sub; }
-  .hero > .specimen  { grid-area: specimen; align-self: center; justify-self: end; margin: 0; }
+  .specimen--hero { --hero-pad: 2.6rem; padding: 2.7rem var(--hero-pad) 2.6rem; }
+  .specimen--hero .specimen__turn { margin: 1.9rem 0 1.5rem; }
 }
 
 /* ---- The specimen — a story, re-framed (the signature move) ------------- */
@@ -324,6 +448,50 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 .beat--health     { color: var(--beat-health);     background: var(--beat-health-bg); }
 .beat--world      { color: var(--beat-world);      background: var(--beat-world-bg); }
 
+/* ---- The utility voice (mono) ------------------------------------------- */
+/* A third register beside the serif and the sans. Every string that is
+   apparatus rather than prose — datelines, labels, beats, read times, nav,
+   colophon — is set in mono. This is newsroom furniture, and it is the thing
+   template sites never do: they set utility text in the same sans as the body,
+   which is why their chrome reads as generated. System stack rather than a
+   webfont — SF Mono on Apple devices, zero extra download, and it keeps the
+   site's self-hosted-only promise. Mono is optically wider and heavier than the
+   sans, so tracking, weight and size all come down wherever it is applied. */
+.eyebrow,
+.specimen__label,
+.specimen__turn .turn-label,
+.brief__steel-label,
+.beat,
+.entry__meta,
+.founder-note span,
+.device .app-sub,
+.site-head nav,
+footer .row,
+footer .muted {
+  font-family: var(--mono);
+}
+
+.eyebrow                    { letter-spacing: 0.1em;  font-weight: 600; font-size: 0.68rem; }
+.specimen__label            { letter-spacing: 0.09em; font-weight: 600; font-size: 0.63rem; }
+.specimen__turn .turn-label { letter-spacing: 0.09em; font-weight: 600; font-size: 0.63rem; }
+.brief__steel-label         { letter-spacing: 0.09em; font-weight: 600; font-size: 0.62rem; }
+.beat                       { letter-spacing: 0.04em; font-weight: 600; font-size: 0.6rem; }
+.entry__meta                { font-size: 0.72rem; }
+.founder-note span          { letter-spacing: 0.07em; font-weight: 600; font-size: 0.68rem; }
+.device .app-sub            { font-size: 0.58rem; }
+footer .muted               { font-size: 0.74rem; }
+
+/* Nav and footer links join the apparatus voice — small mono caps, the way a
+   masthead sets its standing furniture. */
+.site-head nav { font-size: 0.71rem; }
+.site-head nav a,
+footer .row a {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+footer .row { font-size: 0.72rem; }
+
 /* ---- Email capture ------------------------------------------------------ */
 /* The signup is its own panel — a warm wash + border so it reads as a distinct
    "act here" section. Appears twice: after the hero and as the closing CTA. */
@@ -337,15 +505,9 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
   box-shadow: var(--shadow);
 }
 .signup .eyebrow { margin-bottom: 0.5rem; }
-.signup h2 { margin: 0 0 0.5rem; font-size: 1.75rem; }
-.signup__sub {
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  line-height: 1.45;
-  color: var(--ink-2);
-  max-width: 34rem;
-  margin: 0 auto;
-}
+.signup h2 { margin: 0 0 0.5rem; }
+/* Size, leading and colour come from the shared deck rule in the type section. */
+.signup__sub { max-width: 34rem; margin: 0 auto; }
 .signup form {
   display: flex;
   gap: 0.6rem;
@@ -412,7 +574,21 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 /* ---- Showcase: "the queue is a magazine" ------------------------------- */
 .showcase { margin-top: 4.5rem; }
 .showcase__head { max-width: 30rem; margin-bottom: 2rem; }
-.showcase__head h2 { margin-top: 0; font-size: 1.85rem; }
+
+/* The head sat at its own 30rem cap while the entry list below it ran the split's
+   first column, so the left edge lined up but the right edge did not. Give the
+   head the SAME grid as .split and park its children in column 1 — the two now
+   share one measure by construction, with no duplicated pixel maths to drift. */
+@media (min-width: 50rem) {
+  .showcase:not(.showcase--band) > .showcase__head {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    column-gap: 3rem;
+    max-width: none;
+  }
+  .showcase:not(.showcase--band) > .showcase__head > * { grid-column: 1; }
+}
+.showcase__head h2 { margin-top: 0; }
 .split {
   display: grid;
   grid-template-columns: 1fr;
@@ -447,7 +623,41 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 .entry__ran { grid-column: 1; font-family: var(--serif); font-style: italic; font-size: 0.96rem; color: var(--ink-3); margin: 0; }
 .entry__meta { grid-column: 1; font-family: var(--sans); font-size: 0.76rem; color: var(--ink-3); margin: 0.4rem 0 0; }
 
-/* ---- iPhone frame ------------------------------------------------------- */
+/* ---- The app, as real pixels -------------------------------------------- */
+/* Replaces the hand-drawn HTML mock (2026-07-24). No painted bezel: a stock
+   device frame is the single most template-shaped object a product page can
+   carry, and the screenshot is of the screen, so a screen radius is enough. */
+/* Apple's official iPhone 17 bezel (Apple Design Resources) with our own
+   screenshot composited into the screen aperture. Apple's Marketing Resources
+   and Identity Guidelines require the product image be used AS IS: no added
+   shadows, highlights or reflections, no border, no cropping or tilting. That is
+   why there is deliberately no box-shadow or border here — the bezel carries its
+   own shading, and the PNG's transparent margin is left intact. */
+.device-shot { margin: 0 auto; max-width: 340px; }
+/* The shot is taller than the entry list beside it, so top-aligning the two at
+   the split left it hanging low and dumped the excess height below the list.
+   It rides up beside the section head instead — roughly level with the heading,
+   with a little margin above it — which also fills what was dead space. Optical
+   value: tune by eye if the heading or the list changes length. */
+@media (min-width: 50rem) {
+  .split > .device-shot { margin-top: -10.5rem; align-self: start; }
+}
+.device-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.device-shot .shot-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .device-shot .shot-light { display: none; }
+  :root:not([data-theme="light"]) .device-shot .shot-dark  { display: block; }
+}
+:root[data-theme="dark"] .device-shot .shot-light { display: none; }
+:root[data-theme="dark"] .device-shot .shot-dark  { display: block; }
+:root[data-theme="light"] .device-shot .shot-light { display: block; }
+:root[data-theme="light"] .device-shot .shot-dark  { display: none; }
+
+/* ---- Legacy drawn frame (retained: still used by nothing on index) ------- */
 .device {
   width: 270px;
   margin: 0 auto;
@@ -500,7 +710,42 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
 
 /* feature copy block */
 .feature-copy h2 { margin-top: 0; }
-.feature-copy p { font-size: 1.05rem; }
+.feature-copy p { font-size: inherit; }
+
+/* ---- Showcase 2 as its own chapter -------------------------------------- */
+/* The section was reading flat: an h2 with body copy, then a second h3 with body
+   copy of the same weight, so the exhibit and the note competed as peers and the
+   eye had no order to follow. Three moves fix it — the section becomes a panel
+   (breaking the identical rhythm the two showcases shared), the exhibit lifts to
+   paper so it stays the subject, and the note is demoted to a margin note. */
+.showcase--band {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 2.6rem 2.2rem 2.8rem;
+}
+@media (max-width: 34rem) { .showcase--band { padding: 1.9rem 1.3rem 2rem; border-radius: 16px; } }
+/* Centred chapter opener. Left-aligned at a 30rem measure it left a dead void to
+   its right; spanning the full band would push the paragraph past 100 characters,
+   well beyond a comfortable measure. Centring keeps the measure readable and
+   reads as a deliberate chapter heading over the exhibit below. */
+.showcase--band .showcase__head {
+  max-width: 42rem;
+  margin: 0 auto 2.6rem;
+  text-align: center;
+}
+/* Card-on-panel: the exhibit lifts to paper so it doesn't melt into the band. */
+.showcase--band .brief { background: var(--paper); }
+/* The note is subordinate to the exhibit — anchored by a rule, quieter type. */
+.showcase--band .feature-copy {
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 1.1rem;
+}
+.showcase--band .feature-copy h3 { margin: 0 0 0.6rem; line-height: 1.25; }
+.showcase--band .feature-copy p { color: var(--ink-2); margin: 0; }
+@media (min-width: 50rem) {
+  .showcase--band .split { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+}
 
 /* ---- Motion ------------------------------------------------------------- */
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
