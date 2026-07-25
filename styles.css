@@ -295,6 +295,40 @@ footer .colophon {
 footer .colophon img { width: 30px; height: 30px; border-radius: 7px; }
 footer .colophon span { font-size: 0.98rem; color: var(--ink-2); }
 footer .colophon b { font-family: var(--serif); color: var(--ink); font-weight: 600; }
+/* ---- The page colophon — the back of the book --------------------------- */
+/* The footer was carrying two jobs in one stack: NAVIGATION (the brand line and
+   the links) and APPARATUS (what it's set in, who owns it, what it isn't
+   affiliated with). This separates them behind a rule so the apparatus reads as
+   a colophon rather than as three more footer lines. The pilcrow marks the
+   block, exactly as it marks the colophon in the app's Settings screen — the
+   mark now sits where the product already puts it. */
+.page-colophon {
+  margin-top: 1.9rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+.page-colophon .endmark { margin: 0 0 0.85rem; }
+
+/* The imprint — the line that signs the work. Carries both the making and the
+   copyright notice, so the bare copyright line is gone rather than duplicated.
+   No ember: ember marks the desk's hand, and a typeface credit is not that. */
+footer .imprint {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 0.5rem;
+}
+footer .disclaimer {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  line-height: 1.65;
+  color: var(--ink-3);
+  max-width: 46rem;
+  margin: 0 auto;
+}
 footer a { color: var(--ink-3); }
 footer a:hover { color: var(--ink); }
 footer .row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 0.7rem; font-size: 0.9rem; }
@@ -570,6 +604,21 @@ footer .row { font-size: 0.72rem; }
   color: var(--ink-3);
 }
 .signup .fineprint a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- End-mark ----------------------------------------------------------- */
+/* The pilcrow closes the page's editorial run, the way a paper marks the end of
+   an article. It sits in the rule colour, not ink: this is punctuation, not
+   ornament. It appears EXACTLY ONCE on the site — the moment it repeats it
+   stops being a mark and becomes decoration. Homepage only, because the
+   homepage is the only page with an editorial run to end. */
+.endmark {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--rule-strong);
+  margin: 1.7rem 0 0;
+}
 
 /* ---- Section slug — the change of gear between chapters ----------------- */
 /* A mono label set between two hairlines, the way a paper slugs a section.
