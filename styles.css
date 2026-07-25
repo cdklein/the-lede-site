@@ -58,6 +58,13 @@
   --h3-size:   1.16rem;
   --deck-size: 1.15rem;   /* the paragraph under a section heading */
 
+  /* The app's own highlighter (HighlightTint in the asset catalogue) — the
+     colour a reader sees when they mark a passage in The Lede. Used for text
+     selection on the site so selecting here feels like highlighting there.
+     Deliberately NOT ember: ember marks the desk's hand, a selection is the
+     reader's. */
+  --highlight: light-dark(#ecdfbc, #3c341f);
+
   --measure: 38rem;
   --wide: 60rem;
 
@@ -83,6 +90,11 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+
+/* Selecting text uses the app's highlighter, not the browser's default blue —
+   the one un-art-directed surface left on the page, and the one that shows up
+   at the exact moment someone is pulling a quote. */
+::selection { background: var(--highlight); color: var(--ink); }
 
 /* ---- Line-breaking discipline ------------------------------------------- */
 /* No widows, no orphans. `balance` evens the line lengths of short display type
@@ -840,6 +852,69 @@ footer .row { font-size: 0.72rem; }
 }
 @media (min-width: 50rem) {
   .showcase--band .split { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+}
+
+/* ---- Print -------------------------------------------------------------- */
+/* Privacy, support and sourcing standards are pages people genuinely print or
+   save to PDF — privacy especially, for their own records. Almost nobody styles
+   for it, which is exactly why it's worth doing: finish that is invisible until
+   the moment it matters. */
+@media print {
+  :root { color-scheme: light; }
+
+  /* `.rise` animates from opacity 0 with `both`, so it HOLDS the from-state
+     until the animation runs — and print doesn't run animations. Without this
+     the hero prints blank. */
+  .rise, .rise-2, .rise-3 { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: var(--serif);
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .wrap, .wrap--wide, .wrap--doc { max-width: none; padding: 0; }
+  .wrap--doc > main { max-width: none; }
+
+  /* Interface the paper has no use for. */
+  .skip-link,
+  .site-head nav,
+  .theme-toggle,
+  .signup,
+  .device-shot,
+  .section-slug { display: none !important; }
+
+  /* The masthead survives, flattened — a printed page should still say whose it is. */
+  .site-head { border-bottom: 1pt solid #000; padding-bottom: 0.4cm; margin-bottom: 0.8cm; }
+  .site-head .mark { color: #000; }
+
+  h1, h2, h3 { color: #000; break-after: avoid; page-break-after: avoid; }
+  p, li { color: #000; orphans: 3; widows: 3; }
+
+  /* Cards lose their fill and shadow — paper already has a background. */
+  .callout, .specimen, .brief, .showcase--band, .page-colophon {
+    background: none !important;
+    box-shadow: none !important;
+    border: 0;
+    padding: 0;
+  }
+  .callout, .specimen, .brief { border-left: 2pt solid #000; padding-left: 0.5cm; }
+  .specimen, .brief, .entry, .faq-index { break-inside: avoid; page-break-inside: avoid; }
+
+  /* A printed policy is useless if its links are invisible — spell them out. */
+  main a[href^="http"]::after,
+  main a[href^="/"]::after {
+    content: " (" attr(href) ")";
+    font-family: var(--mono);
+    font-size: 8pt;
+    word-break: break-all;
+  }
+  a { color: #000; text-decoration: underline; }
+
+  /* The colophon closes the printed page too. */
+  .page-colophon { border-top: 1pt solid #000; margin-top: 1cm; padding-top: 0.4cm; }
+  .page-colophon .endmark { color: #000; }
 }
 
 /* ---- Motion ------------------------------------------------------------- */
