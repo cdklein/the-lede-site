@@ -43,6 +43,12 @@
   --ember-tint:   light-dark(
                     color-mix(in oklab, oklch(0.602 0.118 47) 12%, #faf7f0),
                     color-mix(in oklab, oklch(0.715 0.128 52) 16%, #1a1613));
+  /* The one colour that says something went wrong. A desaturated newspaper red,
+     cut from the same cloth as the beat hues — deliberately NOT ember, which
+     marks the desk's hand, and a failed signup is not the desk speaking.
+     Measured against the true ember-tinted signup band (#f0e6d8 / #2d231b),
+     not against paper: 5.92:1 light, 6.25:1 dark. */
+  --alert:        light-dark(#9a3324, #e2907f);
 
   /* Beat hues — desaturated newspaper sections (label / pill bg) */
   --beat-business:    light-dark(#8a5a2b, #ca9355);  --beat-business-bg:   light-dark(#f0e6d3, #2c2418);
@@ -592,6 +598,30 @@ footer .row { font-size: 0.72rem; }
 .signup button:hover { opacity: 0.9; }
 .signup button:active { transform: translateY(1px); }
 .signup .fineprint { font-size: 0.82rem; color: var(--ink-3); margin: 0 auto; max-width: 30rem; }
+
+/* Signup feedback — revealed by the foot-of-page script when the server sends
+   the reader back with ?subscribe=invalid|error. Left-ruled rather than boxed:
+   the panel it sits in is already a box, and a second border inside the first
+   reads as a dialog. Colour is not carrying the meaning here (1.4.1) — the
+   sentence says what went wrong on its own. */
+.signup__alert {
+  font: 500 0.95rem/1.5 var(--sans);
+  color: var(--alert);
+  text-align: left;
+  max-width: 32rem;
+  margin: 1rem auto 0;
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  border-left: 3px solid var(--alert);
+}
+.signup__alert[hidden] { display: none; }
+/* No focus ring. The script focuses this to announce it, and `tabindex="-1"`
+   means Tab can never land here — so a ring only ever marks a move the reader
+   didn't make. Chrome does treat that programmatic focus as :focus-visible, and
+   the resulting full box read as a dialog inside a panel that is already a box;
+   the left rule and the colour carry it. Nothing keyboard-operable is losing an
+   indicator (2.4.7): this is a sentence, not a control. */
+.signup__alert:focus,
+.signup__alert:focus-visible { outline: none; }
 
 /* Founder note — one quiet, honest line of credibility */
 .founder-note {

@@ -61,7 +61,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://theledeapp.com/">
-  <link rel="stylesheet" href="styles.css?v=8f34e822">
+  <link rel="stylesheet" href="styles.css?v=eff2b385">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -155,6 +155,12 @@
     <!-- Email capture — its own centered band, the page's one action -->
     <section class="signup" id="notify">
       <p class="eyebrow">Coming to <span class="brand-case">iPhone</span> · opening in waves</p>
+      <!-- Signup feedback. Both messages ship in the markup and stay hidden; the
+           script at the foot of the page reveals the one the server asked for.
+           Above the form on purpose: a Tab from the message lands on the email
+           field, so the fix for the problem is the next thing you reach. -->
+      <p class="signup__alert" data-alert="invalid" tabindex="-1" hidden>That address didn&rsquo;t look like an email. Check it and send it again.</p>
+      <p class="signup__alert" data-alert="error" tabindex="-1" hidden>Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute.</p>
       <form action="https://api.theledeapp.com/subscribe" method="post">
         <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
         <button type="submit">Get an early invite</button>
@@ -237,6 +243,8 @@
     <section class="signup">
       <h2>Be first when it opens.</h2>
       <p class="signup__sub">No account, ever. Your library lives in your own iCloud, and your first ten briefs each month are free.</p>
+      <p class="signup__alert" data-alert="invalid" tabindex="-1" hidden>That address didn&rsquo;t look like an email. Check it and send it again.</p>
+      <p class="signup__alert" data-alert="error" tabindex="-1" hidden>Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute.</p>
       <form action="https://api.theledeapp.com/subscribe" method="post">
         <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
         <button type="submit">Get an early invite</button>
@@ -263,5 +271,60 @@
       </div>
     </footer>
   </div>
+  <script>
+  /* Signup feedback. The server answers a failed POST /subscribe with a 303 back
+     to `/?subscribe=invalid#notify` or `/?subscribe=error#notify`. Nothing read
+     that param, so a signup that failed looked exactly like one that never
+     happened — worst on the `error` branch, where a VALID address is dropped
+     during a backend outage on a page whose whole job is collecting it.
+
+     Progressive enhancement, not a dependency: with no JS the form still posts
+     and still succeeds, exactly as before. Only the message needs script. */
+  (function () {
+    var match = /[?&]subscribe=([^&#]*)/.exec(window.location.search);
+    if (!match) return;
+
+    /* Closed list. The param lands in the DOM's aria wiring, so an unrecognised
+       value is discarded rather than trusted. */
+    var kind = match[1] === 'invalid' || match[1] === 'error' ? match[1] : null;
+    if (!kind) return;
+
+    var first = null;
+    var panels = document.querySelectorAll('.signup');
+    for (var i = 0; i < panels.length; i++) {
+      var alert = panels[i].querySelector('.signup__alert[data-alert="' + kind + '"]');
+      var field = panels[i].querySelector('input[type="email"]');
+      if (!alert) continue;
+      alert.id = 'signup-alert-' + i;
+      alert.hidden = false;
+      if (field) {
+        field.setAttribute('aria-describedby', alert.id);
+        /* Only `invalid` is the reader's input to fix. A backend outage is ours,
+           and marking their address invalid for it would be a lie. */
+        if (kind === 'invalid') field.setAttribute('aria-invalid', 'true');
+      }
+      if (!first) first = alert;
+    }
+
+    /* Focus rather than a live region: this arrives on navigation, where focus
+       is the reliably-announced move, and it seats the reader one Tab above the
+       field they came back to fix.
+
+       Deferred to `load` on purpose. The redirect carries `#notify`, and the
+       browser resolves that fragment AFTER this script runs — doing it inline
+       looked right and left focus back on <body>, silent to a screen reader. */
+    if (first) {
+      window.addEventListener('load', function () {
+        first.focus();
+      });
+    }
+
+    /* Drop the param so a reload or a Back doesn't re-assert a stale failure.
+       The #notify hash stays — that's where the reader should be. */
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+  })();
+  </script>
 </body>
 </html>

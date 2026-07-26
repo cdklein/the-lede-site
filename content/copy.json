@@ -9,7 +9,9 @@
     "closingHeading": "Be first when it opens.",
     "closingSub": "No account, ever. Your library lives in your own iCloud, and your first ten briefs each month are free.",
     "button": "Get an early invite",
-    "disclaimer": "Just your invite when a wave opens. No list-sharing, no noise. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it."
+    "disclaimer": "Just your invite when a wave opens. No list-sharing, no noise. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it.",
+    "alertInvalid": "That address didn&rsquo;t look like an email. Check it and send it again.",
+    "alertError": "Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute."
   },
   "showcase1": {
     "heading": "Your saves file themselves into a magazine.",
