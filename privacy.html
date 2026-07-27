@@ -96,7 +96,7 @@
     <p class="eyebrow">Privacy</p>
     <h1>Privacy Policy</h1>
     <p class="lede">The Lede is built to need as little of your data as possible. This page explains exactly what that means.</p>
-    <p class="muted">Last updated: July 12, 2026</p>
+    <p class="muted">Last updated: July 27, 2026</p>
 
     <div class="callout">
       <p><strong>The short version.</strong></p>
@@ -118,13 +118,13 @@
     <h2>What happens when you save an article</h2>
     <p>When you save an article, the app sends its <strong>web address, headline, and extracted text</strong> to our server so we can produce the brief. From there:</p>
     <ul>
-      <li>The article text is sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. Under Anthropic's commercial terms, this content is <strong>not used to train their models</strong>.</li>
+      <li>The article text is sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. Under Anthropic's commercial terms, this content is <strong>not used to train their models</strong>. Anthropic holds it for <strong>up to 30 days</strong> so their team can review it for safety and security, and then deletes it.</li>
       <li>For some stories we run a web search (via <strong>Tavily</strong> or <strong>Exa</strong>) using the headline to gather additional context.</li>
       <li>We <strong>never store the article's full text</strong>. We keep a short, non-reversible fingerprint (a hash) of the text so that an identical article isn't re-processed, alongside the brief we generated, in a temporary cache that automatically deletes itself (within 14 days for a brief, 7 days for a "Dig Deeper," 48 hours for redirected sources). And for sources your device can't read on its own, the server returns that same extracted text to your device so your copy saves alongside the brief — it passes through to you but is never stored on our servers; your saved copy lives only in <strong>your own iCloud</strong>.</li>
       <li>The article's <strong>web address is retained</strong> — never its text. It is kept with that cached brief on the same schedule above, and it may also appear in the limited service records described under "Usage data" below (for example, to note when an article couldn't be extracted). In every case it is tied only to a <strong>random per-device identifier, never to your name or identity</strong>, and we never sell it.</li>
     </ul>
     <div class="callout">
-      <p>To be plain about it: it's the web <em>address</em> we may keep or log in these cases — <strong>never the article's text</strong>. The address can also appear briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
+      <p>To be plain about it: it's the web <em>address</em> we may keep or log in these cases — <strong>we never store the article's text on our own servers</strong>. Our AI provider holds it for up to 30 days for safety review, as described above, and then deletes it. The address can also appear briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
     </div>
 
     <h2>Notifications and your device</h2>
@@ -156,7 +156,7 @@
     <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone.</p>
 
     <h2>Data retention</h2>
-    <p>The temporary AI cache deletes itself on the schedule above. Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
+    <p>The temporary AI cache deletes itself on the schedule above. Article text sent to our AI provider is held by <strong>Anthropic</strong> for <strong>up to 30 days</strong> for safety and security review and then deleted; we never store it ourselves. Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
 
     <h2>Your choices and your rights</h2>
     <p>Deleting the app removes its local data; removing its iCloud data deletes your library. For the pseudonymous usage records on our servers, you can:</p>
