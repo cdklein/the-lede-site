@@ -1061,3 +1061,77 @@ footer .row { font-size: 0.72rem; }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
+
+/* ── Per-question permalinks (support.html) ──────────────────────────────────
+   Every FAQ answer is linkable on its own so a single question can be sent to
+   one person who asked it. The affordance is an anchor to the heading's own id:
+   no JS, and a tap still navigates and leaves the shareable URL in the address
+   bar; with JS it copies instead. See the copy script in support.html.
+
+   The icon is ink, never ember — ember is reserved for the desk's own work, and
+   this is page furniture. It is also always visible rather than revealed on
+   hover, because a touch reader has no hover and a control that fades out fails
+   both discoverability and non-text contrast. */
+.faq-sec h3 { scroll-margin-top: 1.6rem; }
+
+.faq-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;        /* ≥24px target at every text size (WCAG 2.5.8) */
+  margin-left: 0.3rem;
+  vertical-align: baseline;
+  color: var(--ink-3);
+  text-decoration: none;
+  position: relative;
+}
+.faq-link:hover { color: var(--ink); text-decoration: none; }
+.faq-link:focus-visible { color: var(--ink); }
+
+/* The confirmation rides next to the icon and is aria-hidden; the announcement
+   for screen readers comes from the page's single polite status region. */
+/* Beside the icon, never above it: stacked over the heading it collided with
+   the last line of the previous answer. */
+.faq-link__flag {
+  position: absolute;
+  left: calc(100% - 0.15rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.16rem 0.34rem;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+}
+.faq-link.is-copied .faq-link__flag { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-link__flag { transition: opacity 140ms ease-out; }
+}
+
+/* A question arrived at by permalink says so, quietly and without motion. */
+.faq-sec h3:target {
+  background: color-mix(in oklab, var(--ink) 7%, transparent);
+  box-shadow: -0.45rem 0 0 color-mix(in oklab, var(--ink) 7%, transparent),
+               0.45rem 0 0 color-mix(in oklab, var(--ink) 7%, transparent);
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
