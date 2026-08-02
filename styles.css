@@ -560,15 +560,17 @@ footer .row { font-size: 0.72rem; }
 .signup h2 { margin: 0 0 0.5rem; }
 /* Size, leading and colour come from the shared deck rule in the type section. */
 .signup__sub { max-width: 34rem; margin: 0 auto; }
-.signup form {
+/* The form rules are shared with the A-day notes list below, which needs the
+   identical field and button — the only difference there is scale. */
+.signup form, .notes form {
   display: flex;
   gap: 0.6rem;
   margin: 1rem auto 0.7rem;
   max-width: 32rem;
   text-align: left;
 }
-@media (max-width: 30rem) { .signup form { flex-direction: column; } }
-.signup input[type="email"] {
+@media (max-width: 30rem) { .signup form, .notes form { flex-direction: column; } }
+.signup input[type="email"], .notes input[type="email"] {
   flex: 1;
   font: 17px/1.2 var(--sans);
   color: var(--ink);
@@ -578,13 +580,15 @@ footer .row { font-size: 0.72rem; }
   padding: 0.95rem 1rem;
   min-width: 0;
 }
-.signup input[type="email"]::placeholder { color: var(--ink-3); }
-.signup input[type="email"]:focus {
+.signup input[type="email"]::placeholder,
+.notes input[type="email"]::placeholder { color: var(--ink-3); }
+.signup input[type="email"]:focus,
+.notes input[type="email"]:focus {
   outline: none;
   border-color: var(--ink-3);
   box-shadow: 0 0 0 3px var(--ember-tint);
 }
-.signup button {
+.signup button, .notes button {
   font: 600 17px var(--sans);
   color: var(--paper);
   background: var(--ink);
@@ -595,8 +599,8 @@ footer .row { font-size: 0.72rem; }
   white-space: nowrap;
   transition: transform 0.12s ease, opacity 0.12s ease;
 }
-.signup button:hover { opacity: 0.9; }
-.signup button:active { transform: translateY(1px); }
+.signup button:hover, .notes button:hover { opacity: 0.9; }
+.signup button:active, .notes button:active { transform: translateY(1px); }
 .signup .fineprint { font-size: 0.82rem; color: var(--ink-3); margin: 0 auto; max-width: 30rem; }
 
 /* Signup feedback — revealed by the foot-of-page script when the server sends
@@ -646,6 +650,63 @@ footer .row { font-size: 0.72rem; }
   color: var(--ink-3);
 }
 .signup .fineprint a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- A-day: the store band and the notes list --------------------------- */
+/* Held for launch day (the-lede-site#2). Nothing on the current site carries
+   this markup, so these rules are inert until the flip — they ship early so
+   launch day is a deploy, not a writing session. See ADAY-FLIP.md. */
+
+/* The badge band drops the form's vertical rhythm onto a single control. */
+.signup--store .store-badge { margin: 1.3rem 0 1rem; }
+
+/* Apple's artwork under Apple's rules: never re-drawn, re-coloured or
+   re-typeset, and never animated — so nothing here transitions, and the markup
+   carries no `rise` class. The black badge already includes its own light
+   outline, which is what lets one asset sit on both the paper and the dark
+   theme without a second file. Intrinsic size is 359x120 (a 2x export of the
+   119.66x40pt original); `height` sets the display size and `width: auto`
+   keeps the ratio exact rather than trusting a rounded pair of numbers. */
+.store-badge { text-align: center; }
+.store-badge a { display: inline-block; line-height: 0; }
+.store-badge a:focus-visible { outline-offset: 4px; border-radius: 10px; }
+.store-badge img { height: 60px; width: auto; }
+
+/* The closing band's link. Plain text on purpose: a second badge would make
+   Apple's mark decoration rather than a signpost. */
+.store-link { margin: 1.2rem 0 0; }
+.store-link a {
+  font: 600 1rem var(--sans);
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* The notes list. No panel, no wash, no border — the three things that make
+   the signup band read as "act here". It sits below the closing band and is
+   meant to be found, not obeyed. */
+.notes {
+  margin: 3.4rem auto 0;
+  max-width: 32rem;
+  text-align: center;
+}
+.notes h2 {
+  font: 700 0.95rem/1.4 var(--sans);
+  letter-spacing: 0;
+  color: var(--ink-2);
+  margin: 0 0 0.3rem;
+}
+.notes > p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0 auto 0.4rem;
+  max-width: 28rem;
+}
+.notes button { font-size: 15px; padding: 0.8rem 1.2rem; }
+
+/* Two legal lines in the colophon now — the affiliation disclaimer and
+   Apple's trademark credit — so they need air between them. */
+footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 
 /* ---- End-mark ----------------------------------------------------------- */
 /* The pilcrow closes the page's editorial run, the way a paper marks the end of

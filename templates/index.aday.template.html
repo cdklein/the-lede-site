@@ -16,6 +16,9 @@
   <meta name="twitter:title" content="The Lede">
   <meta name="twitter:description" content="Read the article. Not the headline.">
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
+  <!-- Smart App Banner. Valid only once the listing is public, which is exactly
+       why it was held for A-day rather than shipped with the pre-launch site. -->
+  <meta name="apple-itunes-app" content="app-id=6772315315">
   <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
   <link rel="me" href="https://mastodon.social/@theledeapp">
@@ -46,6 +49,7 @@
         "name": "The Lede",
         "operatingSystem": "iOS",
         "applicationCategory": "NewsApplication",
+        "downloadUrl": "https://apps.apple.com/app/id6772315315",
         "description": "A read-later app with a research desk. Save an article; The Lede reads it closely, unburies the real story, renames it for what it's actually about, files it by beat, and writes the strongest honest case the piece can make.",
         "author": { "@id": "https://theledeapp.com/#org" },
         "offers": [
@@ -151,19 +155,25 @@
       </div>
     </section>
 
-    <!-- Email capture — its own centered band, the page's one action -->
-    <section class="signup" id="notify">
+    <!-- The store band — its own centered band, the page's one action.
+         Before launch this collected an email address; now it points at the
+         listing, which is the only thing left to ask for.
+
+         The badge is an <img>, NEVER inline SVG. Apple's official SVG carries an
+         internal <title> ("Download_on_the_App_Store_Badge_US-UK_RGB_blk_...")
+         that a screen reader announces verbatim as a filename. As an <img> the
+         alt text is ours, and it says exactly what Apple requires.
+
+         The badge is Apple's artwork under Apple's rules: never re-drawn,
+         re-coloured, re-typeset, or animated — so no `rise` class here, unlike
+         the hero above it. -->
+    <section class="signup signup--store">
       <p class="eyebrow">{{signup.topEyebrow}}</p>
-      <!-- Signup feedback. Both messages ship in the markup and stay hidden; the
-           script at the foot of the page reveals the one the server asked for.
-           Above the form on purpose: a Tab from the message lands on the email
-           field, so the fix for the problem is the next thing you reach. -->
-      <p class="signup__alert" data-alert="invalid" tabindex="-1" hidden>{{signup.alertInvalid}}</p>
-      <p class="signup__alert" data-alert="error" tabindex="-1" hidden>{{signup.alertError}}</p>
-      <form action="https://api.theledeapp.com/subscribe" method="post">
-        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-        <button type="submit">{{signup.button}}</button>
-      </form>
+      <p class="store-badge">
+        <a href="https://apps.apple.com/app/id6772315315?pt=PROVIDER_ID_TODO&amp;ct=site_hero">
+          <img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}">
+        </a>
+      </p>
       <p class="fineprint">{{signup.disclaimer}}</p>
     </section>
 
@@ -238,17 +248,26 @@
     <!-- Founder note — one honest line (credibility for the indie/Apple crowd) -->
     <p class="founder-note">{{founderNote.quote}}<span>{{founderNote.attribution}}</span></p>
 
-    <!-- Closing CTA — the signup panel, repeated -->
+    <!-- Closing CTA — the store panel, repeated. A plain text link, not a
+         second badge: one badge per page keeps it a signpost instead of
+         wallpaper, and Apple's badge is not a decorative element. -->
     <section class="signup">
       <h2>{{signup.closingHeading}}</h2>
       <p class="signup__sub">{{signup.closingSub}}</p>
-      <p class="signup__alert" data-alert="invalid" tabindex="-1" hidden>{{signup.alertInvalid}}</p>
-      <p class="signup__alert" data-alert="error" tabindex="-1" hidden>{{signup.alertError}}</p>
+      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=PROVIDER_ID_TODO&amp;ct=site_footer">{{signup.closingLink}}</a></p>
+    </section>
+
+    <!-- The notes list. One field, no panel, no wash — deliberately the
+         quietest thing on the page, because it is no longer the page's job.
+         Framed as product notes, not a launch list: the launch is over, and
+         scarcity language would be a lie now. Same endpoint as before. -->
+    <section class="notes">
+      <h2>{{notes.heading}}</h2>
+      <p>{{notes.sub}}</p>
       <form action="https://api.theledeapp.com/subscribe" method="post">
         <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-        <button type="submit">{{signup.button}}</button>
+        <button type="submit">{{notes.button}}</button>
       </form>
-      <p class="fineprint">{{signup.disclaimer}}</p>
     </section>
 
     </main>
@@ -267,63 +286,9 @@
         <p class="endmark" aria-hidden="true">&#182;</p>
         <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
         <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
+        <p class="disclaimer">{{footer.appleCredit}}</p>
       </div>
     </footer>
   </div>
-  <script>
-  /* Signup feedback. The server answers a failed POST /subscribe with a 303 back
-     to `/?subscribe=invalid#notify` or `/?subscribe=error#notify`. Nothing read
-     that param, so a signup that failed looked exactly like one that never
-     happened — worst on the `error` branch, where a VALID address is dropped
-     during a backend outage on a page whose whole job is collecting it.
-
-     Progressive enhancement, not a dependency: with no JS the form still posts
-     and still succeeds, exactly as before. Only the message needs script. */
-  (function () {
-    var match = /[?&]subscribe=([^&#]*)/.exec(window.location.search);
-    if (!match) return;
-
-    /* Closed list. The param lands in the DOM's aria wiring, so an unrecognised
-       value is discarded rather than trusted. */
-    var kind = match[1] === 'invalid' || match[1] === 'error' ? match[1] : null;
-    if (!kind) return;
-
-    var first = null;
-    var panels = document.querySelectorAll('.signup');
-    for (var i = 0; i < panels.length; i++) {
-      var alert = panels[i].querySelector('.signup__alert[data-alert="' + kind + '"]');
-      var field = panels[i].querySelector('input[type="email"]');
-      if (!alert) continue;
-      alert.id = 'signup-alert-' + i;
-      alert.hidden = false;
-      if (field) {
-        field.setAttribute('aria-describedby', alert.id);
-        /* Only `invalid` is the reader's input to fix. A backend outage is ours,
-           and marking their address invalid for it would be a lie. */
-        if (kind === 'invalid') field.setAttribute('aria-invalid', 'true');
-      }
-      if (!first) first = alert;
-    }
-
-    /* Focus rather than a live region: this arrives on navigation, where focus
-       is the reliably-announced move, and it seats the reader one Tab above the
-       field they came back to fix.
-
-       Deferred to `load` on purpose. The redirect carries `#notify`, and the
-       browser resolves that fragment AFTER this script runs — doing it inline
-       looked right and left focus back on <body>, silent to a screen reader. */
-    if (first) {
-      window.addEventListener('load', function () {
-        first.focus();
-      });
-    }
-
-    /* Drop the param so a reload or a Back doesn't re-assert a stale failure.
-       The #notify hash stays — that's where the reader should be. */
-    if (window.history.replaceState) {
-      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
-    }
-  })();
-  </script>
 </body>
 </html>

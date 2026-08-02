@@ -5,13 +5,17 @@
     "sub": "Save anything worth reading. The Lede reads it closely, unburies the real story, files it by beat, and writes the strongest honest case the piece can make. Your queue becomes a magazine, not a pile of tabs."
   },
   "signup": {
-    "topEyebrow": "Coming to <span class=\"brand-case\">iPhone</span> · one email when it opens",
-    "closingHeading": "Be first when it opens.",
-    "closingSub": "No account, ever. Your library lives in your own iCloud, and your first ten briefs each month are free.",
-    "button": "Get an early invite",
-    "disclaimer": "One email, when it opens. Nothing else, no list-sharing. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it.",
-    "alertInvalid": "That address didn&rsquo;t look like an email. Check it and send it again.",
-    "alertError": "Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute."
+    "topEyebrow": "Out now on the <span class=\"brand-case\">App Store</span>",
+    "badgeAlt": "Download on the App Store",
+    "closingHeading": "Start with the next thing you save.",
+    "closingSub": "Nothing to sign up for and no password to make. Your library lives in your own iCloud, and your first ten briefs each month are free.",
+    "closingLink": "Available on the App Store",
+    "disclaimer": "Free to start: ten briefs a month, no account. Requires iOS 26. United States App Store."
+  },
+  "notes": {
+    "heading": "Occasional notes from the desk",
+    "sub": "A short note when something meaningful ships. No launch spam; the launch is over.",
+    "button": "Subscribe"
   },
   "showcase1": {
     "heading": "Your saves file themselves into a magazine.",
@@ -27,11 +31,14 @@
     "quote": "&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;",
     "attribution": "Charles Klein, maker of The Lede"
   },
+  "footer": {
+    "appleCredit": "Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries."
+  },
   "thanks": {
-    "title": "You're on the list · The Lede",
-    "eyebrow": "You're on the list",
-    "h1": "You'll be among<br>the first in.",
-    "sub": "We&rsquo;ll email you once, when The Lede is on the App Store. That&rsquo;s the only reason we&rsquo;ll write. No noise, no list-sharing, and you can unsubscribe in one tap. The details are in the <a href=\"/privacy#launch-list\">privacy policy</a>.",
+    "title": "The list did its job · The Lede",
+    "eyebrow": "The list did its job",
+    "h1": "You waited.<br>Here it is.",
+    "sub": "Thanks for waiting. The Lede is on the App Store now: ten briefs a month free, no account. The launch list is closed, and nothing here will email you again.",
     "muted": "Know someone drowning in open tabs? Send them <a href=\"https://theledeapp.com\">theledeapp.com</a>."
   }
 }

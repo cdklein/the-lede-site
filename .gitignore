@@ -2,3 +2,4 @@ build/
 .DS_Store
 DEPLOY.md
 site-design-spec.md
+aday-preview/
