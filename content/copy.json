@@ -5,11 +5,11 @@
     "sub": "Save anything worth reading. The Lede reads it closely, unburies the real story, files it by beat, and writes the strongest honest case the piece can make. Your queue becomes a magazine, not a pile of tabs."
   },
   "signup": {
-    "topEyebrow": "Coming to <span class=\"brand-case\">iPhone</span> · opening in waves",
+    "topEyebrow": "Coming to <span class=\"brand-case\">iPhone</span> · one email when it opens",
     "closingHeading": "Be first when it opens.",
     "closingSub": "No account, ever. Your library lives in your own iCloud, and your first ten briefs each month are free.",
     "button": "Get an early invite",
-    "disclaimer": "Just your invite when a wave opens. No list-sharing, no noise. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it.",
+    "disclaimer": "One email, when it opens. Nothing else, no list-sharing. The <a href=\"/privacy#launch-list\">privacy policy</a> covers it.",
     "alertInvalid": "That address didn&rsquo;t look like an email. Check it and send it again.",
     "alertError": "Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute."
   },
@@ -30,7 +30,7 @@
   "thanks": {
     "eyebrow": "You're on the list",
     "h1": "You'll be among<br>the first in.",
-    "sub": "We&rsquo;re opening The Lede in small waves, so you&rsquo;ll get your invite early. That invite is the only reason we&rsquo;ll email you. No noise, no list-sharing, and you can unsubscribe in one tap. The details are in the <a href=\"/privacy#launch-list\">privacy policy</a>.",
+    "sub": "We&rsquo;ll email you once, when The Lede is on the App Store. That&rsquo;s the only reason we&rsquo;ll write. No noise, no list-sharing, and you can unsubscribe in one tap. The details are in the <a href=\"/privacy#launch-list\">privacy policy</a>.",
     "muted": "Know someone drowning in open tabs? Send them <a href=\"https://theledeapp.com\">theledeapp.com</a>."
   }
 }
