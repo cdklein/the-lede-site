@@ -181,7 +181,10 @@ verified from a desktop.
 **10. Tidy.** Once the flip has shipped and soaked, delete the held files
 (`content/copy.aday.json`, `templates/*.aday.template.html`, `llms.aday.txt`),
 drop the `aday` branch from `build.mjs`, remove `aday-preview/` from
-`.gitignore`, and close the-lede-site#2.
+`.gitignore`, and close the-lede-site#2. Also collapse the CDO-pass override
+block at the end of `styles.css` into the rules it supersedes (it overrides
+`.signup--store .store-badge`'s margin rather than editing it, by design —
+the pass was append-only; see the-lede-site#8).
 
 ---
 
