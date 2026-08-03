@@ -106,7 +106,10 @@ grep -c "trademarks of Apple Inc" privacy.html support.html sourcing.html 404.ht
 
 **4. Fill the press page's release-day facts.** `/press` has been live through
 the pitch window saying the date and store link arrive on release day. Today is
-that day.
+that day. (CMO note from the sign-off: the RELEASE DATE placeholder should be
+filled earlier, at pitch-send, with the same date the Voorhees email names — a
+reviewer clicking from a dated pitch to an undated kit reads the kit as the
+less-informed document. The store-link placeholder stays until today.)
 
 ```bash
 perl -i -pe 's{<span class="press-tocome" data-fill="release-date">To be announced</span> · this page carries the date and the store link on release day\.}{<the release date, e.g. August 21, 2026>}' press.html
