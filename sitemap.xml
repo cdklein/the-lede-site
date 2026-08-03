@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://theledeapp.com/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://theledeapp.com/privacy</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://theledeapp.com/support</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://theledeapp.com/sourcing</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://theledeapp.com/press</loc>
+    <lastmod>2026-08-03</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>

@@ -58,6 +58,14 @@ variant physically cannot reach the live site until it is promoted.
 `sourcing.html`, `404.html`) are not built from templates, so their footer credit
 is a scripted step below rather than a held file.
 
+**The press page** (`press.html` + `press-kit/`, site#6) is NOT held — it deploys
+before the flip, because the pitch window opens while the app is still in Pending
+Developer Release. It already carries the Apple credit line (do not perl it in
+step 3), and it carries two visible release-day placeholders that are filled in
+step 4 below. The quota-floor FAQ entry in `support.html` (site#7,
+`#allowance-floor`) also rides whatever deploy comes first; it is a
+buyer-protective promise and is safe live early.
+
 ---
 
 ## The flip, in order
@@ -96,13 +104,26 @@ perl -i -pe 's{(<p class="disclaimer">Not affiliated with The Lede Company.*?</p
 grep -c "trademarks of Apple Inc" privacy.html support.html sourcing.html 404.html   # each must be 1
 ```
 
-**4. Build the real pages.**
+**4. Fill the press page's release-day facts.** `/press` has been live through
+the pitch window saying the date and store link arrive on release day. Today is
+that day.
+
+```bash
+perl -i -pe 's{<span class="press-tocome" data-fill="release-date">To be announced</span> · this page carries the date and the store link on release day\.}{<the release date, e.g. August 21, 2026>}' press.html
+perl -i -pe 's{<span class="press-tocome" data-fill="store-link">Live on release day</span>}{<a href="https://apps.apple.com/app/id6772315315">apps.apple.com/app/id6772315315</a>}' press.html
+grep -c 'press-tocome' press.html    # must be 0
+```
+
+(No `pt=` campaign token on the press page's store link: press coverage is
+attributed by its own referrers, and a bare link is what reviewers paste.)
+
+**5. Build the real pages.**
 
 ```bash
 node build.mjs
 ```
 
-**5. Verify before deploying.** Every one of these must pass.
+**6. Verify before deploying.** Every one of these must pass.
 
 ```bash
 grep -c 'alt="Download on the App Store"' index.html      # 1
@@ -114,13 +135,15 @@ grep -c 'apple-itunes-app' index.html                     # 1
 grep -c 'downloadUrl' index.html                          # 1
 grep -c 'trademarks of Apple Inc' index.html thanks.html  # 1 each
 grep -c 'brand-case' index.html                           # 1  (keeps App Store's casing)
+grep -c 'below what was advertised' support.html          # 1  (the quota-floor sentence, site#7)
+grep -c 'press-tocome' press.html                         # 0  (release-day facts filled, step 4)
 curl -sI https://apps.apple.com/app/id6772315315 | head -1  # the listing is really live
 ```
 
 Then open `index.html` and `thanks.html` locally, in both light and dark, and
 confirm the badge reads on both. It does today; this is the regression check.
 
-**6. Commit.**
+**7. Commit.**
 
 ```bash
 git add -A
@@ -128,7 +151,7 @@ git commit -m "site: A-day — the App Store replaces the launch list"
 git push
 ```
 
-**7. Deploy.** A `git push` is NOT a deploy. This project is Cloudflare Pages
+**8. Deploy.** A `git push` is NOT a deploy. This project is Cloudflare Pages
 **direct-upload**, so the site changes only when this runs:
 
 ```bash
@@ -138,10 +161,10 @@ git push
 (It needs 1Password: `op read` pulls the Cloudflare token. Run it from a shell
 where `op` is signed in.)
 
-**8. Verify live.**
+**9. Verify live.**
 
 ```bash
-for p in / /thanks.html /privacy /support /sourcing; do
+for p in / /thanks.html /privacy /support /sourcing /press /press-kit/the-lede-press-kit.zip; do
   curl -sL -o /dev/null -w "$p %{http_code}\n" "https://theledeapp.com$p"
 done
 curl -s https://theledeapp.com/ | grep -o 'apps.apple.com/app/id[^"]*'
@@ -152,7 +175,7 @@ Then load `https://theledeapp.com` on an actual iPhone in Safari and confirm the
 Smart App Banner appears at the top. That banner is the one thing that cannot be
 verified from a desktop.
 
-**9. Tidy.** Once the flip has shipped and soaked, delete the held files
+**10. Tidy.** Once the flip has shipped and soaked, delete the held files
 (`content/copy.aday.json`, `templates/*.aday.template.html`, `llms.aday.txt`),
 drop the `aday` branch from `build.mjs`, remove `aday-preview/` from
 `.gitignore`, and close the-lede-site#2.

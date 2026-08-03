@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Press kit · The Lede</title>
+  <meta name="description" content="The press kit for The Lede: facts, a description written to be quoted, the honesty architecture behind the rename, and clean assets in one zip.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="canonical" href="https://theledeapp.com/press">
+  <meta property="og:title" content="Press kit · The Lede">
+  <meta property="og:description" content="The press kit for The Lede: facts, a description written to be quoted, the honesty architecture behind the rename, and clean assets in one zip.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theledeapp.com/press">
+  <meta property="og:image" content="https://theledeapp.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
+  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="styles.css?v=8ad49090">
+  <script>
+  /* Theme: follow the device unless the reader has explicitly chosen otherwise.
+     Runs before first paint so a chosen theme never flashes the other one, and
+     marks the document JS-capable, which is what reveals the toggle — a no-JS
+     reader keeps the device preference and never sees a dead control.
+
+     Toggling BACK to whatever the device already prefers clears the override
+     instead of pinning it, so there is always a way home to following the
+     device. Without that, one click freezes the site's appearance forever —
+     which is exactly the bug this replaced. */
+  (function () {
+    var d = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    d.classList.add('js');
+
+    function systemTheme() { return mq.matches ? 'dark' : 'light'; }
+    function resolved() { return d.getAttribute('data-theme') || systemTheme(); }
+
+    /* The two media-scoped theme-color metas cover the follow-the-device case.
+       An override needs an unscoped one, inserted first so it wins. */
+    function paintBrowserChrome() {
+      var override = document.querySelector('meta[name="theme-color"][data-override]');
+      if (!d.hasAttribute('data-theme')) {
+        if (override) override.remove();
+        return;
+      }
+      if (!override) {
+        override = document.createElement('meta');
+        override.setAttribute('name', 'theme-color');
+        override.setAttribute('data-override', '');
+        document.head.insertBefore(override, document.head.firstChild);
+      }
+      override.setAttribute('content', resolved() === 'dark' ? '#1a1613' : '#faf7f0');
+    }
+
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') d.setAttribute('data-theme', saved);
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.theme-toggle');
+      if (!btn) return;
+      var next = resolved() === 'dark' ? 'light' : 'dark';
+      if (next === systemTheme()) {
+        d.removeAttribute('data-theme');
+        try { localStorage.removeItem('theme'); } catch (e) {}
+      } else {
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      }
+      paintBrowserChrome();
+    });
+
+    /* While no explicit choice is stored, track the device live. */
+    mq.addEventListener('change', paintBrowserChrome);
+  })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap wrap--doc">
+    <header class="site-head">
+      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+      </nav>
+    </header>
+    <main id="main">
+
+    <p class="eyebrow">Press</p>
+    <h1>The press kit</h1>
+    <p class="lede">Everything needed to cover The Lede: the facts, a description written to be quoted, the honesty architecture behind the rename, and clean assets. Short on time? The zip at the bottom has all of it.</p>
+
+    <div class="callout">
+      <p><strong>Writing about The Lede?</strong> Email <a href="mailto:charles@theledeapp.com">charles@theledeapp.com</a>. One person answers it, usually the same day. Quotes, a different crop, a real answer to a hard question: ask.</p>
+    </div>
+
+    <section class="press-sec" id="facts" aria-label="Facts">
+      <h2>The facts</h2>
+      <dl class="press-facts">
+        <dt>App</dt>
+        <dd>The Lede, listed on the App Store as "The Lede: Read Later"</dd>
+        <dt>Developer</dt>
+        <dd>Charles Klein LLC</dd>
+        <dt>Platform</dt>
+        <dd>iPhone and iPad, iOS 26 or later</dd>
+        <dt>Categories</dt>
+        <dd>News (primary), Productivity</dd>
+        <dt>Price</dt>
+        <dd>Free to start: ten briefs a month, no account. Membership is $9.99 a month or $99.99 a year, each with a 7-day free trial and 150 Dig Deepers a month.</dd>
+        <dt>Availability</dt>
+        <dd>United States App Store</dd>
+        <dt>Release date</dt>
+        <dd><span class="press-tocome" data-fill="release-date">To be announced</span> · this page carries the date and the store link on release day.</dd>
+        <dt>App Store link</dt>
+        <dd><span class="press-tocome" data-fill="store-link">Live on release day</span></dd>
+        <dt>Press contact</dt>
+        <dd><a href="mailto:charles@theledeapp.com">charles@theledeapp.com</a></dd>
+        <dt>Website</dt>
+        <dd><a href="https://theledeapp.com">theledeapp.com</a></dd>
+      </dl>
+    </section>
+
+    <section class="press-sec" id="description">
+      <h2>What The Lede is</h2>
+      <p class="muted">This section is written to be quoted. Use it verbatim or cut it down.</p>
+      <p>The Lede is a read-later app for iPhone and iPad with a research desk behind it. Headlines are written to be clicked; The Lede reads the article underneath and tells you what it actually argues.</p>
+      <p>Save anything worth reading, from Safari or any app with a share button. It comes back renamed for the real story, filed on its beat, with a short brief that makes the strongest honest case the piece can make. Your queue reads like a magazine instead of a pile of open tabs. You're the editor. The Lede is your research desk.</p>
+      <p>When something matters, <strong>Dig Deeper</strong> sends the desk out on it. It finds more reporting, weighs what holds up, including the strongest case against the piece, and comes back with an honest bottom line. Then it shows every source it looked at, so the reader can check its work.</p>
+      <p>It's built to be read: real typography, a dark mode made for reading at night, and complete VoiceOver support. The Lede is built to WCAG 2.2 AA throughout, which almost no reading app can say.</p>
+    </section>
+
+    <section class="press-sec" id="the-receipt">
+      <h2>The receipt</h2>
+      <p>The rename is the feature most likely to raise an eyebrow, so here is the honesty architecture behind it. The desk renames every article by what it actually argues, and the original headline is preserved right beside the rename, labeled <strong>RAN AS</strong>, exactly as it ran. The full article is kept and readable, quotes stay verbatim, and every link opens the source. Nothing is swapped behind the reader's back; they never have to take the desk's word for anything.</p>
+      <p>We're not summarizing, we're clarifying: making the point of the article crystal clear so you can decide whether a piece is worth your time at all.</p>
+      <p>The demonstration that leads the App Store listing: "A glass of red wine equals an hour at the gym" comes back as <strong>"It was run on rats."</strong></p>
+    </section>
+
+    <section class="press-sec" id="origin">
+      <h2>Who made it, and why it charges</h2>
+      <p>Charles Klein is a designer. He built The Lede because he got tired of headlines that bury the story, or sell one that isn't there, and because the read-later app he wanted didn't exist: one that reads what you save instead of storing it. It's native SwiftUI, and the iPad version is a real iPad app, not a stretched-out iPhone layout. It was built with Claude Code and finished by hand.</p>
+      <p>Why a subscription: every brief and every Dig Deeper is real compute, spent on one reader's one article. There are no ads, no trackers, and nothing is sold; the membership pays for the desk. The free tier is real: ten briefs a month, plus two Dig Deepers to try the desk at full stretch, with no account and no card.</p>
+    </section>
+
+    <section class="press-sec" id="where-it-sits">
+      <h2>Where it sits</h2>
+      <p>Readwise Reader, Matter, GoodLinks, and Folio are the established read-later apps, and they are good at what they do: they store and reformat what you save. The Lede reads it. That is the whole difference, and it cuts both ways: if what you want is a beautifully formatted archive, those apps have years of head start. If you want to know what a piece actually argues before you give it twenty minutes, that is what The Lede is for.</p>
+    </section>
+
+    <section class="press-sec" id="privacy-facts">
+      <h2>Privacy, in plain terms</h2>
+      <p>Every sentence here matches the <a href="/privacy">Privacy Policy</a>, which carries the binding detail.</p>
+      <ul>
+        <li>There is no account: no name, no email, no password. A reader's library lives in their own iCloud, not on our servers.</li>
+        <li>The app hosts no web view of its own and owns no cookie store, so a capture cannot leak a reader's signed-in session off the device.</li>
+        <li>Sharing from Safari, the normal path, reads only the page the reader already had open, as they see it. A link shared from another app is fetched and read by the desk itself.</li>
+        <li>Article text is processed to write the brief and is never used to train AI models.</li>
+        <li>A Dig Deeper's notification is pushed only to the device that asked for it.</li>
+        <li>No ads, no third-party trackers, nothing sold.</li>
+      </ul>
+    </section>
+
+    <section class="press-sec" id="assets">
+      <h2>Assets</h2>
+      <p><a class="press-download" href="/press-kit/the-lede-press-kit.zip" download>Download the press kit (zip, 5.5 MB)</a></p>
+      <p>The iPhone frames are the six on the App Store listing, in listing order, 1320 by 2868. The iPad frames are the listing's five. All assets may be reproduced in coverage of The Lede; please don't recolor or re-draw the icon.</p>
+
+      <h3 id="assets-iphone">iPhone frames</h3>
+      <div class="kit-grid" role="list">
+        <figure role="listitem"><img src="press-kit/iphone/01-the-headline.png" alt="App Store frame 1, The Headline: an ember card reading 'A glass of red wine equals an hour at the gym', answered by 'It was run on rats.'" width="1320" height="2868" loading="lazy"><figcaption>01 · The headline</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/iphone/02-the-rename.png" alt="App Store frame 2, The Rename: a brief renamed 'Adults Have Forgotten How to Make Friends' with the RAN AS line showing the original headline 'The Friendship Problem'." width="1320" height="2868" loading="lazy"><figcaption>02 · The rename</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/iphone/03-the-queue.png" alt="App Store frame 3, The Queue: the queue as a magazine, each story renamed, filed by beat, with its RAN AS line." width="1320" height="2868" loading="lazy"><figcaption>03 · The queue</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/iphone/04-the-research-desk.png" alt="App Store frame 4, The Research Desk: a Dig Deeper read showing what others found and where the desk landed." width="1320" height="2868" loading="lazy"><figcaption>04 · The research desk</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/iphone/05-the-sources.png" alt="App Store frame 5, The Sources: the numbered source list behind a Dig Deeper, every link opening the original." width="1320" height="2868" loading="lazy"><figcaption>05 · The sources</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/iphone/06-after-dark.png" alt="App Store frame 6, After Dark: a brief in dark mode, renamed 'Samoa erased a day to sync with its trading partners'." width="1320" height="2868" loading="lazy"><figcaption>06 · After dark</figcaption></figure>
+      </div>
+
+      <h3 id="assets-ipad">iPad frames</h3>
+      <div class="kit-grid kit-grid--ipad" role="list">
+        <figure role="listitem"><img src="press-kit/ipad/01-the-split.png" alt="iPad App Store frame 1, The Split: queue and open brief side by side, reading one story without losing the rest." width="2064" height="2752" loading="lazy"><figcaption>01 · The split</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/ipad/02-the-rename.png" alt="iPad App Store frame 2, The Rename: a full brief with the RAN AS line and the desk's read." width="2064" height="2752" loading="lazy"><figcaption>02 · The rename</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/ipad/03-the-research-desk.png" alt="iPad App Store frame 3, The Research Desk: a Dig Deeper read with sources." width="2064" height="2752" loading="lazy"><figcaption>03 · The research desk</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/ipad/04-the-index.png" alt="iPad App Store frame 4, The Index: the library filed by desk and by source, with search." width="2064" height="2752" loading="lazy"><figcaption>04 · The index</figcaption></figure>
+        <figure role="listitem"><img src="press-kit/ipad/05-after-dark.png" alt="iPad App Store frame 5, After Dark: a brief in dark mode beside the published article." width="2064" height="2752" loading="lazy"><figcaption>05 · After dark</figcaption></figure>
+      </div>
+
+      <h3 id="assets-icon">Icon &amp; card</h3>
+      <div class="kit-icons">
+        <figure><img src="press-kit/icon/the-lede-icon-512.png" alt="The Lede app icon: a knocked-out pilcrow on an ember gradient." width="512" height="512" loading="lazy"><figcaption>Icon · light</figcaption></figure>
+        <figure><img src="press-kit/icon/the-lede-icon-dark-512.png" alt="The Lede app icon, dark render." width="512" height="512" loading="lazy"><figcaption>Icon · dark</figcaption></figure>
+      </div>
+      <figure class="kit-og"><img src="press-kit/og/the-lede-og-card.png" alt="The link-preview card for theledeapp.com: the headline 'A Glass of Red Wine Equals an Hour at the Gym' unburied to 'The wine equals a workout study was run on rats', over the line 'Read the article. Not the headline.'" width="1200" height="630" loading="lazy"><figcaption>Link-preview card, 1200 × 630</figcaption></figure>
+    </section>
+
+    </main>
+
+    <footer>
+      <div class="colophon">
+        <img src="icon.png" alt="The Lede app icon" width="30" height="30">
+        <span>The Lede · your queue, <b>re-framed</b>.</span>
+      </div>
+      <div class="row">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/support">Support</a>
+        <a href="/sourcing">Sourcing standards</a>
+      </div>
+      <div class="page-colophon">
+        <p class="endmark" aria-hidden="true">&#182;</p>
+        <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
+        <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
+        <p class="disclaimer">Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

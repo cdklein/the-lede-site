@@ -139,6 +139,7 @@ const SITEMAP_PAGES = {
   'https://theledeapp.com/support': 'support.html',
   'https://theledeapp.com/privacy': 'privacy.html',
   'https://theledeapp.com/sourcing': 'sourcing.html',
+  'https://theledeapp.com/press': 'press.html',
 };
 const sitemapPath = path.join(__dirname, 'sitemap.xml');
 let sitemap = fs.readFileSync(sitemapPath, 'utf8');
