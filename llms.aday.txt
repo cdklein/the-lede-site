@@ -1,10 +1,10 @@
 # The Lede
 
-> A read-later app for iPhone with a research desk behind it. Save an article from anywhere; The Lede reads the whole piece, unburies what it's actually about, renames it plainly, files it by beat, and writes a short brief: the strongest honest case the piece makes. The user is the editor. The Lede is the research desk.
+> A read-later app for iPhone and iPad with a research desk behind it. Save an article from anywhere; The Lede reads the whole piece, unburies what it's actually about, renames it plainly, files it by beat, and writes a short brief: the strongest honest case the piece makes. The user is the editor. The Lede is the research desk.
 
 Key facts:
 - Where to get it: the App Store, at https://apps.apple.com/app/id6772315315. United States storefront, iOS 26 or later. There is no other way to install it.
-- Platform: iPhone (iOS). No Android or web version.
+- Platform: iPhone and iPad (iOS 26 or later). No Android or web version.
 - The original article is always preserved: every renamed story carries a "RAN AS" line showing the real headline, and the full original text is saved and readable.
 - Free tier: 10 briefs every month plus two lifetime "Dig Deeper" investigations, no account required.
 - One paid plan, billed through Apple: Membership at $9.99 a month, or $99.99 a year, which works out at $8.33 a month with two months free. Either way the desk reads everything you save, with 150 Dig Deepers a month, and both start with a 7-day free trial. For a subscription term already paid, a metered allowance is never reduced below what was advertised at purchase.

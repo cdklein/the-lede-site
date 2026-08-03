@@ -1276,3 +1276,94 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 .kit-icons { display: flex; gap: 1.4rem; margin: 1rem 0 1.6rem; }
 .kit-icons img { width: 96px; height: 96px; border-radius: 22px; display: block; }
 .kit-og { max-width: 30rem; }
+
+/* ====== A-day design pass (the-lede-site#8) =============================== */
+/* CDO pass, 2026-08-03, on the held launch-day variant. Append-only: every
+   selector below is either a class ONLY the A-day templates carry
+   (.signup--store, .store-badge, .store-link, .notes) or a compound that can
+   only match when the A-day footer's SECOND disclaimer exists. Nothing here
+   changes a pixel of the current live site — verified by rendering both.
+
+   All three fixes answer the same defect: the form-to-badge swap took the
+   widest, heaviest object out of the top band and left the *newsletter* as the
+   heaviest object on the page. Weight stopped tracking importance. */
+
+/* 1. The store band, tightened.
+   The badge (180x60) is a fifth the width of the form it replaced, so the three
+   things left in the band — eyebrow, badge, fine print — floated at three
+   different widths with form-scale gaps between them, and the band ended up
+   TALLER (258px) than the live band it replaces (230px) while holding less.
+   Closing the gaps fuses the three into one centred stamp, and the wide panel
+   then reads as margin around a mark rather than a tray with something missing.
+
+   The 8px under the badge was a phantom: <p class="store-badge"> inherited the
+   body's 1.65 line-height, so the strut's descent sat under an inline-block with
+   line-height 0. It pushed the whole stamp off the panel's optical centre. */
+.store-badge { line-height: 0; }
+.signup--store { padding-top: 2.4rem; padding-bottom: 2.4rem; }
+.signup--store .store-badge { margin: 1rem 0 1.05rem; }
+
+/* 2. The closing band's store link.
+   Type, colour and underline are unchanged — this is hit area only. As a bare
+   inline link it was 199x18, which clears WCAG 2.2 AA 2.5.8 on the spacing
+   exception alone (nothing sits near it); an inline-block box takes it to ~30px
+   without moving the underline, which matters on a phone. The margin comes down
+   by the padding it gains, so the panel's height is unchanged. */
+.store-link { margin-top: 0.85rem; }
+.store-link a { display: inline-block; padding: 0.3rem 0.2rem; }
+
+/* 3. The notes list, actually made quiet.
+   It was written to be the quietest thing on the page and rendered as the
+   loudest: it inherited the signup band's full-scale field and its solid ink
+   button. On paper that button was the darkest object below the hero; in dark
+   it was a cream slab at maximum contrast; and on a phone the form stacks, so
+   it became a FULL-WIDTH slab sitting directly under a CTA that is a plain text
+   link. The mailing list out-shouted the App Store.
+
+   So: match the controls to the block's own type register (its heading is
+   0.95rem and its note 0.86rem — only the furniture was full-size), and make
+   the button an outline rather than a slab. The pair now reads as one small
+   instrument at the foot of the page. Height stays at 44px, well over the 24px
+   AA target minimum; the field border stays --ink-3 because that is the token
+   that clears 3:1 non-text contrast (1.4.11) on both papers. */
+.notes { margin-top: 5.5rem; }          /* was 3.4rem: it sat closer to the CTA
+                                           panel than to the footer, so it read
+                                           as a third band in the CTA stack.
+                                           Now it groups with the colophon. */
+.notes form { max-width: 28rem; margin-top: 0.9rem; }   /* shares the note's measure */
+.notes input[type="email"] {
+  font-size: 15px;
+  padding: 0.68rem 0.85rem;
+  border-radius: 9px;
+}
+.notes button {
+  font-size: 15px;
+  padding: 0.68rem 1.1rem;
+  border-radius: 9px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink-2);
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+}
+.notes button:hover {
+  opacity: 1;                 /* the shared rule dims it; an outline button
+                                 should fill on hover, not fade */
+  background: var(--ink);
+  color: var(--paper);
+}
+.notes button:focus-visible {
+  outline: 2px solid var(--ember-ink);
+  outline-offset: 2px;
+}
+/* Stacked on a phone, a full-bleed outline button still reads as a bar. Let it
+   size to its label and sit under the field's centre. */
+@media (max-width: 30rem) {
+  .notes button { align-self: center; padding-inline: 1.6rem; }
+}
+
+/* 4. The footer's Apple trademark credit.
+   Two disclaimers only ever exist on the A-day pages. The credit is long enough
+   to wrap, and `text-wrap: pretty` only guards against a one-word last line —
+   it left "other countries." alone under a line ending on "and". Balance splits
+   it evenly, which is what the line above it already gets. */
+footer .disclaimer + .disclaimer { text-wrap: balance; }
