@@ -221,12 +221,15 @@ Copy ratified by Charles 2026-08-01.
   border: the three things that make the signup band read as "act here". It is
   framed as product notes because the launch is over and scarcity language would
   now be a lie. Same `POST /subscribe` endpoint as before.
-- **The thanks page changes job.** It was a waitlist confirmation; now it tells
-  someone who was waiting that the wait is over and that the list is closed. Its
-  `<title>` became a template slot in the same change, so it no longer has to be
-  edited in two places.
+- **The thanks page changes job.** It was a waitlist confirmation; post-flip the
+  only route to it is the notes form's success redirect, so it now confirms that
+  subscription: the reader asked for occasional notes, and the page says exactly
+  what they'll get (re-cut on Charles's ruling, 2026-08-03, resolving the
+  site#8 fork — the earlier held copy told a new subscriber the list was closed
+  and nothing would email them again). Its `<title>` became a template slot in
+  the same change, so it no longer has to be edited in two places.
 
-## Two things the CTO should decide before flip day
+## Open items before flip day (one resolved, kept for the record)
 
 1. **The notes form has no failure feedback.** The four `.signup__alert`
    paragraphs and the foot-of-page script were retired with the signup bands, as
@@ -237,6 +240,16 @@ Copy ratified by Charles 2026-08-01.
    the-lede-site#3 fixed in July, reopening on a smaller surface. Either restore
    the alert pair + script scoped to the notes block, or change the server's
    redirect. **Not fixed here, because the fix needs copy nobody has ratified.**
-2. **`notes.button` is the one improvised string** in this set: it reads
-   `Subscribe`. Everything else on this page is ratified copy. If Charles wants
-   another word, it lives in `content/copy.aday.json` under `notes.button`.
+2. ~~**`notes.button` is the one improvised string** in this set~~ — RESOLVED
+   2026-08-03: Charles ruled **"Add me"** (site#8 fork; it says you're being
+   added to a list, not buying a publication). Set in `content/copy.aday.json`
+   under `notes.button`; nothing left to decide here.
+3. **`privacy.html`'s launch-list section describes a list that ends at
+   launch.** `#launch-list` promises "a small number of messages about The
+   Lede's launch — typically a single notification when it's available" and
+   retention "until the launch list has served its purpose." Post-flip, the
+   notes form collects the same addresses for ongoing product notes — a
+   different purpose than the one disclosed. `privacy.html` is hand-authored
+   (not a held file), so this needs a counsel-lane copy pass at or before the
+   flip. Found during the site#8 close-out, 2026-08-03; not fixed there because
+   privacy copy is not the CDO's or CTO's to improvise.

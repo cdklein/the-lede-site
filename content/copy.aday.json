@@ -15,7 +15,7 @@
   "notes": {
     "heading": "Occasional notes from the desk",
     "sub": "A short note when something meaningful ships. No launch spam; the launch is over.",
-    "button": "Subscribe"
+    "button": "Add me"
   },
   "showcase1": {
     "heading": "Your saves file themselves into a magazine.",
@@ -35,10 +35,10 @@
     "appleCredit": "Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries."
   },
   "thanks": {
-    "title": "The list did its job · The Lede",
-    "eyebrow": "The list did its job",
-    "h1": "You waited.<br>Here it is.",
-    "sub": "Thanks for waiting. The Lede is on the App Store now: ten briefs a month free, no account. The launch list is closed, and nothing here will email you again.",
+    "title": "You're on the list · The Lede",
+    "eyebrow": "You're on the list",
+    "h1": "We&rsquo;ll write when<br>there&rsquo;s news.",
+    "sub": "You asked for occasional notes from the desk, and occasional is what you&rsquo;ll get: a short note when something meaningful ships, and that&rsquo;s all. No schedule, no digest, nothing else. Unsubscribe any time.",
     "muted": "Know someone drowning in open tabs? Send them <a href=\"https://theledeapp.com\">theledeapp.com</a>."
   }
 }
