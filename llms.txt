@@ -5,7 +5,7 @@
 Key facts:
 - Platform: iPhone and iPad (iOS 26 or later). No Android or web version.
 - The original article is always preserved: every renamed story carries a "RAN AS" line showing the real headline, and the full original text is saved and readable.
-- Free tier: 10 briefs every month plus two lifetime "Dig Deeper" investigations, no account required.
+- Free tier: 10 briefs and two "Dig Deeper" investigations every month, no account required.
 - One paid plan, billed through Apple: Membership at $9.99 a month, or $99.99 a year, which works out at $8.33 a month with two months free. Either way the desk reads everything you save, with 150 Dig Deepers a month, and both start with a 7-day free trial. For a subscription term already paid, a metered allowance is never reduced below what was advertised at purchase.
 - Privacy: no account, no name, no password. The user's library lives in their own iCloud, never on the company's servers. Article text is processed transiently to write the brief and never used to train AI models. No ads, no third-party trackers, no data sales.
 - Accessibility: designed and tested against WCAG 2.2 AA; works with VoiceOver, Switch Control, Dynamic Type, and Reduce Motion.
