@@ -314,7 +314,7 @@
       "name": "What happens to an article's text when I save it?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It's sent to our server just long enough to write the brief: passed to our AI provider, Anthropic, never used to train AI models, and never stored. What we keep is limited and self-deleting: a short, non-reversible fingerprint of the text so the same article isn't processed twice, the brief itself for a brief window, and the article's web address (never its text). The Privacy Policy has the binding detail, including every provider involved."
+        "text": "It's sent to our server just long enough to write the brief: passed to our AI provider, Anthropic, never used to train AI models, and never stored. What we keep is limited and self-deleting: a short, one-way fingerprint of the text so the same article isn't processed twice, the brief itself for a brief window, and a hash of the article's web address, never the address itself and never its text. The raw address only passes briefly through our host's operational logs. The Privacy Policy has the binding detail, including every provider involved."
       },
       "url": "https://theledeapp.com/support#article-text"
     },
@@ -323,7 +323,7 @@
       "name": "Do you keep a record of what I read?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not a readable, identity-linked one. Your saved articles, briefs, and highlights live in your own iCloud, never on our servers. To run the service we keep limited usage signals (always tied to a random per-device identifier, never your name), such as a story's publication and a non-reversible fingerprint of its address. We don't keep a readable list of the specific articles you read. The Privacy Policy spells out exactly what's retained."
+        "text": "Not a readable list of the specific articles you read. Your saved articles, briefs, and highlights live in your own iCloud, never on our servers. To run the service we keep limited usage signals (tied to a random per-device identifier, never your name), such as a story's publication and a keyed fingerprint of its address (a one-way code we can't reverse without a secret we hold). We don't store the web addresses themselves. The Privacy Policy spells out exactly what's retained."
       },
       "url": "https://theledeapp.com/support#reading-record"
     },
@@ -579,10 +579,10 @@
       <p>No account: no name, no password, and the app never asks for your email. Your library lives in your own iCloud. We collect a small amount of usage data, keyed to a random per-device identifier rather than your name, to run the service and set fair pricing. No ads, no third-party trackers, nothing sold. The exact details are in the <strong><a href="/privacy">Privacy Policy</a></strong>.</p>
 
       <h3 id="article-text">What happens to an article's text when I save it?<a class="faq-link" href="#article-text" aria-label="Copy link to this question: What happens to an article's text when I save it?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>It's sent to our server just long enough to write the brief: passed to our AI provider, Anthropic, never used to train AI models, and never stored. What we keep is limited and self-deleting: a short, non-reversible fingerprint of the text so the same article isn't processed twice, the brief itself for a brief window, and the article's web address (never its text). The <strong><a href="/privacy">Privacy Policy</a></strong> has the binding detail, including every provider involved.</p>
+      <p>It's sent to our server just long enough to write the brief: passed to our AI provider, Anthropic, never used to train AI models, and never stored. What we keep is limited and self-deleting: a short, one-way fingerprint of the text so the same article isn't processed twice, the brief itself for a brief window, and a hash of the article's web address, never the address itself and never its text. The raw address only passes briefly through our host's operational logs. The <strong><a href="/privacy">Privacy Policy</a></strong> has the binding detail, including every provider involved.</p>
 
       <h3 id="reading-record">Do you keep a record of what I read?<a class="faq-link" href="#reading-record" aria-label="Copy link to this question: Do you keep a record of what I read?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>Not a readable, identity-linked one. Your saved articles, briefs, and highlights live in your own iCloud, never on our servers. To run the service we keep limited usage signals (always tied to a random per-device identifier, never your name), such as a story's publication and a non-reversible fingerprint of its address. We don't keep a readable list of the specific articles you read. The <strong><a href="/privacy">Privacy Policy</a></strong> spells out exactly what's retained.</p>
+      <p>Not a readable list of the specific articles you read. Your saved articles, briefs, and highlights live in your own iCloud, never on our servers. To run the service we keep limited usage signals (tied to a random per-device identifier, never your name), such as a story's publication and a keyed fingerprint of its address (a one-way code we can't reverse without a secret we hold). We don't store the web addresses themselves. The <strong><a href="/privacy">Privacy Policy</a></strong> spells out exactly what's retained.</p>
 
       <h3 id="delete-my-data">Can I delete my data?<a class="faq-link" href="#delete-my-data" aria-label="Copy link to this question: Can I delete my data?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
       <p>Yes. Deleting the app and its iCloud data removes your library. Email <strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a></strong> and we'll delete the usage records tied to your device. We may keep one Apple-issued transaction identifier tied to a recent subscription where we need it to handle refunds and billing disputes; it carries no name or payment details. Full detail in the <strong><a href="/privacy">Privacy Policy</a></strong>.</p>
@@ -658,7 +658,7 @@
         <a href="/">Home</a>
         <a href="/privacy">Privacy</a>
         <a href="/support">Support</a>
-        <a href="/sourcing">Sourcing standards</a>
+        <a href="/sourcing">How The Lede handles sources</a>
       </div>
       <div class="page-colophon">
         <p class="endmark" aria-hidden="true">&#182;</p>
