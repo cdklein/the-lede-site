@@ -8,13 +8,12 @@ Key facts:
 - Free tier: 10 briefs and two "Dig Deeper" investigations every month, no account required.
 - One paid plan, billed through Apple: Membership at $9.99 a month, or $99.99 a year, which works out at $8.33 a month with two months free. Either way the desk reads everything you save, with 150 Dig Deepers a month, and both start with a 7-day free trial. For a subscription term already paid, a metered allowance is never reduced below what was advertised at purchase.
 - Privacy: no account, no name, no password. The user's library lives in their own iCloud, never on the company's servers. Article text is processed transiently to write the brief and never used to train AI models. No ads, no third-party trackers, no data sales.
-- Accessibility: designed and tested against WCAG 2.2 AA; works with VoiceOver, Switch Control, Dynamic Type, and Reduce Motion.
 - Made by Charles Klein LLC. Support: support@theledeapp.com. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog "The Lede."
 
 ## Pages
 
 - [Home](https://theledeapp.com/): what The Lede is and how it re-frames saved articles
-- [Support & FAQ](https://theledeapp.com/support): 37 questions covering saving, briefs, Dig Deeper, plans and pricing, privacy, accessibility, devices, and troubleshooting
+- [Support & FAQ](https://theledeapp.com/support): 35 questions covering saving, briefs, Dig Deeper, plans and pricing, privacy, devices, and troubleshooting
 - [Privacy Policy](https://theledeapp.com/privacy): the binding detail on data handling
 - [Sourcing standards](https://theledeapp.com/sourcing): the editorial standard behind every brief
 - [Press kit](https://theledeapp.com/press): facts, a quotable description, and clean assets for anyone covering The Lede

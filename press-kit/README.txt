@@ -39,10 +39,8 @@ more reporting, weighs what holds up, including the strongest case
 against the piece, and comes back with an honest bottom line. Then it
 shows you every source it looked at, so you can check its work.
 
-It's built to be read: real typography, a dark mode made for reading
-at night, and VoiceOver support throughout. The Lede is designed and
-tested against WCAG 2.2 AA, and every screen was walked with VoiceOver
-on a real iPhone before it shipped.
+It's built to be read: real typography and a dark mode made for
+reading at night.
 
 THE RECEIPT (what keeps the rename honest)
 ------------------------------------------
