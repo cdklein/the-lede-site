@@ -96,14 +96,14 @@
     <p class="eyebrow">Privacy</p>
     <h1>Privacy Policy</h1>
     <p class="lede">The Lede is built to need as little of your data as possible. This page explains exactly what that means.</p>
-    <p class="muted">Last updated: August 3, 2026</p>
+    <p class="muted">Last updated: August 27, 2026</p>
 
     <div class="callout">
       <p><strong>The short version.</strong></p>
       <ul>
         <li>There is <strong>no account</strong> — no name or password to create, and the app never asks for your email. <em>Joining our launch mailing list on this website is the one optional exception</em> (see below).</li>
         <li>Your saved articles and highlights live in <strong>your own iCloud</strong>, not on our servers. We never receive your library.</li>
-        <li>To write a brief, the article's text is sent to our AI provider (Anthropic). It is <strong>not used to train AI models</strong>, and we don't keep the text.</li>
+        <li>To write a brief, the article's title and text are sent to our AI provider (Anthropic). The article's web address goes too when you ask for a "Dig Deeper," or when the piece is opinion or commentary. <strong>Our contract bars model training on your text</strong>, and we don't keep the text.</li>
         <li>We collect a small amount of usage data — keyed to a <strong>random per-device identifier, never your name</strong> — to run the service and set fair pricing.</li>
         <li>No ads. No third-party trackers. <strong>We never sell your data.</strong></li>
       </ul>
@@ -118,13 +118,13 @@
     <h2>What happens when you save an article</h2>
     <p>When you save an article, the app sends its <strong>web address, headline, and extracted text</strong> to our server so we can produce the brief. From there:</p>
     <ul>
-      <li>The article text is sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. Under Anthropic's commercial terms, this content is <strong>not used to train their models</strong>. Anthropic holds it for <strong>up to 30 days</strong> so their team can review it for safety and security, and then deletes it.</li>
+      <li>The article's <strong>title and text</strong> are sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. The article's <strong>web address</strong> is sent to Anthropic as well in two cases: when you ask for a "Dig Deeper," so the desk can research the piece, and when the piece is opinion or commentary, where the brief is written from the reporting the address points to. <strong>Our contract bars model training on your text.</strong> Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</li>
       <li>For some stories we run a web search (via <strong>Tavily</strong> or <strong>Exa</strong>) using the headline to gather additional context.</li>
       <li>We <strong>never store the article's full text</strong>. We keep a short, one-way fingerprint (a hash) of the text, which can't be turned back into the article, so that an identical article isn't re-processed, alongside the brief we generated, in a temporary cache that automatically deletes itself (within 14 days for a brief, 7 days for a "Dig Deeper," 48 hours for redirected sources). And for sources your device can't read on its own, the server returns that same extracted text to your device so your copy saves alongside the brief — it passes through to you but is never stored on our servers; your saved copy lives only in <strong>your own iCloud</strong>.</li>
       <li>We keep a hash of the web address, not the address itself, so an identical article isn't re-processed. That cache entry has no name, no device identifier, and no account attached to it, and it deletes itself on the schedule above. The raw web address is never kept in our databases. It only passes briefly through our host's operational logs (see below).</li>
     </ul>
     <div class="callout">
-      <p>To be plain about it: what we keep is a hash of the web address, not the address. We never store the article's text on our own servers. Our AI provider holds the text for up to 30 days for safety review, as described above, and then deletes it. The raw web address itself we don't keep at all. It only appears briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
+      <p>To be plain about it: what we keep is a hash of the web address, not the address. We never store the article's text on our own servers. Our contract bars model training on your text, and Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold. We don't keep the raw web address at all. Apart from the two cases above, where it goes to Anthropic, it appears only briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
     </div>
 
     <h2>Notifications and your device</h2>
@@ -154,13 +154,17 @@
     <p>By submitting your email you consent to receiving these launch messages. You can withdraw that consent at any time using the unsubscribe link or by emailing us.</p>
 
     <h2>Who processes your data</h2>
-    <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone.</p>
+    <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone. Each of these providers acts only on our instructions. We do not share your data with any provider that does not protect it to the same standard this policy sets out. That includes <strong>Anthropic</strong>: our contract bars model training on your text, limits Anthropic to writing the brief we asked for, and sets the deletion terms described under <a href="#data-retention">Data retention</a> below.</p>
 
-    <h2>Data retention</h2>
-    <p>The temporary AI cache deletes itself on the schedule above. Article text sent to our AI provider is held by <strong>Anthropic</strong> for <strong>up to 30 days</strong> for safety and security review and then deleted; we never store it ourselves. Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
+    <h2 id="data-retention">Data retention</h2>
+    <p>The temporary AI cache deletes itself on the schedule above. We never store the article's text ourselves. <strong>Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</strong> Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
 
     <h2>Your choices and your rights</h2>
-    <p>Deleting the app removes its local data; removing its iCloud data deletes your library. For the pseudonymous usage records on our servers, you can:</p>
+    <p>Deleting the app removes its local data; removing its iCloud data deletes your library. You can also stop the sending described above at any time:</p>
+    <ul>
+      <li><strong>Turn the desk off.</strong> In the app's own Settings, under <strong>Privacy</strong>, switch off <em>Sending articles to the desk</em>. From then on, articles you save stay on your phone and land without a brief, and nothing goes to our AI provider. You can switch it back on whenever you like, and the same screen shows the full list of what leaves your phone.</li>
+    </ul>
+    <p>For the pseudonymous usage records on our servers, you can:</p>
     <ul>
       <li><strong>Request deletion</strong> — email us and <strong>we will delete the usage records associated with your device</strong>. (We may retain the Apple transaction identifier tied to an active or recently-ended subscription where doing so is necessary to process refunds, disputes, or required financial records, as described under <a href="#subscriptions-note">Subscriptions</a> above.)</li>
       <li><strong>Request a copy</strong> — email us and we will provide the usage records we hold for your device.</li>
