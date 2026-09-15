@@ -3,6 +3,7 @@
 > A read-later app for iPhone and iPad with a research desk behind it. Save an article from anywhere; The Lede reads the whole piece, unburies what it's actually about, renames it plainly, files it by beat, and writes a short brief: the strongest honest case the piece makes. The user is the editor. The Lede is the research desk.
 
 Key facts:
+- Where to get it: the App Store, at https://apps.apple.com/app/id6772315315. United States storefront, iOS 26 or later. There is no other way to install it.
 - Platform: iPhone and iPad (iOS 26 or later). No Android or web version.
 - The original article is always preserved: every renamed story carries a "RAN AS" line showing the real headline, and the full original text is saved and readable.
 - Free tier: 10 briefs and two "Dig Deeper" investigations every month, no account required.

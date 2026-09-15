@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#A84E24;          /* burnt clay / ember */
+    --rose:#EFCDB6;        /* the muted claim */
+    --cream:#FBF3EA;       /* the bright reveal */
+    --sans:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',system-ui,sans-serif;
+    --serif:'Newsreader','Iowan Old Style',Georgia,serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1200px;height:900px;}
+  body{
+    background:var(--bg);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    position:relative;
+    overflow:hidden;
+  }
+  .card{
+    position:absolute;inset:0;
+    padding:82px 96px 78px;
+    display:flex;flex-direction:column;
+  }
+  .label{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--rose);
+    opacity:.92;
+  }
+  .headline{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:62px;
+    line-height:1.06;
+    letter-spacing:-0.018em;
+    color:var(--rose);
+    max-width:760px;
+    margin-top:16px;
+  }
+  .rule{
+    width:5px;height:62px;
+    background:var(--rose);
+    border-radius:2px;
+    margin:40px 0;
+  }
+  .study{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:86px;
+    line-height:0.98;
+    letter-spacing:-0.005em;
+    color:var(--cream);
+    margin-top:16px;
+  }
+  .foot{margin-top:auto;}
+  .hairline{
+    height:1px;width:100%;
+    background:var(--cream);opacity:.34;
+    margin-bottom:24px;
+  }
+  .footer{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:25px;
+    line-height:1.36;
+    color:var(--cream);
+    max-width:640px;
+  }
+  .pilcrow{
+    position:absolute;
+    left:96px;bottom:42px;
+    font-family:var(--serif);
+    font-size:30px;
+    color:var(--rose);
+    opacity:.85;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div>
+      <div class="label">The Headline</div>
+      <div class="headline">A glass of red wine equals an hour at the gym.</div>
+    </div>
+    <div class="rule"></div>
+    <div>
+      <div class="label">The Study</div>
+      <div class="study">It was run on rats.</div>
+    </div>
+    <div class="foot">
+      <div class="hairline"></div>
+      <div class="footer">The Lede reads the article and renames it for what the piece actually argues.</div>
+    </div>
+  </div>
+  <div class="pilcrow">&para;</div>
+</body>
+</html>
