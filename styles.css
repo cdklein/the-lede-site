@@ -652,12 +652,12 @@ footer .row { font-size: 0.72rem; }
 .signup .fineprint a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- A-day: the store band and the notes list --------------------------- */
-/* Held for launch day (the-lede-site#2). Nothing on the current site carries
-   this markup, so these rules are inert until the flip — they ship early so
-   launch day is a deploy, not a writing session. See ADAY-FLIP.md. */
+/* Shipped early for launch day (the-lede-site#2), live since the 2026-09-14
+   flip. See ADAY-FLIP.md. */
 
-/* The badge band drops the form's vertical rhythm onto a single control. */
-.signup--store .store-badge { margin: 1.3rem 0 1rem; }
+/* The badge band drops the form's vertical rhythm onto a single control.
+   Margin is the CDO-pass value (2026-08-03), folded in at the tidy step. */
+.signup--store .store-badge { margin: 1rem 0 1.05rem; }
 
 /* Apple's artwork under Apple's rules: never re-drawn, re-coloured or
    re-typeset, and never animated — so nothing here transitions, and the markup
@@ -1278,7 +1278,9 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 .kit-og { max-width: 30rem; }
 
 /* ====== A-day design pass (the-lede-site#8) =============================== */
-/* CDO pass, 2026-08-03, on the held launch-day variant. Append-only: every
+/* CDO pass, 2026-08-03, written against the then-held launch-day variant
+   (live since the 2026-09-14 flip; the one margin it overrode is folded into
+   the band rule above). Append-only at the time: every
    selector below is either a class ONLY the A-day templates carry
    (.signup--store, .store-badge, .store-link, .notes) or a compound that can
    only match when the A-day footer's SECOND disclaimer exists. Nothing here
@@ -1301,7 +1303,6 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
    line-height 0. It pushed the whole stamp off the panel's optical centre. */
 .store-badge { line-height: 0; }
 .signup--store { padding-top: 2.4rem; padding-bottom: 2.4rem; }
-.signup--store .store-badge { margin: 1rem 0 1.05rem; }
 
 /* 2. The closing band's store link.
    Type, colour and underline are unchanged — this is hit area only. As a bare

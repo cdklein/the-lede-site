@@ -5,14 +5,8 @@
 // rendered HTML to the repo root. Root index.html / thanks.html stay
 // committed so the site remains servable with no build step at all — this
 // script only needs to run when copy actually changes.
-//
-// `node build.mjs aday` builds the HELD launch-day variant instead — the
-// *.aday.template.html files against content/copy.aday.json — and writes it to
-// aday-preview/ so it can be looked at without ever touching the root pages the
-// deploy uploads. A-day cannot leak into a live deploy by accident: deploy.sh
-// stages root *.html only, and it always runs the plain build first. Flipping
-// for real means promoting the aday files over the current ones, which is what
-// ADAY-FLIP.md walks through.
+// (The launch-day "aday" variant this build once carried was promoted on
+// 2026-09-14 and its branch removed — see ADAY-FLIP.md's tidy step.)
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,27 +14,16 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const ADAY = process.argv.slice(2).includes('aday');
-const OUT_DIR = ADAY ? path.join(__dirname, 'aday-preview') : __dirname;
+const OUT_DIR = __dirname;
 
-const TEMPLATES = ADAY
-  ? [
-      { template: 'templates/index.aday.template.html', out: 'index.html' },
-      { template: 'templates/thanks.aday.template.html', out: 'thanks.html' },
-    ]
-  : [
-      { template: 'templates/index.template.html', out: 'index.html' },
-      { template: 'templates/thanks.template.html', out: 'thanks.html' },
-    ];
+const TEMPLATES = [
+  { template: 'templates/index.template.html', out: 'index.html' },
+  { template: 'templates/thanks.template.html', out: 'thanks.html' },
+];
 
 const copy = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, ADAY ? 'content/copy.aday.json' : 'content/copy.json'),
-    'utf8'
-  )
+  fs.readFileSync(path.join(__dirname, 'content/copy.json'), 'utf8')
 );
-
-if (ADAY) fs.mkdirSync(OUT_DIR, { recursive: true });
 
 // Flatten nested copy.json into { 'hero.h1': '...', 'signup.button': '...' }.
 function flatten(obj, prefix = '', out = {}) {
@@ -108,28 +91,6 @@ for (const page of PAGES) {
     fs.writeFileSync(pagePath, after);
     console.log(`stamped ${page} -> styles.css?v=${cssHash}`);
   }
-}
-
-// The A-day preview is a look, not a deploy: it has no sitemap of its own, and
-// it must never restamp the live one. What it DOES need is the assets its
-// relative hrefs point at, so opening the file directly shows the real page.
-// Symlinks, not copies — nothing here is committed (aday-preview/ is ignored),
-// and a copy would silently go stale against the stylesheet it was built for.
-if (ADAY) {
-  const ASSETS = fs
-    .readdirSync(__dirname)
-    .filter((f) => /\.(png|webp|css)$/.test(f))
-    .concat('fonts');
-  for (const asset of ASSETS) {
-    const link = path.join(OUT_DIR, asset);
-    if (fs.existsSync(link) || fs.lstatSync(link, { throwIfNoEntry: false })) {
-      fs.rmSync(link, { force: true });
-    }
-    fs.symlinkSync(path.join('..', asset), link);
-  }
-  console.log(`linked ${ASSETS.length} assets into aday-preview/`);
-  console.log('A-day preview built. The live root pages were not touched.');
-  process.exit(0);
 }
 
 // Re-stamp sitemap.xml <lastmod> per URL from each page file's mtime, so the
