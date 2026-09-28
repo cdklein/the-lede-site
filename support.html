@@ -80,7 +80,7 @@
   })();
   </script>
   <script type="application/ld+json">
-  {
+{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -134,16 +134,34 @@
       "name": "I can't find the Share button. Where is it?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Look for the share icon: a square with an arrow pointing up. In Safari it lives under the ⋯ button at the bottom of the screen: tap ⋯, then Share. Other apps move it around: some put it at the top of the story, some only show it when you press and hold a link, and a few (Substack among them) tuck it behind their own menus. Wherever an app hides it, the destination is the same: find the share icon or the word Share, then choose The Lede. And if an app truly won't share an article, open the story in Safari and share from there. That route always works, and it's the strongest one anyway: the desk reads the page in your own signed-in session."
+        "text": "Look for the share icon: a square with an arrow pointing up. In Safari it lives under the ⋯ button at the bottom of the screen: tap ⋯, then Share. Other apps move it around: some put it at the top of the story, some only show it when you press and hold a link, and a few (Substack among them) tuck it behind their own menus. Wherever an app hides it, the destination is the same: find the share icon or the word Share, then choose The Lede. And if an app truly won't share an article, open the story in Safari and share from there. That route works almost everywhere, and it's the strongest one anyway: the desk reads the page in your own signed-in session."
       },
       "url": "https://theledeapp.com/support#find-the-share-button"
     },
     {
       "@type": "Question",
-      "name": "Can I save from Chrome, Brave, Firefox, or apps like Reddit?",
+      "name": "Is The Lede just a Safari extension?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, from almost anywhere the Share button appears. When you share from Safari, The Lede reads the page exactly as you see it, signed in and all. From other browsers and apps it receives the link and reads the article on its own. If a page can't be read that way, the save is still kept; you'll see a card telling you exactly how to finish it (see the locked-door question below). Reddit is the one place this doesn't hold, and the next question explains why."
+        "text": "No. The Lede is an app you save to from the share sheet, so it works from almost any app with a Share button: Safari, Chrome, Apple News, Stocks, and most news apps. Safari does one thing the others can't: it hands The Lede the page exactly as you see it, signed in to any site you subscribe to. From other apps, The Lede gets the link and reads the public page itself. The next answer explains why."
+      },
+      "url": "https://theledeapp.com/support#safari-extension"
+    },
+    {
+      "@type": "Question",
+      "name": "Why does The Lede work best from Safari?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because of what gets handed over when you tap Share. Safari lets an app read the page you're looking at, right there, exactly as it's on your screen: signed in if you're signed in, past the paywall if you're past it. So a save from Safari carries the whole article with it, and the desk reads exactly what you can read. Every other app, Chrome and Apple News included, hands over the link and nothing else. The desk then fetches the page itself, which works on any open article and stops at anything that wants a signed-in reader. That's an Apple rule, not a choice we made: Safari is the only app on iPhone that lets a share extension read the page. You don't have to change how you read. Save from wherever you are, and if a story can't be reached from the link alone, the card tells you and offers to open it in a Safari window inside The Lede, where you sign in once and share it back. For anything you pay for, sharing from Safari the first time skips that step."
+      },
+      "url": "https://theledeapp.com/support#why-safari"
+    },
+    {
+      "@type": "Question",
+      "name": "Can I save from Chrome, Apple News, or other apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, from almost any app with a Share button: other browsers, Apple News, Stocks, and most news apps. From those, The Lede gets the link and reads the public page itself. Safari adds one thing: it hands over the page exactly as you see it, signed in and all, so it's the way in for anything behind a login. If a page can't be read from the link alone, the save is still kept and a card tells you how to finish it (see the locked-door question below). Two apps have wrinkles of their own: Reddit, explained next, and Apple News, just after it."
       },
       "url": "https://theledeapp.com/support#save-from-other-apps"
     },
@@ -158,6 +176,15 @@
     },
     {
       "@type": "Question",
+      "name": "Can I save from Apple News or Stocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and most stories just work. An Apple News link points to the publisher's own website, so The Lede follows it there and reads the story on the web. Two kinds of story don't come through. Some Apple News+ stories are only in Apple News, with no web page for the desk to read. Those land as a card that says \"Couldn't load.\" Sharing again won't change that. Other stories you can read in Apple News through News+ sit behind the publisher's paywall on the web. News+ doesn't sign you in to the publisher's own site, so the desk can't reach them, and the card says so. If you subscribe to that publisher directly, open the story in Safari, sign in, and share it from there. Now and then the desk can't work out where an Apple News link leads, and that looks like the first case. If you can find the story on the publisher's site, share it from Safari. If it still won't save, tap the card, then Email the desk about this article. Stocks works the same way, since its stories come from Apple News."
+      },
+      "url": "https://theledeapp.com/support#apple-news"
+    },
+    {
+      "@type": "Question",
       "name": "I subscribe to a publication. Can I save its articles?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -167,12 +194,21 @@
     },
     {
       "@type": "Question",
-      "name": "I got a card that says \"Locked door.\" What do I do?",
+      "name": "A card says \"Couldn't get in\" or \"Locked door.\" What do I do?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That card means the desk couldn't get into the article on its own: usually a site that wants a signed-in reader, or a link shared from outside Safari. Tap the card, then Open in Safari: the article opens inside The Lede, signed in as you. Read it, tap Share, and send it back to The Lede from there. The desk reads exactly what you can read, and the save stays in your queue either way."
+        "text": "The desk couldn't get into the article on its own: usually a site that wants a signed-in reader, or a link shared from outside Safari. Tap the card, then Open in Safari. The story opens in a Safari window inside The Lede. The first time you open a site there, sign in: your saved password fills in, and The Lede remembers you after that. Tap Share and send it back to The Lede, then read on if you like. The desk reads exactly what you can read, and the save stays in your queue either way. Read it in Apple News through News+? That doesn't sign you in to the publisher's site; the Apple News answer above explains."
       },
       "url": "https://theledeapp.com/support#locked-door"
+    },
+    {
+      "@type": "Question",
+      "name": "A card says \"Couldn't read it.\" What do I do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The desk reached the page but couldn't pull the article's text out of it. That's usually about how the page is built, not about a login. Tap the card, then Open in Safari, and share the story back to The Lede from there. Safari hands the desk the page as it appears on your screen, which is the best chance of getting it. The save stays in your queue either way. If a site keeps failing, tap the card, then Email the desk about this article."
+      },
+      "url": "https://theledeapp.com/support#couldnt-read-it"
     },
     {
       "@type": "Question",
@@ -401,10 +437,10 @@
     },
     {
       "@type": "Question",
-      "name": "A save failed or a site won't read. What now?",
+      "name": "A save failed or a card says \"Couldn't load.\" What now?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The save is kept either way: a failed read shows as a card, and most fix with the open-in-Safari, share-it-back move (see the \"Locked door\" answer above). If a particular site never works, tell us: support@theledeapp.com. Fixing sources is ongoing desk work."
+        "text": "The save is kept either way: a failed read shows as a card that says what went wrong, and tapping the card shows what to try. \"Couldn't load\" means the desk couldn't open the page at all. The site may have been down or busy, or the link may not lead to an article. Share it again, from Safari if you can. If a save still won't work, tap the card, then Email the desk about this article. The email arrives with the link and what the card said already filled in; add what happened and send it. A person reads every one, and fixing sources is ongoing desk work."
       },
       "url": "https://theledeapp.com/support#save-failed"
     },
@@ -413,13 +449,13 @@
       "name": "How do I reach a human?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "support@theledeapp.com. We're a small shop; we aim to reply within a couple of days."
+        "text": "support@theledeapp.com. We're a small shop; we aim to reply within a couple of days. If it's about one article that won't save, write from the card instead: tap the card, then Email the desk about this article, and the link comes with it."
       },
       "url": "https://theledeapp.com/support#contact-a-human"
     }
   ]
 }
-  </script>
+</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -442,15 +478,12 @@
       <p><strong>Need a person?</strong> Email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>. We're a small shop. Expect a reply within a couple of days.</p>
     </div>
 
-    <div class="callout" id="known-issues">
-      <p><strong>Known issues, updated September 14, 2026.</strong> Two fixes are on the way in version 1.0.1, which is with Apple now. At the very largest text sizes, the buttons on the card The Lede shows when it can't open or read a page can sit off screen, so you can't tap them. Until the update lands, open the story in Safari and share it to The Lede from there; that path doesn't need the buttons on that card. The update also brings one name for each thing throughout the app.</p>
-    </div>
 
     <nav class="faq-index" id="contents" aria-label="Frequently asked questions, by section">
       <p class="eyebrow">Contents</p>
       <ol>
         <li><a href="#basics"><span class="faq-index__no">1</span><span class="faq-index__title">The basics</span><span class="faq-index__leader"></span><span class="faq-index__count">4&nbsp;questions</span></a></li>
-        <li><a href="#saving"><span class="faq-index__no">2</span><span class="faq-index__title">Saving articles</span><span class="faq-index__leader"></span><span class="faq-index__count">6&nbsp;questions</span></a></li>
+        <li><a href="#saving"><span class="faq-index__no">2</span><span class="faq-index__title">Saving articles</span><span class="faq-index__leader"></span><span class="faq-index__count">11&nbsp;questions</span></a></li>
         <li><a href="#queue"><span class="faq-index__no">3</span><span class="faq-index__title">Your queue, briefs &amp; reading</span><span class="faq-index__leader"></span><span class="faq-index__count">5&nbsp;questions</span></a></li>
         <li><a href="#plans"><span class="faq-index__no">4</span><span class="faq-index__title">Free &amp; paid plans</span><span class="faq-index__leader"></span><span class="faq-index__count">8&nbsp;questions</span></a></li>
         <li><a href="#privacy"><span class="faq-index__no">5</span><span class="faq-index__title">Privacy &amp; your data</span><span class="faq-index__leader"></span><span class="faq-index__count">4&nbsp;questions</span></a></li>
@@ -486,20 +519,31 @@
       <p>From Safari or almost any app: tap <strong>Share</strong>, then choose <strong>The Lede</strong>. The article uploads in the background and the brief lands in your queue when it's ready. Usually that's quick, and it keeps working even if you leave the app.</p>
 
       <h3 id="find-the-share-button">I can't find the Share button. Where is it?<a class="faq-link" href="#find-the-share-button" aria-label="Copy link to this question: I can't find the Share button. Where is it?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>Look for the share icon: a square with an arrow pointing up. In Safari it lives under the <strong>⋯</strong> button at the bottom of the screen: tap ⋯, then <strong>Share</strong>. Other apps move it around: some put it at the top of the story, some only show it when you press and hold a link, and a few (Substack among them) tuck it behind their own menus. Wherever an app hides it, the destination is the same: find the share icon or the word Share, then choose <strong>The Lede</strong>. And if an app truly won't share an article, open the story in Safari and share from there. That route always works, and it's the strongest one anyway: the desk reads the page in your own signed-in session.</p>
+      <p>Look for the share icon: a square with an arrow pointing up. In Safari it lives under the <strong>⋯</strong> button at the bottom of the screen: tap ⋯, then <strong>Share</strong>. Other apps move it around: some put it at the top of the story, some only show it when you press and hold a link, and a few (Substack among them) tuck it behind their own menus. Wherever an app hides it, the destination is the same: find the share icon or the word Share, then choose <strong>The Lede</strong>. And if an app truly won't share an article, open the story in Safari and share from there. That route works almost everywhere, and it's the strongest one anyway: the desk reads the page in your own signed-in session.</p>
 
-      <h3 id="save-from-other-apps">Can I save from Chrome, Brave, Firefox, or apps like Reddit?<a class="faq-link" href="#save-from-other-apps" aria-label="Copy link to this question: Can I save from Chrome, Brave, Firefox, or apps like Reddit?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>Yes, from almost anywhere the Share button appears. When you share from Safari, The Lede reads the page exactly as you see it, signed in and all. From other browsers and apps it receives the link and reads the article on its own. If a page can't be read that way, the save is still kept; you'll see a card telling you exactly how to finish it (see the locked-door question below). Reddit is the one place this doesn't hold, and the next question explains why.</p>
+      <h3 id="safari-extension">Is The Lede just a Safari extension?<a class="faq-link" href="#safari-extension" aria-label="Copy link to this question: Is The Lede just a Safari extension?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>No. The Lede is an app you save to from the share sheet, so it works from almost any app with a Share button: Safari, Chrome, Apple News, Stocks, and most news apps. Safari does one thing the others can't: it hands The Lede the page exactly as you see it, signed in to any site you subscribe to. From other apps, The Lede gets the link and reads the public page itself. The next answer explains why.</p>
+      <h3 id="why-safari">Why does The Lede work best from Safari?<a class="faq-link" href="#why-safari" aria-label="Copy link to this question: Why does The Lede work best from Safari?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>Because of what gets handed over when you tap Share. Safari lets an app read the page you're looking at, right there, exactly as it's on your screen: signed in if you're signed in, past the paywall if you're past it. So a save from Safari carries the whole article with it, and the desk reads exactly what you can read. Every other app, Chrome and Apple News included, hands over the link and nothing else. The desk then fetches the page itself, which works on any open article and stops at anything that wants a signed-in reader. That's an Apple rule, not a choice we made: Safari is the only app on iPhone that lets a share extension read the page. You don't have to change how you read. Save from wherever you are, and if a story can't be reached from the link alone, the card tells you and offers to open it in a Safari window inside The Lede, where you sign in once and share it back. For anything you pay for, sharing from Safari the first time skips that step.</p>
+
+      <h3 id="save-from-other-apps">Can I save from Chrome, Apple News, or other apps?<a class="faq-link" href="#save-from-other-apps" aria-label="Copy link to this question: Can I save from Chrome, Apple News, or other apps?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>Yes, from almost any app with a Share button: other browsers, Apple News, Stocks, and most news apps. From those, The Lede gets the link and reads the public page itself. Safari adds one thing: it hands over the page exactly as you see it, signed in and all, so it's the way in for anything behind a login. If a page can't be read from the link alone, the save is still kept and a card tells you how to finish it (see the locked-door question below). Two apps have wrinkles of their own: Reddit, explained next, and Apple News, just after it.</p>
 
       <h3 id="reddit">Why do Reddit links only work from Safari?<a class="faq-link" href="#reddit" aria-label="Copy link to this question: Why do Reddit links only work from Safari?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
       <p>Because Reddit blocks everyone else, and that's worth being straight about: it's a Reddit problem, not a bug in The Lede. Share a Reddit thread from the Reddit app and The Lede tells you right there, then points you to the step that works. Open the thread in Safari and share it from there, and the desk reads it in your own signed-in session like any other site.</p>
       <p>Reddit no longer lets outside tools read its pages, apart from one search engine it struck a deal with. We tested every honest route and they are all shut. The dishonest ones do exist: pretend to be a browser we aren't, pull the page out of an archive mirror, buy it from a company that scrapes on our behalf. We don't do those here or anywhere else. A page you can read should be readable by the tools you choose to read it with, and when a site breaks that rule, the fix isn't for us to cheat our way back in. So this stays broken from the Reddit app, and honest from Safari.</p>
 
+      <h3 id="apple-news">Can I save from Apple News or Stocks?<a class="faq-link" href="#apple-news" aria-label="Copy link to this question: Can I save from Apple News or Stocks?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>Yes, and most stories just work. An Apple News link points to the publisher's own website, so The Lede follows it there and reads the story on the web. Two kinds of story don't come through. Some Apple News+ stories are only in Apple News, with no web page for the desk to read. Those land as a card that says "Couldn't load." Sharing again won't change that. Other stories you can read in Apple News through News+ sit behind the publisher's paywall on the web. News+ doesn't sign you in to the publisher's own site, so the desk can't reach them, and the card says so. If you subscribe to that publisher directly, open the story in Safari, sign in, and share it from there. Now and then the desk can't work out where an Apple News link leads, and that looks like the first case. If you can find the story on the publisher's site, share it from Safari. If it still won't save, tap the card, then <strong>Email the desk about this article</strong>. Stocks works the same way, since its stories come from Apple News.</p>
+
       <h3 id="paywalled-subscriptions">I subscribe to a publication. Can I save its articles?<a class="faq-link" href="#paywalled-subscriptions" aria-label="Copy link to this question: I subscribe to a publication. Can I save its articles?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
       <p>Yes. Share them from Safari, where you're already signed in. The desk reads the page in your own logged-in session, so it reads exactly what you can read: nothing more, nothing bypassed. If a story can't be reached that way, The Lede tells you and keeps the save.</p>
 
-      <h3 id="locked-door">I got a card that says "Locked door." What do I do?<a class="faq-link" href="#locked-door" aria-label="Copy link to this question: I got a card that says &quot;Locked door.&quot; What do I do?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>That card means the desk couldn't get into the article on its own: usually a site that wants a signed-in reader, or a link shared from outside Safari. Tap the card, then <strong>Open in Safari</strong>: the article opens inside The Lede, signed in as you. Read it, tap Share, and send it back to The Lede from there. The desk reads exactly what you can read, and the save stays in your queue either way.</p>
+      <h3 id="locked-door">A card says "Couldn't get in" or "Locked door." What do I do?<a class="faq-link" href="#locked-door" aria-label="Copy link to this question: A card says &quot;Couldn't get in&quot; or &quot;Locked door.&quot; What do I do?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>The desk couldn't get into the article on its own: usually a site that wants a signed-in reader, or a link shared from outside Safari. Tap the card, then <strong>Open in Safari</strong>. The story opens in a Safari window inside The Lede. The first time you open a site there, sign in: your saved password fills in, and The Lede remembers you after that. Tap Share and send it back to The Lede, then read on if you like. The desk reads exactly what you can read, and the save stays in your queue either way. Read it in Apple News through News+? That doesn't sign you in to the publisher's site; the Apple News answer above explains.</p>
+
+      <h3 id="couldnt-read-it">A card says "Couldn't read it." What do I do?<a class="faq-link" href="#couldnt-read-it" aria-label="Copy link to this question: A card says &quot;Couldn't read it.&quot; What do I do?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>The desk reached the page but couldn't pull the article's text out of it. That's usually about how the page is built, not about a login. Tap the card, then <strong>Open in Safari</strong>, and share the story back to The Lede from there. Safari hands the desk the page as it appears on your screen, which is the best chance of getting it. The save stays in your queue either way. If a site keeps failing, tap the card, then <strong>Email the desk about this article</strong>.</p>
 
       <h3 id="brief-missing">A brief didn't show up. Where is it?<a class="faq-link" href="#brief-missing" aria-label="Copy link to this question: A brief didn't show up. Where is it?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
       <p>Uploads finish in the background, so a brief can land a moment after you've moved on. Check your connection and reopen The Lede; anything waiting will finish. If a save genuinely failed, it shows as a card that says so, never silence.</p>
@@ -618,11 +662,11 @@
     <section class="faq-sec" id="trouble">
       <h2><span class="faq-no">9</span>When something goes wrong</h2>
 
-      <h3 id="save-failed">A save failed or a site won't read. What now?<a class="faq-link" href="#save-failed" aria-label="Copy link to this question: A save failed or a site won't read. What now?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p>The save is kept either way: a failed read shows as a card, and most fix with the open-in-Safari, share-it-back move (see the "Locked door" answer above). If a particular site never works, tell us: <strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a></strong>. Fixing sources is ongoing desk work.</p>
+      <h3 id="save-failed">A save failed or a card says "Couldn't load." What now?<a class="faq-link" href="#save-failed" aria-label="Copy link to this question: A save failed or a card says &quot;Couldn't load.&quot; What now?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
+      <p>The save is kept either way: a failed read shows as a card that says what went wrong, and tapping the card shows what to try. "Couldn't load" means the desk couldn't open the page at all. The site may have been down or busy, or the link may not lead to an article. Share it again, from Safari if you can. If a save still won't work, tap the card, then <strong>Email the desk about this article</strong>. The email arrives with the link and what the card said already filled in; add what happened and send it. A person reads every one, and fixing sources is ongoing desk work.</p>
 
       <h3 id="contact-a-human">How do I reach a human?<a class="faq-link" href="#contact-a-human" aria-label="Copy link to this question: How do I reach a human?"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M6.4 9.6 9.6 6.4M7 4.2 8.1 3a2.7 2.7 0 0 1 3.8 3.8l-1.1 1.1M9 11.8 7.9 13A2.7 2.7 0 0 1 4.1 9.2l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span class="faq-link__flag" aria-hidden="true">Copied</span></a></h3>
-      <p><strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</strong> We're a small shop; we aim to reply within a couple of days.</p>
+      <p><strong><a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</strong> We're a small shop; we aim to reply within a couple of days. If it's about one article that won't save, write from the card instead: tap the card, then <strong>Email the desk about this article</strong>, and the link comes with it.</p>
 
       <a class="faq-top" href="#contents">↑ Contents</a>
     </section>
