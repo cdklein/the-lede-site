@@ -1273,6 +1273,12 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
   margin-top: 0.45rem;
 }
 .kit-grid--ipad { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }  /* five iPad frames, one row at the doc measure */
+/* iPhone Duo frames (2026-10-15): open frames are landscape, closed ones portrait.
+   Each figure grows by its own aspect ratio (--ar, set inline), so every frame in
+   a row lands at the same height; the min-width wraps them two or three to a row
+   on a phone instead of shrinking five to thumbnails. */
+.kit-grid--duo { display: flex; flex-wrap: wrap; align-items: flex-start; }
+.kit-grid--duo figure { flex: var(--ar, 1) 1 0; min-width: calc(var(--ar, 1) * 7.5rem); }
 .kit-icons { display: flex; gap: 1.4rem; margin: 1rem 0 1.6rem; }
 .kit-icons img { width: 96px; height: 96px; border-radius: 22px; display: block; }
 .kit-og { max-width: 30rem; }
