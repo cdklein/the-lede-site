@@ -54,11 +54,14 @@ your time at all.
 
 WHAT'S IN THIS KIT
 ------------------
-iphone/   Six App Store frames, 1320 x 2868, in listing order, plus a
+iphone/   Five App Store frames, 1320 x 2868, in listing order, plus a
           contact sheet. These are the exact frames on the App Store
           listing.
 ipad/     Five iPad App Store frames, 2064 x 2752, in listing order,
           plus a contact sheet.
+duo/      Five iPhone Duo App Store frames, in listing order, plus a
+          contact sheet. Open frames are 2853 x 2007, closed frames
+          1398 x 2034. The first two show the device itself.
 icon/     The app icon at 512 px, light and dark renders, sRGB.
 og/       The link-preview card for theledeapp.com, 1200 x 630.
 
