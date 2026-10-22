@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=ce6b3da6">
+  <link rel="stylesheet" href="styles.css?v=80d3aa48">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -230,5 +230,72 @@
       </div>
     </footer>
   </div>
+
+  <dialog class="lightbox" aria-label="Full-size image">
+    <figure class="lightbox__frame">
+      <img class="lightbox__img" alt="">
+      <figcaption class="lightbox__cap"></figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__prev" aria-label="Previous image">&#8249;</button>
+    <button type="button" class="lightbox__btn lightbox__next" aria-label="Next image">&#8250;</button>
+    <button type="button" class="lightbox__btn lightbox__close">Close</button>
+  </dialog>
+  <script>
+  /* Press kit lightbox: click a kit image to see it full size. Each image is
+     wrapped in a link to its own file, so without JS (or without <dialog>)
+     a click still opens the full-size image. */
+  (function () {
+    var box = document.querySelector('.lightbox');
+    if (!box || typeof box.showModal !== 'function') return;
+    var img = box.querySelector('.lightbox__img');
+    var cap = box.querySelector('.lightbox__cap');
+    var prev = box.querySelector('.lightbox__prev');
+    var next = box.querySelector('.lightbox__next');
+    var group = [], index = 0, opener = null;
+
+    function show(i) {
+      index = i;
+      var src = group[i];
+      img.src = src.getAttribute('src');
+      img.alt = src.alt;
+      var fc = src.closest('figure').querySelector('figcaption');
+      cap.textContent = fc ? fc.textContent : '';
+      prev.hidden = next.hidden = group.length < 2;
+    }
+
+    document.querySelectorAll('#assets figure img').forEach(function (el) {
+      var a = document.createElement('a');
+      a.className = 'kit-zoom';
+      a.href = el.getAttribute('src');
+      el.parentNode.insertBefore(a, el);
+      a.appendChild(el);
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        var scope = el.closest('.kit-grid, .kit-icons') || el.closest('figure');
+        group = Array.prototype.slice.call(scope.querySelectorAll('figure img'));
+        opener = a;
+        show(group.indexOf(el));
+        box.showModal();
+      });
+    });
+
+    function step(d) { if (group.length > 1) show((index + d + group.length) % group.length); }
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    box.querySelector('.lightbox__close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.classList.contains('lightbox__frame')) box.close();
+    });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    });
+    box.addEventListener('close', function () {
+      img.removeAttribute('src');
+      if (opener) opener.focus();
+    });
+  })();
+  </script>
 </body>
 </html>

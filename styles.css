@@ -1283,6 +1283,72 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 .kit-icons img { width: 96px; height: 96px; border-radius: 22px; display: block; }
 .kit-og { max-width: 30rem; }
 
+/* Press kit lightbox (2026-10-22). The script at the foot of press.html wraps
+   each kit image in a link to the full-size file, so a click opens it in a
+   modal <dialog> and a no-JS reader still gets the file. Arrow keys step
+   through the same group; Esc, the close button, or a click outside closes. */
+.kit-zoom { display: block; cursor: zoom-in; border-radius: 10px; }
+.kit-icons .kit-zoom { border-radius: 22px; }
+.kit-zoom:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 3px; }
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.lightbox::backdrop { background: rgba(14, 12, 10, 0.86); }
+.lightbox__frame {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 3.5rem 1rem 1.2rem;
+  box-sizing: border-box;
+}
+.lightbox__img {
+  max-width: 100%;
+  max-height: calc(100vh - 7rem);
+  width: auto;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+.lightbox__cap {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #efe9dd;
+}
+.lightbox__btn {
+  position: absolute;
+  font: 500 1rem/1 var(--sans);
+  color: #efe9dd;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  cursor: pointer;
+}
+.lightbox__btn:hover { background: rgba(255, 255, 255, 0.2); }
+.lightbox__btn:focus-visible { outline: 2px solid #efe9dd; outline-offset: 2px; }
+.lightbox__close { top: 0.75rem; right: 0.75rem; }
+.lightbox__prev, .lightbox__next { top: 50%; transform: translateY(-50%); padding: 0; }
+.lightbox__prev { left: 0.75rem; }
+.lightbox__next { right: 0.75rem; }
+.lightbox__btn[hidden] { display: none; }
+
 /* ====== A-day design pass (the-lede-site#8) =============================== */
 /* CDO pass, 2026-08-03, written against the then-held launch-day variant
    (live since the 2026-09-14 flip; the one margin it overrode is folded into
