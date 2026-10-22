@@ -292,6 +292,7 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
     });
     box.addEventListener('close', function () {
+      if (box.open) return;  /* reopened before this queued event ran */
       img.removeAttribute('src');
       if (opener) opener.focus();
     });
