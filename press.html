@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=80d3aa48">
+  <link rel="stylesheet" href="styles.css?v=366e6ece">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -194,8 +194,8 @@
       <h3 id="duo">iPhone Duo frames</h3>
       <p>The Lede is ready for iPhone Duo. Open, the queue and the story sit side by side, like an iPad you can fold; closed, it reads like any iPhone. The open frames are 2853 by 2007 and the closed ones 1398 by 2034, the sizes App Store Connect takes for iPhone Duo. The first two show the device itself; the rest are the screen alone.</p>
       <div class="kit-grid kit-grid--duo" role="list">
-        <figure role="listitem" style="--ar: 1.42"><img src="press-kit/duo/01-the-split.png" alt="iPhone Duo frame 1, The Split: the device open, the queue on the left and a brief on the right." width="2853" height="2007" loading="lazy"><figcaption>01 · The split, open</figcaption></figure>
-        <figure role="listitem" style="--ar: 0.69"><img src="press-kit/duo/02-the-rename.png" alt="iPhone Duo frame 2, The Rename: the device closed, showing a brief renamed 'OK Likely Started as a Joke Abbreviation in 1839'." width="1398" height="2034" loading="lazy"><figcaption>02 · The rename, closed</figcaption></figure>
+        <figure role="listitem" style="--ar: 1.42"><img data-framed src="press-kit/duo/01-the-split.png" alt="iPhone Duo frame 1, The Split: the device open, the queue on the left and a brief on the right." width="2853" height="2007" loading="lazy"><figcaption>01 · The split, open</figcaption></figure>
+        <figure role="listitem" style="--ar: 0.69"><img data-framed src="press-kit/duo/02-the-rename.png" alt="iPhone Duo frame 2, The Rename: the device closed, showing a brief renamed 'OK Likely Started as a Joke Abbreviation in 1839'." width="1398" height="2034" loading="lazy"><figcaption>02 · The rename, closed</figcaption></figure>
         <figure role="listitem" style="--ar: 1.42"><img src="press-kit/duo/03-the-research-desk.png" alt="iPhone Duo frame 3, The Research Desk: open, the queue beside a Dig Deeper on the origin of 'OK'." width="2853" height="2007" loading="lazy"><figcaption>03 · The research desk, open</figcaption></figure>
         <figure role="listitem" style="--ar: 0.69"><img src="press-kit/duo/04-the-queue.png" alt="iPhone Duo frame 4, The Queue: closed, renamed stories filed by beat, each with its RAN AS line." width="1398" height="2034" loading="lazy"><figcaption>04 · The queue, closed</figcaption></figure>
         <figure role="listitem" style="--ar: 1.42"><img src="press-kit/duo/05-after-dark.png" alt="iPhone Duo frame 5, After Dark: open in dark mode, the queue beside the Samoa brief." width="2853" height="2007" loading="lazy"><figcaption>05 · After dark, open</figcaption></figure>
@@ -233,7 +233,7 @@
 
   <dialog class="lightbox" aria-label="Full-size image">
     <figure class="lightbox__frame">
-      <img class="lightbox__img" alt="">
+      <div class="lightbox__device"><img class="lightbox__img" alt=""></div>
       <figcaption class="lightbox__cap"></figcaption>
     </figure>
     <button type="button" class="lightbox__btn lightbox__prev" aria-label="Previous image">&#8249;</button>
@@ -248,6 +248,7 @@
     var box = document.querySelector('.lightbox');
     if (!box || typeof box.showModal !== 'function') return;
     var img = box.querySelector('.lightbox__img');
+    var frame = box.querySelector('.lightbox__device');
     var cap = box.querySelector('.lightbox__cap');
     var prev = box.querySelector('.lightbox__prev');
     var next = box.querySelector('.lightbox__next');
@@ -258,6 +259,17 @@
       var src = group[i];
       img.src = src.getAttribute('src');
       img.alt = src.alt;
+      /* Draw the device around bare screen captures. The two Duo frames that
+         already show the hardware (data-framed), the icons and the card don't. */
+      var grid = src.closest('.kit-grid');
+      var device = '';
+      if (grid && !src.hasAttribute('data-framed')) {
+        if (grid.classList.contains('kit-grid--ipad')) device = 'ipad';
+        else if (grid.classList.contains('kit-grid--duo')) device = +src.getAttribute('width') > +src.getAttribute('height') ? 'duo-open' : 'iphone';
+        else device = 'iphone';
+      }
+      if (device) frame.setAttribute('data-device', device);
+      else frame.removeAttribute('data-device');
       var fc = src.closest('figure').querySelector('figcaption');
       cap.textContent = fc ? fc.textContent : '';
       prev.hidden = next.hidden = group.length < 2;
@@ -292,6 +304,7 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
     });
     box.addEventListener('close', function () {
+      if (box.open) return;  /* reopened before this queued event ran */
       img.removeAttribute('src');
       if (opener) opener.focus();
     });
