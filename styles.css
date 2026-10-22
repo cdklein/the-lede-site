@@ -1286,8 +1286,7 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 /* Press kit lightbox (2026-10-22). The script at the foot of press.html wraps
    each kit image in a link to the full-size file, so a click opens it in a
    modal <dialog> and a no-JS reader still gets the file. Arrow keys step
-   through the same group; Esc, the close button, or a click outside closes.
-   Bare iPhone, iPad and Duo captures open inside a drawn device bezel. */
+   through the same group; Esc, the close button, or a click outside closes. */
 .kit-zoom { display: block; cursor: zoom-in; border-radius: 10px; }
 .kit-icons .kit-zoom { border-radius: 22px; }
 .kit-zoom:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 3px; }
@@ -1313,31 +1312,14 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
   padding: 3.5rem 1rem 1.2rem;
   box-sizing: border-box;
 }
-.lightbox__device {
-  --bez: 0px;
-  --r: 12px;
-  min-height: 0;
-  max-width: 100%;
-  border-radius: calc(var(--r) + var(--bez));
-}
-/* Device bezels, drawn in CSS around bare screen captures. Thickness and corner
-   radius are proportioned to the hardware, not measured from it. */
-.lightbox__device[data-device] {
-  padding: var(--bez);
-  background: #0d0d0e;
-  box-shadow: inset 0 0 0 1.5px #3a3a3d, 0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-}
-.lightbox__device[data-device="iphone"] { --bez: 11px; --r: 40px; }
-.lightbox__device[data-device="ipad"] { --bez: 18px; --r: 18px; }
-.lightbox__device[data-device="duo-open"] { --bez: 11px; --r: 26px; }
 .lightbox__img {
-  max-width: calc(100vw - 2rem - 2 * var(--bez));
-  max-height: calc(100vh - 7rem - 2 * var(--bez));
+  max-width: 100%;
+  max-height: calc(100vh - 7rem);
   width: auto;
   height: auto;
   min-height: 0;
   object-fit: contain;
-  border-radius: var(--r);
+  border-radius: 12px;
   display: block;
 }
 .lightbox__cap {
