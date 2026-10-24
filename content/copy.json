@@ -1,16 +1,16 @@
 {
   "hero": {
     "eyebrow": "A research desk for everything you save",
-    "h1": "Read the article.<br>Not the headline.",
-    "sub": "Save anything worth reading. The Lede reads it closely, unburies the real story, files it by beat, and writes the strongest honest case the piece can make. Your queue becomes a magazine, not a pile of tabs."
+    "h1": "Hear the author out.<br>Then see what the sources say.",
+    "sub": "Save anything worth reading. The Lede renames it for what it actually argues and makes its strongest honest case. Then Dig Deeper reads the reporting around it and lists every source, so you can check its work."
   },
   "signup": {
     "topEyebrow": "Out now on the <span class=\"brand-case\">App Store</span>",
     "badgeAlt": "Download on the App Store",
     "closingHeading": "Start with the next thing you save.",
-    "closingSub": "Nothing to sign up for and no password to make. Your library lives in your own iCloud, and your first ten briefs each month are free.",
+    "closingSub": "Nothing to sign up for and no password to make. Your library lives in your own iCloud. The free edition gives you 10 briefs and 2 Dig Deepers a month. To check everything you read, Membership gives you 150 Dig Deepers a month, with a 7-day free trial.",
     "closingLink": "Available on the App Store",
-    "disclaimer": "Free to start: ten briefs a month, no account. Requires iOS 26. United States App Store."
+    "disclaimer": "Free to start: 10 briefs and 2 Dig Deepers a month, no account. Requires iOS 26. United States App Store."
   },
   "notes": {
     "heading": "Occasional notes from the desk",
@@ -19,13 +19,19 @@
   },
   "showcase1": {
     "heading": "Your saves file themselves into a magazine.",
-    "body": "Every story comes back renamed for what it&rsquo;s actually about and shelved on its beat. The queue reads like sections you pick by mood."
+    "body": "Every story comes back renamed for what it&rsquo;s actually about and shelved on its beat, with the original headline kept beside it. The queue reads like sections you pick by mood."
   },
   "showcase2": {
-    "heading": "The strongest honest case, before you commit to the read.",
-    "body": "Every save comes back as a short brief: the fairest version of the argument, enough to know what you&rsquo;re dealing with. When something matters, send The Lede out to dig deeper: more reporting, other angles, an honest bottom line. It works the same on a news story, a how-to, or the history thread you fell into at midnight.",
+    "slug": "Dig Deeper",
+    "heading": "Every source, a tap from the original.",
+    "body": "Every save starts with a brief that makes the author&rsquo;s case. When it matters, tap Dig Deeper and the desk goes back out. It reads the reporting and research around the piece, sets out what others found and where it lands, and lists every source it wrote from, each one a link to the original. It can get one wrong, so check the ones that matter to you. Run it on a news story, a how-to, or the history thread you fell into at midnight.",
     "featureHeading": "It finds the reporting under the opinion.",
-    "featureBody": "The Lede reads every source as it is. It doesn't rank outlets and it reads every one. The one thing it changes: when a piece is opinion, it builds the brief from the original reporting underneath, and shows you the reporting it used. Same rule for every publication. More on <a href=\"/sourcing\">how The Lede handles sources</a>."
+    "featureBody": "The Lede reads every source as it is. It doesn't rank outlets and it reads every one. The one thing it changes: when a piece is opinion, it builds the brief from the original reporting underneath, and shows you the reporting it used. Same rule for every publication. More on <a href=\"/sourcing\">how The Lede handles sources</a>.",
+    "exhibitLabel": "Deeper on",
+    "exhibitRename": "The &ldquo;wine equals a workout&rdquo; study was run on rats.",
+    "exhibitLine": "No wine.",
+    "exhibitKicker": "Sample &middot; 8 sources",
+    "exhibitBody": "Rats got resveratrol, far more than a glass of wine holds. The study&rsquo;s lead author says it used no red wine."
   },
   "founderNote": {
     "quote": "&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;",
