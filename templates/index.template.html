@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Lede · Read the article. Not the headline.</title>
-  <meta name="description" content="A read-later app with a research desk. Save an article; The Lede reads it closely, unburies the real story, renames it for what it's actually about, files it by beat, and writes the strongest honest case the piece can make.">
+  <title>The Lede · Hear the author out. Then see what the sources say.</title>
+  <meta name="description" content="Save an article. The Lede makes its strongest honest case, then Dig Deeper reads the reporting around it and lists every source, so you can check it yourself.">
   <meta property="og:title" content="The Lede">
-  <meta property="og:description" content="Read the article. Not the headline.">
+  <meta property="og:description" content="Hear the author out. Then see what the sources say.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theledeapp.com/">
   <meta property="og:image" content="https://theledeapp.com/og-card.png">
@@ -14,7 +14,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Lede">
-  <meta name="twitter:description" content="Read the article. Not the headline.">
+  <meta name="twitter:description" content="Hear the author out. Then see what the sources say.">
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <!-- Smart App Banner. Valid only once the listing is public, which is exactly
        why it was held for A-day rather than shipped with the pre-launch site. -->
@@ -50,11 +50,11 @@
         "operatingSystem": "iOS",
         "applicationCategory": "NewsApplication",
         "downloadUrl": "https://apps.apple.com/app/id6772315315",
-        "description": "A read-later app with a research desk. Save an article; The Lede reads it closely, unburies the real story, renames it for what it's actually about, files it by beat, and writes the strongest honest case the piece can make.",
+        "description": "A read-later app with a research desk. Save an article and The Lede renames it for what it actually argues and makes its strongest honest case. Then Dig Deeper reads the reporting around it and lists every source, so you can check its work.",
         "author": { "@id": "https://theledeapp.com/#org" },
         "offers": [
           { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "10 briefs and two Dig Deepers every month, no account required." },
-          { "@type": "Offer", "name": "Membership", "price": "9.99", "priceCurrency": "USD", "description": "The desk reads it all, and 150 Dig Deepers a month. $9.99 a month, or $99.99 a year, which works out at $8.33 a month with two months free. 7-day free trial. Billed through Apple." }
+          { "@type": "Offer", "name": "Membership", "price": "9.99", "priceCurrency": "USD", "description": "The desk reads it all, and you get 150 Dig Deepers a month. $9.99 a month or $99.99 a year, each with a 7-day free trial. Billed through Apple." }
         ]
       }
     ]
@@ -220,7 +220,7 @@
       </div>
     </section>
 
-    <p class="section-slug">The brief</p>
+    <p class="section-slug">{{showcase2.slug}}</p>
 
     <!-- SHOWCASE 2 — the strongest honest case. Its own panel so the two
          showcases stop sharing one rhythm; exhibit leads, note is subordinate. -->
@@ -236,11 +236,11 @@
           <p>{{showcase2.featureBody}}</p>
         </div>
         <div class="brief">
-          <p class="specimen__label">As it ran</p>
-          <p class="specimen__orig">Beer Was Banned in Iceland for Nearly 75 Years, Until 1989</p>
-          <p class="brief__lede">Iceland banned beer for patriotism, not morality.</p>
-          <p class="brief__steel-label"><span class="diamond" aria-hidden="true">◆</span> Dig deeper</p>
-          <p class="brief__body">Wine and spirits were legal again by the 1930s. Beer stayed banned because it stood for Denmark, the rival Iceland was breaking from. The first legal pint came in 1989.</p>
+          <p class="specimen__label">{{showcase2.exhibitLabel}}</p>
+          <p class="specimen__orig">{{showcase2.exhibitRename}}</p>
+          <p class="brief__lede">{{showcase2.exhibitLine}}</p>
+          <p class="brief__steel-label"><span class="diamond" aria-hidden="true">◆</span> {{showcase2.exhibitKicker}}</p>
+          <p class="brief__body">{{showcase2.exhibitBody}}</p>
         </div>
       </div>
     </section>
