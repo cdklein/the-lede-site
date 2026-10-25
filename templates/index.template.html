@@ -18,10 +18,10 @@
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <!-- Smart App Banner. Valid only once the listing is public, which is exactly
        why it was held for A-day rather than shipped with the pre-launch site.
-       Campaign token: PROVIDER_TOKEN is a PLACEHOLDER until Charles copies the
-       provider token from an App Store Connect campaign link. The banner gets its
-       own campaign (site-banner) so App Store Connect counts it apart from the badge. -->
-  <meta name="apple-itunes-app" content="app-id=6772315315, affiliate-data=pt=PROVIDER_TOKEN&amp;ct=site-banner">
+       Campaign token: pt=128929757 is the account's provider token, copied from an
+       App Store Connect campaign link on 2026-10-25. The banner gets its own
+       campaign (site-banner) so App Store Connect counts it apart from the badge. -->
+  <meta name="apple-itunes-app" content="app-id=6772315315, affiliate-data=pt=128929757&amp;ct=site-banner">
   <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
   <link rel="me" href="https://mastodon.social/@theledeapp">
@@ -428,10 +428,10 @@
       <!-- The page's one badge. Apple's artwork under Apple's rules: never redrawn,
            recoloured, retypeset or animated. An <img>, never inline SVG: Apple's SVG
            carries a <title> a screen reader reads out as a filename.
-           Campaign token: PROVIDER_TOKEN is a PLACEHOLDER (see the Smart App Banner). -->
+           Campaign: site-home, provider token as in the Smart App Banner. -->
       <div class="store-flat">
         <p class="eyebrow">{{signup.topEyebrow}}</p>
-        <p class="store-badge"><a href="https://apps.apple.com/app/id6772315315?pt=PROVIDER_TOKEN&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}"></a></p>
+        <p class="store-badge"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}"></a></p>
         <p class="requirements">{{signup.requirements}}</p>
       </div>
     </section>
@@ -522,7 +522,7 @@
     <section class="signup">
       <h2>{{signup.closingHeading}}</h2>
       <p class="signup__sub">{{signup.closingSub}}</p>
-      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=PROVIDER_TOKEN&amp;ct=site-home&amp;mt=8">{{signup.closingLink}}</a></p>
+      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">{{signup.closingLink}}</a></p>
     </section>
 
     <!-- The notes list. One field, no panel, no wash — deliberately the
