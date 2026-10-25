@@ -2,58 +2,74 @@ THE LEDE - PRESS KIT
 ====================
 
 The Lede is a read-later app for iPhone and iPad with a research desk
-behind it. Save an article; the desk reads the whole piece, renames it
-for what it actually argues, keeps the original headline beside it
-labeled RAN AS, files it by beat, and writes the strongest honest case
-the piece can make.
+behind it. It works in two steps: hear the author out, then see what
+the sources say.
 
 FACTS
 -----
-App name (App Store):  The Lede: Read Later
+App:                   The Lede, listed on the App Store as
+                       "The Lede: Read Later"
 Developer:             Charles Klein LLC
 Platform:              iPhone and iPad, iOS 26 or later
 Categories:            News (primary), Productivity
-Price:                 Free to start: ten briefs a month and the first
-                       two Dig Deepers, no account. Membership: $9.99/month
-                       or $99.99/year, 7-day free trial, 150 Dig Deepers a
-                       month on either plan; auto-renews until cancelled.
+Price:                 Free to start: ten briefs and two Dig Deepers a
+                       month, no account. Membership is $9.99 a month or
+                       $99.99 a year, each with a 7-day free trial and 150
+                       Dig Deepers a month; subscriptions auto-renew until
+                       cancelled.
 Availability:          United States App Store
+Release date:          September 14, 2026
+App Store link:        https://apps.apple.com/app/id6772315315
+Press contact:         charles@theledeapp.com
 Website:               https://theledeapp.com
 Press kit:             https://theledeapp.com/press
-Press contact:         charles@theledeapp.com
 
-DESCRIPTION (quote freely, verbatim or cut down)
-------------------------------------------------
+WHAT THE LEDE IS (written to be quoted; use it verbatim or cut it down)
+-----------------------------------------------------------------------
 The Lede is a read-later app for iPhone and iPad with a research desk
-behind it. Headlines are written to be clicked; The Lede reads the
-article underneath and tells you what it actually argues.
+behind it. It works in two steps: hear the author out, then see what
+the sources say.
 
-Save anything worth reading, from Safari or any app with a share
-button. It comes back renamed for the real story, filed on its beat,
-with a short brief that makes the strongest honest case the piece can
-make. Your queue reads like a magazine instead of a pile of open tabs.
-You're the editor. The Lede is your research desk.
+Save anything worth reading, from Safari, any app with a share button,
+or by pasting a link. It comes back renamed for what it actually argues
+and filed on its beat, with the headline it ran under kept beside it and
+a short brief that makes the strongest honest case the piece can make.
+Your queue reads like a magazine instead of a pile of open tabs.
 
-When something matters, Dig Deeper sends the desk out on it. It finds
-more reporting, weighs what holds up, including the strongest case
-against the piece, and comes back with an honest bottom line. Then it
-shows you every source it looked at, so you can check its work.
+Then Dig Deeper sends the desk back out. It reads the reporting and
+research around the piece, sets out what others found and where it
+lands, and lists every source it wrote from, each link opening the
+original. It can get one wrong, so it asks you to check the ones that
+matter to you. You're the editor. The Lede is your research desk.
 
-It's built to be read: real typography and a dark mode made for
-reading at night.
+It's built to be read: real typography and a dark mode made for reading
+at night.
 
-THE RECEIPT (what keeps the rename honest)
-------------------------------------------
-The desk renames every article by what it actually argues, and the
-original headline is preserved right beside the rename, labeled RAN AS,
-exactly as it ran. The full article is kept on the reader's own device
-and stays readable, quotes stay verbatim, and every link opens the
-source. We're not summarizing, we're clarifying: making the point of
-the article crystal clear so you can decide whether a piece is worth
-your time at all.
+THE RECEIPT
+-----------
+The rename is the feature most likely to raise an eyebrow, so here is
+what keeps it honest. The desk renames every article by what it actually
+argues, and the original headline is preserved right beside the rename,
+labeled RAN AS, exactly as it ran. The full article is kept on the
+reader's own device and stays readable, quotes stay verbatim, and every
+link opens the source. Nothing is swapped behind the reader's back; they
+never have to take the desk's word for anything.
+
+The point is to make what an article argues clear, so you can decide
+whether it's worth your time at all.
+
+The demonstration that leads the App Store listing: "A glass of red wine
+equals an hour at the gym" comes back as "It was run on rats." Dig
+Deeper on the same story, the sample that ships in the app, finds the
+study's lead author saying it used no red wine.
 
 WHAT'S IN THIS KIT
 ------------------
+film/     the-lede-film.mp4: A short film about The Lede. 79 seconds,
+          with sound and no music. Free to use in coverage of The
+          Lede, whole or in part, including stills. Please don't change
+          its words or drawings, reorder it, or set it to music. Also
+          its poster frame (1920 x 1080) and a text file of its words.
 iphone/   Five iPhone frames, 1320 x 2868, in App Store listing order,
           plus a contact sheet. Frames 02 to 05 show the app in the
           device.
