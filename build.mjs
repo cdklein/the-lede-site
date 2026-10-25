@@ -26,10 +26,11 @@ const copy = JSON.parse(
 );
 
 // Flatten nested copy.json into { 'hero.h1': '...', 'signup.button': '...' }.
+// Arrays flatten by index, so film.lines[3].words is {{film.lines.3.words}}.
 function flatten(obj, prefix = '', out = {}) {
   for (const [key, value] of Object.entries(obj)) {
     const flatKey = prefix ? `${prefix}.${key}` : key;
-    if (value && typeof value === 'object' && !Array.isArray(value)) {
+    if (value && typeof value === 'object') {
       flatten(value, flatKey, out);
     } else {
       out[flatKey] = String(value);
