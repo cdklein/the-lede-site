@@ -243,7 +243,7 @@
       };
       /* The two dark stretches, frames 786 to 1111 and 1733 to 1980 at 30 fps,
          frame-exact in every web encode, day and night, both shapes. */
-      var DARK = [[786 / 30, 1111 / 30], [1733 / 30, 1980 / 30]];
+      var DARK = [[786, 1111], [1733, 1980]];
       var END = 2379 / 30;
 
       var phone = matchMedia('(max-width: 40rem)');
@@ -288,8 +288,11 @@
         band.classList.toggle('at-rest', on);
         cover.style.opacity = on ? '1' : '0';
       }
+      /* Compare whole frames, not seconds: Chrome reports frame 1111 a hair under
+         1111 / 30, which left the band dark for one frame of paper. */
       function inDark(t) {
-        for (var i = 0; i < DARK.length; i++) if (t >= DARK[i][0] && t < DARK[i][1]) return true;
+        var f = Math.round(t * 30);
+        for (var i = 0; i < DARK.length; i++) if (f >= DARK[i][0] && f < DARK[i][1]) return true;
         return false;
       }
       function paint(t) {
