@@ -41,6 +41,27 @@ function flatten(obj, prefix = '', out = {}) {
 
 const fields = flatten(copy);
 
+// Generated fields, so the film's words live in one place (copy.json film.lines)
+// and the transcript list, the search data's transcript and its description can
+// never drift apart. {{@...}} keys exist only here.
+const ENTITIES = { rsquo: '\u2019', lsquo: '\u2018', ldquo: '\u201C', rdquo: '\u201D', middot: '\u00B7', amp: '&', nbsp: '\u00A0', hellip: '\u2026' };
+function plainText(html) {
+  return html
+    .replace(/<[^>]+>/g, '')
+    .replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, name) => {
+      if (name[0] === '#') return String.fromCodePoint(name[1].toLowerCase() === 'x' ? parseInt(name.slice(2), 16) : +name.slice(1));
+      if (!(name in ENTITIES)) throw new Error(`copy.json: no plain-text form for &${name}; (add it to ENTITIES)`);
+      return ENTITIES[name];
+    });
+}
+// For a JSON string inside the JSON-LD block: plain text, JSON-escaped, no quotes.
+const jsonText = (html) => JSON.stringify(plainText(html)).slice(1, -1).replaceAll('</', '<\\/');
+fields['@film.lines.items'] = copy.film.lines
+  .map((l) => `<li><span class="t-words">${l.words}</span> <span class="t-drawing">${l.drawing}</span></li>`)
+  .join('\n        ');
+fields['@film.lines.text'] = jsonText(copy.film.lines.map((l) => l.words).join(' '));
+fields['@hero.sub.text'] = jsonText(copy.hero.sub);
+
 for (const { template, out } of TEMPLATES) {
   const templatePath = path.join(__dirname, template);
   const outPath = path.join(OUT_DIR, out);

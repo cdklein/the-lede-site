@@ -54,7 +54,7 @@
 
   /* The homepage film band. At rest it is the page's paper; during the film's two
      dark stretches it takes the film's dark ground, so the page goes dark with it. */
-  --film-ground:    light-dark(#F8F5F1, #110F0D);
+  --film-ground:    var(--paper);
   --film-cut:       light-dark(#110F0D, #000000);
   --film-ink:       light-dark(#27221D, #F2EFE8);   /* control label: the film's ink */
   --film-ink-cut:   #F2EFE8;
@@ -1410,7 +1410,10 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
   position: relative;
   line-height: 0;
   margin: 0 auto;
-  width: min(100%, calc((100svh - 19rem) * 16 / 9), 1280px);
+  /* Sized to leave the h1 on screen one, but never under half the screen's width:
+     on a short screen (a phone held sideways is 390px tall) the height rule
+     alone would shrink the film to a stamp. */
+  width: min(100%, 1280px, max(calc((100svh - 19rem) * 16 / 9), 50vw));
 }
 .film__stage video,
 .film__stage .film__cover {
@@ -1428,7 +1431,19 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
     linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent),
     linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
   mask-composite: intersect;
+  /* The film's paper decodes one to three levels off the page's paper, in a
+     different direction in every browser and on every frame, so a straight
+     edge can show while it plays. Blending clamps it. On a light ground,
+     "darken" keeps the darker of film and page in each channel: paper noise
+     lighter than the page becomes the page, and every drawn mark, all darker
+     than the paper, passes through unchanged. On a dark ground (the film's
+     dark stretches, or the night cut) "lighten" does the same the other way. */
+  mix-blend-mode: darken;
 }
+.film-band.is-dark .film__stage video,
+.film-band.is-dark .film__stage .film__cover,
+.film-band.is-night .film__stage video,
+.film-band.is-night .film__stage .film__cover { mix-blend-mode: lighten; }
 .js .film__stage video { cursor: pointer; }
 /* The poster as an image over the video: it holds the sign-off until the film
    starts, then lifts off the paper with the brand's exit ease. */
@@ -1442,6 +1457,7 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
 /* Without script the video keeps the browser's own controls and poster. */
 :root:not(.js) .film__bar,
 :root:not(.js) .film__cover { display: none; }
+:root:not(.js) .film__video { display: none; }   /* the noscript player stands in */
 
 .film__bar { width: min(100% - 2.8rem, 60rem); margin: 0 auto; }
 .film__progress {

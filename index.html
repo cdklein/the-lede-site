@@ -80,7 +80,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://theledeapp.com/">
-  <link rel="stylesheet" href="styles.css?v=4b4f551f">
+  <link rel="stylesheet" href="styles.css?v=091759c8">
   <!-- Without script the film's link can't open its transcript, so it shows open. -->
   <noscript><style>.transcript[hidden] { display: block; }</style></noscript>
   <script>
@@ -163,7 +163,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap wrap--wide">
     <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede home page"><img src="icon.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
+      <a class="mark" href="/" aria-label="The Lede home page"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
       <nav>
         <a href="/support">Support</a>
         <a href="/privacy">Privacy</a>
@@ -177,14 +177,19 @@
          to rest on the sign-off frame, which is also its poster. No `autoplay`
          attribute: the script below starts it, so Reduce Motion, Save-Data and slow
          links are honoured before a single frame plays. Without script, the
-         browser's own controls show and nothing downloads until pressed. -->
+         browser's own player shows and nothing downloads until pressed. -->
     <section class="film-band at-rest" data-film aria-label="A short film about The Lede">
       <div class="film__stage">
-        <video muted playsinline controls preload="none" disablepictureinpicture disableremoteplayback
-               poster="film/poster-16x9.webp" aria-labelledby="film-name">
-          <source media="(max-width: 40rem)" src="film/web-4x5-1080x1350.mp4" type="video/mp4">
-          <source src="film/web-16x9-1920x1080.mp4" type="video/mp4">
-        </video>
+        <video class="film__video" muted playsinline preload="none" disablepictureinpicture disableremoteplayback
+               aria-labelledby="film-name"></video>
+        <!-- Without script: the browser's own player with a poster. A noscript
+             block is never parsed when script runs, so it fetches nothing then. -->
+        <noscript>
+          <video muted playsinline controls preload="none" poster="film/poster-16x9.webp" aria-labelledby="film-name">
+            <source media="(max-width: 40rem)" src="film/web-4x5-1080x1350.mp4" type="video/mp4">
+            <source src="film/web-16x9-1920x1080.mp4" type="video/mp4">
+          </video>
+        </noscript>
         <img class="film__cover" alt="" aria-hidden="true">
         <span id="film-name" class="vh">A short film about The Lede</span>
       </div>
@@ -240,7 +245,7 @@
       var band = document.querySelector('[data-film]');
       if (!band) return;
       var d = document.documentElement;
-      var video = band.querySelector('video');
+      var video = band.querySelector('.film__video');
       var stage = band.querySelector('.film__stage');
       var cover = band.querySelector('.film__cover');
       var toggle = band.querySelector('.film__toggle');
@@ -254,37 +259,51 @@
         replay: toggle.getAttribute('data-label-replay')
       };
       /* The two dark stretches, frames 786 to 1111 and 1733 to 1980 at 30 fps,
-         frame-exact in every web encode, both cuts. */
+         frame-exact in every web encode, day and night, both shapes. */
       var DARK = [[786 / 30, 1111 / 30], [1733 / 30, 1980 / 30]];
       var END = 2379 / 30;
 
-      /* Choices made once, at load. */
-      var tall = matchMedia('(max-width: 40rem)').matches;
+      var phone = matchMedia('(max-width: 40rem)');
+      var darkOS = matchMedia('(prefers-color-scheme: dark)');
       var conn = navigator.connection || {};
       var saveData = !!conn.saveData;
       var slow = saveData || /^(slow-2g|2g|3g)$/.test(conn.effectiveType || '');
       var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var big = !saveData && (tall || stage.getBoundingClientRect().width * (window.devicePixelRatio || 1) > 800);
+      var frames = 'requestVideoFrameCallback' in HTMLVideoElement.prototype;
+
+      var state = 'ready';     // what the button says: ready, playing, paused, ended
+      var cur = null;          // the files in the video element now
+      var swap = null;         // a mid-film change of cut waiting for its metadata
+      var deferred = null;     // a cut chosen at rest, loaded only when the film is next played
+      var userPaused = false, autoPaused = false, armed = false, started = false, inView = false;
+      var frameId = 0;
 
       function night() {
         if (!window.LEDE_FILM_NIGHT) return false;
         var t = d.getAttribute('data-theme');
-        return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        return t ? t === 'dark' : darkOS.matches;
       }
-      function files(n) {
+      /* The cut this reader should see: 4:5 on phones, the night cut in dark mode,
+         the large encode unless the film is drawn small or Save-Data is on. */
+      function want() {
+        var tall = phone.matches;
+        var big = !saveData && (tall || stage.getBoundingClientRect().width * (window.devicePixelRatio || 1) > 800);
+        var n = night();
         var pre = 'film/' + (n ? 'night-' : '');
         var shape = tall ? '4x5' : '16x9';
         var size = tall ? (big ? '1080x1350' : '720x900') : (big ? '1920x1080' : '1280x720');
-        return { mp4: pre + 'web-' + shape + '-' + size + '.mp4', poster: pre + 'poster-' + shape + '.webp' };
+        return { night: n, mp4: pre + 'web-' + shape + '-' + size + '.mp4', poster: pre + 'poster-' + shape + '.webp' };
       }
-
-      var state = 'ready', loadedNight = null;
-      var userPaused = false, autoPaused = false, armed = false, started = false, inView = false;
 
       function setState(s) {
         state = s;
         toggle.setAttribute('data-state', s);
         label.textContent = s === 'playing' ? WORDS.pause : s === 'ended' ? WORDS.replay : WORDS.play;
+      }
+      /* At rest the poster covers the film and the progress rule hides. */
+      function rest(on) {
+        band.classList.toggle('at-rest', on);
+        cover.style.opacity = on ? '1' : '0';
       }
       function inDark(t) {
         for (var i = 0; i < DARK.length; i++) if (t >= DARK[i][0] && t < DARK[i][1]) return true;
@@ -294,76 +313,119 @@
         band.classList.toggle('is-dark', inDark(t));
         fill.style.transform = 'scaleX(' + Math.min(1, t / END) + ')';
       }
-      function source(n) {
-        var f = files(n);
-        loadedNight = n;
-        video.poster = f.poster;
-        cover.src = f.poster;
-        video.src = f.mp4;
+
+      /* The one place the film is asked to play. If the browser refuses (iOS Low
+         Power Mode), put the page back where it was: the poster at rest for a film
+         that never started or had ended, the paused frame for one mid-film. */
+      function start() {
+        var prev = state;
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {
+          setTimeout(function () {
+            if (!video.paused) return;
+            if (prev === 'ended') { setState('ended'); rest(true); }
+            else if (prev === 'paused' || video.currentTime > 0.05) { setState('paused'); rest(false); }
+            else { setState('ready'); rest(true); }
+          }, 0);
+        });
       }
+      function setSrc(mp4) { deferred = null; video.src = mp4; }
       function play() {
         userPaused = false;
         autoPaused = false;
+        if (deferred) setSrc(deferred);
         if (state === 'ended' || video.ended) video.currentTime = 0;
         video.preload = 'auto';
-        var p = video.play();
-        if (p && p.catch) p.catch(function () { if (video.paused) setState(state === 'ended' ? 'ended' : 'ready'); });
+        start();
       }
 
-      /* Scripted from here: no native controls, no markup sources. */
-      video.removeAttribute('controls');
-      Array.prototype.slice.call(video.querySelectorAll('source')).forEach(function (s) { s.remove(); });
-      source(night());
+      /* Choose the source, and change it when the cut should change: a theme
+         switch (day or night) or the layout crossing 40rem (4:5 or 16:9). At rest
+         only the poster changes and nothing downloads until it is needed;
+         mid-film the new cut picks up at the same moment, playing or paused as
+         before. A second change before the first settles carries the same moment
+         and drops the first one's callback. */
+      function apply() {
+        var f = want();
+        if (cur && f.mp4 === cur.mp4) return;
+        var first = !cur;
+        var mid = !first && (state === 'playing' || state === 'paused');
+        var time = swap ? swap.time : video.currentTime;
+        var resume = swap ? swap.resume : state === 'playing';
+        if (swap) { video.removeEventListener('loadedmetadata', swap.onMeta); swap = null; }
+        if (frames && frameId) { video.cancelVideoFrameCallback(frameId); frameId = 0; }
+        cur = f;
+        band.classList.toggle('is-night', f.night);
+        cover.src = f.poster;
+        if (!mid) {
+          video.poster = f.poster;
+          /* Safari fetches a new source after a film has played even with
+             preload="none", so at rest only the still changes; the film follows
+             when someone presses play. A pending autoplay loads it now. */
+          if (first) { video.preload = 'none'; setSrc(f.mp4); }
+          else if (state === 'ready' && armed) { video.preload = 'auto'; setSrc(f.mp4); }
+          else deferred = f.mp4;
+          ask();
+          return;
+        }
+        /* No poster while the new cut loads, so the sign-off frame never flashes
+           mid-film; the band's paper shows for that moment instead. */
+        video.removeAttribute('poster');
+        var s = swap = { time: time, resume: resume, onMeta: null };
+        s.onMeta = function () {
+          if (swap !== s) return;
+          swap = null;
+          video.currentTime = s.time;
+          video.poster = f.poster;
+          if (!s.resume || userPaused) { setState('paused'); return; }
+          if (inView && !document.hidden) start();
+          else { autoPaused = true; setState('paused'); }
+        };
+        video.addEventListener('loadedmetadata', s.onMeta, { once: true });
+        video.preload = 'auto';
+        setSrc(f.mp4);
+        ask();
+      }
+
+      /* The cut sync: the band takes the film's dark ground frame by frame. It
+         stays on under Reduce Motion once the reader presses play; it is a colour
+         change that matches the film, not added motion. */
+      function onFrame(now, meta) { frameId = 0; paint(meta.mediaTime); ask(); }
+      function ask() { if (frames && !frameId) frameId = video.requestVideoFrameCallback(onFrame); }
+      if (!frames) video.addEventListener('timeupdate', function () { paint(video.currentTime); });
+
       setState('ready');
+      rest(true);
+      apply();
 
       toggle.addEventListener('click', function () {
-        if (video.paused || video.ended) play();
-        else { userPaused = true; video.pause(); }
+        if (state === 'playing') {
+          userPaused = true;
+          autoPaused = false;
+          if (swap) swap.resume = false;
+          video.pause();
+          setState('paused');
+        } else play();
       });
       video.addEventListener('click', function () { toggle.click(); });
 
-      video.addEventListener('play', function () {
-        setState('playing');
-        band.classList.remove('at-rest');
-        cover.style.opacity = '0';
+      video.addEventListener('play', function () { setState('playing'); rest(false); ask(); });
+      video.addEventListener('pause', function () {
+        if (swap || video.ended || state === 'ended') return;
+        setState('paused');
       });
-      video.addEventListener('pause', function () { if (!video.ended && state !== 'ended') setState('paused'); });
       video.addEventListener('ended', function () {
         setState('ended');
-        band.classList.add('at-rest');
         paint(END);
-        /* The last frame is the poster, so showing the cover again changes nothing
-           on screen and lets a theme change swap the still. */
-        cover.style.opacity = '1';
+        /* The last frame is the poster, so showing the cover changes nothing on
+           screen and lets a later cut change swap only the still. */
+        rest(true);
       });
-      video.addEventListener('seeked', function () { paint(video.currentTime); });
+      video.addEventListener('seeked', function () { paint(video.currentTime); ask(); });
 
-      /* The cut sync: the band takes the film's dark ground frame by frame. It stays
-         on under Reduce Motion once the reader presses play; it is a colour change
-         that matches the film, not added motion. */
-      if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
-        var onFrame = function (now, meta) { paint(meta.mediaTime); video.requestVideoFrameCallback(onFrame); };
-        video.requestVideoFrameCallback(onFrame);
-      } else {
-        video.addEventListener('timeupdate', function () { paint(video.currentTime); });
-      }
-
-      /* A theme change mid-film swaps to the other cut at the same moment and
-         keeps the play state. */
-      function onTheme() {
-        var n = night();
-        if (n === loadedNight) return;
-        var t = video.currentTime, wasPlaying = !video.paused && !video.ended, rest = state === 'ended' || state === 'ready';
-        source(n);
-        if (rest) return;
-        video.preload = 'auto';
-        video.addEventListener('loadedmetadata', function () {
-          video.currentTime = t;
-          if (wasPlaying) play();
-        }, { once: true });
-      }
-      new MutationObserver(onTheme).observe(d, { attributes: true, attributeFilter: ['data-theme'] });
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onTheme);
+      new MutationObserver(apply).observe(d, { attributes: true, attributeFilter: ['data-theme'] });
+      darkOS.addEventListener('change', apply);
+      phone.addEventListener('change', apply);
 
       /* The transcript opens under the film and takes focus at its heading. */
       tbtn.addEventListener('click', function () {
@@ -375,10 +437,11 @@
 
       /* Out of view or in a hidden tab: pause. On return, resume only a film the
          page paused itself, never one the reader paused or one that has ended. */
-      function away() { if (!video.paused) { autoPaused = true; video.pause(); } }
+      function away() { if (state === 'playing' && !video.paused) { autoPaused = true; video.pause(); } }
       function back() {
-        if (autoPaused && !userPaused && !video.ended && inView && !document.hidden) play();
-        else if (armed && !started && inView && !document.hidden) begin();
+        if (!inView || document.hidden) return;
+        if (autoPaused && !userPaused && state !== 'ended') { autoPaused = false; start(); }
+        else if (armed && !started) begin();
       }
       document.addEventListener('visibilitychange', function () { if (document.hidden) away(); else back(); });
       new IntersectionObserver(function (entries) {
@@ -392,8 +455,8 @@
          holds 900 ms more so the sign-off registers, and the film starts. No
          autoplay under Reduce Motion, Save-Data or a 2G/3G link: those readers
          keep the poster and "Play the film". If the film cannot play through
-         within 6 s of coming into view, or the browser refuses to play (iOS Low
-         Power Mode), it stays ready. */
+         within 6 s of coming into view, or the browser refuses to play, it stays
+         ready. */
       function begin() {
         started = true;
         var late = false;
@@ -403,8 +466,7 @@
           if (late) return;
           setTimeout(function () {
             if (state !== 'ready' || userPaused || !inView || document.hidden) return;
-            var p = video.play();
-            if (p && p.catch) p.catch(function () { setState('ready'); band.classList.add('at-rest'); cover.style.opacity = '1'; });
+            start();
           }, 900);
         }
         if (video.readyState >= 4) go(); else video.addEventListener('canplaythrough', go, { once: true });
@@ -412,11 +474,11 @@
       window.addEventListener('load', function () {
         if (reduce || slow) return;
         armed = true;
-        if (state === 'ready' && video.paused && video.currentTime === 0) {
+        if (state === 'ready') {
           video.preload = 'auto';
-          video.load();
+          if (deferred) setSrc(deferred); else video.load();
         }
-        if (inView && !document.hidden) begin();
+        back();
       });
     })();
     </script>
@@ -542,7 +604,7 @@
 
     <footer>
       <div class="colophon">
-        <img src="icon.png" alt="The Lede app icon" width="30" height="30">
+        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
         <span>The Lede &middot; Check everything you read.</span>
       </div>
       <div class="row">
