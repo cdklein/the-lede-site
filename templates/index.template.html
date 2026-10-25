@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Lede · Hear the author out. Then see what the sources say.</title>
-  <meta name="description" content="Save an article. The Lede makes its strongest honest case, then Dig Deeper reads the reporting around it and lists every source, so you can check it yourself.">
-  <meta property="og:title" content="The Lede">
+  <meta name="description" content="The Lede reads what you save and tells you what each piece argues, so you know if it&rsquo;s worth your time. When it is, Dig Deeper lists every source.">
+  <meta property="og:title" content="The Lede · Check everything you read">
   <meta property="og:description" content="Hear the author out. Then see what the sources say.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theledeapp.com/">
@@ -13,14 +13,17 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Lede">
+  <meta name="twitter:title" content="The Lede · Check everything you read">
   <meta name="twitter:description" content="Hear the author out. Then see what the sources say.">
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <!-- Smart App Banner. Valid only once the listing is public, which is exactly
-       why it was held for A-day rather than shipped with the pre-launch site. -->
-  <meta name="apple-itunes-app" content="app-id=6772315315">
-  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
+       why it was held for A-day rather than shipped with the pre-launch site.
+       Campaign token: pt=128929757 is the account's provider token, copied from an
+       App Store Connect campaign link on 2026-10-25. The banner gets its own
+       campaign (site-banner) so App Store Connect counts it apart from the badge. -->
+  <meta name="apple-itunes-app" content="app-id=6772315315, affiliate-data=pt=128929757&amp;ct=site-banner">
+  <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
   <link rel="me" href="https://mastodon.social/@theledeapp">
   <script type="application/ld+json">
   {
@@ -33,6 +36,7 @@
         "legalName": "Charles Klein LLC",
         "url": "https://theledeapp.com/",
         "logo": "https://theledeapp.com/icon.png",
+        "slogan": "Check everything you read.",
         "sameAs": ["https://mastodon.social/@theledeapp"],
         "contactPoint": { "@type": "ContactPoint", "email": "support@theledeapp.com", "contactType": "customer support" }
       },
@@ -50,12 +54,24 @@
         "operatingSystem": "iOS",
         "applicationCategory": "NewsApplication",
         "downloadUrl": "https://apps.apple.com/app/id6772315315",
-        "description": "A read-later app with a research desk. Save an article and The Lede renames it for what it actually argues and makes its strongest honest case. Then Dig Deeper reads the reporting around it and lists every source, so you can check its work.",
+        "description": "A read-later app with a research desk. Save an article and The Lede renames it for what it actually argues and makes its strongest honest case. When it’s worth more of your time, Dig Deeper looks in the research and the reporting around it and lists every source.",
         "author": { "@id": "https://theledeapp.com/#org" },
         "offers": [
-          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "10 briefs and two Dig Deepers every month, no account required." },
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "10 briefs and 2 Dig Deepers every month, no account required." },
           { "@type": "Offer", "name": "Membership", "price": "9.99", "priceCurrency": "USD", "description": "The desk reads it all, and you get 150 Dig Deepers a month. $9.99 a month or $99.99 a year, each with a 7-day free trial. Billed through Apple." }
         ]
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://theledeapp.com/#film",
+        "name": "A short film about The Lede",
+        "description": "{{@hero.sub.text}}",
+        "duration": "PT1M19S",
+        "thumbnailUrl": "https://theledeapp.com/film/poster-16x9.png",
+        "contentUrl": "https://theledeapp.com/film/web-16x9-1920x1080.mp4",
+        "uploadDate": "2026-10-25",
+        "transcript": "{{@film.lines.text}}",
+        "publisher": { "@id": "https://theledeapp.com/#org" }
       }
     ]
   }
@@ -65,6 +81,8 @@
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://theledeapp.com/">
   <link rel="stylesheet" href="styles.css">
+  <!-- Without script the film's link can't open its transcript, so it shows open. -->
+  <noscript><style>.transcript[hidden] { display: block; }</style></noscript>
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -97,7 +115,7 @@
         override.setAttribute('data-override', '');
         document.head.insertBefore(override, document.head.firstChild);
       }
-      override.setAttribute('content', resolved() === 'dark' ? '#1a1613' : '#faf7f0');
+      override.setAttribute('content', resolved() === 'dark' ? '#110F0D' : '#F8F5F1');
     }
 
     try {
@@ -122,13 +140,30 @@
     /* While no explicit choice is stored, track the device live. */
     mq.addEventListener('change', paintBrowserChrome);
   })();
+
+  /* The film's poster is the page's largest paint, so fetch the one this reader
+     will see before anything else: 4:5 on phones, 16:9 otherwise, the night cut's
+     poster when the resolved theme is dark. Runs after the theme script so a
+     stored choice counts. LEDE_FILM_NIGHT is the one switch for the night cut;
+     false serves the day cut in both themes. */
+  (function () {
+    window.LEDE_FILM_NIGHT = true;
+    var d = document.documentElement;
+    var dark = (d.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+    var link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = 'film/' + (window.LEDE_FILM_NIGHT && dark ? 'night-' : '') + 'poster-' + (matchMedia('(max-width: 40rem)').matches ? '4x5' : '16x9') + '.webp';
+    link.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(link);
+  })();
   </script>
 </head>
-<body>
+<body class="page-home">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap wrap--wide">
     <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
+      <a class="mark" href="/" aria-label="The Lede home page"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
       <nav>
         <a href="/support">Support</a>
         <a href="/privacy">Privacy</a>
@@ -137,55 +172,335 @@
     </header>
     <main id="main">
 
-    <!-- HERO — the transform LEADS; the claim is its caption (re-cut 2026-07-24).
-         The old eyebrow → big-serif-headline opener was the most template-shaped
-         lockup on the page and has been removed outright. -->
-    <section class="hero">
-      <!-- The signature move: the canonical wine reframe (shared with onboarding + paywall) -->
-      <figure class="specimen specimen--hero rise specimen--live" aria-label="A story, re-framed by The Lede">
-        <p class="specimen__label">As it ran</p>
-        <p class="specimen__orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
-        <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">Unburies to</span></p>
-        <p class="specimen__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
-      </figure>
-
-      <div class="hero__claim rise rise-2">
-        <h1>{{hero.h1}}</h1>
-        <p class="hero__sub">{{hero.sub}}</p>
+    <!-- THE FILM leads (CDO "the page plays", 2026-10-24). It sits on the page's own
+         paper with no frame, plays once on its own (muted, never looped) and comes
+         to rest on the sign-off frame, which is also its poster. No `autoplay`
+         attribute: the script below starts it, so Reduce Motion, Save-Data and slow
+         links are honoured before a single frame plays. Without script, the
+         browser's own player shows and nothing downloads until pressed. -->
+    <section class="film-band at-rest" data-film aria-label="{{film.name}}">
+      <div class="film__stage">
+        <video class="film__video" muted playsinline preload="none" disablepictureinpicture disableremoteplayback
+               aria-labelledby="film-name"></video>
+        <!-- Without script: the browser's own player with a poster. A noscript
+             block is never parsed when script runs, so it fetches nothing then. -->
+        <noscript>
+          <video muted playsinline controls preload="none" poster="film/poster-16x9.webp" aria-labelledby="film-name">
+            <source media="(max-width: 40rem)" src="film/web-4x5-1080x1350.mp4" type="video/mp4">
+            <source src="film/web-16x9-1920x1080.mp4" type="video/mp4">
+          </video>
+        </noscript>
+        <img class="film__cover" alt="" aria-hidden="true">
+        <span id="film-name" class="vh">{{film.name}}</span>
+      </div>
+      <div class="film__bar">
+        <div class="film__progress" aria-hidden="true"><i></i></div>
+        <div class="film__controls">
+          <button type="button" class="film__toggle" data-state="ready" aria-describedby="film-name"
+                  data-label-play="{{film.play}}" data-label-pause="{{film.pause}}" data-label-replay="{{film.replay}}">
+            <span class="film__icon" aria-hidden="true"><svg class="i-play" viewBox="0 0 10 10"><path d="M2.5 1.2v7.6L8.6 5z"/></svg><svg class="i-pause" viewBox="0 0 10 10"><path d="M2 1.2h2.2v7.6H2zM5.8 1.2H8v7.6H5.8z"/></svg><svg class="i-replay" viewBox="0 0 10 10"><path d="M5 1.3a3.7 3.7 0 1 0 3.6 4.4H7.3A2.45 2.45 0 1 1 5 2.55V4l2.4-2.05L5 0z"/></svg></span>
+            <span class="film__label">{{film.play}}</span>
+          </button>
+          <span class="film__meta">{{film.meta}}</span>
+          <button type="button" class="film__transcript-toggle" aria-expanded="false"
+                  aria-controls="film-transcript">{{film.transcriptLink}}</button>
+        </div>
       </div>
     </section>
 
-    <!-- The store band — its own centered band, the page's one action.
-         Before launch this collected an email address; now it points at the
-         listing, which is the only thing left to ask for.
-
-         The badge is an <img>, NEVER inline SVG. Apple's official SVG carries an
-         internal <title> ("Download_on_the_App_Store_Badge_US-UK_RGB_blk_...")
-         that a screen reader announces verbatim as a filename. As an <img> the
-         alt text is ours, and it says exactly what Apple requires.
-
-         The badge is Apple's artwork under Apple's rules: never re-drawn,
-         re-coloured, re-typeset, or animated — so no `rise` class here, unlike
-         the hero above it. -->
-    <section class="signup signup--store">
-      <p class="eyebrow">{{signup.topEyebrow}}</p>
-      <p class="store-badge">
-        <a href="https://apps.apple.com/app/id6772315315">
-          <img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}">
-        </a>
-      </p>
-      <p class="fineprint">{{signup.disclaimer}}</p>
+    <!-- The film in words: its 18 lines and what each drawing does, opened by the
+         link under the film. A reader without script gets it open (the noscript
+         style in the head). Never call it an "accessible version" (no public
+         accessibility claims, 2026-08-10). -->
+    <section id="film-transcript" class="transcript" aria-labelledby="film-transcript-h" hidden>
+      <h2 id="film-transcript-h" class="transcript__h" tabindex="-1">{{film.transcriptHeading}}</h2>
+      <p class="transcript__intro">{{film.transcriptIntro}}</p>
+      <ol class="transcript__list">
+        {{@film.lines.items}}
+      </ol>
     </section>
 
-    <p class="section-slug">The queue</p>
+    <script>
+    /* The film player. Spec section 6; states ready, playing, paused, ended.
+       Runs right after the band so the poster and the source are chosen before
+       first paint. */
+    (function () {
+      var band = document.querySelector('[data-film]');
+      if (!band) return;
+      var d = document.documentElement;
+      var video = band.querySelector('.film__video');
+      var stage = band.querySelector('.film__stage');
+      var cover = band.querySelector('.film__cover');
+      var toggle = band.querySelector('.film__toggle');
+      var label = toggle.querySelector('.film__label');
+      var fill = band.querySelector('.film__progress i');
+      var tbtn = band.querySelector('.film__transcript-toggle');
+      var region = document.getElementById('film-transcript');
+      var WORDS = {
+        play: toggle.getAttribute('data-label-play'),
+        pause: toggle.getAttribute('data-label-pause'),
+        replay: toggle.getAttribute('data-label-replay')
+      };
+      /* The two dark stretches, frames 786 to 1111 and 1733 to 1980 at 30 fps,
+         frame-exact in every web encode, day and night, both shapes. */
+      var DARK = [[786, 1111], [1733, 1980]];
+      var END = 2379 / 30;
 
-    <!-- SHOWCASE 1 — the queue is a magazine -->
+      var phone = matchMedia('(max-width: 40rem)');
+      var darkOS = matchMedia('(prefers-color-scheme: dark)');
+      var conn = navigator.connection || {};
+      var saveData = !!conn.saveData;
+      var slow = saveData || /^(slow-2g|2g|3g)$/.test(conn.effectiveType || '');
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var frames = 'requestVideoFrameCallback' in HTMLVideoElement.prototype;
+
+      var state = 'ready';     // what the button says: ready, playing, paused, ended
+      var cur = null;          // the files in the video element now
+      var swap = null;         // a mid-film change of cut waiting for its metadata
+      var deferred = null;     // a cut chosen at rest, loaded only when the film is next played
+      var userPaused = false, autoPaused = false, armed = false, started = false, inView = false;
+      var frameId = 0;
+
+      function night() {
+        if (!window.LEDE_FILM_NIGHT) return false;
+        var t = d.getAttribute('data-theme');
+        return t ? t === 'dark' : darkOS.matches;
+      }
+      /* The cut this reader should see: 4:5 on phones, the night cut in dark mode,
+         the large encode unless the film is drawn small or Save-Data is on. */
+      function want() {
+        var tall = phone.matches;
+        var big = !saveData && (tall || stage.getBoundingClientRect().width * (window.devicePixelRatio || 1) > 800);
+        var n = night();
+        var pre = 'film/' + (n ? 'night-' : '');
+        var shape = tall ? '4x5' : '16x9';
+        var size = tall ? (big ? '1080x1350' : '720x900') : (big ? '1920x1080' : '1280x720');
+        return { night: n, mp4: pre + 'web-' + shape + '-' + size + '.mp4', poster: pre + 'poster-' + shape + '.webp' };
+      }
+
+      function setState(s) {
+        state = s;
+        toggle.setAttribute('data-state', s);
+        label.textContent = s === 'playing' ? WORDS.pause : s === 'ended' ? WORDS.replay : WORDS.play;
+      }
+      /* At rest the poster covers the film and the progress rule hides. */
+      function rest(on) {
+        band.classList.toggle('at-rest', on);
+        cover.style.opacity = on ? '1' : '0';
+      }
+      /* Compare whole frames, not seconds: Chrome reports frame 1111 a hair under
+         1111 / 30, which left the band dark for one frame of paper. */
+      function inDark(t) {
+        var f = Math.round(t * 30);
+        for (var i = 0; i < DARK.length; i++) if (f >= DARK[i][0] && f < DARK[i][1]) return true;
+        return false;
+      }
+      function paint(t) {
+        band.classList.toggle('is-dark', inDark(t));
+        fill.style.transform = 'scaleX(' + Math.min(1, t / END) + ')';
+      }
+
+      /* The one place the film is asked to play. If the browser refuses (iOS Low
+         Power Mode), put the page back where it was: the poster at rest for a film
+         that never started or had ended, the paused frame for one mid-film. */
+      function start() {
+        var prev = state;
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {
+          setTimeout(function () {
+            if (!video.paused) return;
+            if (prev === 'ended') { setState('ended'); rest(true); }
+            else if (prev === 'paused' || video.currentTime > 0.05) { setState('paused'); rest(false); }
+            else { setState('ready'); rest(true); }
+          }, 0);
+        });
+      }
+      function setSrc(mp4) { deferred = null; video.src = mp4; }
+      function play() {
+        userPaused = false;
+        autoPaused = false;
+        if (deferred) setSrc(deferred);
+        if (state === 'ended' || video.ended) video.currentTime = 0;
+        video.preload = 'auto';
+        start();
+      }
+
+      /* Choose the source, and change it when the cut should change: a theme
+         switch (day or night) or the layout crossing 40rem (4:5 or 16:9). At rest
+         only the poster changes and nothing downloads until it is needed;
+         mid-film the new cut picks up at the same moment, playing or paused as
+         before. A second change before the first settles carries the same moment
+         and drops the first one's callback. */
+      function apply() {
+        var f = want();
+        if (cur && f.mp4 === cur.mp4) return;
+        var first = !cur;
+        var mid = !first && (state === 'playing' || state === 'paused');
+        var time = swap ? swap.time : video.currentTime;
+        var resume = swap ? swap.resume : state === 'playing';
+        if (swap) { video.removeEventListener('loadedmetadata', swap.onMeta); swap = null; }
+        if (frames && frameId) { video.cancelVideoFrameCallback(frameId); frameId = 0; }
+        cur = f;
+        band.classList.toggle('is-night', f.night);
+        cover.src = f.poster;
+        if (!mid) {
+          video.poster = f.poster;
+          /* Safari fetches a new source after a film has played even with
+             preload="none", so at rest only the still changes; the film follows
+             when someone presses play. A pending autoplay loads it now. */
+          if (first) { video.preload = 'none'; setSrc(f.mp4); }
+          else if (state === 'ready' && armed) { video.preload = 'auto'; setSrc(f.mp4); }
+          else deferred = f.mp4;
+          ask();
+          return;
+        }
+        /* No poster while the new cut loads, so the sign-off frame never flashes
+           mid-film; the band's paper shows for that moment instead. */
+        video.removeAttribute('poster');
+        var s = swap = { time: time, resume: resume, onMeta: null };
+        s.onMeta = function () {
+          if (swap !== s) return;
+          swap = null;
+          video.currentTime = s.time;
+          video.poster = f.poster;
+          if (!s.resume || userPaused) { setState('paused'); return; }
+          if (inView && !document.hidden) start();
+          else { autoPaused = true; setState('paused'); }
+        };
+        video.addEventListener('loadedmetadata', s.onMeta, { once: true });
+        video.preload = 'auto';
+        setSrc(f.mp4);
+        ask();
+      }
+
+      /* The cut sync: the band takes the film's dark ground frame by frame. It
+         stays on under Reduce Motion once the reader presses play; it is a colour
+         change that matches the film, not added motion. */
+      function onFrame(now, meta) { frameId = 0; paint(meta.mediaTime); ask(); }
+      function ask() { if (frames && !frameId) frameId = video.requestVideoFrameCallback(onFrame); }
+      if (!frames) video.addEventListener('timeupdate', function () { paint(video.currentTime); });
+
+      setState('ready');
+      rest(true);
+      apply();
+
+      toggle.addEventListener('click', function () {
+        if (state === 'playing') {
+          userPaused = true;
+          autoPaused = false;
+          if (swap) swap.resume = false;
+          video.pause();
+          setState('paused');
+        } else play();
+      });
+      video.addEventListener('click', function () { toggle.click(); });
+
+      video.addEventListener('play', function () { setState('playing'); rest(false); ask(); });
+      video.addEventListener('pause', function () {
+        if (swap || video.ended || state === 'ended') return;
+        setState('paused');
+      });
+      video.addEventListener('ended', function () {
+        setState('ended');
+        paint(END);
+        /* The last frame is the poster, so showing the cover changes nothing on
+           screen and lets a later cut change swap only the still. */
+        rest(true);
+      });
+      video.addEventListener('seeked', function () { paint(video.currentTime); ask(); });
+
+      new MutationObserver(apply).observe(d, { attributes: true, attributeFilter: ['data-theme'] });
+      darkOS.addEventListener('change', apply);
+      phone.addEventListener('change', apply);
+
+      /* The transcript opens under the film and takes focus at its heading. */
+      tbtn.addEventListener('click', function () {
+        var open = tbtn.getAttribute('aria-expanded') === 'true';
+        tbtn.setAttribute('aria-expanded', String(!open));
+        region.hidden = open;
+        if (!open) region.querySelector('.transcript__h').focus();
+      });
+
+      /* Out of view or in a hidden tab: pause. On return, resume only a film the
+         page paused itself, never one the reader paused or one that has ended. */
+      function away() { if (state === 'playing' && !video.paused) { autoPaused = true; video.pause(); } }
+      function back() {
+        if (!inView || document.hidden) return;
+        if (autoPaused && !userPaused && state !== 'ended') { autoPaused = false; start(); }
+        else if (armed && !started) begin();
+      }
+      document.addEventListener('visibilitychange', function () { if (document.hidden) away(); else back(); });
+      new IntersectionObserver(function (entries) {
+        var e = entries[entries.length - 1];
+        inView = e.isIntersecting && e.intersectionRatio >= 0.5;
+        if (inView) back(); else away();
+      }, { threshold: [0, 0.5] }).observe(band);
+
+      /* Autoplay, once. Nothing downloads before the window's load event; then,
+         when the band is half in view and the film can play through, the poster
+         holds 900 ms more so the sign-off registers, and the film starts. No
+         autoplay under Reduce Motion, Save-Data or a 2G/3G link: those readers
+         keep the poster and "Play the film". If the film cannot play through
+         within 6 s of coming into view, or the browser refuses to play, it stays
+         ready. */
+      function begin() {
+        started = true;
+        var late = false;
+        var limit = setTimeout(function () { late = true; }, 6000);
+        function go() {
+          clearTimeout(limit);
+          if (late) return;
+          setTimeout(function () {
+            if (state !== 'ready' || userPaused || !inView || document.hidden) return;
+            start();
+          }, 900);
+        }
+        if (video.readyState >= 4) go(); else video.addEventListener('canplaythrough', go, { once: true });
+      }
+      window.addEventListener('load', function () {
+        if (reduce || slow) return;
+        armed = true;
+        if (state === 'ready') {
+          video.preload = 'auto';
+          if (deferred) setSrc(deferred); else video.load();
+        }
+        back();
+      });
+    })();
+    </script>
+
+    <section class="hero1">
+      <h1>{{hero.h1}}</h1>
+      <p class="allowance">{{hero.allowance}}</p>
+      <p class="hero__sub">{{hero.sub}}</p>
+      <!-- The page's one badge. Apple's artwork under Apple's rules: never redrawn,
+           recoloured, retypeset or animated. An <img>, never inline SVG: Apple's SVG
+           carries a <title> a screen reader reads out as a filename.
+           Campaign: site-home, provider token as in the Smart App Banner. -->
+      <div class="store-flat">
+        <p class="eyebrow">{{signup.topEyebrow}}</p>
+        <p class="store-badge"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}"></a></p>
+        <p class="requirements">{{signup.requirements}}</p>
+      </div>
+    </section>
+
+    <p class="section-slug">{{showcase1.slug}}</p>
+
+    <!-- SHOWCASE 1: the film's lines 9 to 11. The wine card, the old hero, leads
+         the column here as the proof under "It unburies the lede." -->
     <section class="showcase">
       <div class="showcase__head">
         <h2>{{showcase1.heading}}</h2>
         <p class="muted">{{showcase1.body}}</p>
       </div>
       <div class="split">
+        <div>
+        <figure class="specimen specimen--exhibit" aria-label="{{showcase1.exhibitAria}}">
+          <p class="specimen__label">{{showcase1.exhibitRanAsLabel}}</p>
+          <p class="specimen__orig">{{showcase1.exhibitRanAs}}</p>
+          <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">{{showcase1.exhibitTurnLabel}}</span></p>
+          <p class="specimen__lede">{{showcase1.exhibitLede}}</p>
+        </figure>
         <div class="frontpage">
           <article class="entry">
             <span class="entry__beat"><span class="beat beat--business">Business</span></span>
@@ -206,13 +521,14 @@
             <p class="entry__meta">5 min read</p>
           </article>
         </div>
+        </div>
 
         <!-- the "it's a real app" anchor: real pixels, not a drawing. Two files
              so the shot follows the page theme; the dark one is decorative since
              the light one already carries the description. -->
         <div class="device-shot">
           <img class="shot-light" src="app-queue-light.webp" width="700" height="1431"
-               alt="The Lede's queue for iPhone — four saved stories, each renamed for what it is actually about and filed to a beat, with the original headline kept underneath."
+               alt="{{showcase1.shotAlt}}"
                loading="lazy" decoding="async">
           <img class="shot-dark" src="app-queue-dark.webp" width="700" height="1431"
                alt="" aria-hidden="true" loading="lazy" decoding="async">
@@ -254,7 +570,7 @@
     <section class="signup">
       <h2>{{signup.closingHeading}}</h2>
       <p class="signup__sub">{{signup.closingSub}}</p>
-      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315">{{signup.closingLink}}</a></p>
+      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">{{signup.closingLink}}</a></p>
     </section>
 
     <!-- The notes list. One field, no panel, no wash — deliberately the
@@ -274,8 +590,8 @@
 
     <footer>
       <div class="colophon">
-        <img src="icon.png" alt="The Lede app icon" width="30" height="30">
-        <span>The Lede · your queue, <b>re-framed</b>.</span>
+        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
+        <span>{{footer.signoff}}</span>
       </div>
       <div class="row">
         <a href="/privacy">Privacy</a>

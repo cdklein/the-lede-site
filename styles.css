@@ -31,13 +31,15 @@
      off `color-scheme`. The theme toggle flips `color-scheme` on :root — there is
      no second token block to keep in sync. Contrast ratios noted below hold in
      both resolutions (audited 2026-07-22, unchanged here). */
-  --paper:        light-dark(#faf7f0, #1a1613);
-  --paper-2:      light-dark(#f3eee2, #231d17);   /* recessed / card */
+  /* The app's paper in both modes, and the brand film's exact grounds (Charles,
+     2026-10-24). paper-2 and the rules are re-stepped against it. */
+  --paper:        light-dark(#F8F5F1, #110F0D);
+  --paper-2:      light-dark(#F1ECE3, #1B1815);   /* recessed / card */
   --ink:          light-dark(#1c1a17, #efe9dd);
   --ink-2:        light-dark(#3a362f, #cdc6b6);
   --ink-3:        light-dark(#635c4d, #928b7b);   /* ≥4.5:1 on paper, paper-2, AND the ember-tinted signup band */
-  --rule:         light-dark(#e6e0d1, #2f2920);
-  --rule-strong:  light-dark(#d8d0bd, #3e3729);
+  --rule:         light-dark(#E6E0D5, #2A2520);
+  --rule-strong:  light-dark(#D6CEC0, #3A332B);
   --ember:        light-dark(oklch(0.602 0.118 47), oklch(0.715 0.128 52));
   --ember-ink:    light-dark(oklch(0.512 0.118 47), oklch(0.74 0.128 56));   /* ember text on paper, AA */
   --ember-tint:   light-dark(
@@ -49,6 +51,15 @@
      Measured against the true ember-tinted signup band (#f0e6d8 / #2d231b),
      not against paper: 5.92:1 light, 6.25:1 dark. */
   --alert:        light-dark(#9a3324, #e2907f);
+
+  /* The homepage film band. At rest it is the page's paper; during the film's two
+     dark stretches it takes the film's dark ground, so the page goes dark with it. */
+  --film-ground:    var(--paper);
+  --film-cut:       light-dark(#110F0D, #000000);
+  --film-ink:       light-dark(#27221D, #F2EFE8);   /* control label: the film's ink */
+  --film-ink-cut:   #F2EFE8;
+  --film-meta:      light-dark(#635C4D, #A39C8E);   /* meta and transcript link */
+  --film-meta-cut:  #A39C8E;
 
   /* Beat hues — desaturated newspaper sections (label / pill bg) */
   --beat-business:    light-dark(#8a5a2b, #ca9355);  --beat-business-bg:   light-dark(#f0e6d3, #2c2418);
@@ -383,48 +394,8 @@ footer .muted { font-size: 0.78rem; margin-top: 0.5rem; }
   max-width: 34rem;
   margin: 0.9rem 0 0;
 }
-/* The claim is the exhibit's caption, so it hangs off the same left edge as the
-   lede inside the card — indented by the card's own gutter, not the page's. */
-/* +25% clearance under the card: its drop shadow reaches ~32px past the border,
-   so the measured gap read tighter than it was. */
-.hero__claim { margin-top: 2.75rem; padding-inline: 1.8rem; }
-
 @media (min-width: 52rem) {
   .hero { padding-top: 2.6rem; }
-  /* The exhibit spans the full measure so the hero aligns with the signup band
-     and the showcases below it — a narrower hero made the page look like it
-     started in a different grid. */
-  .hero > .specimen { max-width: none; margin: 0; }
-  .specimen--hero .specimen__lede { max-width: 22ch; }
-  /* Claim sits under the exhibit as a two-column caption: statement, then gloss. */
-  .hero__claim {
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    column-gap: 3rem;
-    align-items: start;
-    margin-top: 3.25rem;      /* +25%, see note on .hero__claim above */
-    padding-inline: 2.6rem;   /* matches --hero-pad at this breakpoint */
-  }
-  .hero__claim h1 { max-width: 14ch; }
-  .hero__claim .hero__sub { margin-top: 0.2rem; }
-}
-
-/* The hero specimen runs at display scale — its lede is the largest type on the
-   page, ahead of the h1. Heading level is semantic; size is editorial.
-   `--hero-pad` is shared with .hero__claim below so the claim's first character
-   sits on the same vertical as the lede's. Display type needs a wider gutter and
-   more air around the turn than the small card variant did. */
-.specimen--hero {
-  --hero-pad: 1.8rem;
-  padding: 2.2rem var(--hero-pad) 2.1rem;
-}
-.specimen--hero .specimen__orig { font-size: clamp(1.02rem, 2vw, 1.2rem); }
-.specimen--hero .specimen__lede { font-size: clamp(1.95rem, 5.4vw, 3rem); }
-/* The turn is the hinge of the whole page — give it room on both sides. */
-.specimen--hero .specimen__turn { margin: 1.5rem 0 1.25rem; }
-@media (min-width: 52rem) {
-  .specimen--hero { --hero-pad: 2.6rem; padding: 2.7rem var(--hero-pad) 2.6rem; }
-  .specimen--hero .specimen__turn { margin: 1.9rem 0 1.5rem; }
 }
 
 /* ---- The specimen — a story, re-framed (the signature move) ------------- */
@@ -655,10 +626,6 @@ footer .row { font-size: 0.72rem; }
 /* Shipped early for launch day (the-lede-site#2), live since the 2026-09-14
    flip. See ADAY-FLIP.md. */
 
-/* The badge band drops the form's vertical rhythm onto a single control.
-   Margin is the CDO-pass value (2026-08-03), folded in at the tidy step. */
-.signup--store .store-badge { margin: 1rem 0 1.05rem; }
-
 /* Apple's artwork under Apple's rules: never re-drawn, re-coloured or
    re-typeset, and never animated — so nothing here transitions, and the markup
    carries no `rise` class. The black badge already includes its own light
@@ -814,13 +781,11 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
    why there is deliberately no box-shadow or border here — the bezel carries its
    own shading, and the PNG's transparent margin is left intact. */
 .device-shot { margin: 0 auto; max-width: 340px; }
-/* The shot is taller than the entry list beside it, so top-aligning the two at
-   the split left it hanging low and dumped the excess height below the list.
-   It rides up beside the section head instead — roughly level with the heading,
-   with a little margin above it — which also fills what was dead space. Optical
-   value: tune by eye if the heading or the list changes length. */
+/* Top-aligned beside the column. It used to pull up 10.5rem beside the section
+   head; with the wine card now leading the column, the column is as tall as the
+   shot, so it sits level with the card. */
 @media (min-width: 50rem) {
-  .split > .device-shot { margin-top: -10.5rem; align-self: start; }
+  .split > .device-shot { align-self: start; }
 }
 .device-shot img {
   display: block;
@@ -953,10 +918,9 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
 @media print {
   :root { color-scheme: light; }
 
-  /* `.rise` animates from opacity 0 with `both`, so it HOLDS the from-state
-     until the animation runs — and print doesn't run animations. Without this
-     the hero prints blank. */
-  .rise, .rise-2, .rise-3 { animation: none !important; opacity: 1 !important; transform: none !important; }
+  /* The film cannot print; its words can. The transcript prints open. */
+  .film-band { display: none !important; }
+  .transcript[hidden] { display: block !important; }
 
   body {
     background: #fff;
@@ -1006,28 +970,6 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
   /* The colophon closes the printed page too. */
   .page-colophon { border-top: 1pt solid #000; margin-top: 1cm; padding-top: 0.4cm; }
   .page-colophon .endmark { color: #000; }
-}
-
-/* ---- Motion ------------------------------------------------------------- */
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.rise-2 { animation-delay: 0.12s; }
-.rise-3 { animation-delay: 0.24s; }
-@media (prefers-reduced-motion: reduce) {
-  .rise, .rise-2, .rise-3 { animation: none; }
-}
-
-/* The performed reframe — the hero specimen unburies itself once on load.
-   The card rises in showing only "As it ran" + the buried original; then the
-   turn + the loud lede resolve in, so the transformation is performed, not
-   frozen. `both` holds them invisible through the delay. Reduced motion falls
-   back to the fully-static card (everything visible, no movement). */
-@keyframes unbury { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.specimen--live .specimen__turn { animation: unbury 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s both; }
-.specimen--live .specimen__lede { animation: unbury 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.05s both; }
-@media (prefers-reduced-motion: reduce) {
-  .specimen--live .specimen__turn,
-  .specimen--live .specimen__lede { animation: none; }
 }
 
 /* ---- Sourcing page: the manifesto reads in the serif it preaches -------- */
@@ -1375,7 +1317,6 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
    body's 1.65 line-height, so the strut's descent sat under an inline-block with
    line-height 0. It pushed the whole stamp off the panel's optical centre. */
 .store-badge { line-height: 0; }
-.signup--store { padding-top: 2.4rem; padding-bottom: 2.4rem; }
 
 /* 2. The closing band's store link.
    Type, colour and underline are unchanged — this is hit area only. As a bare
@@ -1441,3 +1382,207 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
    it left "other countries." alone under a line ending on "and". Balance splits
    it evenly, which is what the line above it already gets. */
 footer .disclaimer + .disclaimer { text-wrap: balance; }
+
+/* ---- Homepage: the brand film leads (CDO "the page plays", 2026-10-24) ----
+   The film is the first thing under the masthead, set on the page's own paper
+   with no border, radius or shadow, feathered into it on every side. During the
+   film's two dark stretches the whole band takes the film's dark ground. Under
+   it, centred: the h1, the allowance line, the sub, the badge, the requirements.
+   Spec: design-review/site-home-brand-film-2026-10-24/spec.md. */
+.page-home { overflow-x: clip; }   /* the band's 100vw bleed would add a sideways scroll on desktop */
+.page-home .wrap { padding-top: 1.2rem; }
+/* No rule under the masthead: a line above the film would frame it. */
+.page-home .site-head { margin-bottom: 0; border-bottom: 0; padding-bottom: 0.8rem; }
+
+.film-band {
+  --band-bg: var(--film-ground);
+  background: var(--film-ground);
+  margin-inline: calc(50% - 50vw);   /* full bleed out of the 60rem column */
+  /* No transition: the cut is hard, like the film's. */
+}
+.film-band.is-dark {
+  --band-bg: var(--film-cut);
+  background: var(--film-cut);
+  --film-ink: var(--film-ink-cut);
+  --film-meta: var(--film-meta-cut);
+}
+.film__stage {
+  position: relative;
+  line-height: 0;
+  margin: 0 auto;
+  /* Sized to leave the h1 on screen one, but never under half the screen's width:
+     on a short screen (a phone held sideways is 390px tall) the height rule
+     alone would shrink the film to a stamp. */
+  width: min(100%, 1280px, max(calc((100svh - 19rem) * 16 / 9), 50vw));
+}
+.film__stage video,
+.film__stage .film__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* The feather, load-bearing. Chrome decodes the film's paper one level off the
+     CSS paper (#F9F5F2 against #F8F5F1); fading the last 3% of every edge into
+     the page makes that step, and any other browser's decode, invisible. */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent),
+    linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent),
+    linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
+  mask-composite: intersect;
+  /* The film's paper decodes one to three levels off the page's paper, in a
+     different direction in every browser and on every frame, so a straight
+     edge can show while it plays. Blending clamps it. On a light ground,
+     "darken" keeps the darker of film and page in each channel: paper noise
+     lighter than the page becomes the page, and every drawn mark, all darker
+     than the paper, passes through unchanged. On a dark ground (the film's
+     dark stretches, or the night cut) "lighten" does the same the other way. */
+  mix-blend-mode: darken;
+}
+.film-band.is-dark .film__stage video,
+.film-band.is-dark .film__stage .film__cover,
+.film-band.is-night .film__stage video,
+.film-band.is-night .film__stage .film__cover { mix-blend-mode: lighten; }
+.js .film__stage video { cursor: pointer; }
+/* The poster as an image over the video: it holds the sign-off until the film
+   starts, then lifts off the paper with the brand's exit ease. */
+.film__cover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 1, 1);
+}
+@media (prefers-reduced-motion: reduce) { .film__cover { transition: none; } }
+/* Without script the video keeps the browser's own controls and poster. */
+:root:not(.js) .film__bar,
+:root:not(.js) .film__cover { display: none; }
+:root:not(.js) .film__video { display: none; }   /* the noscript player stands in */
+
+.film__bar { width: min(100% - 2.8rem, 60rem); margin: 0 auto; }
+.film__progress {
+  height: 1px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--film-meta) 25%, transparent);
+}
+.film__progress i {
+  display: block;
+  height: 100%;
+  background: var(--film-meta);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.film-band.at-rest .film__progress { opacity: 0; }
+.film__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 44px;
+  font: 600 0.68rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--film-meta);
+}
+.film__toggle,
+.film__transcript-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 0.15rem;
+  margin: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--film-ink);
+}
+.film__transcript-toggle { color: var(--film-meta); margin-left: auto; }
+.film__toggle:hover,
+.film__transcript-toggle:hover { color: var(--film-ink); text-decoration: underline; text-underline-offset: 3px; }
+.film__toggle:focus-visible,
+.film__transcript-toggle:focus-visible { outline: 2px solid var(--ember-ink); outline-offset: 2px; border-radius: 4px; }
+.film__icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+.film__icon svg { display: none; width: 9px; height: 9px; fill: currentColor; }
+.film__toggle[data-state="ready"] .i-play,
+.film__toggle[data-state="paused"] .i-play,
+.film__toggle[data-state="playing"] .i-pause,
+.film__toggle[data-state="ended"] .i-replay { display: block; }
+.film__meta { color: var(--film-meta); }
+
+/* The film, line by line: real text, collapsed under the film's link. */
+.transcript { max-width: 40rem; margin: 1.6rem auto 0; text-align: left; }
+.transcript[hidden] { display: none; }
+.transcript__h { font-size: var(--h3-size); margin: 0 0 0.4rem; }
+.transcript__h:focus { outline: none; }
+.transcript__intro { font-size: 0.92rem; color: var(--ink-3); margin: 0 0 1rem; }
+.transcript__list { margin: 0; padding-left: 1.6rem; }
+.transcript__list li { margin: 0 0 0.55rem; }
+.t-words { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.t-drawing { display: block; font-size: 0.86rem; color: var(--ink-3); }
+
+/* The h1 reads as the film's next line, so it is set at 500, not 600. */
+.hero1 { text-align: center; padding-top: 1.6rem; }
+.hero1 h1 {
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  max-width: none;
+  margin: 0 auto;
+}
+.allowance { font: 500 0.86rem/1.45 var(--sans); color: var(--ink-3); margin: 0.9rem 0 0; }
+.hero1 .hero__sub {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 36rem;
+  margin: 1.3rem auto 0;
+}
+/* Flat on the paper, no panel: a tinted box under seamless paper brings the frame back. */
+.store-flat { text-align: center; margin: 1.6rem 0 0; }
+.store-flat .store-badge { margin: 0; }
+.requirements { font-size: 0.82rem; color: var(--ink-3); margin: 0.6rem auto 0; }
+
+/* Below the fold: the wine card leads "The lede" column. */
+.specimen--exhibit { max-width: none; margin-bottom: 1.6rem; }
+.specimen--exhibit .specimen__lede { font-size: clamp(1.5rem, 3.4vw, 2rem); }
+
+@media (max-width: 40rem) {
+  .page-home .wrap { padding: 0.75rem 1.25rem 4rem; }
+  .page-home .site-head { padding-bottom: 0.55rem; }
+  /* Short phones give up film height so the h1 and the allowance stay on screen
+     one. The paper is continuous, so a narrower film shows no edge. The 300px
+     floor keeps the film's own type at 14px. */
+  .film__stage { width: clamp(18.75rem, calc((100svh - 13.5rem) * 0.8), 100%); }
+  /* The controls sit on the 4:5 cut's empty bottom margin, with a paper backing
+     so the opening beats' dots pass under the row, never through it. */
+  .film-band { position: relative; }
+  .film__bar {
+    position: absolute;
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 0;
+    width: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 12px;
+    background: linear-gradient(to bottom, transparent, var(--band-bg) 12px);
+  }
+  .film__controls { height: 40px; font-size: 0.62rem; letter-spacing: 0.05em; gap: 0.7rem; }
+  .film__meta { display: none; }
+  .hero1 { padding-top: 1.1rem; }
+  .hero1 h1 { font-size: min(1.72rem, 7.1vw); }
+}
