@@ -1410,27 +1410,20 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
   position: relative;
   line-height: 0;
   margin: 0 auto;
-  /* Sized to leave the h1 on screen one, but never under half the screen's width:
-     on a short screen (a phone held sideways is 390px tall) the height rule
-     alone would shrink the film to a stamp. */
-  width: min(100%, 1280px, max(calc((100svh - 19rem) * 16 / 9), 50vw));
+  /* Full width on every screen, edge to edge, the whole frame shown (Charles,
+     2026-10-25). */
+  width: 100%;
 }
 .film__stage video,
 .film__stage .film__cover {
   display: block;
   width: 100%;
   height: auto;
-  /* The feather, load-bearing. Chrome decodes the film's paper one level off the
-     CSS paper (#F9F5F2 against #F8F5F1); fading the last 3% of every edge into
-     the page makes that step, and any other browser's decode, invisible. */
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent),
-    linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent),
-    linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
-  mask-composite: intersect;
+  /* Edge to edge, the screen's own edges frame the film's sides; the top and
+     bottom 3% fade into the page so a dot entering at the frame's edge never
+     shows a cut line against the masthead or the control row. */
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 3%, #000 97%, transparent);
   /* The film's paper decodes one to three levels off the page's paper, in a
      different direction in every browser and on every frame, so a straight
      edge can show while it plays. Blending clamps it. On a light ground,
@@ -1460,6 +1453,20 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
 :root:not(.js) .film__video { display: none; }   /* the noscript player stands in */
 
 .film__bar { width: min(100% - 2.8rem, 60rem); margin: 0 auto; }
+@media (min-width: 40.01rem) {
+  /* Full width, the film can be taller than the screen (16:9 at 1920 wide is
+     1080 tall), which would push the pause button below the fold. The control
+     row sticks to the bottom of the screen until the film's own bottom scrolls
+     up to meet it, on a backing of the band's ground so it reads over the film. */
+  .film__bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    margin-top: -12px;
+    padding-top: 12px;
+    background: linear-gradient(to bottom, transparent, var(--band-bg) 12px);
+  }
+}
 .film__progress {
   height: 1px;
   overflow: hidden;
@@ -1532,8 +1539,10 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
 .t-words { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
 .t-drawing { display: block; font-size: 0.86rem; color: var(--ink-3); }
 
-/* The h1 reads as the film's next line, so it is set at 500, not 600. */
-.hero1 { text-align: center; padding-top: 1.6rem; }
+/* The h1 reads as the film's next line, so it is set at 500, not 600. The room
+   above it (4rem desktop, 2.5rem phones) lets it land as its own moment after
+   the film rather than a caption under it (Charles, 2026-10-25). */
+.hero1 { text-align: center; padding-top: 4rem; }
 .hero1 h1 {
   font-weight: 500;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -1563,10 +1572,6 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
 @media (max-width: 40rem) {
   .page-home .wrap { padding: 0.75rem 1.25rem 4rem; }
   .page-home .site-head { padding-bottom: 0.55rem; }
-  /* Short phones give up film height so the h1 and the allowance stay on screen
-     one. The paper is continuous, so a narrower film shows no edge. The 300px
-     floor keeps the film's own type at 14px. */
-  .film__stage { width: clamp(18.75rem, calc((100svh - 13.5rem) * 0.8), 100%); }
   /* The controls sit on the 4:5 cut's empty bottom margin, with a paper backing
      so the opening beats' dots pass under the row, never through it. */
   .film-band { position: relative; }
@@ -1583,6 +1588,6 @@ footer .disclaimer + .disclaimer { text-wrap: balance; }
   }
   .film__controls { height: 40px; font-size: 0.62rem; letter-spacing: 0.05em; gap: 0.7rem; }
   .film__meta { display: none; }
-  .hero1 { padding-top: 1.1rem; }
+  .hero1 { padding-top: 2.5rem; }
   .hero1 h1 { font-size: min(1.72rem, 7.1vw); }
 }
