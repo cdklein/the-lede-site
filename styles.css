@@ -31,13 +31,15 @@
      off `color-scheme`. The theme toggle flips `color-scheme` on :root — there is
      no second token block to keep in sync. Contrast ratios noted below hold in
      both resolutions (audited 2026-07-22, unchanged here). */
-  --paper:        light-dark(#faf7f0, #1a1613);
-  --paper-2:      light-dark(#f3eee2, #231d17);   /* recessed / card */
+  /* The app's paper in both modes, and the brand film's exact grounds (Charles,
+     2026-10-24). paper-2 and the rules are re-stepped against it. */
+  --paper:        light-dark(#F8F5F1, #110F0D);
+  --paper-2:      light-dark(#F1ECE3, #1B1815);   /* recessed / card */
   --ink:          light-dark(#1c1a17, #efe9dd);
   --ink-2:        light-dark(#3a362f, #cdc6b6);
   --ink-3:        light-dark(#635c4d, #928b7b);   /* ≥4.5:1 on paper, paper-2, AND the ember-tinted signup band */
-  --rule:         light-dark(#e6e0d1, #2f2920);
-  --rule-strong:  light-dark(#d8d0bd, #3e3729);
+  --rule:         light-dark(#E6E0D5, #2A2520);
+  --rule-strong:  light-dark(#D6CEC0, #3A332B);
   --ember:        light-dark(oklch(0.602 0.118 47), oklch(0.715 0.128 52));
   --ember-ink:    light-dark(oklch(0.512 0.118 47), oklch(0.74 0.128 56));   /* ember text on paper, AA */
   --ember-tint:   light-dark(

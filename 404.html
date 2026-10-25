@@ -7,9 +7,9 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <meta name="theme-color" content="#faf7f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1613" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=80d3aa48">
+  <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="styles.css?v=4b4f551f">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -42,7 +42,7 @@
         override.setAttribute('data-override', '');
         document.head.insertBefore(override, document.head.firstChild);
       }
-      override.setAttribute('content', resolved() === 'dark' ? '#1a1613' : '#faf7f0');
+      override.setAttribute('content', resolved() === 'dark' ? '#110F0D' : '#F8F5F1');
     }
 
     try {
