@@ -1256,15 +1256,16 @@ footer .disclaimer + .disclaimer { margin-top: 0.55rem; }
   gap: 1.1rem;
   margin: 1rem 0 0;
 }
-.kit-grid figure, .kit-icons figure, .kit-og { margin: 0; }
-.kit-grid img, .kit-og img {
+.kit-grid figure, .kit-icons figure, .kit-og, .kit-film { margin: 0; }
+.kit-film { margin: 0.8rem 0 0.6rem; }
+.kit-grid img, .kit-og img, .kit-film video {
   width: 100%;
   height: auto;
   display: block;
   border: 1px solid var(--rule);
   border-radius: 10px;
 }
-.kit-grid figcaption, .kit-icons figcaption, .kit-og figcaption {
+.kit-grid figcaption, .kit-icons figcaption, .kit-og figcaption, .kit-film figcaption {
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.06em;
