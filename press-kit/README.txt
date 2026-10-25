@@ -66,10 +66,10 @@ study's lead author saying it used no red wine.
 WHAT'S IN THIS KIT
 ------------------
 film/     the-lede-film.mp4: A short film about The Lede. 79 seconds,
-          silent. Free to use in coverage of The Lede, whole or in
-          part, including stills. Please don't change its words or
-          drawings, reorder it, or set it to music. Also its poster
-          frame (1920 x 1080) and a text file of its words.
+          with sound and no music. Free to use in coverage of The
+          Lede, whole or in part, including stills. Please don't change
+          its words or drawings, reorder it, or set it to music. Also
+          its poster frame (1920 x 1080) and a text file of its words.
 iphone/   Five iPhone frames, 1320 x 2868, in App Store listing order,
           plus a contact sheet. Frames 02 to 05 show the app in the
           device.
