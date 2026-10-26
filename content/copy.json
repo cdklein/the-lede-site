@@ -6,7 +6,7 @@
   },
   "film": {
     "name": "A short film about The Lede",
-    "meta": "Silent &middot; 79 seconds",
+    "meta": "Silent &middot; 80 seconds",
     "play": "Play the film",
     "pause": "Pause the film",
     "replay": "Play the film again",
@@ -51,7 +51,7 @@
         "drawing": "The first orange dot rises through the lines."
       },
       {
-        "words": "So we know if it&rsquo;s worth our time.",
+        "words": "So we know if it&rsquo;s worth our attention.",
         "drawing": "The heavy bar shrinks to a short plain line beside the dot."
       },
       {

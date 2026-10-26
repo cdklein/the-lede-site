@@ -65,7 +65,7 @@ study's lead author saying it used no red wine.
 
 WHAT'S IN THIS KIT
 ------------------
-film/     the-lede-film.mp4: A short film about The Lede. 79 seconds,
+film/     the-lede-film.mp4: A short film about The Lede. 80 seconds,
           with sound and no music. Free to use in coverage of The
           Lede, whole or in part, including stills. Please don't change
           its words or drawings, reorder it, or set it to music. Also

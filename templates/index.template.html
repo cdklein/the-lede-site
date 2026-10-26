@@ -66,7 +66,7 @@
         "@id": "https://theledeapp.com/#film",
         "name": "A short film about The Lede",
         "description": "{{@hero.sub.text}}",
-        "duration": "PT1M19S",
+        "duration": "PT1M20S",
         "thumbnailUrl": "https://theledeapp.com/film/poster-16x9.png",
         "contentUrl": "https://theledeapp.com/film/web-16x9-1920x1080.mp4",
         "uploadDate": "2026-10-25",
@@ -241,10 +241,10 @@
         pause: toggle.getAttribute('data-label-pause'),
         replay: toggle.getAttribute('data-label-replay')
       };
-      /* The two dark stretches, frames 786 to 1111 and 1733 to 1980 at 30 fps,
+      /* The two dark stretches, frames 786 to 1111 and 1746 to 1993 at 30 fps,
          frame-exact in every web encode, day and night, both shapes. */
-      var DARK = [[786, 1111], [1733, 1980]];
-      var END = 2379 / 30;
+      var DARK = [[786, 1111], [1746, 1993]];
+      var END = 2392 / 30;
 
       var phone = matchMedia('(max-width: 40rem)');
       var darkOS = matchMedia('(prefers-color-scheme: dark)');
