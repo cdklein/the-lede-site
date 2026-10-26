@@ -66,11 +66,11 @@
         "@id": "https://theledeapp.com/#film",
         "name": "A short film about The Lede",
         "description": "Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes its strongest honest case, so you know if it’s worth your time. When it is, Dig Deeper looks in the research and the reporting around it and lists every source.",
-        "duration": "PT1M19S",
+        "duration": "PT1M20S",
         "thumbnailUrl": "https://theledeapp.com/film/poster-16x9.png",
         "contentUrl": "https://theledeapp.com/film/web-16x9-1920x1080.mp4",
         "uploadDate": "2026-10-25",
-        "transcript": "Everything comes at us at once. How do we make sense of any of it? We save it to make sense of later. Later never comes. So we live on headlines. And hot takes that thrive on outrage. The Lede slows us down. It reads all of it. It unburies the lede. So we know if it’s worth our time. Sometimes it isn’t. When it is, we dig deeper. It looks in the research and the reporting. And lists every source. Hear the author out. Then see what the sources say. And decide for ourselves. The Lede · Check everything you read.",
+        "transcript": "Everything comes at us at once. How do we make sense of any of it? We save it to make sense of later. Later never comes. So we live on headlines. And hot takes that thrive on outrage. The Lede slows us down. It reads all of it. It unburies the lede. So we know if it’s worth our attention. Sometimes it isn’t. When it is, we dig deeper. It looks in the research and the reporting. And lists every source. Hear the author out. Then see what the sources say. And decide for ourselves. The Lede · Check everything you read.",
         "publisher": { "@id": "https://theledeapp.com/#org" }
       }
     ]
@@ -201,7 +201,7 @@
             <span class="film__icon" aria-hidden="true"><svg class="i-play" viewBox="0 0 10 10"><path d="M2.5 1.2v7.6L8.6 5z"/></svg><svg class="i-pause" viewBox="0 0 10 10"><path d="M2 1.2h2.2v7.6H2zM5.8 1.2H8v7.6H5.8z"/></svg><svg class="i-replay" viewBox="0 0 10 10"><path d="M5 1.3a3.7 3.7 0 1 0 3.6 4.4H7.3A2.45 2.45 0 1 1 5 2.55V4l2.4-2.05L5 0z"/></svg></span>
             <span class="film__label">Play the film</span>
           </button>
-          <span class="film__meta">Silent &middot; 79 seconds</span>
+          <span class="film__meta">Silent &middot; 80 seconds</span>
           <button type="button" class="film__transcript-toggle" aria-expanded="false"
                   aria-controls="film-transcript">Read the film line by line</button>
         </div>
@@ -225,7 +225,7 @@
         <li><span class="t-words">The Lede slows us down.</span> <span class="t-drawing">In the dark, the spinning stops and the shards lie flat as quiet lines.</span></li>
         <li><span class="t-words">It reads all of it.</span> <span class="t-drawing">A slim marker moves along every line.</span></li>
         <li><span class="t-words">It unburies the lede.</span> <span class="t-drawing">The first orange dot rises through the lines.</span></li>
-        <li><span class="t-words">So we know if it&rsquo;s worth our time.</span> <span class="t-drawing">The heavy bar shrinks to a short plain line beside the dot.</span></li>
+        <li><span class="t-words">So we know if it&rsquo;s worth our attention.</span> <span class="t-drawing">The heavy bar shrinks to a short plain line beside the dot.</span></li>
         <li><span class="t-words">Sometimes it isn&rsquo;t.</span> <span class="t-drawing">The lines slide off the page. The dot holds, then fades.</span></li>
         <li><span class="t-words">When it is, we dig deeper.</span> <span class="t-drawing">A new orange dot drops one fine thread down.</span></li>
         <li><span class="t-words">It looks in the research and the reporting.</span> <span class="t-drawing">Threads fan out to gray dots at the edges.</span></li>
@@ -258,10 +258,10 @@
         pause: toggle.getAttribute('data-label-pause'),
         replay: toggle.getAttribute('data-label-replay')
       };
-      /* The two dark stretches, frames 786 to 1111 and 1733 to 1980 at 30 fps,
+      /* The two dark stretches, frames 786 to 1111 and 1746 to 1993 at 30 fps,
          frame-exact in every web encode, day and night, both shapes. */
-      var DARK = [[786, 1111], [1733, 1980]];
-      var END = 2379 / 30;
+      var DARK = [[786, 1111], [1746, 1993]];
+      var END = 2392 / 30;
 
       var phone = matchMedia('(max-width: 40rem)');
       var darkOS = matchMedia('(prefers-color-scheme: dark)');
