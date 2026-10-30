@@ -1,0 +1,24 @@
+# The outage notice Worker (ios#598). Deploy steps: RUNBOOK.md in this folder.
+# Not part of the site deploy: deploy.sh stages named files only and never copies workers/.
+name = "lede-desk-status"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# Only the route below reaches it: no *.workers.dev address, no preview addresses.
+workers_dev = false
+preview_urls = false
+# Logging off (design of record): no Logpush here, no Workers Logs below.
+logpush = false
+
+routes = [
+  { pattern = "theledeapp.com/status/*", zone_name = "theledeapp.com" },
+]
+
+# PLACEHOLDER: replace with the id that `wrangler kv namespace create lede-desk-status`
+# prints (RUNBOOK.md, step 1). The Worker reads the key "notice" from it.
+[[kv_namespaces]]
+binding = "STATUS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[observability]
+enabled = false
