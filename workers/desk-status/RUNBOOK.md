@@ -13,8 +13,13 @@ What the address says:
 The stored value carries a code, never words. The app shows only words built into it. Someone
 who stole the phone's token could at most show our own approved line for 48 hours.
 
-Do the steps in order: 1, 2, 3, then the dry run in 4. The app half already shipped, so the
-line appears in the app the moment step 4 works.
+Do the steps in order: 1, 2, 3, then the dry run in 4. The app half ships with 1.0.5; an
+older build ignores the address, so the dry run's in-app step needs 1.0.5 or later.
+
+Step 1 was done with wrangler on 2026-10-29: namespace `lede-desk-status`
+(`987d73e5103749d2999803117718c762`, already in `wrangler.toml`), the Worker deployed on the
+route, and the address checked off, on and off again. Only the fail-open setting in Path A's
+step 6 is left for the dashboard.
 
 Nothing here touches the site deploy. `deploy.sh` copies named files only (root `*.html`,
 `styles.css`, images, `_redirects`, `robots.txt`, `sitemap.xml`, `llms.txt`, `fonts/`,

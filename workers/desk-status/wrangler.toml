@@ -14,11 +14,11 @@ routes = [
   { pattern = "theledeapp.com/status/*", zone_name = "theledeapp.com" },
 ]
 
-# PLACEHOLDER: replace with the id that `wrangler kv namespace create lede-desk-status`
-# prints (RUNBOOK.md, step 1). The Worker reads the key "notice" from it.
+# The namespace `lede-desk-status`, created 2026-10-29 (RUNBOOK.md, step 1). The Worker
+# reads the key "notice" from it.
 [[kv_namespaces]]
 binding = "STATUS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "987d73e5103749d2999803117718c762"
 
 [observability]
 enabled = false
