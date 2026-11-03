@@ -19,6 +19,7 @@ const OUT_DIR = __dirname;
 const TEMPLATES = [
   { template: 'templates/index.template.html', out: 'index.html' },
   { template: 'templates/thanks.template.html', out: 'thanks.html' },
+  { template: 'templates/thanks-country.template.html', out: 'thanks-country.html' },
 ];
 
 const copy = JSON.parse(
@@ -61,6 +62,19 @@ fields['@film.lines.items'] = copy.film.lines
   .join('\n        ');
 fields['@film.lines.text'] = jsonText(copy.film.lines.map((l) => l.words).join(' '));
 fields['@hero.sub.text'] = jsonText(copy.hero.sub);
+
+// The country signup's menu: every App Store storefront where The Lede is not
+// yet on sale, by name, alphabetical in English, ignoring a leading "The " and
+// accents. One flat list on purpose: pinned countries would announce where the
+// app goes next. content/storefronts.json mirrors the server's list.
+const sf = JSON.parse(fs.readFileSync(path.join(__dirname, 'content/storefronts.json'), 'utf8'));
+const sortKey = (n) => n.replace(/^The /, '');
+const esc = (s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+fields['@country.options'] = sf.storefronts
+  .filter((s) => !sf.availableNow.includes(s.code))
+  .sort((a, b) => sortKey(a.name).localeCompare(sortKey(b.name), 'en', { sensitivity: 'base' }))
+  .map((s) => `<option value="${s.code}">${esc(s.name)}</option>`)
+  .join('\n          ');
 
 for (const { template, out } of TEMPLATES) {
   const templatePath = path.join(__dirname, template);
@@ -121,7 +135,7 @@ const SITEMAP_PAGES = {
   'https://theledeapp.com/': 'index.html',
   'https://theledeapp.com/support': 'support.html',
   'https://theledeapp.com/privacy': 'privacy.html',
-  'https://theledeapp.com/sourcing': 'sourcing.html',
+  'https://theledeapp.com/how-it-works': 'how-it-works.html',
   'https://theledeapp.com/press': 'press.html',
 };
 const sitemapPath = path.join(__dirname, 'sitemap.xml');

@@ -159,18 +159,24 @@
   })();
   </script>
 </head>
-<body class="page-home">
+<body class="page-home rd">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap wrap--wide">
-    <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede home page"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
-      <nav>
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
       </nav>
-    </header>
-    <main id="main">
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+  <main id="main">
 
     <!-- THE FILM leads (CDO "the page plays", 2026-10-24). It sits on the page's own
          paper with no frame, plays once on its own (muted, never looped) and comes
@@ -469,142 +475,229 @@
     })();
     </script>
 
-    <section class="hero1">
-      <h1>{{hero.h1}}</h1>
-      <p class="allowance">{{hero.allowance}}</p>
-      <p class="hero__sub">{{hero.sub}}</p>
+    <section class="v-front">
+      <h1 class="h1">{{hero.h1}}</h1>
+      <p class="sub">{{hero.sub}}</p>
       <!-- The page's one badge. Apple's artwork under Apple's rules: never redrawn,
            recoloured, retypeset or animated. An <img>, never inline SVG: Apple's SVG
            carries a <title> a screen reader reads out as a filename.
            Campaign: site-home, provider token as in the Smart App Banner. -->
-      <div class="store-flat">
-        <p class="eyebrow">{{signup.topEyebrow}}</p>
-        <p class="store-badge"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}"></a></p>
-        <p class="requirements">{{signup.requirements}}</p>
+      <div class="stand">
+        <a class="stand__badge" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="{{signup.badgeAlt}}"></a>
+        <div class="stand__lines">
+          <p class="allow">{{hero.allowance}}</p>
+          <p class="avail">{{signup.requirements}}</p>
+          <p class="elsewhere"><a href="#country">{{country.link}}</a></p>
+        </div>
       </div>
     </section>
 
-    <p class="section-slug">{{showcase1.slug}}</p>
-
-    <!-- SHOWCASE 1: the film's lines 9 to 11. The wine card, the old hero, leads
-         the column here as the proof under "It unburies the lede." -->
-    <section class="showcase">
-      <div class="showcase__head">
-        <h2>{{showcase1.heading}}</h2>
-        <p class="muted">{{showcase1.body}}</p>
+    <!-- The real app, on iPhone Duo: closed and open, one light and one dark file
+         per slot. The dark files are copies of the light ones until the dark
+         captures land under the same names (spec section 6). -->
+    <div class="v-hero">
+      <div class="v3-pair">
+        <span class="duo-slot v3-closed">
+          <img class="device shot-light" src="img/duo/duo-closed-sample-light.webp" width="800" height="1115" alt="{{duo.closedAlt}}" loading="lazy" decoding="async">
+          <img class="device shot-dark" src="img/duo/duo-closed-sample-dark.webp" width="800" height="1115" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </span>
+        <span class="duo-slot v3-open">
+          <img class="device shot-light" src="img/duo/duo-open-queue-light.webp" width="1100" height="1514" alt="{{duo.openAlt}}" loading="lazy" decoding="async">
+          <img class="device shot-dark" src="img/duo/duo-open-queue-dark.webp" width="1100" height="1514" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </span>
       </div>
-      <div class="split">
-        <div>
-        <figure class="specimen specimen--exhibit" aria-label="{{showcase1.exhibitAria}}">
-          <p class="specimen__label">{{showcase1.exhibitRanAsLabel}}</p>
-          <p class="specimen__orig">{{showcase1.exhibitRanAs}}</p>
-          <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">{{showcase1.exhibitTurnLabel}}</span></p>
-          <p class="specimen__lede">{{showcase1.exhibitLede}}</p>
+      <p class="v-cap">{{duo.caption}}</p>
+    </div>
+
+    <section class="v-sec" id="how">
+      <div class="v-head"><span class="kicker">{{how.kicker}}</span><h2 class="h2">{{how.heading}}</h2><p class="body">{{how.body}}</p></div>
+      <div class="v-band">
+        <ol class="v-stations">
+          <li class="v-st"><span class="v-node" aria-hidden="true"></span><h3>{{how.s1.h}}</h3><p>{{how.s1.p}}</p><p class="v-small">{{how.s1.small}}</p></li>
+          <li class="v-st v-st--desk"><span class="v-node" aria-hidden="true"></span><h3>{{how.s2.h}}</h3><p>{{how.s2.p}}</p></li>
+          <li class="v-st"><span class="v-node" aria-hidden="true"></span><h3>{{how.s3.h}}</h3>
+            <figure class="rename v-mini" aria-label="{{how.exhibitAria}}">
+              <span class="rename__label">{{how.exhibitRanAsLabel}}</span>
+              <p class="rename__orig">&ldquo;{{how.exhibitRanAs}}&rdquo;</p>
+              <span class="rename__turn"><span class="rename__label">{{how.exhibitTurnLabel}}</span></span>
+              <p class="rename__new">{{how.exhibitLede}}</p>
+            </figure><p>{{how.s3.p}}</p></li>
+          <li class="v-st v-st--dd"><span class="v-node" aria-hidden="true"></span><h3>{{how.s4.h}}</h3><p>{{how.s4.p}}</p></li>
+        </ol>
+      </div>
+      <div class="v-more"><a href="/how-it-works">{{how.moreLink}}</a><p>{{how.moreSub}}</p></div>
+    </section>
+
+    <section class="v-sec" id="dig-deeper">
+      <div class="v-head"><span class="kicker">{{dig.kicker}}</span><h2 class="h2">{{dig.heading}}</h2><p class="body">{{dig.body}}</p></div>
+      <div class="v-dd">
+        <figure class="v3-dig">
+          <span class="duo-slot">
+            <img class="device shot-light" src="img/duo/duo-open-dig-light.webp" width="1100" height="1514" alt="{{dig.screenAlt}}" loading="lazy" decoding="async">
+            <img class="device shot-dark" src="img/duo/duo-open-dig-dark.webp" width="1100" height="1514" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          </span>
+          <figcaption class="v-cap">{{dig.screenCaption}}</figcaption>
         </figure>
-        <div class="frontpage">
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--business">Business</span></span>
-            <h3 class="entry__lede">The millionaire who blamed avocado toast had his grandfather&rsquo;s money.</h3>
-            <p class="entry__ran">Ran as &ldquo;Millionaire: if you stopped buying avocado toast, you could afford a home&rdquo;</p>
-            <p class="entry__meta">4 min read</p>
-          </article>
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--culture">Culture</span></span>
-            <h3 class="entry__lede">London pays medieval rent in objects, not money.</h3>
-            <p class="entry__ran">Ran as &ldquo;London Is Still Paying Rent to the Queen on a Property Leased in 1211&rdquo;</p>
-            <p class="entry__meta">5 min read</p>
-          </article>
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--science">Science</span></span>
-            <h3 class="entry__lede">The aging-reversal breakthrough was in mice.</h3>
-            <p class="entry__ran">Ran as &ldquo;Scientists Have Reached a Key Milestone in Reversing Aging&rdquo;</p>
-            <p class="entry__meta">5 min read</p>
-          </article>
-        </div>
-        </div>
-
-        <!-- the "it's a real app" anchor: real pixels, not a drawing. Two files
-             so the shot follows the page theme; the dark one is decorative since
-             the light one already carries the description. -->
-        <div class="device-shot">
-          <img class="shot-light" src="app-queue-light.webp" width="700" height="1431"
-               alt="{{showcase1.shotAlt}}"
-               loading="lazy" decoding="async">
-          <img class="shot-dark" src="app-queue-dark.webp" width="700" height="1431"
-               alt="" aria-hidden="true" loading="lazy" decoding="async">
-        </div>
+        <p class="dd__line">{{dig.line}}</p>
+        <p class="dd__body">{{dig.lineBody}}</p>
+        <p class="dd__head">{{dig.admission}}</p>
+        <div class="v-fan" aria-hidden="true"></div>
+        <ol class="v-cards">
+          <li class="v-card"><span class="src__n">{{dig.sources.0.n}}</span><a class="src__t" href="{{dig.sources.0.url}}">{{dig.sources.0.title}}</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">{{dig.sources.0.meta}}</span></li>
+          <li class="v-card"><span class="src__n">{{dig.sources.1.n}}</span><a class="src__t" href="{{dig.sources.1.url}}">{{dig.sources.1.title}}</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">{{dig.sources.1.meta}}</span></li>
+          <li class="v-card"><span class="src__n">{{dig.sources.2.n}}</span><a class="src__t" href="{{dig.sources.2.url}}">{{dig.sources.2.title}}</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">{{dig.sources.2.meta}}</span></li>
+          <li class="v-card"><span class="src__n">{{dig.sources.3.n}}</span><a class="src__t" href="{{dig.sources.3.url}}">{{dig.sources.3.title}}</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">{{dig.sources.3.meta}}</span></li>
+        </ol>
+        <p class="dd__cap">{{dig.caption}}</p>
+        <div class="v-more"><a href="/how-it-works#checked">{{dig.checkedLink}}</a></div>
       </div>
     </section>
 
-    <p class="section-slug">{{showcase2.slug}}</p>
-
-    <!-- SHOWCASE 2 — the strongest honest case. Its own panel so the two
-         showcases stop sharing one rhythm; exhibit leads, note is subordinate. -->
-    <section class="showcase showcase--band">
-      <div class="showcase__head">
-        <h2>{{showcase2.heading}}</h2>
-        <p class="muted">{{showcase2.body}}</p>
-      </div>
-      <div class="split split--rev">
-        <div class="feature-copy">
-          <p class="note-kicker">A note on sourcing</p>
-          <h3>{{showcase2.featureHeading}}</h3>
-          <p>{{showcase2.featureBody}}</p>
-        </div>
-        <div class="brief">
-          <p class="specimen__label">{{showcase2.exhibitLabel}}</p>
-          <p class="specimen__orig">{{showcase2.exhibitRename}}</p>
-          <p class="brief__lede">{{showcase2.exhibitLine}}</p>
-          <p class="brief__steel-label"><span class="diamond" aria-hidden="true">◆</span> {{showcase2.exhibitKicker}}</p>
-          <p class="brief__body">{{showcase2.exhibitBody}}</p>
-        </div>
-      </div>
+    <section class="v-sec">
+      <div class="v-head"><h2 class="h2">{{editor.heading}}</h2></div>
+      <div class="v-trust"><p>{{editor.t1}}</p><p>{{editor.t2}}</p><p>{{editor.t3}}</p></div>
+      <blockquote class="founder v-founder"><p class="founder__q">{{founderNote.quote}}</p><cite>{{founderNote.attribution}}</cite></blockquote>
     </section>
 
-    <!-- Founder note — one honest line (credibility for the indie/Apple crowd) -->
-    <p class="founder-note">{{founderNote.quote}}<span>{{founderNote.attribution}}</span></p>
+    <!-- Closing CTA. A plain text link, not a second badge: one badge per page
+         keeps it a signpost instead of wallpaper. -->
+    <section class="v-close">
+      <h2 class="h2">{{signup.closingHeading}}</h2>
+      <p class="body">{{signup.closingSub}}</p>
+      <div class="stand stand--text">
+        <a class="closelink" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">{{signup.closingLink}}</a>
+        <div class="stand__lines"><p class="allow">{{hero.allowance}}</p><p class="avail">{{signup.requirements}}</p></div>
+      </div>
 
-    <!-- Closing CTA — the store panel, repeated. A plain text link, not a
-         second badge: one badge per page keeps it a signpost instead of
-         wallpaper, and Apple's badge is not a decorative element. -->
-    <section class="signup">
-      <h2>{{signup.closingHeading}}</h2>
-      <p class="signup__sub">{{signup.closingSub}}</p>
-      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">{{signup.closingLink}}</a></p>
+      <!-- The country signup: one email when The Lede reaches the reader's App
+           Store, then the address is deleted (server POST /subscribe/country).
+           The hero's link lands on this heading, which repeats its words. The
+           box is the only way onto the notes list now. -->
+      <section class="country" id="country" aria-labelledby="country-h">
+        <h2 class="country__h" id="country-h">{{country.heading}}</h2>
+        <p class="country__alert" id="country-alert-invalid" data-alert="invalid" tabindex="-1" hidden>{{country.alertInvalid}}</p>
+        <p class="country__alert" id="country-alert-error" data-alert="error" tabindex="-1" hidden>{{country.alertError}}</p>
+        <form action="https://api.theledeapp.com/subscribe/country" method="post">
+          <div class="country__fields">
+            <p class="country__field"><label for="country-email">{{country.emailLabel}}</label>
+              <input id="country-email" type="email" name="email" autocomplete="email" autocapitalize="off" spellcheck="false" required></p>
+            <p class="country__field"><label for="country-pick">{{country.countryLabel}}</label>
+              <span class="country__select"><select id="country-pick" name="country" autocomplete="country" required>
+                <option value="">{{country.countryPlaceholder}}</option>
+                {{@country.options}}
+              </select></span></p>
+          </div>
+          <p class="country__keep"><input id="country-keep" type="checkbox" name="keep" value="1"><label for="country-keep">{{country.keepLabel}}</label></p>
+          <p class="country__go"><button type="submit">{{country.button}}</button></p>
+          <p class="country__fine" id="country-fine">{{country.fine}}</p>
+        </form>
+      </section>
     </section>
 
-    <!-- The notes list. One field, no panel, no wash — deliberately the
-         quietest thing on the page, because it is no longer the page's job.
-         Framed as product notes, not a launch list: the launch is over, and
-         scarcity language would be a lie now. Same endpoint as before. -->
-    <section class="notes">
-      <h2>{{notes.heading}}</h2>
-      <p>{{notes.sub}}</p>
-      <form action="https://api.theledeapp.com/subscribe" method="post">
-        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-        <button type="submit">{{notes.button}}</button>
-      </form>
-    </section>
+  </main>
 
-    </main>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; {{footer.appleCredit}}</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
+  <script>
+  /* The film's threads, from the one ember dot to each numbered source. Desktop
+     fans from the centre (the film's own frame); a phone runs them from a dot in
+     the left margin. Colours go through style, not SVG attributes: Safari does
+     not resolve var() in presentation attributes reliably. Decoration only: the
+     SVG is aria-hidden, and without script there are simply no threads. */
+  (function () {
+    var ns = 'http://www.w3.org/2000/svg';
+    function el(n, a, st) {
+      var e = document.createElementNS(ns, n);
+      for (var k in a) e.setAttribute(k, a[k]);
+      for (var s in st || {}) e.style[s] = st[s];
+      return e;
+    }
+    function draw() {
+      document.querySelectorAll('.v-dd').forEach(function (dd) {
+        dd.querySelectorAll('svg.thr').forEach(function (o) { o.remove(); });
+        var fan = dd.querySelector('.v-fan'), list = dd.querySelector('.v-cards');
+        var nums = dd.querySelectorAll('.v-card .src__n');
+        if (!fan || !list || !nums.length) return;
+        var s, pts = [];
+        if (innerWidth > 760) {
+          var b = fan.getBoundingClientRect();
+          s = el('svg', { 'class': 'thr', 'aria-hidden': 'true', focusable: 'false' });
+          var cx = b.width / 2, cy = 8;
+          nums.forEach(function (n) {
+            var r = n.getBoundingClientRect(), x = r.left - b.left + 7, y = b.height + 2;
+            s.appendChild(el('line', { x1: cx, y1: cy, x2: x, y2: y, 'stroke-width': 1.3 }, { stroke: 'var(--thread)' }));
+            s.appendChild(el('circle', { cx: x, cy: y, r: 4.2 }, { fill: 'var(--ink-2)' }));
+          });
+          s.appendChild(el('circle', { cx: cx, cy: cy, r: 7 }, { fill: 'var(--ember)' }));
+          fan.appendChild(s);
+        } else {
+          var lb = list.getBoundingClientRect();
+          s = el('svg', { 'class': 'thr', 'aria-hidden': 'true', focusable: 'false' },
+            { position: 'absolute', inset: '0', width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none' });
+          nums.forEach(function (n) {
+            var r = n.getBoundingClientRect();
+            pts.push({ x: r.left - lb.left - 5, y: r.top - lb.top + r.height * 0.55 });
+          });
+          var dy = (pts[0].y + pts[pts.length - 1].y) / 2, dx = -13;
+          pts.forEach(function (p) {
+            s.appendChild(el('line', { x1: dx, y1: dy, x2: p.x, y2: p.y, 'stroke-width': 1.2 }, { stroke: 'var(--thread)' }));
+          });
+          s.appendChild(el('circle', { cx: dx, cy: dy, r: 4.5 }, { fill: 'var(--ember)' }));
+          list.appendChild(s);
+        }
+      });
+    }
+    draw();
+    if (document.fonts) document.fonts.ready.then(draw);
+    addEventListener('resize', draw);
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(function () { draw(); });
+      document.querySelectorAll('.v-dd').forEach(function (dd) { ro.observe(dd); });
+    }
+  })();
 
-    <footer>
-      <div class="colophon">
-        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
-        <span>{{footer.signoff}}</span>
-      </div>
-      <div class="row">
-        <a href="/privacy">Privacy</a>
-        <a href="/support">Support</a>
-        <a href="/sourcing">How The Lede handles sources</a>
-      </div>
-      <div class="page-colophon">
-        <p class="endmark" aria-hidden="true">&#182;</p>
-        <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
-        <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
-        <p class="disclaimer">{{footer.appleCredit}}</p>
-      </div>
-    </footer>
-  </div>
+  /* Country signup feedback. The server answers a failed POST /subscribe/country
+     with a 303 back to `/?country=invalid#country` or `/?country=error#country`.
+     With no script the form still posts and still succeeds; only the message
+     needs script. Adapted from the notes form's feedback script. */
+  (function () {
+    var match = /[?&]country=([^&#]*)/.exec(window.location.search);
+    if (!match) return;
+    /* Closed list: the param lands in aria wiring, so anything else is dropped. */
+    var kind = match[1] === 'invalid' || match[1] === 'error' ? match[1] : null;
+    if (kind) {
+      var alert = document.querySelector('.country__alert[data-alert="' + kind + '"]');
+      var email = document.getElementById('country-email');
+      var pick = document.getElementById('country-pick');
+      if (alert) {
+        alert.hidden = false;
+        [email, pick].forEach(function (f) { if (f) f.setAttribute('aria-describedby', alert.id + ' country-fine'); });
+        /* Only `invalid` is the reader's input to fix. An outage is ours. */
+        if (kind === 'invalid' && email) email.setAttribute('aria-invalid', 'true');
+        /* Focus on load, not inline: the #country fragment resolves after this
+           script runs and would take focus back to the body. */
+        window.addEventListener('load', function () { alert.focus(); });
+      }
+    }
+    /* Drop the param so a reload or Back doesn't show a stale failure. */
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+  })();
+  </script>
 </body>
 </html>

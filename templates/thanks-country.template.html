@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{thanksCountry.title}}</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+  /* Theme: follow the device unless the reader has explicitly chosen otherwise.
+     Runs before first paint so a chosen theme never flashes the other one, and
+     marks the document JS-capable, which is what reveals the toggle — a no-JS
+     reader keeps the device preference and never sees a dead control.
+
+     Toggling BACK to whatever the device already prefers clears the override
+     instead of pinning it, so there is always a way home to following the
+     device. Without that, one click freezes the site's appearance forever —
+     which is exactly the bug this replaced. */
+  (function () {
+    var d = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    d.classList.add('js');
+
+    function systemTheme() { return mq.matches ? 'dark' : 'light'; }
+    function resolved() { return d.getAttribute('data-theme') || systemTheme(); }
+
+    /* The two media-scoped theme-color metas cover the follow-the-device case.
+       An override needs an unscoped one, inserted first so it wins. */
+    function paintBrowserChrome() {
+      var override = document.querySelector('meta[name="theme-color"][data-override]');
+      if (!d.hasAttribute('data-theme')) {
+        if (override) override.remove();
+        return;
+      }
+      if (!override) {
+        override = document.createElement('meta');
+        override.setAttribute('name', 'theme-color');
+        override.setAttribute('data-override', '');
+        document.head.insertBefore(override, document.head.firstChild);
+      }
+      override.setAttribute('content', resolved() === 'dark' ? '#110F0D' : '#F8F5F1');
+    }
+
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') d.setAttribute('data-theme', saved);
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.theme-toggle');
+      if (!btn) return;
+      var next = resolved() === 'dark' ? 'light' : 'dark';
+      if (next === systemTheme()) {
+        d.removeAttribute('data-theme');
+        try { localStorage.removeItem('theme'); } catch (e) {}
+      } else {
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      }
+      paintBrowserChrome();
+    });
+
+    /* While no explicit choice is stored, track the device live. */
+    mq.addEventListener('change', paintBrowserChrome);
+  })();
+  </script>
+</head>
+<body class="rd-chrome">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
+      </nav>
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+  <div class="wrap wrap--doc">
+    <main id="main">
+    <section class="hero" style="padding-top:2rem">
+      <p class="eyebrow">{{thanksCountry.eyebrow}}</p>
+      <h1 style="max-width:16ch">{{thanksCountry.h1}}</h1>
+      <p class="hero__sub">{{thanksCountry.sub}}</p>
+      <p class="muted" style="margin-top:1.4rem">{{thanksCountry.muted}}</p>
+      <p style="margin-top:1.4rem"><a href="/">&larr; Back to the front page</a></p>
+    </section>
+
+    </main>
+  </div>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; {{footer.appleCredit}}</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
+</body>
+</html>

@@ -16,5 +16,5 @@ Key facts:
 - [Home](https://theledeapp.com/): what The Lede is and how it re-frames saved articles
 - [Support & FAQ](https://theledeapp.com/support): 49 questions covering saving, briefs, Dig Deeper, plans and pricing, privacy, exports, devices, and troubleshooting
 - [Privacy Policy](https://theledeapp.com/privacy): the binding detail on data handling
-- [Sourcing standards](https://theledeapp.com/sourcing): the editorial standard behind every brief
+- [How it works](https://theledeapp.com/how-it-works): what runs where, what leaves the phone, the sourcing standard, and how a Dig Deeper is checked
 - [Press kit](https://theledeapp.com/press): facts, a quotable description, and clean assets for anyone covering The Lede

@@ -9,7 +9,7 @@
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=457a2d00">
+  <link rel="stylesheet" href="styles.css?v=697c3ba4">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -70,17 +70,24 @@
   </script>
   <meta name="robots" content="noindex">
 </head>
-<body>
+<body class="rd-chrome">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap wrap--doc">
-    <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
-      <nav>
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
       </nav>
-    </header>
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+  <div class="wrap wrap--doc">
     <main id="main">
 
     <p class="eyebrow">404</p>
@@ -93,25 +100,22 @@
     <p class="lede">We couldn&rsquo;t find that page. Try the <a href="/">home page</a>, <a href="/support">support</a>, or our <a href="/privacy">privacy policy</a>.</p>
 
     </main>
-
-    <footer>
-      <div class="colophon">
-        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
-        <span>The Lede &middot; Check everything you read.</span>
-      </div>
-      <div class="row">
-        <a href="/">Home</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/support">Support</a>
-        <a href="/sourcing">How The Lede handles sources</a>
-      </div>
-      <div class="page-colophon">
-        <p class="endmark" aria-hidden="true">&#182;</p>
-        <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
-        <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
-        <p class="disclaimer">Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
-      </div>
-    </footer>
   </div>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; Apple, the Apple logo, App Store, iCloud, iPad, iPhone, and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
 </body>
 </html>
