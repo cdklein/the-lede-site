@@ -17,7 +17,7 @@ Price:                 Free to start: ten briefs and two Dig Deepers a
                        $99.99 a year, each with a 7-day free trial and 150
                        Dig Deepers a month; subscriptions auto-renew until
                        cancelled.
-Availability:          United States App Store
+Availability:          App Store: United States, Australia, Singapore
 Release date:          September 14, 2026
 App Store link:        https://apps.apple.com/app/id6772315315
 Press contact:         charles@theledeapp.com
