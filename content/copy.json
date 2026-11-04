@@ -2,7 +2,7 @@
   "hero": {
     "h1": "Hear the author out.<br>Then see what the sources say.",
     "allowance": "Free to start: 10 briefs and 2 Dig Deepers a month, no account.",
-    "sub": "Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes its strongest honest case, so you know if it&rsquo;s worth your time. When it is, Dig Deeper looks in the research and the reporting around it and lists every source."
+    "sub": "Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes the author&rsquo;s strongest honest case. When a piece is worth your attention, Dig Deeper looks in the research and the reporting around it and lists every source."
   },
   "film": {
     "name": "A short film about The Lede",
@@ -89,40 +89,101 @@
     ]
   },
   "signup": {
-    "topEyebrow": "On the <span class=\"brand-case\">App Store</span>",
     "badgeAlt": "Download on the App Store",
     "requirements": "Requires iOS 26 or later. On the App Store in the United States, Australia and Singapore.",
     "closingHeading": "Start with the next thing you save.",
     "closingSub": "Nothing to sign up for and no password to make. Your library lives in your own iCloud. The free edition gives you 10 briefs and 2 Dig Deepers a month. Check everything you read with Membership. It gives you 150 Dig Deepers a month, and the desk reads it all. It starts with a 7-day free trial.",
     "closingLink": "Available on the App Store"
   },
-  "notes": {
-    "heading": "Occasional notes from the desk",
-    "sub": "A short note when something meaningful ships. No launch spam; the launch is over.",
-    "button": "Add me"
+  "duo": {
+    "closedAlt": "The Lede on iPhone Duo, closed: the sample brief, renamed &ldquo;The &lsquo;wine equals a workout&rsquo; study was run on rats,&rdquo; with the headline it ran under kept underneath.",
+    "openAlt": "The Lede on iPhone Duo, open: the queue holding the sample brief, beside the brief itself.",
+    "caption": "The Lede on iPhone Duo<span class=\"v3-wide\">, closed and open</span>. The sample brief that comes with the app."
   },
-  "showcase1": {
-    "slug": "The lede",
-    "heading": "Know if it&rsquo;s worth your time.",
-    "body": "Every save comes back renamed for what it actually argues and filed on its beat, with the headline it ran under kept beside it. Some you&rsquo;ll read tonight. Some you&rsquo;ll know you don&rsquo;t need to.",
+  "how": {
+    "kicker": "How it works",
+    "heading": "Know if it&rsquo;s worth your attention.",
+    "body": "Every article the desk reads comes back renamed for what it actually argues and filed on its beat. The headline it ran under stays beside the new one. Some you&rsquo;ll read tonight. Some you&rsquo;ll know you don&rsquo;t need to.",
+    "s1": {
+      "h": "You save it.",
+      "p": "Tap Share on anything worth reading, in Safari or any app, and choose The Lede.",
+      "small": "The first time you open the app, it walks you through a real save."
+    },
+    "s2": {
+      "h": "The desk reads it.",
+      "p": "The desk reads it while you get on with your day."
+    },
+    "s3": {
+      "h": "It comes back renamed.",
+      "p": "The headline it ran under stays beside the new one."
+    },
+    "s4": {
+      "h": "When it&rsquo;s worth it, dig deeper.",
+      "p": "Dig Deeper looks in the research and the reporting around it and lists every source."
+    },
     "exhibitAria": "A headline, renamed by The Lede",
     "exhibitRanAsLabel": "Ran as",
     "exhibitRanAs": "A Glass of Red Wine Equals an Hour at the Gym, New Study Finds",
     "exhibitTurnLabel": "Renamed",
     "exhibitLede": "The &ldquo;wine equals a workout&rdquo; study was run on rats.",
-    "shotAlt": "The Lede&rsquo;s queue on iPhone: four saved stories, each renamed for what it&rsquo;s actually about and filed on its beat, with the original headline kept underneath."
+    "moreLink": "How The Lede works, in full",
+    "moreSub": "What runs where, what leaves your phone, and how a Dig Deeper is checked."
   },
-  "showcase2": {
-    "slug": "Dig Deeper",
+  "dig": {
+    "kicker": "Dig Deeper",
     "heading": "When it is, dig deeper.",
-    "body": "Every brief starts by hearing the author out: the strongest honest case the piece makes. When a piece is worth more of your time, tap Dig Deeper. The desk looks in the research and the reporting around it, sets out what others found and where the desk lands, and lists every source it wrote from, each one a link to the original. It can get one wrong, so check the ones that matter to you. Run it on a news story, a how-to, or the history thread you fell into at midnight.",
-    "featureHeading": "It finds the reporting under the opinion.",
-    "featureBody": "The Lede reads every source as it is. It doesn't rank outlets and it reads every one. The one thing it changes: when a piece is opinion, it builds the brief from the original reporting underneath, and shows you the reporting it used. Same rule for every publication. More on <a href=\"/sourcing\">how The Lede handles sources</a>.",
-    "exhibitLabel": "Deeper on",
-    "exhibitRename": "The &ldquo;wine equals a workout&rdquo; study was run on rats.",
-    "exhibitLine": "No wine.",
-    "exhibitKicker": "Sample &middot; 8 sources",
-    "exhibitBody": "Rats got resveratrol, far more than a glass of wine holds. The study&rsquo;s lead author says it used no red wine."
+    "body": "Tap Dig Deeper and the desk looks in the research and the reporting around the piece. It sets out what others found and where it lands, then lists every source it wrote from, each one a link to the original. It can get one wrong, so check the ones that matter to you.",
+    "screenAlt": "The sample Dig Deeper on iPhone Duo, open: deeper on the &lsquo;wine equals a workout&rsquo; study, 8 sources, and what others found.",
+    "screenCaption": "The sample Dig Deeper, on iPhone Duo.",
+    "line": "No wine.",
+    "lineBody": "The lead author says the study used no red wine, and CBC reports that resveratrol would have to be used like a performance-enhancing supplement, at concentrations far beyond a glass of wine.",
+    "admission": "The desk wrote this from the sources below. It can get one wrong, so check the ones that matter to you.",
+    "sources": [
+      {
+        "n": "1",
+        "title": "Chronic and moderate consumption of reduced-alcohol wine confers cardiac benefits in a rat model of pulmonary arterial hypertension",
+        "url": "https://link.springer.com/article/10.1186/s13104-021-05738-x",
+        "meta": "link.springer.com &middot; 2021"
+      },
+      {
+        "n": "2",
+        "title": "Red Wine Polyphenols Prevent Metabolic and Cardiovascular Alterations Associated with Obesity in Zucker Fatty Rats (Fa/Fa)",
+        "url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0005557",
+        "meta": "journals.plos.org &middot; 2009"
+      },
+      {
+        "n": "3",
+        "title": "Alcohol-free red wine prevents arterial thrombosis in dietary-induced hypercholesterolemic rats: experimental support for the &lsquo;French paradox&rsquo;",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1538783622130576",
+        "meta": "Journal of Thrombosis and Haemostasis &middot; 2005"
+      },
+      {
+        "n": "4",
+        "title": "Jason Dyck, University of Alberta researcher, reveals truth behind wine study",
+        "url": "https://www.cbc.ca/news/canada/british-columbia/jason-dyck-university-of-alberta-researcher-reveals-truth-behind-wine-study-1.2937395",
+        "meta": "cbc.ca &middot; 2015"
+      }
+    ],
+    "caption": "The sample Dig Deeper that comes with the app &middot; 8 sources",
+    "checkedLink": "How a Dig Deeper is checked"
+  },
+  "editor": {
+    "heading": "You&rsquo;re the editor.",
+    "t1": "Every article keeps the headline it ran under, right beside the new one.",
+    "t2": "Every source is a link to the original, so you can read it yourself.",
+    "t3": "No ads, no third-party trackers, and your data is never sold."
+  },
+  "country": {
+    "link": "In another country? Get one email when The Lede reaches yours.",
+    "heading": "In another country? Get one email when The Lede reaches yours.",
+    "emailLabel": "Email address",
+    "countryLabel": "Country or region",
+    "countryPlaceholder": "Choose one",
+    "keepLabel": "Afterwards, keep me on for occasional notes from the desk.",
+    "button": "Add me",
+    "fine": "Charles Klein LLC sends one email when The Lede reaches the App Store in your country, then deletes your address, unless you ticked the box. If that hasn&rsquo;t happened 12 months after you first sign up, we delete it anyway. You can unsubscribe at any time, from the email or by writing to support@theledeapp.com. <a href=\"/privacy#launch-list\">How we handle your address</a>.",
+    "alertInvalid": "That address didn&rsquo;t look like an email, or the country isn&rsquo;t on our list. Check both and send it again.",
+    "alertError": "Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute."
   },
   "founderNote": {
     "quote": "&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;",
@@ -130,7 +191,7 @@
   },
   "footer": {
     "signoff": "The Lede &middot; Check everything you read.",
-    "appleCredit": "Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries."
+    "appleCredit": "Apple, the Apple logo, App Store, iCloud, iPad, iPhone, and Safari are trademarks of Apple Inc., registered in the U.S. and other countries."
   },
   "thanks": {
     "title": "You're on the list · The Lede",
@@ -138,5 +199,12 @@
     "h1": "We&rsquo;ll write when<br>there&rsquo;s news.",
     "sub": "You asked for occasional notes from the desk, and occasional is what you&rsquo;ll get: a short note when something meaningful ships, and that&rsquo;s all. No schedule, no digest, nothing else. Unsubscribe any time.",
     "muted": "Know someone drowning in open tabs? Send them <a href=\"https://theledeapp.com\">theledeapp.com</a>."
+  },
+  "thanksCountry": {
+    "title": "One email, when it&rsquo;s there · The Lede",
+    "eyebrow": "You&rsquo;re on the list",
+    "h1": "We&rsquo;ll write once,<br>when it&rsquo;s there.",
+    "sub": "When The Lede reaches the App Store in your country, we&rsquo;ll send one email to say so. Then we delete your address or, if you ticked the box, keep it for occasional notes from the desk. If that day hasn&rsquo;t come 12 months after you first signed up, we delete your address anyway.",
+    "muted": "How we handle your address is in the <a href=\"/privacy#launch-list\">privacy policy</a>."
   }
 }

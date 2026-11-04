@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=457a2d00">
+  <link rel="stylesheet" href="styles.css?v=697c3ba4">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -80,139 +80,159 @@
   })();
   </script>
 </head>
-<body>
+<body class="rd page-privacy">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap wrap--doc">
-    <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede — home"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/support">Support</a>
-        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy" aria-current="page">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
       </nav>
-    </header>
-    <main id="main">
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+  <div class="r-wrap">
+  <nav class="r-rail r-rail--plain" aria-label="On this page"><span class="kicker">On this page</span><ol>
+      <li><a href="#dont-collect">What we don't collect</a></li>
+      <li><a href="#library">Your article library stays in your iCloud</a></li>
+      <li><a href="#saving">What happens when you save an article</a></li>
+      <li><a href="#notifications">Notifications and your device</a></li>
+      <li><a href="#usage-data">Usage data</a></li>
+      <li><a href="#subscriptions-note">Subscriptions</a></li>
+      <li><a href="#launch-list">The mailing list</a></li>
+      <li><a href="#processors">Who processes your data</a></li>
+      <li><a href="#where-handled">Where your data is handled</a></li>
+      <li><a href="#data-retention">Data retention</a></li>
+      <li><a href="#your-rights">Your choices and your rights</a></li>
+      <li><a href="#report-a-mistake">Reporting a mistake</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#who-runs">Who runs The Lede</a></li>
+    </ol>
+    <p class="r-railnote">How this works in practice: <a href="/how-it-works#part-2">What leaves your phone</a></p></nav>
+  <main class="r-main" id="main"><div class="r-col pv">
+      <span class="kicker">Privacy</span>
+      <h1 class="pv__h1">Privacy Policy</h1>
+      <p class="lede">The Lede is built to need as little of your data as possible. This page explains exactly what that means.</p>
+      <p class="muted">Last updated: November 3, 2026</p>
 
-    <p class="eyebrow">Privacy</p>
-    <h1>Privacy Policy</h1>
-    <p class="lede">The Lede is built to need as little of your data as possible. This page explains exactly what that means.</p>
-    <p class="muted">Last updated: October 23, 2026</p>
+      <div class="callout">
+        <p><strong>The short version.</strong></p>
+        <ul>
+          <li>There is <strong>no account</strong>: no name or password to create, and the app never asks for your email, apart from a Kindle address you choose to save. <em>Joining our mailing list on this website is the one optional exception</em> (see below).</li>
+          <li>Your saved articles and highlights live in <strong>your own iCloud</strong>, not on our servers. We never receive your library.</li>
+          <li>To write a brief, the article's title and text are sent to our AI provider (Anthropic). The article's web address goes too when you ask for a "Dig Deeper," or when the piece is opinion or commentary. <strong>Our contract bars model training on your text</strong>, and we don't keep the text.</li>
+          <li>We collect a small amount of usage data — keyed to a <strong>random per-device identifier, never your name</strong> — to run the service and set fair pricing.</li>
+          <li>No ads. No third-party trackers. <strong>We never sell your data.</strong></li>
+        </ul>
+      </div>
 
-    <div class="callout">
-      <p><strong>The short version.</strong></p>
+      <h2 id="dont-collect">What we don't collect</h2>
+      <p>The app has no sign-up. We do not collect your name, phone number, password, precise location, contacts, photos, or any advertising identifier. The app contains no third-party advertising or analytics SDKs and no cross-app trackers. The <strong>one</strong> piece of contact information we ever collect is an email address, and only if you choose to give it to us on this website to hear from the desk (see <a href="#launch-list">The mailing list</a> below). The app itself never asks for it, apart from a Kindle address you choose to save. If you save a Kindle address for Send to Kindle, it stays on your devices and in your own iCloud, and never reaches us. Our server never sends the book: your own Mail app sends it by email to that address, or, if Mail isn't set up, you pick where it goes from your device's share sheet.</p>
+
+      <h2 id="library">Your article library stays in your iCloud</h2>
+      <p>The articles you save, their briefs, your highlights, and your reading history are stored in <strong>your private iCloud account</strong> (Apple CloudKit) and synced across your devices by Apple. We do not store, copy, or have access to your library. We keep no list of the specific articles you read. For a saved story, our usage records hold the publisher's domain and a one-way keyed fingerprint of the web address, never the address itself and never the article's text. The full detail is under "Usage data" below. If you delete the app and remove its iCloud data, that content is gone.</p>
+
+      <h2 id="saving">What happens when you save an article</h2>
+      <p>When you save an article, the app sends its <strong>web address, headline, and extracted text</strong> to our server so we can produce the brief. From there:</p>
       <ul>
-        <li>There is <strong>no account</strong>: no name or password to create, and the app never asks for your email, apart from a Kindle address you choose to save. <em>Joining our mailing list on this website is the one optional exception</em> (see below).</li>
-        <li>Your saved articles and highlights live in <strong>your own iCloud</strong>, not on our servers. We never receive your library.</li>
-        <li>To write a brief, the article's title and text are sent to our AI provider (Anthropic). The article's web address goes too when you ask for a "Dig Deeper," or when the piece is opinion or commentary. <strong>Our contract bars model training on your text</strong>, and we don't keep the text.</li>
-        <li>We collect a small amount of usage data — keyed to a <strong>random per-device identifier, never your name</strong> — to run the service and set fair pricing.</li>
-        <li>No ads. No third-party trackers. <strong>We never sell your data.</strong></li>
+        <li>The article's <strong>title and text</strong> are sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. The article's <strong>web address</strong> is sent to Anthropic as well in two cases: when you ask for a "Dig Deeper," so the desk can research the piece, and when the piece is opinion or commentary, where the brief is written from the reporting the address points to. <strong>Our contract bars model training on your text.</strong> Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</li>
+        <li>For some stories we run a web search (via <strong>Tavily</strong> or <strong>Exa</strong>) using the headline to gather additional context.</li>
+        <li>We <strong>never store the article's full text</strong>. We keep a short, one-way fingerprint (a hash) of the text, which can't be turned back into the article, so that an identical article isn't re-processed, alongside the brief we generated, in a temporary cache that automatically deletes itself (within 14 days for a brief, 7 days for a "Dig Deeper," 48 hours for redirected sources). And for sources your device can't read on its own, the server returns that same extracted text to your device so your copy saves alongside the brief — it passes through to you but is never stored on our servers; your saved copy lives only in <strong>your own iCloud</strong>.</li>
+        <li>We keep a hash of the web address, not the address itself, so an identical article isn't re-processed. That cache entry has no name, no device identifier, and no account attached to it, and it deletes itself on the schedule above. The raw web address is never kept in our databases. It only passes briefly through our host's operational logs (see below).</li>
       </ul>
-    </div>
-
-    <h2>What we don't collect</h2>
-    <p>The app has no sign-up. We do not collect your name, phone number, password, precise location, contacts, photos, or any advertising identifier. The app contains no third-party advertising or analytics SDKs and no cross-app trackers. The <strong>one</strong> piece of contact information we ever collect is an email address, and only if you choose to give it to us on this website to hear from the desk (see <a href="#launch-list">The mailing list</a> below). The app itself never asks for it, apart from a Kindle address you choose to save. If you save a Kindle address for Send to Kindle, it stays on your devices and in your own iCloud, and never reaches us. Our server never sends the book: your own Mail app sends it by email to that address, or, if Mail isn't set up, you pick where it goes from your device's share sheet.</p>
-
-    <h2>Your article library stays in your iCloud</h2>
-    <p>The articles you save, their briefs, your highlights, and your reading history are stored in <strong>your private iCloud account</strong> (Apple CloudKit) and synced across your devices by Apple. We do not store, copy, or have access to your library. We keep no list of the specific articles you read. For a saved story, our usage records hold the publisher's domain and a one-way keyed fingerprint of the web address, never the address itself and never the article's text. The full detail is under "Usage data" below. If you delete the app and remove its iCloud data, that content is gone.</p>
-
-    <h2>What happens when you save an article</h2>
-    <p>When you save an article, the app sends its <strong>web address, headline, and extracted text</strong> to our server so we can produce the brief. From there:</p>
-    <ul>
-      <li>The article's <strong>title and text</strong> are sent to our AI provider (<strong>Anthropic</strong>) to generate the brief. The article's <strong>web address</strong> is sent to Anthropic as well in two cases: when you ask for a "Dig Deeper," so the desk can research the piece, and when the piece is opinion or commentary, where the brief is written from the reporting the address points to. <strong>Our contract bars model training on your text.</strong> Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</li>
-      <li>For some stories we run a web search (via <strong>Tavily</strong> or <strong>Exa</strong>) using the headline to gather additional context.</li>
-      <li>We <strong>never store the article's full text</strong>. We keep a short, one-way fingerprint (a hash) of the text, which can't be turned back into the article, so that an identical article isn't re-processed, alongside the brief we generated, in a temporary cache that automatically deletes itself (within 14 days for a brief, 7 days for a "Dig Deeper," 48 hours for redirected sources). And for sources your device can't read on its own, the server returns that same extracted text to your device so your copy saves alongside the brief — it passes through to you but is never stored on our servers; your saved copy lives only in <strong>your own iCloud</strong>.</li>
-      <li>We keep a hash of the web address, not the address itself, so an identical article isn't re-processed. That cache entry has no name, no device identifier, and no account attached to it, and it deletes itself on the schedule above. The raw web address is never kept in our databases. It only passes briefly through our host's operational logs (see below).</li>
-    </ul>
-    <div class="callout">
-      <p>To be plain about it: what we keep is a hash of the web address, not the address. We never store the article's text on our own servers. Our contract bars model training on your text, and Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold. We don't keep the raw web address at all. Apart from the two cases above, where it goes to Anthropic, it appears only briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
-    </div>
-
-    <h2>Notifications and your device</h2>
-    <p>To deliver "Dig Deeper" results, your device registers with our server using a <strong>random identifier we generate</strong> (never your Apple device's hardware ID) and an Apple push token. A device secret is stored only as a one-way hash. Push notifications are scoped so a result is only ever delivered to the device that requested it.</p>
-
-    <h2>Usage data</h2>
-    <p>We record a small amount of first-party usage data. It is <strong>pseudonymous</strong>: keyed to a random per-device identifier and to an opaque iCloud account identifier from Apple, never your name, your email, or your device's hardware ID. Because those identifiers are stable (the iCloud one persists even if you reinstall the app), Apple's App Store privacy label now counts this data as <strong>linked to you</strong>. We still never attach your name, and we never sell it. We use it to operate the service, watch for abuse and runaway costs, improve the app, and set fair pricing. This includes:</p>
-    <ul>
-      <li><strong>Service events</strong> — such as "a brief was generated," the AI token and cost counts, the publication's domain, and a keyed fingerprint of the article address: a one-way code we can't turn back into the web address without a secret we hold.</li>
-      <li><strong>In-app usage &amp; funnel events</strong> — such as which features you use, how far you get in onboarding, that a brief was opened, when an upgrade screen is shown, and subscription events (for example, a trial starting). These tell us where the app is working and where people get stuck. We log that a brief was opened, the publisher's domain, and the keyed fingerprint of the address. We don't store the addresses themselves, and we keep no list of the specific articles you read. These events are tied to the random identifier we generate for your device and to an opaque iCloud account identifier Apple provides. Neither carries your name or email.</li>
-    </ul>
-    <p>The in-app usage and funnel data stays on <strong>our own servers</strong> and is not shared with any third party, sold, used for advertising, or combined with data from other apps or websites. It carries nothing that identifies you by name — no name, email address, or contact details — and <strong>we never sell it</strong>. The app contains no third-party advertising or analytics SDKs. If you joined our mailing list, that email address is stored separately and is <strong>never linked</strong> to this usage data.</p>
-
-    <h2 id="subscriptions-note">Subscriptions</h2>
-    <p>Subscriptions are processed entirely by <strong>Apple</strong> through the App Store. We never see your name, card, or payment details. To understand how well the app converts and to set fair pricing, Apple sends our server automatic notifications about subscription <strong>lifecycle events</strong> — a free trial converting to paid, a renewal, a cancellation, a refund, or a subscription lapsing. We record these as <strong>events tied only to the random identifier we generate for your device</strong> (never your name or payment information); a random app-account token, set to that same device identifier, lets Apple's notification be matched to your device without identifying you. We retain the Apple-issued transaction identifier for your subscription while it is active and for a limited period afterward, so we can correctly handle refunds, cancellations, and billing disputes that Apple reports to us. We may keep this identifier even if you ask us to delete your usage data, where retaining it is necessary to handle these subscription events — it is an Apple reference that contains <strong>no name or payment details</strong>.</p>
-    <p>One more thing about renewals: the app shows every Member an annual renewal notice. If you have ever emailed <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>, we may also send that year's notice to the address you wrote from — a legal notice about your subscription, never marketing. Your address stays in our support mailbox, where your message put it; we don't add it to any database or mailing list.</p>
-
-    <h2 id="launch-list">The mailing list</h2>
-    <p>On this website you can give us your email address to hear from the desk. This is entirely optional and separate from the app. The app never asks for an email, apart from a Kindle address you choose to save, and you do not need to join the list to use The Lede.</p>
-    <p>The list has served two purposes, and we treat the two groups differently:</p>
-    <ul>
-      <li><strong>If you signed up before launch</strong> to be told when The Lede opened to everyone, that is all you asked for, and it is all we will send you: a single notification that the app is available. We will not add your address to our ongoing notes unless you choose to stay on for them. If you would rather hear nothing at all, you can use the unsubscribe and deletion options below today.</li>
-      <li><strong>If you sign up now,</strong> through the notes form on our home page, you are asking for occasional notes about The Lede: a short message when something meaningful ships. There is no schedule and no digest, and we will not use your address for anything else, or share it, without asking you first.</li>
-    </ul>
-    <p>For everyone on the list, the same promises hold:</p>
-    <ul>
-      <li><strong>What we collect:</strong> only the email address you type in, plus the date you signed up. Nothing else. No name, and we don&rsquo;t track whether you open or click our messages.</li>
-      <li><strong>Kept separate:</strong> your address is stored on <strong>our own servers</strong> (our database, Neon, and our host, Railway) and is <strong>never linked</strong> to the usage data the app collects. We do <strong>not</strong> use a third-party email-marketing or tracking service, and we never sell or rent your address.</li>
-      <li><strong>How long we keep it:</strong> until you unsubscribe or ask us to delete it. If you signed up only for the launch notification, we remove your address once that notification has been sent, unless you have told us you want to keep hearing from the desk.</li>
-      <li><strong>Unsubscribe &amp; deletion:</strong> you can ask us to delete your address at any time by emailing <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>, and any message we send will include a way to unsubscribe. We honor these requests promptly, always within 10 business days and in practice much sooner.</li>
-    </ul>
-    <p>By giving us your email you consent to receiving what is described above for your group: a single launch notification, or occasional notes from the desk. You can withdraw that consent at any time using the unsubscribe link or by emailing us.</p>
-
-    <h2>Who processes your data</h2>
-    <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), and <strong>Railway</strong> (server hosting). We do not sell or rent your information to anyone. Each of these providers acts only on our instructions. We do not share your data with any provider that does not protect it to the same standard this policy sets out. That includes <strong>Anthropic</strong>: our contract bars model training on your text, limits Anthropic to writing the brief we asked for, and sets the deletion terms described under <a href="#data-retention">Data retention</a> below.</p>
-
-    <h2 id="where-handled">Where your data is handled</h2>
-    <p>Charles Klein LLC is a company in the United States, and every provider listed above handles data in the United States. If you use The Lede from outside the United States, the information described on this page is sent to and handled in the United States, where privacy law may differ from the law where you live.</p>
-
-    <h2 id="data-retention">Data retention</h2>
-    <p>The temporary AI cache deletes itself on the schedule above. We never store the article's text ourselves. <strong>Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</strong> Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
-
-    <h2>Your choices and your rights</h2>
-    <p>Deleting the app removes its local data; removing its iCloud data deletes your library. You can also stop the sending described above at any time:</p>
-    <ul>
-      <li><strong>Turn the desk off.</strong> In the app's own Settings, under <strong>Privacy</strong>, switch off <em>Sending articles to the desk</em>. From then on, articles you save stay on your phone and land without a brief, and nothing goes to our AI provider. You can switch it back on whenever you like, and the same screen shows the full list of what leaves your phone.</li>
-    </ul>
-    <p>For the pseudonymous usage records on our servers, you can:</p>
-    <ul>
-      <li><strong>Request deletion</strong> — email us and <strong>we will delete the usage records associated with your device</strong>. (We may retain the Apple transaction identifier tied to an active or recently-ended subscription where doing so is necessary to process refunds, disputes, or required financial records, as described under <a href="#subscriptions-note">Subscriptions</a> above.)</li>
-      <li><strong>Request a copy</strong> — email us and we will provide the usage records we hold for your device.</li>
-    </ul>
-    <p>Because this data is keyed to a random device identifier, we may ask you to make the request from the device so we can locate the right records. Wherever you live, you may ask us about the data we hold and request its deletion. <strong>California residents:</strong> we do not sell or share your personal information, and you may exercise the access and deletion rights above by contacting us.</p>
-    <p><strong>Australia:</strong> you may ask to see or correct the information we hold about you, or make a complaint about how we handled it, by emailing us. We'll reply within 30 days. If you're not satisfied with our answer, you can complain to the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au">oaic.gov.au</a>.</p>
-    <p><strong>Singapore:</strong> for the usage records described above, which we use to run, protect and improve the app, we rely on the legitimate interests exception in Singapore&rsquo;s Personal Data Protection Act. Our Data Protection Officer is Charles Klein, reachable at <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
-
-    <h2 id="report-a-mistake">Reporting a mistake</h2>
-    <p>If a brief or a Dig Deeper gets something wrong, tell us. Every Dig Deeper has a <em>Report a problem with this Dig Deeper</em> row, and you can email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a> about any brief. We read every report, and we can remove a Dig Deeper from our temporary cache so it isn&rsquo;t shown again.</p>
-
-    <h2>Children</h2>
-    <p>The Lede is not directed to children under 13, and we do not knowingly collect information from them.</p>
-
-    <h2>Changes</h2>
-    <p>If we change this policy we'll update the date above and, for material changes, note it in the app.</p>
-
-    <h2>Who runs The Lede</h2>
-    <p>The Lede is built and operated by Charles Klein LLC. For any privacy question or request, email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
-
-    </main>
-
-    <footer>
-      <div class="colophon">
-        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
-        <span>The Lede &middot; Check everything you read.</span>
+      <div class="callout">
+        <p>To be plain about it: what we keep is a hash of the web address, not the address. We never store the article's text on our own servers. Our contract bars model training on your text, and Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold. We don't keep the raw web address at all. Apart from the two cases above, where it goes to Anthropic, it appears only briefly in our hosting provider's operational logs, which we use to keep the service running.</p>
       </div>
-      <div class="row">
-        <a href="/">Home</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/support">Support</a>
-        <a href="/sourcing">How The Lede handles sources</a>
-      </div>
-      <div class="page-colophon">
-        <p class="endmark" aria-hidden="true">&#182;</p>
-        <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
-        <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
-        <p class="disclaimer">Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
-      </div>
-    </footer>
-  </div>
+
+      <h2 id="notifications">Notifications and your device</h2>
+      <p>To deliver "Dig Deeper" results, your device registers with our server using a <strong>random identifier we generate</strong> (never your Apple device's hardware ID) and an Apple push token. A device secret is stored only as a one-way hash. Push notifications are scoped so a result is only ever delivered to the device that requested it.</p>
+
+      <h2 id="usage-data">Usage data</h2>
+      <p>We record a small amount of first-party usage data. It is <strong>pseudonymous</strong>: keyed to a random per-device identifier and to an opaque iCloud account identifier from Apple, never your name, your email, or your device's hardware ID. Because those identifiers are stable (the iCloud one persists even if you reinstall the app), Apple's App Store privacy label now counts this data as <strong>linked to you</strong>. We still never attach your name, and we never sell it. We use it to operate the service, watch for abuse and runaway costs, improve the app, and set fair pricing. This includes:</p>
+      <ul>
+        <li><strong>Service events</strong> — such as "a brief was generated," the AI token and cost counts, the publication's domain, and a keyed fingerprint of the article address: a one-way code we can't turn back into the web address without a secret we hold.</li>
+        <li><strong>In-app usage &amp; funnel events</strong> — such as which features you use, how far you get in onboarding, that a brief was opened, when an upgrade screen is shown, and subscription events (for example, a trial starting). These tell us where the app is working and where people get stuck. We log that a brief was opened, the publisher's domain, and the keyed fingerprint of the address. We don't store the addresses themselves, and we keep no list of the specific articles you read. These events are tied to the random identifier we generate for your device and to an opaque iCloud account identifier Apple provides. Neither carries your name or email.</li>
+      </ul>
+      <p>The in-app usage and funnel data stays on <strong>our own servers</strong> and is not shared with any third party, sold, used for advertising, or combined with data from other apps or websites. It carries nothing that identifies you by name — no name, email address, or contact details — and <strong>we never sell it</strong>. The app contains no third-party advertising or analytics SDKs. If you joined our mailing list, that email address is stored separately and is <strong>never linked</strong> to this usage data.</p>
+
+      <h2 id="subscriptions-note">Subscriptions</h2>
+      <p>Subscriptions are processed entirely by <strong>Apple</strong> through the App Store. We never see your name, card, or payment details. To understand how well the app converts and to set fair pricing, Apple sends our server automatic notifications about subscription <strong>lifecycle events</strong> — a free trial converting to paid, a renewal, a cancellation, a refund, or a subscription lapsing. We record these as <strong>events tied only to the random identifier we generate for your device</strong> (never your name or payment information); a random app-account token, set to that same device identifier, lets Apple's notification be matched to your device without identifying you. We retain the Apple-issued transaction identifier for your subscription while it is active and for a limited period afterward, so we can correctly handle refunds, cancellations, and billing disputes that Apple reports to us. We may keep this identifier even if you ask us to delete your usage data, where retaining it is necessary to handle these subscription events — it is an Apple reference that contains <strong>no name or payment details</strong>.</p>
+      <p>One more thing about renewals: the app shows every Member an annual renewal notice. If you have ever emailed <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>, we may also send that year's notice to the address you wrote from — a legal notice about your subscription, never marketing. Your address stays in our support mailbox at Fastmail, where your message put it; we don't add it to any database or mailing list.</p>
+
+      <h2 id="launch-list">The mailing list</h2>
+      <p>On this website you can give us your email address to hear from the desk. This is entirely optional and separate from the app. The app never asks for an email, apart from a Kindle address you choose to save, and you do not need to join the list to use The Lede.</p>
+      <p>The list serves three purposes, and we treat the three groups differently:</p>
+      <ul>
+        <li><strong>If you signed up before launch</strong> to be told when The Lede opened to everyone, that is all you asked for, and it is all we will send you: a single notification that the app is available. We will not add your address to our ongoing notes unless you choose to stay on for them. If you would rather hear nothing at all, you can use the unsubscribe and deletion options below today.</li>
+        <li><strong>If you asked for occasional notes,</strong> through the notes form our home page used to carry, you asked for occasional notes about The Lede: a short message when something meaningful ships. Ticking the box on the country form asks for the same notes, starting after your country email. There is no schedule and no digest, and we will not use your address for anything else, or share it, without asking you first.</li>
+        <li><strong>If you ask to hear when The Lede reaches your country,</strong> through the form on our home page, we keep your address and the country you pick from the list, send one email when The Lede arrives there, then delete your address. If you also tick the box to keep hearing from the desk, your address moves to the notes list instead once that email has gone out, for the occasional notes described above. If The Lede hasn&rsquo;t reached your country 12 months after you first sign up, we delete your address anyway, even if you ticked the box.</li>
+      </ul>
+      <p>For everyone on the list, the same promises hold:</p>
+      <ul>
+        <li><strong>What we collect:</strong> only the email address you type in, plus the date you signed up. If you ask to hear when The Lede reaches your country, we also keep the country you pick and whether you ticked the box to keep hearing from the desk. Nothing else. No name, and we don&rsquo;t track whether you open or click our messages.</li>
+        <li><strong>Kept separate:</strong> your address is stored on <strong>our own servers</strong> (our database, Neon, and our host, Railway) and is <strong>never linked</strong> to the usage data the app collects. We do <strong>not</strong> use a third-party email-marketing or tracking service, and we never sell or rent your address. We send each email by hand from our own mailbox at Fastmail, and delete our sent copies once a send is done.</li>
+        <li><strong>How long we keep it:</strong> until you ask us to delete it. If you unsubscribe from the notes, we keep your address only as a record not to email you again; ask and we delete that too. If you signed up only for the launch notification, we remove your address once that notification has been sent, unless you have told us you want to keep hearing from the desk. If you asked to hear when The Lede reaches your country, we delete your address and the country once that one email has been sent, unless you ticked the box to keep hearing from the desk. If The Lede hasn&rsquo;t reached your country 12 months after you first sign up, we delete your address and the country anyway. Unsubscribing from that email deletes them straight away.</li>
+        <li><strong>Unsubscribe &amp; deletion:</strong> you can ask us to delete your address at any time by emailing <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>, and any message we send will include a way to unsubscribe. We honor these requests promptly, always within 5 business days and in practice much sooner.</li>
+      </ul>
+      <p>By giving us your email you consent to receiving what is described above for your group: a single launch notification, a single email when The Lede reaches your country, or occasional notes from the desk. You can withdraw that consent at any time using the unsubscribe link or by emailing us.</p>
+
+      <h2 id="processors">Who processes your data</h2>
+      <p>We rely on a small set of service providers, each handling only what's described above: <strong>Anthropic</strong> (AI briefs), <strong>Tavily</strong> and <strong>Exa</strong> (web search context), <strong>Apple</strong> (iCloud storage, push notifications, and subscriptions), <strong>Neon</strong> (our database), <strong>Railway</strong> (server hosting), and <strong>Fastmail</strong> (our email: the support mailbox, and the mailbox we send mailing-list email from). We do not sell or rent your information to anyone. Each of these providers acts only on our instructions. We do not share your data with any provider that does not protect it to the same standard this policy sets out. That includes <strong>Anthropic</strong>: our contract bars model training on your text, limits Anthropic to writing the brief we asked for, and sets the deletion terms described under <a href="#data-retention">Data retention</a> below.</p>
+
+      <h2 id="where-handled">Where your data is handled</h2>
+      <p>Charles Klein LLC is a company in the United States. Every provider listed above handles data in the United States, except Fastmail, an Australian company, which may hold our email in the United States, the Netherlands, Australia, India or Austria. If you use The Lede from outside the United States, the information described on this page is sent to and handled in those places, where privacy law may differ from the law where you live.</p>
+
+      <h2 id="data-retention">Data retention</h2>
+      <p>The temporary AI cache deletes itself on the schedule above. We never store the article's text ourselves. <strong>Anthropic deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold.</strong> Usage records are retained for <strong>up to 13 months</strong> and then automatically deleted. Your device registration is kept while the app is installed and registered. Subscription transaction identifiers that Apple reports to us are kept while your subscription is active and for a limited dispute-and-refund period afterward.</p>
+
+      <h2 id="your-rights">Your choices and your rights</h2>
+      <p>Deleting the app removes its local data; removing its iCloud data deletes your library. You can also stop the sending described above at any time:</p>
+      <ul>
+        <li><strong>Turn the desk off.</strong> In the app's own Settings, under <strong>Privacy</strong>, switch off <em>Sending articles to the desk</em>. From then on, articles you save stay on your phone and land without a brief, and nothing goes to our AI provider. You can switch it back on whenever you like, and the same screen shows the full list of what leaves your phone.</li>
+      </ul>
+      <p>For the pseudonymous usage records on our servers, you can:</p>
+      <ul>
+        <li><strong>Request deletion</strong> — email us and <strong>we will delete the usage records associated with your device</strong>. (We may retain the Apple transaction identifier tied to an active or recently-ended subscription where doing so is necessary to process refunds, disputes, or required financial records, as described under <a href="#subscriptions-note">Subscriptions</a> above.)</li>
+        <li><strong>Request a copy</strong> — email us and we will provide the usage records we hold for your device.</li>
+      </ul>
+      <p>Because this data is keyed to a random device identifier, we may ask you to make the request from the device so we can locate the right records. Wherever you live, you may ask us about the data we hold and request its deletion. <strong>California residents:</strong> we do not sell or share your personal information, and you may exercise the access and deletion rights above by contacting us.</p>
+      <p><strong>Australia:</strong> you may ask to see or correct the information we hold about you, or make a complaint about how we handled it, by emailing us. We'll reply within 30 days. If you're not satisfied with our answer, you can complain to the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au">oaic.gov.au</a>.</p>
+      <p><strong>Singapore:</strong> for the usage records described above, which we use to run, protect and improve the app, we rely on the legitimate interests exception in Singapore&rsquo;s Personal Data Protection Act. Our Data Protection Officer is Charles Klein, reachable at <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
+
+      <h2 id="report-a-mistake">Reporting a mistake</h2>
+      <p>If a brief or a Dig Deeper gets something wrong, tell us. Every Dig Deeper has a <em>Report a problem with this Dig Deeper</em> row, and you can email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a> about any brief. We read every report, and we can remove a Dig Deeper from our temporary cache so it isn&rsquo;t shown again.</p>
+
+      <h2 id="children">Children</h2>
+      <p>The Lede is not directed to children under 13, and we do not knowingly collect information from them.</p>
+
+      <h2 id="changes">Changes</h2>
+      <p>If we change this policy we'll update the date above and, for material changes, note it in the app.</p>
+
+      <h2 id="who-runs">Who runs The Lede</h2>
+      <p>The Lede is built and operated by Charles Klein LLC. For any privacy question or request, email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a>.</p>
+  </div></main></div>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; Apple, the Apple logo, App Store, iCloud, iPad, iPhone, and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
 </body>
 </html>

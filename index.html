@@ -65,7 +65,7 @@
         "@type": "VideoObject",
         "@id": "https://theledeapp.com/#film",
         "name": "A short film about The Lede",
-        "description": "Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes its strongest honest case, so you know if it’s worth your time. When it is, Dig Deeper looks in the research and the reporting around it and lists every source.",
+        "description": "Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes the author’s strongest honest case. When a piece is worth your attention, Dig Deeper looks in the research and the reporting around it and lists every source.",
         "duration": "PT1M20S",
         "thumbnailUrl": "https://theledeapp.com/film/poster-16x9.png",
         "contentUrl": "https://theledeapp.com/film/web-16x9-1920x1080.mp4",
@@ -80,7 +80,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://theledeapp.com/">
-  <link rel="stylesheet" href="styles.css?v=457a2d00">
+  <link rel="stylesheet" href="styles.css?v=697c3ba4">
   <!-- Without script the film's link can't open its transcript, so it shows open. -->
   <noscript><style>.transcript[hidden] { display: block; }</style></noscript>
   <script>
@@ -159,18 +159,24 @@
   })();
   </script>
 </head>
-<body class="page-home">
+<body class="page-home rd">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="wrap wrap--wide">
-    <header class="site-head">
-      <a class="mark" href="/" aria-label="The Lede home page"><img src="icon-96.png" alt="" width="26" height="26"><span class="wordmark">The Lede</span></a>
-      <nav>
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
       </nav>
-    </header>
-    <main id="main">
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+  <main id="main">
 
     <!-- THE FILM leads (CDO "the page plays", 2026-10-24). It sits on the page's own
          paper with no frame, plays once on its own (muted, never looped) and comes
@@ -486,142 +492,400 @@
     })();
     </script>
 
-    <section class="hero1">
-      <h1>Hear the author out.<br>Then see what the sources say.</h1>
-      <p class="allowance">Free to start: 10 briefs and 2 Dig Deepers a month, no account.</p>
-      <p class="hero__sub">Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes its strongest honest case, so you know if it&rsquo;s worth your time. When it is, Dig Deeper looks in the research and the reporting around it and lists every source.</p>
+    <section class="v-front">
+      <h1 class="h1">Hear the author out.<br>Then see what the sources say.</h1>
+      <p class="sub">Save anything you mean to read later. The Lede reads it, renames it for what it actually argues, and makes the author&rsquo;s strongest honest case. When a piece is worth your attention, Dig Deeper looks in the research and the reporting around it and lists every source.</p>
       <!-- The page's one badge. Apple's artwork under Apple's rules: never redrawn,
            recoloured, retypeset or animated. An <img>, never inline SVG: Apple's SVG
            carries a <title> a screen reader reads out as a filename.
            Campaign: site-home, provider token as in the Smart App Banner. -->
-      <div class="store-flat">
-        <p class="eyebrow">On the <span class="brand-case">App Store</span></p>
-        <p class="store-badge"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="Download on the App Store"></a></p>
-        <p class="requirements">Requires iOS 26 or later. On the App Store in the United States, Australia and Singapore.</p>
+      <div class="stand">
+        <a class="stand__badge" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8"><img src="app-store-badge.png" width="359" height="120" alt="Download on the App Store"></a>
+        <div class="stand__lines">
+          <p class="allow">Free to start: 10 briefs and 2 Dig Deepers a month, no account.</p>
+          <p class="avail">Requires iOS 26 or later. On the App Store in the United States, Australia and Singapore.</p>
+          <p class="elsewhere"><a href="#country">In another country? Get one email when The Lede reaches yours.</a></p>
+        </div>
       </div>
     </section>
 
-    <p class="section-slug">The lede</p>
-
-    <!-- SHOWCASE 1: the film's lines 9 to 11. The wine card, the old hero, leads
-         the column here as the proof under "It unburies the lede." -->
-    <section class="showcase">
-      <div class="showcase__head">
-        <h2>Know if it&rsquo;s worth your time.</h2>
-        <p class="muted">Every save comes back renamed for what it actually argues and filed on its beat, with the headline it ran under kept beside it. Some you&rsquo;ll read tonight. Some you&rsquo;ll know you don&rsquo;t need to.</p>
+    <!-- The real app, on iPhone Duo: closed and open, one light and one dark file
+         per slot. The dark files are copies of the light ones until the dark
+         captures land under the same names (spec section 6). -->
+    <div class="v-hero">
+      <div class="v3-pair">
+        <span class="duo-slot v3-closed">
+          <img class="device shot-light" src="img/duo/duo-closed-sample-light.webp" width="800" height="1115" alt="The Lede on iPhone Duo, closed: the sample brief, renamed &ldquo;The &lsquo;wine equals a workout&rsquo; study was run on rats,&rdquo; with the headline it ran under kept underneath." loading="lazy" decoding="async">
+          <img class="device shot-dark" src="img/duo/duo-closed-sample-dark.webp" width="800" height="1115" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </span>
+        <span class="duo-slot v3-open">
+          <img class="device shot-light" src="img/duo/duo-open-queue-light.webp" width="1100" height="1514" alt="The Lede on iPhone Duo, open: the queue holding the sample brief, beside the brief itself." loading="lazy" decoding="async">
+          <img class="device shot-dark" src="img/duo/duo-open-queue-dark.webp" width="1100" height="1514" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </span>
       </div>
-      <div class="split">
-        <div>
-        <figure class="specimen specimen--exhibit" aria-label="A headline, renamed by The Lede">
-          <p class="specimen__label">Ran as</p>
-          <p class="specimen__orig">A Glass of Red Wine Equals an Hour at the Gym, New Study Finds</p>
-          <p class="specimen__turn"><span class="diamond" aria-hidden="true">◆</span><span class="turn-label">Renamed</span></p>
-          <p class="specimen__lede">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+      <p class="v-cap">The Lede on iPhone Duo<span class="v3-wide">, closed and open</span>. The sample brief that comes with the app.</p>
+    </div>
+
+    <section class="v-sec" id="how">
+      <div class="v-head"><span class="kicker">How it works</span><h2 class="h2">Know if it&rsquo;s worth your attention.</h2><p class="body">Every article the desk reads comes back renamed for what it actually argues and filed on its beat. The headline it ran under stays beside the new one. Some you&rsquo;ll read tonight. Some you&rsquo;ll know you don&rsquo;t need to.</p></div>
+      <div class="v-band">
+        <ol class="v-stations">
+          <li class="v-st"><span class="v-node" aria-hidden="true"></span><h3>You save it.</h3><p>Tap Share on anything worth reading, in Safari or any app, and choose The Lede.</p><p class="v-small">The first time you open the app, it walks you through a real save.</p></li>
+          <li class="v-st v-st--desk"><span class="v-node" aria-hidden="true"></span><h3>The desk reads it.</h3><p>The desk reads it while you get on with your day.</p></li>
+          <li class="v-st"><span class="v-node" aria-hidden="true"></span><h3>It comes back renamed.</h3>
+            <figure class="rename v-mini" aria-label="A headline, renamed by The Lede">
+              <span class="rename__label">Ran as</span>
+              <p class="rename__orig">&ldquo;A Glass of Red Wine Equals an Hour at the Gym, New Study Finds&rdquo;</p>
+              <span class="rename__turn"><span class="rename__label">Renamed</span></span>
+              <p class="rename__new">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
+            </figure><p>The headline it ran under stays beside the new one.</p></li>
+          <li class="v-st v-st--dd"><span class="v-node" aria-hidden="true"></span><h3>When it&rsquo;s worth it, dig deeper.</h3><p>Dig Deeper looks in the research and the reporting around it and lists every source.</p></li>
+        </ol>
+      </div>
+      <div class="v-more"><a href="/how-it-works">How The Lede works, in full</a><p>What runs where, what leaves your phone, and how a Dig Deeper is checked.</p></div>
+    </section>
+
+    <section class="v-sec" id="dig-deeper">
+      <div class="v-head"><span class="kicker">Dig Deeper</span><h2 class="h2">When it is, dig deeper.</h2><p class="body">Tap Dig Deeper and the desk looks in the research and the reporting around the piece. It sets out what others found and where it lands, then lists every source it wrote from, each one a link to the original. It can get one wrong, so check the ones that matter to you.</p></div>
+      <div class="v-dd">
+        <figure class="v3-dig">
+          <span class="duo-slot">
+            <img class="device shot-light" src="img/duo/duo-open-dig-light.webp" width="1100" height="1514" alt="The sample Dig Deeper on iPhone Duo, open: deeper on the &lsquo;wine equals a workout&rsquo; study, 8 sources, and what others found." loading="lazy" decoding="async">
+            <img class="device shot-dark" src="img/duo/duo-open-dig-dark.webp" width="1100" height="1514" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          </span>
+          <figcaption class="v-cap">The sample Dig Deeper, on iPhone Duo.</figcaption>
         </figure>
-        <div class="frontpage">
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--business">Business</span></span>
-            <h3 class="entry__lede">The millionaire who blamed avocado toast had his grandfather&rsquo;s money.</h3>
-            <p class="entry__ran">Ran as &ldquo;Millionaire: if you stopped buying avocado toast, you could afford a home&rdquo;</p>
-            <p class="entry__meta">4 min read</p>
-          </article>
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--culture">Culture</span></span>
-            <h3 class="entry__lede">London pays medieval rent in objects, not money.</h3>
-            <p class="entry__ran">Ran as &ldquo;London Is Still Paying Rent to the Queen on a Property Leased in 1211&rdquo;</p>
-            <p class="entry__meta">5 min read</p>
-          </article>
-          <article class="entry">
-            <span class="entry__beat"><span class="beat beat--science">Science</span></span>
-            <h3 class="entry__lede">The aging-reversal breakthrough was in mice.</h3>
-            <p class="entry__ran">Ran as &ldquo;Scientists Have Reached a Key Milestone in Reversing Aging&rdquo;</p>
-            <p class="entry__meta">5 min read</p>
-          </article>
-        </div>
-        </div>
-
-        <!-- the "it's a real app" anchor: real pixels, not a drawing. Two files
-             so the shot follows the page theme; the dark one is decorative since
-             the light one already carries the description. -->
-        <div class="device-shot">
-          <img class="shot-light" src="app-queue-light.webp" width="700" height="1431"
-               alt="The Lede&rsquo;s queue on iPhone: four saved stories, each renamed for what it&rsquo;s actually about and filed on its beat, with the original headline kept underneath."
-               loading="lazy" decoding="async">
-          <img class="shot-dark" src="app-queue-dark.webp" width="700" height="1431"
-               alt="" aria-hidden="true" loading="lazy" decoding="async">
-        </div>
+        <p class="dd__line">No wine.</p>
+        <p class="dd__body">The lead author says the study used no red wine, and CBC reports that resveratrol would have to be used like a performance-enhancing supplement, at concentrations far beyond a glass of wine.</p>
+        <p class="dd__head">The desk wrote this from the sources below. It can get one wrong, so check the ones that matter to you.</p>
+        <div class="v-fan" aria-hidden="true"></div>
+        <ol class="v-cards">
+          <li class="v-card"><span class="src__n">1</span><a class="src__t" href="https://link.springer.com/article/10.1186/s13104-021-05738-x">Chronic and moderate consumption of reduced-alcohol wine confers cardiac benefits in a rat model of pulmonary arterial hypertension</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">link.springer.com &middot; 2021</span></li>
+          <li class="v-card"><span class="src__n">2</span><a class="src__t" href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0005557">Red Wine Polyphenols Prevent Metabolic and Cardiovascular Alterations Associated with Obesity in Zucker Fatty Rats (Fa/Fa)</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">journals.plos.org &middot; 2009</span></li>
+          <li class="v-card"><span class="src__n">3</span><a class="src__t" href="https://www.sciencedirect.com/science/article/pii/S1538783622130576">Alcohol-free red wine prevents arterial thrombosis in dietary-induced hypercholesterolemic rats: experimental support for the &lsquo;French paradox&rsquo;</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">Journal of Thrombosis and Haemostasis &middot; 2005</span></li>
+          <li class="v-card"><span class="src__n">4</span><a class="src__t" href="https://www.cbc.ca/news/canada/british-columbia/jason-dyck-university-of-alberta-researcher-reveals-truth-behind-wine-study-1.2937395">Jason Dyck, University of Alberta researcher, reveals truth behind wine study</a><span class="src__a" aria-hidden="true">&#8599;</span><span class="src__m">cbc.ca &middot; 2015</span></li>
+        </ol>
+        <p class="dd__cap">The sample Dig Deeper that comes with the app &middot; 8 sources</p>
+        <div class="v-more"><a href="/how-it-works#checked">How a Dig Deeper is checked</a></div>
       </div>
     </section>
 
-    <p class="section-slug">Dig Deeper</p>
-
-    <!-- SHOWCASE 2 — the strongest honest case. Its own panel so the two
-         showcases stop sharing one rhythm; exhibit leads, note is subordinate. -->
-    <section class="showcase showcase--band">
-      <div class="showcase__head">
-        <h2>When it is, dig deeper.</h2>
-        <p class="muted">Every brief starts by hearing the author out: the strongest honest case the piece makes. When a piece is worth more of your time, tap Dig Deeper. The desk looks in the research and the reporting around it, sets out what others found and where the desk lands, and lists every source it wrote from, each one a link to the original. It can get one wrong, so check the ones that matter to you. Run it on a news story, a how-to, or the history thread you fell into at midnight.</p>
-      </div>
-      <div class="split split--rev">
-        <div class="feature-copy">
-          <p class="note-kicker">A note on sourcing</p>
-          <h3>It finds the reporting under the opinion.</h3>
-          <p>The Lede reads every source as it is. It doesn't rank outlets and it reads every one. The one thing it changes: when a piece is opinion, it builds the brief from the original reporting underneath, and shows you the reporting it used. Same rule for every publication. More on <a href="/sourcing">how The Lede handles sources</a>.</p>
-        </div>
-        <div class="brief">
-          <p class="specimen__label">Deeper on</p>
-          <p class="specimen__orig">The &ldquo;wine equals a workout&rdquo; study was run on rats.</p>
-          <p class="brief__lede">No wine.</p>
-          <p class="brief__steel-label"><span class="diamond" aria-hidden="true">◆</span> Sample &middot; 8 sources</p>
-          <p class="brief__body">Rats got resveratrol, far more than a glass of wine holds. The study&rsquo;s lead author says it used no red wine.</p>
-        </div>
-      </div>
+    <section class="v-sec">
+      <div class="v-head"><h2 class="h2">You&rsquo;re the editor.</h2></div>
+      <div class="v-trust"><p>Every article keeps the headline it ran under, right beside the new one.</p><p>Every source is a link to the original, so you can read it yourself.</p><p>No ads, no third-party trackers, and your data is never sold.</p></div>
+      <blockquote class="founder v-founder"><p class="founder__q">&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;</p><cite>Charles Klein, maker of The Lede</cite></blockquote>
     </section>
 
-    <!-- Founder note — one honest line (credibility for the indie/Apple crowd) -->
-    <p class="founder-note">&ldquo;I built The Lede because I got tired of headlines that bury the story, or sell one that isn&rsquo;t there.&rdquo;<span>Charles Klein, maker of The Lede</span></p>
+    <!-- Closing CTA. A plain text link, not a second badge: one badge per page
+         keeps it a signpost instead of wallpaper. -->
+    <section class="v-close">
+      <h2 class="h2">Start with the next thing you save.</h2>
+      <p class="body">Nothing to sign up for and no password to make. Your library lives in your own iCloud. The free edition gives you 10 briefs and 2 Dig Deepers a month. Check everything you read with Membership. It gives you 150 Dig Deepers a month, and the desk reads it all. It starts with a 7-day free trial.</p>
+      <div class="stand stand--text">
+        <a class="closelink" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">Available on the App Store</a>
+        <div class="stand__lines"><p class="allow">Free to start: 10 briefs and 2 Dig Deepers a month, no account.</p><p class="avail">Requires iOS 26 or later. On the App Store in the United States, Australia and Singapore.</p></div>
+      </div>
 
-    <!-- Closing CTA — the store panel, repeated. A plain text link, not a
-         second badge: one badge per page keeps it a signpost instead of
-         wallpaper, and Apple's badge is not a decorative element. -->
-    <section class="signup">
-      <h2>Start with the next thing you save.</h2>
-      <p class="signup__sub">Nothing to sign up for and no password to make. Your library lives in your own iCloud. The free edition gives you 10 briefs and 2 Dig Deepers a month. Check everything you read with Membership. It gives you 150 Dig Deepers a month, and the desk reads it all. It starts with a 7-day free trial.</p>
-      <p class="store-link"><a href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-home&amp;mt=8">Available on the App Store</a></p>
+      <!-- The country signup: one email when The Lede reaches the reader's App
+           Store, then the address is deleted (server POST /subscribe/country).
+           The hero's link lands on this heading, which repeats its words. The
+           box is the only way onto the notes list now. -->
+      <section class="country" id="country" aria-labelledby="country-h">
+        <h2 class="country__h" id="country-h">In another country? Get one email when The Lede reaches yours.</h2>
+        <p class="country__alert" id="country-alert-invalid" data-alert="invalid" tabindex="-1" hidden>That address didn&rsquo;t look like an email, or the country isn&rsquo;t on our list. Check both and send it again.</p>
+        <p class="country__alert" id="country-alert-error" data-alert="error" tabindex="-1" hidden>Something broke on our end and your address wasn&rsquo;t saved. Please try again in a minute.</p>
+        <form action="https://api.theledeapp.com/subscribe/country" method="post">
+          <div class="country__fields">
+            <p class="country__field"><label for="country-email">Email address</label>
+              <input id="country-email" type="email" name="email" autocomplete="email" autocapitalize="off" spellcheck="false" required></p>
+            <p class="country__field"><label for="country-pick">Country or region</label>
+              <span class="country__select"><select id="country-pick" name="country" autocomplete="country" required>
+                <option value="">Choose one</option>
+                <option value="AF">Afghanistan</option>
+          <option value="AL">Albania</option>
+          <option value="DZ">Algeria</option>
+          <option value="AO">Angola</option>
+          <option value="AI">Anguilla</option>
+          <option value="AG">Antigua and Barbuda</option>
+          <option value="AR">Argentina</option>
+          <option value="AM">Armenia</option>
+          <option value="AT">Austria</option>
+          <option value="AZ">Azerbaijan</option>
+          <option value="BS">Bahamas</option>
+          <option value="BH">Bahrain</option>
+          <option value="BB">Barbados</option>
+          <option value="BY">Belarus</option>
+          <option value="BE">Belgium</option>
+          <option value="BZ">Belize</option>
+          <option value="BJ">Benin</option>
+          <option value="BM">Bermuda</option>
+          <option value="BT">Bhutan</option>
+          <option value="BO">Bolivia</option>
+          <option value="BA">Bosnia and Herzegovina</option>
+          <option value="BW">Botswana</option>
+          <option value="BR">Brazil</option>
+          <option value="VG">British Virgin Islands</option>
+          <option value="BN">Brunei</option>
+          <option value="BG">Bulgaria</option>
+          <option value="BF">Burkina Faso</option>
+          <option value="KH">Cambodia</option>
+          <option value="CM">Cameroon</option>
+          <option value="CA">Canada</option>
+          <option value="CV">Cape Verde</option>
+          <option value="KY">Cayman Islands</option>
+          <option value="TD">Chad</option>
+          <option value="CL">Chile</option>
+          <option value="CN">China mainland</option>
+          <option value="CO">Colombia</option>
+          <option value="CD">Congo, Democratic Republic of the</option>
+          <option value="CG">Congo, Republic of the</option>
+          <option value="CR">Costa Rica</option>
+          <option value="CI">Côte d'Ivoire</option>
+          <option value="HR">Croatia</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czechia</option>
+          <option value="DK">Denmark</option>
+          <option value="DM">Dominica</option>
+          <option value="DO">Dominican Republic</option>
+          <option value="EC">Ecuador</option>
+          <option value="EG">Egypt</option>
+          <option value="SV">El Salvador</option>
+          <option value="EE">Estonia</option>
+          <option value="SZ">Eswatini</option>
+          <option value="FJ">Fiji</option>
+          <option value="FI">Finland</option>
+          <option value="FR">France</option>
+          <option value="GA">Gabon</option>
+          <option value="GM">The Gambia</option>
+          <option value="GE">Georgia</option>
+          <option value="DE">Germany</option>
+          <option value="GH">Ghana</option>
+          <option value="GR">Greece</option>
+          <option value="GD">Grenada</option>
+          <option value="GT">Guatemala</option>
+          <option value="GW">Guinea-Bissau</option>
+          <option value="GY">Guyana</option>
+          <option value="HN">Honduras</option>
+          <option value="HK">Hong Kong</option>
+          <option value="HU">Hungary</option>
+          <option value="IS">Iceland</option>
+          <option value="IN">India</option>
+          <option value="ID">Indonesia</option>
+          <option value="IQ">Iraq</option>
+          <option value="IE">Ireland</option>
+          <option value="IL">Israel</option>
+          <option value="IT">Italy</option>
+          <option value="JM">Jamaica</option>
+          <option value="JP">Japan</option>
+          <option value="JO">Jordan</option>
+          <option value="KZ">Kazakhstan</option>
+          <option value="KE">Kenya</option>
+          <option value="XK">Kosovo</option>
+          <option value="KW">Kuwait</option>
+          <option value="KG">Kyrgyzstan</option>
+          <option value="LA">Laos</option>
+          <option value="LV">Latvia</option>
+          <option value="LB">Lebanon</option>
+          <option value="LR">Liberia</option>
+          <option value="LY">Libya</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MO">Macao</option>
+          <option value="MG">Madagascar</option>
+          <option value="MW">Malawi</option>
+          <option value="MY">Malaysia</option>
+          <option value="MV">Maldives</option>
+          <option value="ML">Mali</option>
+          <option value="MT">Malta</option>
+          <option value="MR">Mauritania</option>
+          <option value="MU">Mauritius</option>
+          <option value="MX">Mexico</option>
+          <option value="FM">Micronesia</option>
+          <option value="MD">Moldova</option>
+          <option value="MN">Mongolia</option>
+          <option value="ME">Montenegro</option>
+          <option value="MS">Montserrat</option>
+          <option value="MA">Morocco</option>
+          <option value="MZ">Mozambique</option>
+          <option value="MM">Myanmar</option>
+          <option value="NA">Namibia</option>
+          <option value="NR">Nauru</option>
+          <option value="NP">Nepal</option>
+          <option value="NL">Netherlands</option>
+          <option value="NZ">New Zealand</option>
+          <option value="NI">Nicaragua</option>
+          <option value="NE">Niger</option>
+          <option value="NG">Nigeria</option>
+          <option value="MK">North Macedonia</option>
+          <option value="NO">Norway</option>
+          <option value="OM">Oman</option>
+          <option value="PK">Pakistan</option>
+          <option value="PW">Palau</option>
+          <option value="PA">Panama</option>
+          <option value="PG">Papua New Guinea</option>
+          <option value="PY">Paraguay</option>
+          <option value="PE">Peru</option>
+          <option value="PH">Philippines</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="QA">Qatar</option>
+          <option value="RO">Romania</option>
+          <option value="RU">Russia</option>
+          <option value="RW">Rwanda</option>
+          <option value="ST">São Tomé and Príncipe</option>
+          <option value="SA">Saudi Arabia</option>
+          <option value="SN">Senegal</option>
+          <option value="RS">Serbia</option>
+          <option value="SC">Seychelles</option>
+          <option value="SL">Sierra Leone</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="SB">Solomon Islands</option>
+          <option value="ZA">South Africa</option>
+          <option value="KR">South Korea</option>
+          <option value="ES">Spain</option>
+          <option value="LK">Sri Lanka</option>
+          <option value="KN">St. Kitts and Nevis</option>
+          <option value="LC">St. Lucia</option>
+          <option value="VC">St. Vincent and the Grenadines</option>
+          <option value="SR">Suriname</option>
+          <option value="SE">Sweden</option>
+          <option value="CH">Switzerland</option>
+          <option value="TW">Taiwan</option>
+          <option value="TJ">Tajikistan</option>
+          <option value="TZ">Tanzania</option>
+          <option value="TH">Thailand</option>
+          <option value="TO">Tonga</option>
+          <option value="TT">Trinidad and Tobago</option>
+          <option value="TN">Tunisia</option>
+          <option value="TR">Türkiye</option>
+          <option value="TM">Turkmenistan</option>
+          <option value="TC">Turks and Caicos</option>
+          <option value="UG">Uganda</option>
+          <option value="UA">Ukraine</option>
+          <option value="AE">United Arab Emirates</option>
+          <option value="GB">United Kingdom</option>
+          <option value="UY">Uruguay</option>
+          <option value="UZ">Uzbekistan</option>
+          <option value="VU">Vanuatu</option>
+          <option value="VE">Venezuela</option>
+          <option value="VN">Vietnam</option>
+          <option value="YE">Yemen</option>
+          <option value="ZM">Zambia</option>
+          <option value="ZW">Zimbabwe</option>
+              </select></span></p>
+          </div>
+          <p class="country__keep"><input id="country-keep" type="checkbox" name="keep" value="1"><label for="country-keep">Afterwards, keep me on for occasional notes from the desk.</label></p>
+          <p class="country__go"><button type="submit">Add me</button></p>
+          <p class="country__fine" id="country-fine">Charles Klein LLC sends one email when The Lede reaches the App Store in your country, then deletes your address, unless you ticked the box. If that hasn&rsquo;t happened 12 months after you first sign up, we delete it anyway. You can unsubscribe at any time, from the email or by writing to support@theledeapp.com. <a href="/privacy#launch-list">How we handle your address</a>.</p>
+        </form>
+      </section>
     </section>
 
-    <!-- The notes list. One field, no panel, no wash — deliberately the
-         quietest thing on the page, because it is no longer the page's job.
-         Framed as product notes, not a launch list: the launch is over, and
-         scarcity language would be a lie now. Same endpoint as before. -->
-    <section class="notes">
-      <h2>Occasional notes from the desk</h2>
-      <p>A short note when something meaningful ships. No launch spam; the launch is over.</p>
-      <form action="https://api.theledeapp.com/subscribe" method="post">
-        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-        <button type="submit">Add me</button>
-      </form>
-    </section>
+  </main>
 
-    </main>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; Apple, the Apple logo, App Store, iCloud, iPad, iPhone, and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
+  <script>
+  /* The film's threads, from the one ember dot to each numbered source. Desktop
+     fans from the centre (the film's own frame); a phone runs them from a dot in
+     the left margin. Colours go through style, not SVG attributes: Safari does
+     not resolve var() in presentation attributes reliably. Decoration only: the
+     SVG is aria-hidden, and without script there are simply no threads. */
+  (function () {
+    var ns = 'http://www.w3.org/2000/svg';
+    function el(n, a, st) {
+      var e = document.createElementNS(ns, n);
+      for (var k in a) e.setAttribute(k, a[k]);
+      for (var s in st || {}) e.style[s] = st[s];
+      return e;
+    }
+    function draw() {
+      document.querySelectorAll('.v-dd').forEach(function (dd) {
+        dd.querySelectorAll('svg.thr').forEach(function (o) { o.remove(); });
+        var fan = dd.querySelector('.v-fan'), list = dd.querySelector('.v-cards');
+        var nums = dd.querySelectorAll('.v-card .src__n');
+        if (!fan || !list || !nums.length) return;
+        var s, pts = [];
+        if (innerWidth > 760) {
+          var b = fan.getBoundingClientRect();
+          s = el('svg', { 'class': 'thr', 'aria-hidden': 'true', focusable: 'false' });
+          var cx = b.width / 2, cy = 8;
+          nums.forEach(function (n) {
+            var r = n.getBoundingClientRect(), x = r.left - b.left + 7, y = b.height + 2;
+            s.appendChild(el('line', { x1: cx, y1: cy, x2: x, y2: y, 'stroke-width': 1.3 }, { stroke: 'var(--thread)' }));
+            s.appendChild(el('circle', { cx: x, cy: y, r: 4.2 }, { fill: 'var(--ink-2)' }));
+          });
+          s.appendChild(el('circle', { cx: cx, cy: cy, r: 7 }, { fill: 'var(--ember)' }));
+          fan.appendChild(s);
+        } else {
+          var lb = list.getBoundingClientRect();
+          s = el('svg', { 'class': 'thr', 'aria-hidden': 'true', focusable: 'false' },
+            { position: 'absolute', inset: '0', width: '100%', height: '100%', overflow: 'visible', pointerEvents: 'none' });
+          nums.forEach(function (n) {
+            var r = n.getBoundingClientRect();
+            pts.push({ x: r.left - lb.left - 5, y: r.top - lb.top + r.height * 0.55 });
+          });
+          var dy = (pts[0].y + pts[pts.length - 1].y) / 2, dx = -13;
+          pts.forEach(function (p) {
+            s.appendChild(el('line', { x1: dx, y1: dy, x2: p.x, y2: p.y, 'stroke-width': 1.2 }, { stroke: 'var(--thread)' }));
+          });
+          s.appendChild(el('circle', { cx: dx, cy: dy, r: 4.5 }, { fill: 'var(--ember)' }));
+          list.appendChild(s);
+        }
+      });
+    }
+    draw();
+    if (document.fonts) document.fonts.ready.then(draw);
+    addEventListener('resize', draw);
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(function () { draw(); });
+      document.querySelectorAll('.v-dd').forEach(function (dd) { ro.observe(dd); });
+    }
+  })();
 
-    <footer>
-      <div class="colophon">
-        <img src="icon-96.png" alt="The Lede app icon" width="30" height="30">
-        <span>The Lede &middot; Check everything you read.</span>
-      </div>
-      <div class="row">
-        <a href="/privacy">Privacy</a>
-        <a href="/support">Support</a>
-        <a href="/sourcing">How The Lede handles sources</a>
-      </div>
-      <div class="page-colophon">
-        <p class="endmark" aria-hidden="true">&#182;</p>
-        <p class="imprint">Set in Newsreader · © 2026 Charles Klein LLC</p>
-        <p class="disclaimer">Not affiliated with The Lede Company, Lede AI, or the former New York Times blog “The Lede.”</p>
-        <p class="disclaimer">Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
-      </div>
-    </footer>
-  </div>
+  /* Country signup feedback. The server answers a failed POST /subscribe/country
+     with a 303 back to `/?country=invalid#country` or `/?country=error#country`.
+     With no script the form still posts and still succeeds; only the message
+     needs script. Adapted from the notes form's feedback script. */
+  (function () {
+    var match = /[?&]country=([^&#]*)/.exec(window.location.search);
+    if (!match) return;
+    /* Closed list: the param lands in aria wiring, so anything else is dropped. */
+    var kind = match[1] === 'invalid' || match[1] === 'error' ? match[1] : null;
+    if (kind) {
+      var alert = document.querySelector('.country__alert[data-alert="' + kind + '"]');
+      var email = document.getElementById('country-email');
+      var pick = document.getElementById('country-pick');
+      if (alert) {
+        alert.hidden = false;
+        [email, pick].forEach(function (f) { if (f) f.setAttribute('aria-describedby', alert.id + ' country-fine'); });
+        /* Only `invalid` is the reader's input to fix. An outage is ours. */
+        if (kind === 'invalid' && email) email.setAttribute('aria-invalid', 'true');
+        /* Focus on load, not inline: the #country fragment resolves after this
+           script runs and would take focus back to the body. */
+        window.addEventListener('load', function () { alert.focus(); });
+      }
+    }
+    /* Drop the param so a reload or Back doesn't show a stale failure. */
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+  })();
+  </script>
 </body>
 </html>

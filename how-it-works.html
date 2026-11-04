@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How it works · The Lede</title>
+  <meta name="description" content="What happens after you tap Share: what runs where, what leaves your phone, and how a Dig Deeper is checked.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="canonical" href="https://theledeapp.com/how-it-works">
+  <meta property="og:title" content="How it works · The Lede">
+  <meta property="og:description" content="What happens after you tap Share: what runs where, what leaves your phone, and how a Dig Deeper is checked.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theledeapp.com/how-it-works">
+  <meta property="og:image" content="https://theledeapp.com/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
+  <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="styles.css?v=697c3ba4">
+  <script>
+  /* Theme: follow the device unless the reader has explicitly chosen otherwise.
+     Runs before first paint so a chosen theme never flashes the other one, and
+     marks the document JS-capable, which is what reveals the toggle — a no-JS
+     reader keeps the device preference and never sees a dead control.
+
+     Toggling BACK to whatever the device already prefers clears the override
+     instead of pinning it, so there is always a way home to following the
+     device. Without that, one click freezes the site's appearance forever —
+     which is exactly the bug this replaced. */
+  (function () {
+    var d = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    d.classList.add('js');
+
+    function systemTheme() { return mq.matches ? 'dark' : 'light'; }
+    function resolved() { return d.getAttribute('data-theme') || systemTheme(); }
+
+    /* The two media-scoped theme-color metas cover the follow-the-device case.
+       An override needs an unscoped one, inserted first so it wins. */
+    function paintBrowserChrome() {
+      var override = document.querySelector('meta[name="theme-color"][data-override]');
+      if (!d.hasAttribute('data-theme')) {
+        if (override) override.remove();
+        return;
+      }
+      if (!override) {
+        override = document.createElement('meta');
+        override.setAttribute('name', 'theme-color');
+        override.setAttribute('data-override', '');
+        document.head.insertBefore(override, document.head.firstChild);
+      }
+      override.setAttribute('content', resolved() === 'dark' ? '#110F0D' : '#F8F5F1');
+    }
+
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') d.setAttribute('data-theme', saved);
+    } catch (e) {}
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.theme-toggle');
+      if (!btn) return;
+      var next = resolved() === 'dark' ? 'light' : 'dark';
+      if (next === systemTheme()) {
+        d.removeAttribute('data-theme');
+        try { localStorage.removeItem('theme'); } catch (e) {}
+      } else {
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      }
+      paintBrowserChrome();
+    });
+
+    /* While no explicit choice is stored, track the device live. */
+    mq.addEventListener('change', paintBrowserChrome);
+  })();
+  </script>
+</head>
+<body class="rd page-how">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hdr">
+    <a class="hdr__brand" href="/" aria-label="The Lede home page"><img src="/icon-96.png" alt="" width="26" height="26">The Lede</a>
+    <nav class="hdr__nav" aria-label="Site">
+      <a href="/how-it-works" aria-current="page">How it works</a><a href="/press">Press</a><a href="/support">Support</a>
+    </nav>
+    <button type="button" class="theme-toggle hdr__theme" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button>
+    <details class="hdr__menu">
+      <summary>Menu</summary>
+      <nav class="hdr__sheet" aria-label="Site">
+        <a href="/how-it-works" aria-current="page">How it works</a><a href="/press">Press</a><a href="/support">Support</a><a href="/privacy">Privacy</a>
+        <div class="hdr__sheet-theme"><span>Appearance</span><button type="button" class="theme-toggle" aria-label="Switch between light and dark theme"><svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.6 12h2.4M19 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg><svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 14.4A8 8 0 1 1 9.6 4 6.4 6.4 0 0 0 20 14.4z"/></svg></button></div>
+      </nav>
+    </details>
+    <a class="hdr__get" href="https://apps.apple.com/app/id6772315315?pt=128929757&amp;ct=site-header&amp;mt=8">Get the app</a>
+  </header>
+<div class="r-wrap">
+<nav class="r-rail" aria-label="On this page"><span class="kicker">On this page</span><ol>
+  <li><a href="#part-1"><span>1</span>From Share to the desk</a></li>
+  <li><a href="#part-2"><span>2</span>What leaves your phone</a></li>
+  <li><a href="#part-3"><span>3</span>Sources, and how a Dig Deeper is checked</a></li>
+  <li><a href="#report"><span></span>Reporting a mistake</a></li>
+</ol><p class="r-railnote">Questions? <a href="mailto:support@theledeapp.com">support@theledeapp.com</a></p></nav>
+<main class="r-main" id="main">
+  <div class="r-fig" aria-hidden="true"><div class="hl hl--ai" data-fig="loupe" data-hairline="loupe">
+    <!-- Hairline 0.5.1 (the loupe figure), vendored.
+       MIT License
+
+       Copyright (c) 2026 Lucas Marques
+
+       Permission is hereby granted, free of charge, to any person obtaining a copy
+       of this software and associated documentation files (the "Software"), to deal
+       in the Software without restriction, including without limitation the rights
+       to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+       copies of the Software, and to permit persons to whom the Software is
+       furnished to do so, subject to the following conditions:
+
+       The above copyright notice and this permission notice shall be included in all
+       copies or substantial portions of the Software.
+
+       THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+       IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+       FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+       AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+       LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+       OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+       SOFTWARE.
+    -->
+    <svg class="hl-static" viewBox="0 0 400 320" aria-hidden="true" focusable="false"><g><g><path class="sil" d="M44.85 149.76L45.81 147.34L48.54 145.3L167.33 85.9L171.42 84.54L176.24 84.06L181.06 84.54L185.15 85.9L351.46 169.06L354.19 171.1L355.15 173.51L355.15 177.88L354.19 180.29L351.46 182.33L232.67 241.73L228.58 243.1L223.76 243.58L218.94 243.1L214.85 241.73L48.54 158.58L45.81 156.53L44.85 154.12Z"></path><path class="nf lo" d="M352.21 173.51L351.48 175.36L349.38 176.93L230.59 236.33L227.46 237.37L223.76 237.74L220.06 237.37L216.93 236.33L50.62 153.17L48.52 151.6L47.79 149.76"></path></g><path class="nf lo" d="M205.94 105.21L87.15 164.61M195.55 110.41L323.25 174.26M179.21 118.57L306.91 182.42M162.88 126.74L290.58 190.59M146.54 134.91L274.25 198.76M130.21 143.07L257.91 206.93M113.87 151.24L241.58 215.09M97.54 159.41L225.24 223.26"></path><path class="nf" d="M159.91 221.26L159.91 171.07M162.58 222.6L160.89 223.08L158.93 223.08L157.23 222.6L156.26 221.75L156.26 220.77L157.23 219.92L158.93 219.43L160.89 219.43L162.58 219.92L163.56 220.77L163.56 221.75ZM96.25 161.77L112.62 130.12M98.93 163.11L97.23 163.59L95.28 163.59L93.58 163.11L92.6 162.26L92.6 161.28L93.58 160.43L95.28 159.94L97.23 159.94L98.93 160.43L99.91 161.28L99.91 162.26ZM223.56 161.77L207.19 130.12M226.23 163.11L224.54 163.59L222.58 163.59L220.89 163.11L219.91 162.26L219.91 161.28L220.89 160.43L222.58 159.94L224.54 159.94L226.23 160.43L227.21 161.28L227.21 162.26Z"></path><g><path class="sil hi" d="M103.21 141.59L103.48 138.81L104.3 136.06L105.65 133.36L107.52 130.74L109.9 128.22L112.76 125.84L116.08 123.6L119.81 121.54L123.94 119.67L128.41 118.02L133.18 116.59L138.21 115.4L143.45 114.46L148.85 113.78L154.35 113.38L159.91 113.24L165.46 113.38L170.97 113.78L176.37 114.46L181.61 115.4L186.64 116.59L191.41 118.02L195.88 119.67L200 121.54L203.74 123.6L207.05 125.84L209.91 128.22L212.29 130.74L214.17 133.36L215.52 136.06L216.33 138.81L216.61 141.59L216.61 143.77L216.33 146.55L215.52 149.3L214.17 152L212.29 154.62L209.91 157.14L207.05 159.52L203.74 161.76L200 163.82L195.88 165.69L191.41 167.34L186.64 168.77L181.61 169.96L176.37 170.9L170.97 171.58L165.46 171.98L159.91 172.12L154.35 171.98L148.85 171.58L143.45 170.9L138.21 169.96L133.18 168.77L128.41 167.34L123.94 165.69L119.81 163.82L116.08 161.76L112.76 159.52L109.9 157.14L107.52 154.62L105.65 152L104.3 149.3L103.48 146.55L103.21 143.77Z"></path><path class="nf lo" d="M197.92 160.6L194.01 162.37L189.77 163.94L185.25 165.29L180.48 166.42L175.51 167.31L170.4 167.95L165.18 168.34L159.91 168.47L154.64 168.34L149.42 167.95L144.3 167.31L139.33 166.42L134.56 165.29L130.04 163.94L125.8 162.37L121.89 160.6L118.35 158.64L115.21 156.52L112.49 154.26L110.24 151.88L108.46 149.39L107.18 146.83L106.41 144.22L106.15 141.59L106.41 138.95L107.18 136.34L108.46 133.79L110.24 131.3L112.49 128.92L115.21 126.66L118.35 124.54L121.89 122.58L125.8 120.81L130.04 119.24L134.56 117.88L139.33 116.75L144.3 115.87L149.42 115.23L154.64 114.84L159.91 114.71L165.18 114.84L170.4 115.23L175.51 115.87L180.48 116.75L185.25 117.88L189.77 119.24L194.01 120.81L197.92 122.58L201.46 124.54L204.61 126.66L207.32 128.92L209.57 131.3L211.35 133.79L212.63 136.34L213.41 138.95L213.67 141.59L213.41 144.22L212.63 146.83L211.35 149.39L209.57 151.88L207.32 154.26L204.61 156.52L201.46 158.64Z"></path></g><path class="nf lo" d="M121.94 137.81L122.87 135.97L124.15 134.18L125.77 132.47L127.72 130.84L129.99 129.31L132.54 127.9L135.35 126.63L138.4 125.5L141.66 124.52"></path><path class="nf sil" d="M163.34 115.82L108.36 143.31M167.63 116.05L210.99 137.73M135.85 129.56L196.44 159.85M108.83 145.45L152.18 167.13"></path></g></svg>
+  </div></div>
+  <div class="r-col r-top">
+    <span class="kicker">How it works</span>
+    <h1>What happens after you tap Share.</h1>
+    <p class="r-deck">A plain account of what runs where: on your phone, on our server, and at the AI provider that does the reading. What leaves your phone, and what never does. And what happens to a Dig Deeper before you see a word of it.</p>
+    <p class="r-meta">Describes The Lede 1.0.5 for iPhone and iPad, and our server as it ran on November 3, 2026. Last updated November 3, 2026. The <a href="/privacy">privacy policy</a> is the binding record of what we collect; this page explains the machinery behind it.</p>
+  </div>
+
+  <section class="r-part" id="part-1" aria-labelledby="part-1-h">
+    <div class="r-col"><span class="r-part__n">Part 1 of 3</span><h2 id="part-1-h">From the share sheet to the desk.</h2>
+    <p>The Lede has no feed and no browser of its own. Everything starts when you share an article to it.</p></div>
+    <figure class="fig" aria-labelledby="fig1-cap"><div class="flow">
+      <div class="flow__yours" aria-hidden="true"></div>
+      <div class="flow__h flow__h--1" aria-hidden="true">Yours</div><div class="flow__h flow__h--2" aria-hidden="true">Our server</div><div class="flow__h flow__h--3" aria-hidden="true">Our AI provider</div>
+      <div class="st st--yours s1" data-where="On your phone"><h4><span class="vh">On your phone: </span>You tap Share</h4><p>The share extension takes the headline, the web address and the article&rsquo;s text from the page Safari has open.</p></div>
+      <div class="cn c1"><span>Web address, headline, text</span></div>
+      <div class="st s2" data-where="Our server"><h4><span class="vh">Our server: </span>It checks there&rsquo;s an article</h4><p>At least 500 characters of text, or it fetches the public page itself.</p></div>
+      <div class="cn c2"><span>Headline and text. The web address too, only for a Dig Deeper or an opinion piece.</span></div>
+      <div class="st st--desk s3" data-where="Our AI provider"><h4><span class="vh">Our AI provider: </span>The desk reads it</h4><p>A new headline for what it argues, its beat, and the author&rsquo;s strongest honest case.</p></div>
+      <div class="s3n"><p>Deletes the text within 30 days, unless it flags a piece for safety review or the law requires a longer hold. Our contract bars model training on your text.</p></div>
+      <div class="cn cn--back c3"><span>The brief</span></div>
+      <div class="st s4" data-where="Our server"><h4><span class="vh">Our server: </span>A cache that deletes itself</h4><p>A one-way fingerprint and the brief, for 14 days at most. Never the article&rsquo;s text.</p></div>
+      <div class="cn cn--back c4"><span>The brief</span></div>
+      <div class="st st--yours s5" data-where="Your iCloud"><h4><span class="vh">Your iCloud: </span>Saved to your iCloud</h4><p>Your library lives there. It never reaches our server.</p></div>
+      <div class="flow__seamlabel" aria-hidden="true">Leaves your phone</div>
+    </div>
+    <figcaption id="fig1-cap"><b>Figure 1.</b> Saving an article. The tinted column is yours: your phone and your iCloud. Everything to its right is ours or our provider&rsquo;s. The ember dot marks the one step where AI does the work.</figcaption></figure>
+    <div class="r-col"><ol class="r-steps">
+      <li><div><b>You share.</b> In Safari, the share extension takes the article&rsquo;s text from the page Safari has open, with its headline and web address. The app has no browser inside it, so it keeps no cookies and no sign-ins of its own. From other apps it usually gets only the link.</div></li>
+      <li><div><b>Our server checks there&rsquo;s an article.</b> It uses your phone&rsquo;s text when there are at least 500 characters of it. If there aren&rsquo;t, or it only has a link, it fetches the public page itself. It never signs in anywhere, and it doesn&rsquo;t go through archive sites to get past a paywall.</div></li>
+      <li><div><b>The desk reads it.</b> Our AI provider gets the headline and the text and writes the brief: a new headline for what the piece actually argues, its beat, and the author&rsquo;s strongest honest case. When a piece is filed in its publication&rsquo;s opinion section, the brief is built from the reporting underneath it, and shows you the reporting it used.</div></li>
+      <li><div><b>The brief comes back to your phone</b> and is filed in your own iCloud. Our server keeps a one-way fingerprint and the brief in a cache that deletes itself within 14 days, so the same article isn&rsquo;t read twice. It never keeps the article&rsquo;s text.</div></li>
+      <li><div><b>Dig Deeper starts when you tap it.</b> The server searches for research and reporting around the piece, and the desk writes from what it finds. Part 3 is how that is checked.</div></li>
+    </ol>
+    <p><b>The app holds no keys to our AI or search providers and runs no model.</b> Every call to the AI provider and to the search providers is made by our server, never by your phone.</p>
+    </div>
+  </section>
+
+  <section class="r-part" id="part-2" aria-labelledby="part-2-h">
+    <div class="r-col"><span class="r-part__n">Part 2 of 3</span><h2 id="part-2-h">What leaves your phone, and what doesn&rsquo;t.</h2>
+    <p>There is no account: no name or password to create, and the app never asks for your email, apart from a Kindle address you choose to save.</p></div>
+    <figure class="fig fig--table"><table class="r-table r-table--3" role="table" aria-labelledby="t1-cap">
+      <thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col">What</th><th role="columnheader" scope="col">Goes to</th><th role="columnheader" scope="col">How long it&rsquo;s kept</th></tr></thead>
+      <tbody role="rowgroup">
+        <tr role="row"><td role="cell">The article&rsquo;s web address, headline and text</td><td role="cell" data-h="Goes to">Our server</td><td role="cell" data-h="Kept">The text is never stored. A one-way fingerprint and the brief sit in a cache that deletes itself within 14 days (7 for a Dig Deeper). The raw web address is never kept in our databases.</td></tr>
+        <tr role="row"><td role="cell">The headline and text</td><td role="cell" data-h="Goes to">Our AI provider</td><td role="cell" data-h="Kept">Deleted within 30 days, unless it flags a piece for safety review or the law requires a longer hold. Our contract bars model training on your text.</td></tr>
+        <tr role="row"><td role="cell">The web address</td><td role="cell" data-h="Goes to">Our AI provider</td><td role="cell" data-h="Kept">Only for a Dig Deeper, or when the piece is opinion or commentary.</td></tr>
+        <tr role="row"><td role="cell">The headline</td><td role="cell" data-h="Goes to">A web search provider</td><td role="cell" data-h="Kept">For some stories, to gather context.</td></tr>
+        <tr role="row"><td role="cell">A random device identifier and an Apple push token</td><td role="cell" data-h="Goes to">Our server</td><td role="cell" data-h="Kept">While the app is installed and registered. The device&rsquo;s secret is stored only as a one-way hash.</td></tr>
+        <tr role="row"><td role="cell">Usage data, keyed to that identifier and an opaque iCloud identifier</td><td role="cell" data-h="Goes to">Our server</td><td role="cell" data-h="Kept">Up to 13 months, then deleted automatically. Never your name or email, never sold.</td></tr>
+        <tr role="row"><td role="cell">A subscription you buy</td><td role="cell" data-h="Goes to">Apple, which tells our server about a trial, renewal, cancellation or refund</td><td role="cell" data-h="Kept">The Apple transaction identifier, while the subscription is active and for a limited period after.</td></tr>
+        <tr role="row"><td role="cell">Your library: articles, briefs, highlights, reading history</td><td role="cell" data-h="Goes to">Your own iCloud</td><td role="cell" data-h="Kept">It never reaches us.</td></tr>
+      </tbody></table>
+    <figcaption id="t1-cap"><b>Table 1.</b> Everything that leaves your phone when you use The Lede, where it goes, and how long it&rsquo;s kept. Drawn from the <a href="/privacy">privacy policy</a>, which names each provider.</figcaption></figure>
+    <div class="r-col r-sub"><h3>The steps we take</h3>
+      <ul>
+        <li><b>No browser inside the app.</b> In Safari, capture runs in the page you have open. The Lede keeps no cookies and no sign-ins of its own.</li>
+        <li><b>Raw page text is dropped.</b> If the share extension can only get a page&rsquo;s raw text rather than the article, that text never goes to our AI provider. It is dropped on your phone and again on our server, because a signed-in page can carry your account name.</li>
+        <li><b>Fingerprints, not articles.</b> Our server keeps a one-way fingerprint of the text and of the web address, never the article&rsquo;s text and never the raw web address, which passes only briefly through our host&rsquo;s operational logs.</li>
+        <li><b>Your library is yours.</b> Your saved articles and highlights live in your own iCloud, not on our servers. We never receive your library.</li>
+        <li><b>Results go only to the phone that asked.</b> A finished Dig Deeper is pushed only to the device that requested it. Each device registers with a random identifier we make, never its hardware ID, and its secret is stored only as a one-way hash.</li>
+        <li><b>Usage data is pseudonymous.</b> It is keyed to a random identifier for your device and an opaque iCloud identifier from Apple, never your name or email. It is deleted after 13 months at most, and we never sell it.</li>
+        <li><b>No ads. No third-party trackers.</b> The app contains no third-party advertising or analytics SDKs.</li>
+      </ul>
+    </div>
+    <div class="r-col r-sub"><h3>Your switch</h3>
+      <p>In the app&rsquo;s own Settings, under Privacy, switch off <b>Sending articles to the desk</b>. From then on, articles you save stay on your phone and land without a brief, and nothing goes to our AI provider.</p>
+      <p>The <a href="/privacy">privacy policy</a> is the binding record. It names every service provider that handles your data and how long each piece is kept. If this page and the policy ever disagree, the policy is right and this page is a mistake we will fix.</p>
+    </div>
+  </section>
+
+  <section class="r-part" id="part-3" aria-labelledby="part-3-h">
+    <div class="r-col"><span class="r-part__n">Part 3 of 3</span><h2 id="part-3-h">What the desk reads, and how a Dig Deeper is checked.</h2>
+      <div class="r-sub" id="sources"><h3>How The Lede handles sources</h3>
+        <p>Our standard for sources, as we have published it. This part was a page of its own; its old address now brings you here.</p>
+        <div class="r-quoteblock">
+          <p class="r-src-lede">The Lede reads whatever you save, from whoever published it, and hands you the strongest honest version of what it argues. It doesn't rank outlets and it doesn't keep a list of ones it won't touch. The standard is that every source gets the same treatment.</p>
+          <div class="r-sub r-sub--src"><h4>Every source, as it is</h4><p>There's no blocklist and no quality gate. The Lede doesn't judge a piece by who published it. The Wall Street Journal, The New York Times, Fox, MSNBC: a story from any of them is read on its own terms, and the brief is the fairest case for what that story is actually saying. If you saved it, we brief it.</p></div>
+          <div class="r-sub r-sub--src"><h4>The one thing it changes</h4><p>When a piece is opinion or commentary rather than reporting, The Lede builds the brief from the original reporting underneath it, not from the columnist's framing of it. That's the only move, and it's the same at every publication. What tells us a piece is opinion is plain and neutral: it's filed in the publication's own opinion section, right there in the web address. That signal says nothing about the politics. When it happens, the brief shows you the reporting it used. Nothing is swapped behind your back.</p></div>
+          <div class="r-sub r-sub--src"><h4>When you ask it to dig deeper</h4><p>Ask The Lede to dig deeper and it goes looking for what the original piece left out. It reaches past the source on purpose: international reporting, and peer-reviewed or primary research over more of the same commentary. How the rest of the world covered a story, and what the underlying study actually found, usually tells you more than another take from the same vantage point.</p></div>
+          <div class="r-sub r-sub--src"><h4>Where we stand</h4><p>We don't rank the press and we don't referee who's trustworthy. Every source gets read straight. The only time The Lede reaches past what you saved is to trade a columnist's opinion for the reporting it stands on, on a signal that treats every outlet the same, and it shows you when it did. That's the whole standard.</p></div>
+        </div>
+      </div>
+      <div class="r-sub" id="checked"><h3>How a Dig Deeper is checked</h3>
+        <p>A Dig Deeper is written from search results, and writing from sources can still go wrong: a finding stated backwards, a number that is off, a quote credited to the wrong outlet. So before a Dig Deeper reaches you, every sentence goes through these steps.</p>
+      </div>
+    </div>
+    <figure class="fig" aria-labelledby="fig2-cap"><ol class="chk">
+      <li><div class="chk__step"><span class="chk__n" aria-hidden="true">1</span><div><h4><span class="vh">Server: </span>The server searches.</h4><p>It looks for research and reporting around the piece, and keeps the results it can show you as sources.</p></div></div><div class="chk__out"><b>Stops here</b><p>No results it can show you, no Dig Deeper. Nothing is written, and it isn&rsquo;t counted.</p></div></li>
+      <li><div class="chk__step"><span class="chk__n chk__n--desk" aria-hidden="true">2</span><div><h4><span class="vh">AI: </span>The desk writes from those results.</h4><p>It cites each result by number as it writes.</p></div></div><div></div></li>
+      <li><div class="chk__step"><span class="chk__n chk__n--code" aria-hidden="true">3</span><div><h4><span class="vh">Code: </span>Code looks for each quote and figure in the result it cites.</h4><p>Anything it can&rsquo;t find there is flagged.</p></div></div><div></div></li>
+      <li><div class="chk__step"><span class="chk__n chk__n--desk" aria-hidden="true">4</span><div><h4><span class="vh">AI: </span>A separate check reads every sentence.</h4><p>Run apart from the writing, it reads each sentence beside the result it cites, with code&rsquo;s flags in hand, and gives a verdict on every one.</p></div></div><div class="chk__out"><b>Stops here</b><p>If the check errors, or skips a sentence twice, the Dig Deeper fails and isn&rsquo;t counted. You never get unchecked text.</p></div></li>
+      <li><div class="chk__step"><span class="chk__n chk__n--code" aria-hidden="true">5</span><div><h4><span class="vh">Code: </span>Code applies fixed rules.</h4><p>Each verdict has one outcome, set out in the table below. A figure found in none of the results, and not in your own brief, is cut, whatever the check said. A quote found nowhere loses its quote marks and is checked again, or is cut.</p></div></div><div></div></li>
+      <li><div class="chk__step"><span class="chk__n chk__n--code" aria-hidden="true">6</span><div><h4><span class="vh">Code: </span>Enough has to survive.</h4><p>The section on what others found must keep at least one checked sentence, and the desk&rsquo;s conclusion must pass its check.</p></div></div><div class="chk__out"><b>Once more, then stops</b><p>Too little left, and the desk tries once more on the same results if there&rsquo;s time. If that falls short too, the app says HELD BACK &middot; NOT COUNTED.</p></div></li>
+      <li><div class="chk__step"><span class="chk__n" aria-hidden="true">7</span><div><h4><span class="vh">Server: </span>It reaches you.</h4><p>The citation numbers come out, every source is listed with a link to the original, and only now is it cached.</p></div></div><div></div></li>
+    </ol>
+    <div class="chk__key" aria-hidden="true"><span><i class="d"></i>AI writes or judges</span><span><i class="c"></i>Fixed rules in code</span><span><i></i>The server</span></div>
+    <figcaption id="fig2-cap"><b>Figure 2.</b> A Dig Deeper, from search to your screen. AI does two jobs here, writing and judging. The rules that decide what happens to a sentence are written in code, and the AI can&rsquo;t change them.</figcaption></figure>
+    <div class="r-col r-sub">
+      <table class="r-table" role="table" aria-labelledby="t2-cap">
+        <thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col">What the check finds</th><th role="columnheader" scope="col">What happens</th></tr></thead>
+        <tbody role="rowgroup">
+          <tr role="row"><td role="cell">Supported by the result it cites</td><td role="cell" data-h="Then">Kept.</td></tr>
+          <tr role="row"><td role="cell">The desk&rsquo;s own reading, adding no fact the sources don&rsquo;t state</td><td role="cell" data-h="Then">Kept.</td></tr>
+          <tr role="row"><td role="cell">An other angle that is wrong or unsupported</td><td role="cell" data-h="Then">The whole angle is cut.</td></tr>
+          <tr role="row"><td role="cell">A sentence about what others found that is wrong or unsupported</td><td role="cell" data-h="Then">That sentence is cut.</td></tr>
+          <tr role="row"><td role="cell">Credited to the wrong source</td><td role="cell" data-h="Then">Re-credited to the right one, or cut.</td></tr>
+          <tr role="row"><td role="cell">Quote marks around words the source doesn&rsquo;t use, though it says the same thing</td><td role="cell" data-h="Then">The quote marks come off. The sentence is checked again and kept only if it passes.</td></tr>
+          <tr role="row"><td role="cell">The sources genuinely disagree</td><td role="cell" data-h="Then">Rewritten as a disagreement with each side credited (one source reports this, another finds that), or cut.</td></tr>
+          <tr role="row"><td role="cell">The desk&rsquo;s conclusion leaned on something that was cut</td><td role="cell" data-h="Then">Rewritten once and checked again.</td></tr>
+          <tr role="row"><td role="cell">A quote or figure that appears in none of the results</td><td role="cell" data-h="Then">A figure is cut by code. A quote is cut, or loses its quote marks if the check found the sentence sound, and is checked again.</td></tr>
+        </tbody></table>
+      <p class="r-tcap" id="t2-cap"><b>Table 2.</b> What the check can find, and the one thing code does about each.</p>
+      <p class="r-gap"><b>Code has the last word only where it can be sure.</b> A figure that appears in none of the results, and not in your own brief, is cut by code whatever the check said. A quote like that never reaches you as a quote. Anything subtler, like a paraphrase or a restated number, is the check&rsquo;s call, because code can&rsquo;t judge it.</p>
+      <p><b>The rules don&rsquo;t change themselves.</b> Code knows that 2 tablespoons and 2 tbsp are the same amount, and that one tablespoon isn&rsquo;t. When the check and code disagree about a quantity, the pair is saved with no article, link or reader attached, and a person decides whether to add it, in a reviewed change. Saved pairs are deleted after 90 days.</p>
+      <p><b>Only checked text is kept on our server.</b> A Dig Deeper is cached only after it passes, for 7 days at most. Our server never stores text from a Dig Deeper that failed.</p>
+    </div>
+    <div class="r-limits">
+      <h3>What these steps can&rsquo;t promise</h3>
+      <p>The check reads each sentence beside the source it cites. It can&rsquo;t tell you whether that source is right, and like any reader it can miss something. So every source is listed, every Dig Deeper ends with a row to report a problem, and the app says it plainly above every source list: <q>The desk wrote this from the sources below. It can get one wrong, so check the ones that matter to you.</q></p>
+      <p>A brief, the desk&rsquo;s reading of the one article you saved, doesn&rsquo;t go through these steps.</p>
+    </div>
+  </section>
+
+  <section class="r-part" id="report" aria-labelledby="report-h">
+    <div class="r-col"><h2 id="report-h" class="r-part__n">Reporting a mistake</h2>
+    <p>If a brief or a Dig Deeper gets something wrong, tell us. Every Dig Deeper has a <b>Report a problem with this Dig Deeper</b> row, and you can email <a href="mailto:support@theledeapp.com">support@theledeapp.com</a> about any brief. We read every report, and we can remove a Dig Deeper from our temporary cache so it isn&rsquo;t shown again.</p></div>
+  </section>
+</main></div>
+  <footer class="ftr"><div class="ftr__in">
+    <div class="ftr__sign"><img src="/icon-96.png" alt="" width="24" height="24">The Lede &middot; Check everything you read.</div>
+    <nav class="ftr__links" aria-label="Footer"><a href="/how-it-works">How it works</a><a href="/privacy">Privacy</a><a href="/press">Press</a><a href="/support">Support</a></nav>
+    <p class="ftr__fine">Set in Newsreader &middot; &copy; 2026 Charles Klein LLC. Not affiliated with The Lede Company, Lede AI, or the former New York Times blog &ldquo;The Lede.&rdquo; Apple, the Apple logo, App Store, iCloud, iPad, iPhone, and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+  </div></footer>
+  <script>
+  /* The phone Menu: Escape closes it and returns focus to Menu; a click outside closes it. */
+  document.addEventListener('keydown', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (e.key === 'Escape' && m) { m.open = false; m.querySelector('summary').focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    var m = document.querySelector('.hdr__menu[open]');
+    if (m && !m.contains(e.target)) m.open = false;
+  });
+  </script>
+  <script>
+  /* Contents rail: mark the part in view, desktop only. Nothing is marked at the
+     top of the page or without script, and nothing scrolls smoothly. */
+  (function () {
+    if (!('IntersectionObserver' in window) || !matchMedia('(min-width: 761px)').matches) return;
+    var links = document.querySelectorAll('.r-rail a[href^="#"]');
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting || !byId[e.target.id]) return;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        byId[e.target.id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  })();
+  </script>
+  <script type="module">
+  /* The loupe answers a pointer, so only a fine pointer that can hover loads it.
+     Phones and touch screens keep the static drawing and never fetch the file.
+     Hairline 0.5.1 (MIT), vendored at /vendor/hairline-0.5.1/. */
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const host = document.querySelector('[data-fig="loupe"]');
+    if (host) {
+      const { loupe } = await import('/vendor/hairline-0.5.1/index.js');
+      host.querySelector('.hl-static')?.remove();
+      loupe(host, { label: '' });
+    }
+  }
+  </script>
+</body>
+</html>
