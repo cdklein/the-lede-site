@@ -726,12 +726,20 @@ li { margin: 0.4rem 0; }
   padding: 3.5rem 1rem 1.2rem;
   box-sizing: border-box;
 }
+/* The width is set outright from the image's proportions (--ar, width over
+   height) and its natural width (--nw), both written by the script from the
+   thumbnail's width and height attributes. Left to `width: auto`, a browser
+   could size a portrait frame from a stale measurement: Charles saw portrait
+   iPhone and closed Duo frames open at thumbnail size (2026-11-09) while
+   landscape ones filled the window. */
 .lightbox__img {
+  --lb-h: calc(100vh - 7rem);
+  width: min(100%, calc(var(--lb-h) * var(--ar, 1)), var(--nw, 100%));
   max-width: 100%;
-  max-height: calc(100vh - 7rem);
-  width: auto;
+  max-height: var(--lb-h);
   height: auto;
-  min-height: 0;
+  aspect-ratio: var(--ar, auto);
+  flex: none;
   object-fit: contain;
   border-radius: 12px;
   display: block;

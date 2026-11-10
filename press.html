@@ -20,7 +20,7 @@
   <meta name="twitter:image" content="https://theledeapp.com/og-card.png">
   <meta name="theme-color" content="#F8F5F1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="styles.css?v=697c3ba4">
+  <link rel="stylesheet" href="styles.css?v=b429337f">
   <script>
   /* Theme: follow the device unless the reader has explicitly chosen otherwise.
      Runs before first paint so a chosen theme never flashes the other one, and
@@ -265,6 +265,14 @@
     function show(i) {
       index = i;
       var src = group[i];
+      var w = +src.getAttribute('width'), h = +src.getAttribute('height');
+      if (w && h) {
+        img.style.setProperty('--ar', w / h);
+        img.style.setProperty('--nw', w + 'px');
+      } else {
+        img.style.removeProperty('--ar');
+        img.style.removeProperty('--nw');
+      }
       img.src = src.getAttribute('src');
       img.alt = src.alt;
       var fc = src.closest('figure').querySelector('figcaption');
