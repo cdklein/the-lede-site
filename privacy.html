@@ -152,7 +152,7 @@
       </div>
 
       <h2 id="notifications">Notifications and your device</h2>
-      <p>To deliver "Dig Deeper" results, your device registers with our server using a <strong>random identifier we generate</strong> (never your Apple device's hardware ID) and an Apple push token. A device secret is stored only as a one-way hash. Push notifications are scoped so a result is only ever delivered to the device that requested it.</p>
+      <p>To deliver "Dig Deeper" results, your device registers with our server using a <strong>random identifier we generate</strong> (never your Apple device's hardware ID) and Apple push tokens: one for the device, and a short-lived one for each Dig Deeper in progress, which we never write to our database and delete when that Dig Deeper's Lock Screen panel ends, or after 12 hours at the latest. A device secret is stored only as a one-way hash. Push notifications are scoped so a result is only ever delivered to the device that requested it.</p>
 
       <h2 id="usage-data">Usage data</h2>
       <p>We record a small amount of first-party usage data. It is <strong>pseudonymous</strong>: keyed to a random per-device identifier and to an opaque iCloud account identifier from Apple, never your name, your email, or your device's hardware ID. Because those identifiers are stable (the iCloud one persists even if you reinstall the app), Apple's App Store privacy label now counts this data as <strong>linked to you</strong>. We still never attach your name, and we never sell it. We use it to operate the service, watch for abuse and runaway costs, improve the app, and set fair pricing. This includes:</p>
