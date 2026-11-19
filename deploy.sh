@@ -16,6 +16,8 @@ cp -R press-kit "$STAGE"/press-kit   # /press assets + the downloadable zip (sit
 cp -R film "$STAGE"/film             # the homepage brand film: web encodes and posters
 cp -R img "$STAGE"/img               # the redesign's iPhone Duo captures
 cp -R vendor "$STAGE"/vendor         # Hairline 0.5.1, vendored (MIT); loaded only by How it works
+cp -R notes "$STAGE"/notes           # dated desk notes, /notes/ and one page per note
+cp -R .well-known "$STAGE"/.well-known   # security.txt (RFC 9116): Contact and Expires only; renew Expires by Oct 2027
 rm -f "$STAGE"/og-card-source.html   # internal source for og-card.png, never served
 pnpm dlx wrangler pages deploy "$STAGE" --project-name the-lede-site --branch main --commit-dirty=true
 rm -rf "$STAGE"

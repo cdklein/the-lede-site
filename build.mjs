@@ -114,14 +114,16 @@ const cssHash = crypto
 
 const PAGES = fs
   .readdirSync(OUT_DIR)
-  .filter((f) => f.endsWith('.html') && f !== 'og-card-source.html');
+  .filter((f) => f.endsWith('.html') && f !== 'og-card-source.html')
+  // Desk notes live one folder down and link the stylesheet as /styles.css.
+  .concat(fs.readdirSync(path.join(OUT_DIR, 'notes')).filter((f) => f.endsWith('.html')).map((f) => `notes/${f}`));
 
 for (const page of PAGES) {
   const pagePath = path.join(OUT_DIR, page);
   const before = fs.readFileSync(pagePath, 'utf8');
   const after = before.replace(
-    /href="styles\.css(?:\?v=[a-f0-9]+)?"/g,
-    `href="styles.css?v=${cssHash}"`
+    /href="(\/?)styles\.css(?:\?v=[a-f0-9]+)?"/g,
+    `href="$1styles.css?v=${cssHash}"`
   );
   if (after !== before) {
     fs.writeFileSync(pagePath, after);
@@ -137,6 +139,8 @@ const SITEMAP_PAGES = {
   'https://theledeapp.com/privacy': 'privacy.html',
   'https://theledeapp.com/how-it-works': 'how-it-works.html',
   'https://theledeapp.com/press': 'press.html',
+  'https://theledeapp.com/notes/': 'notes/index.html',
+  'https://theledeapp.com/notes/what-a-locked-iphone-shows': 'notes/what-a-locked-iphone-shows.html',
 };
 const sitemapPath = path.join(__dirname, 'sitemap.xml');
 let sitemap = fs.readFileSync(sitemapPath, 'utf8');
