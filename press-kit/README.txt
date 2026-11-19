@@ -71,8 +71,7 @@ film/     the-lede-film.mp4: A short film about The Lede. 80 seconds,
           its words or drawings, reorder it, or set it to music. Also
           its poster frame (1920 x 1080) and a text file of its words.
 iphone/   Five iPhone frames, 1320 x 2868, in App Store listing order,
-          plus a contact sheet. Frames 02 to 05 show the app in the
-          device.
+          each showing the app in the device, plus a contact sheet.
 ipad/     Five iPad frames, 2064 x 2752, in App Store listing order,
           each showing the app in the device, plus a contact sheet.
 duo/      Five iPhone Duo App Store frames, in listing order, plus a
